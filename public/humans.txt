@@ -1,0 +1,16 @@
+/* TEAM */
+Author: Habibullah Khan (HBK)
+Role: Android APK documentation writer
+Site: https://hbkblogger.vercel.app
+
+/* SITE */
+Name: StreamFlix APK
+Purpose: Independent documentation for the two unrelated Android apps
+         published under the StreamFlix name.
+Standards: HTML5, Next.js App Router, Tailwind CSS
+Components: React 19, TypeScript
+Hosting: Cloudflare Workers via OpenNext
+
+/* NOTE */
+We host no media content and are not affiliated with either StreamFlix
+developer. See /about for our editorial and testing method.
