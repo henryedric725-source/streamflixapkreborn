@@ -24,7 +24,13 @@ constraint drives the content architecture.
 
 ## Content architecture
 
-24 cluster pages + `/guides` + `/about` + 4 `noIndex` legal pages.
+24 cluster pages + `/blog` + `/about` + 4 `noIndex` legal pages.
+
+URLs are flat: the hub is `/`, the blog category index is `/blog`, and every
+post sits at `/<slug>`. Posts still belong to the blog category — that
+relationship is declared by `POST_PATHS` in `lib/routes.ts` rather than
+inferred from the URL, and it drives the three-level breadcrumb
+(Home > Blog > Post), `BlogPosting` typing, `isPartOf`, and `articleSection`.
 
 One page = one intent = one primary keyword head. Where two keyword sets would
 collide, the weaker becomes an anchored section on the stronger page and is
@@ -56,12 +62,15 @@ so a version bump is one edit that propagates to copy, tables, and schema:
 | `lib/faqs.ts` | Per-page FAQ banks. No question may appear on two pages. |
 | `lib/links.ts` | Link registry with per-context anchor text. |
 | `lib/related.ts` | Sibling links per page. |
-| `lib/guides.ts` | Cluster catalogue — the orphan-detection surface. |
+| `lib/blog.ts` | Post catalogue by category — the orphan-detection surface. |
+| `lib/entities.ts` | 32 named entities with Wikipedia/Wikidata `sameAs`. |
+| `lib/citations.ts` | Per-page source lists, rendered and emitted as `citation`. |
 | `lib/schema.ts` | JSON-LD node builders. |
 
 ## SEO / AEO / GEO
 
-- Per-page `@graph`: Organization + WebSite + BreadcrumbList + TechArticle +
+- Per-page `@graph`: Organization + WebSite + WebPage + ImageObject +
+  BreadcrumbList + TechArticle (posts also typed `BlogPosting`) +
   page-specific nodes.
 - **Two `SoftwareApplication` nodes** on pages covering both apps, with distinct
   `@id`s (`#software-reborn`, `#software-v2`) and their real per-app figures.
@@ -71,6 +80,12 @@ so a version bump is one edit that propagates to copy, tables, and schema:
 - `FAQPage` on every cluster page, deduped across the whole site.
 - Answer-first `DirectAnswer` + `QuickSummary` + `Takeaways`, all wired into the
   `speakable` selector.
+- **Entity grounding:** `about` / `mentions` carry `sameAs` pointers to
+  Wikipedia and Wikidata — 168 references site-wide.
+- **Citations:** 88 sources across the site, shown as a visible Sources block
+  and emitted as schema `citation`.
+- Each page carries its own review `dateModified`, surfaced in the author box.
+- `Blog` node on `/blog` listing all 23 posts; RSS 2.0 at `/blog/rss.xml`.
 - `public/llms.txt` carries the canonical facts block for retrieval engines.
 - No public sitemap. It is reachable only at `/private-sitemap/<SITEMAP_SECRET>`.
   Legal pages are `noIndex` and excluded.
@@ -87,14 +102,15 @@ npm run logo         # regenerate the logo and favicon set from one vector
 npm run deploy       # opennextjs-cloudflare build && deploy
 ```
 
-`npm run audit` enforces the cluster rules: every route has a page, every
-cluster page is catalogued (no orphans), every page has ≥2 sibling links, no
-link points at a nonexistent route, no FAQ question appears twice, and no legal
-page leaks into the sitemap.
+`npm run audit` enforces the cluster rules: every route has a page, every post
+is catalogued under a blog category (no orphans), posts are single-segment root
+slugs, every page has ≥2 sibling links, no link points at a nonexistent route,
+every page declares grounded entities and a review date, no FAQ question
+appears twice, and no legal page leaks into the sitemap.
 
 ## Before deploying
 
-These are placeholders and must be replaced:
+These placeholders must be replaced:
 
 1. **Domain** — `NEXT_PUBLIC_SITE_URL` in `wrangler.jsonc`, and `APEX_HOST` in
    `middleware.ts`. Canonicals, Open Graph and robots host all derive from it.
@@ -104,7 +120,14 @@ These are placeholders and must be replaced:
 4. **APK binaries** — drop into `public/releases/` with the exact filenames in
    `public/releases/README.md`. Until then the site degrades gracefully and
    schema omits `downloadUrl`.
-5. **Logo** — done. `scripts/build-logo.mjs` renders the film-strip mark from a
-   single vector master into `public/logo.svg` plus sized PNGs (512, 192, 180,
-   48, 32, 16). Edit the constants in that script and re-run `npm run logo` to
-   change it; do not hand-edit the PNGs.
+## Branding
+
+The film-strip mark is generated, not hand-drawn. `scripts/build-logo.mjs`
+renders `public/logo.svg` plus sized PNGs (512, 192, 180, 48, 32, 16) from one
+vector master, in two variants — full detail above 180px, a compact one with
+fewer, larger sprocket holes at 48px and below. Change the constants at the top
+of that script and run `npm run logo`; never hand-edit the PNGs.
+
+Icons are declared explicitly in `metadata.icons`. Do not add `app/icon.png` or
+`app/apple-icon.png` — Next's file convention would emit a second set of
+`<link rel="icon">` tags alongside them.
