@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480">
+  <defs>
+    <mask id="cut">
+      <rect x="92" y="124" width="296" height="240" rx="26" fill="white"/>
+      <rect x="110.0" y="142" width="24" height="24" rx="5" fill="black"/><rect x="110.0" y="322" width="24" height="24" rx="5" fill="black"/><rect x="149.3" y="142" width="24" height="24" rx="5" fill="black"/><rect x="149.3" y="322" width="24" height="24" rx="5" fill="black"/><rect x="188.7" y="142" width="24" height="24" rx="5" fill="black"/><rect x="188.7" y="322" width="24" height="24" rx="5" fill="black"/><rect x="228.0" y="142" width="24" height="24" rx="5" fill="black"/><rect x="228.0" y="322" width="24" height="24" rx="5" fill="black"/><rect x="267.3" y="142" width="24" height="24" rx="5" fill="black"/><rect x="267.3" y="322" width="24" height="24" rx="5" fill="black"/><rect x="306.7" y="142" width="24" height="24" rx="5" fill="black"/><rect x="306.7" y="322" width="24" height="24" rx="5" fill="black"/><rect x="346.0" y="142" width="24" height="24" rx="5" fill="black"/><rect x="346.0" y="322" width="24" height="24" rx="5" fill="black"/>
+      <rect x="110" y="184" width="146" height="120" rx="3" fill="black"/><rect x="278" y="184" width="92" height="120" rx="3" fill="black"/>
+    </mask>
+  </defs>
+  <rect width="480" height="480" fill="#000000"/>
+  <rect x="92" y="124" width="296" height="240" rx="26" fill="#E8112D" mask="url(#cut)"/>
+</svg>

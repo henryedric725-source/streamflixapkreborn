@@ -83,6 +83,7 @@ npm run build        # production build
 npm run lint         # eslint
 npm run audit        # content + internal-linking audit (see below)
 npm run screenshots  # re-encode source screenshots into public/screenshots
+npm run logo         # regenerate the logo and favicon set from one vector
 npm run deploy       # opennextjs-cloudflare build && deploy
 ```
 
@@ -103,5 +104,7 @@ These are placeholders and must be replaced:
 4. **APK binaries** — drop into `public/releases/` with the exact filenames in
    `public/releases/README.md`. Until then the site degrades gracefully and
    schema omits `downloadUrl`.
-5. **Logo** — `public/logo.png`, `app/icon.png` and `app/apple-icon.png` are a
-   generated placeholder in the app's palette. Replace with real artwork.
+5. **Logo** — done. `scripts/build-logo.mjs` renders the film-strip mark from a
+   single vector master into `public/logo.svg` plus sized PNGs (512, 192, 180,
+   48, 32, 16). Edit the constants in that script and re-run `npm run logo` to
+   change it; do not hand-edit the PNGs.

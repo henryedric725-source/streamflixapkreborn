@@ -57,12 +57,19 @@ export const metadata: Metadata = {
   publisher: PUBLISHER,
   category: "software",
   classification: "Android software documentation",
+  // Declared explicitly rather than via the app/icon.png file convention, so
+  // browsers get a size-matched raster instead of downscaling one 512px file.
   icons: {
     icon: [
-      { url: "/logo.png", type: "image/png", sizes: "500x500" },
-      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon-16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/favicon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/logo.png", type: "image/png", sizes: "512x512" },
+      { url: "/logo.svg", type: "image/svg+xml", sizes: "any" },
     ],
-    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
+    shortcut: [{ url: "/favicon-32.png", type: "image/png" }],
   },
   referrer: "strict-origin-when-cross-origin",
   formatDetection: {
@@ -134,8 +141,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <meta name="duckduckbot" content="index, follow" />
         <meta name="yandex" content="index, follow" />
         <meta name="baiduspider" content="index, follow" />
-        <link rel="icon" href="/logo.png" type="image/png" sizes="any" title={LOGO_ALT} />
-        <link rel="apple-touch-icon" href="/apple-icon.png" title={LOGO_ALT} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
