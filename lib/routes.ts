@@ -3,10 +3,15 @@
  *
  * URL structure:
  *   /                 the download hub (money page)
- *   /blog             the post index
- *   /post/<slug>      every article
+ *   /blog             the blog category index
+ *   /<slug>           every blog post — flat, no directory prefix
  *   /about            editorial policy
  *   /legal/<slug>     noIndex policy pages
+ *
+ * Posts sit at the root for the shortest possible URLs, but they still belong
+ * to the blog category: `POST_PATHS` is what makes that relationship explicit,
+ * and it drives the three-level breadcrumb (Home > Blog > Post) and the
+ * BlogPosting/isPartOf schema even though the URL is flat.
  *
  * Cluster rule: one path = one search intent = one primary keyword head. Where a
  * secondary keyword set would collide with an existing page it becomes an anchor
@@ -16,47 +21,42 @@
  * can all import paths without an import cycle.
  */
 
-/** Every article lives under this prefix. */
-export const POST_PREFIX = "/post";
-
-const post = (slug: string) => `${POST_PREFIX}/${slug}`;
-
 export const R = {
   /** Cluster 0 — the dual-primary download hub. */
   home: "/",
 
   /** Cluster A — versions and variants. */
-  reborn: post("streamflix-reborn-apk"),
-  v2: post("streamflix-2-apk"),
-  oldVersions: post("streamflix-apk-old-versions"),
-  changelog: post("streamflix-apk-changelog"),
-  mod: post("streamflix-mod-apk"),
+  reborn: "/streamflix-reborn-apk",
+  v2: "/streamflix-2-apk",
+  oldVersions: "/streamflix-apk-old-versions",
+  changelog: "/streamflix-apk-changelog",
+  mod: "/streamflix-mod-apk",
 
   /** Cluster B — install and devices. */
-  install: post("how-to-install-streamflix-apk"),
-  firestick: post("streamflix-for-firestick"),
-  androidTv: post("streamflix-for-android-tv"),
-  pc: post("streamflix-for-pc"),
-  ios: post("streamflix-for-ios"),
-  smartTv: post("streamflix-on-smart-tv"),
+  install: "/how-to-install-streamflix-apk",
+  firestick: "/streamflix-for-firestick",
+  androidTv: "/streamflix-for-android-tv",
+  pc: "/streamflix-for-pc",
+  ios: "/streamflix-for-ios",
+  smartTv: "/streamflix-on-smart-tv",
 
   /** Cluster C — use, offline, and fixes. */
-  howToUse: post("how-to-use-streamflix"),
-  offline: post("streamflix-download-movies-offline"),
-  notWorking: post("streamflix-not-working"),
-  update: post("streamflix-update-guide"),
+  howToUse: "/how-to-use-streamflix",
+  offline: "/streamflix-download-movies-offline",
+  notWorking: "/streamflix-not-working",
+  update: "/streamflix-update-guide",
 
   /** Cluster D — safety, legality, trust. */
-  safe: post("is-streamflix-apk-safe"),
-  legal: post("is-streamflix-legal"),
-  vpn: post("streamflix-vpn-guide"),
-  privacy: post("streamflix-permissions-and-privacy"),
+  safe: "/is-streamflix-apk-safe",
+  legal: "/is-streamflix-legal",
+  vpn: "/streamflix-vpn-guide",
+  privacy: "/streamflix-permissions-and-privacy",
 
   /** Cluster E — comparisons and alternatives. */
-  alternatives: post("streamflix-alternatives"),
-  bestMovieApks: post("best-free-movie-apks-for-android"),
-  bestTvApks: post("best-streaming-apks-for-android-tv"),
-  vsPaid: post("streamflix-vs-paid-streaming-apps"),
+  alternatives: "/streamflix-alternatives",
+  bestMovieApks: "/best-free-movie-apks-for-android",
+  bestTvApks: "/best-streaming-apks-for-android-tv",
+  vsPaid: "/streamflix-vs-paid-streaming-apps",
 
   /** Support. */
   blog: "/blog",
@@ -71,9 +71,11 @@ export const R = {
 
 export type RouteKey = keyof typeof R;
 
-/** The 24 cluster pages, in cluster order. Excludes support and legal pages. */
-export const CLUSTER_PATHS = [
-  R.home,
+/**
+ * The 23 blog posts. Every one of these is filed under the blog category even
+ * though its URL is flat — this array is the single source of that membership.
+ */
+export const POST_PATHS = [
   R.reborn,
   R.v2,
   R.oldVersions,
@@ -99,6 +101,9 @@ export const CLUSTER_PATHS = [
   R.vsPaid,
 ] as const;
 
+/** The 24 cluster pages, in cluster order: the hub plus every post. */
+export const CLUSTER_PATHS = [R.home, ...POST_PATHS] as const;
+
 /** Everything that may appear in the sitemap: clusters + indexable support pages. */
 export const INDEXABLE_PATHS = [...CLUSTER_PATHS, R.blog, R.about] as const;
 
@@ -110,7 +115,12 @@ export const NOINDEX_PATHS = [
   R.legalDmca,
 ] as const;
 
-/** True for any article URL. Drives the three-level breadcrumb trail. */
+const POST_SET: ReadonlySet<string> = new Set(POST_PATHS);
+
+/**
+ * True for a blog post. Membership is explicit rather than inferred from the
+ * URL, because posts live at the root alongside the hub and support pages.
+ */
 export function isPostPath(path: string) {
-  return path.startsWith(`${POST_PREFIX}/`);
+  return POST_SET.has(path);
 }

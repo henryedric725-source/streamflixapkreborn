@@ -27,11 +27,12 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   agentRules: false,
   /**
-   * Articles moved from root slugs to /post/<slug>, and /guides became /blog.
-   * Permanent redirects preserve any link equity and stop old URLs 404ing.
+   * Posts live at the root. `/guides` became `/blog`, and the interim
+   * `/post/<slug>` URLs are redirected back so nothing that was linked during
+   * that window 404s. Permanent, because these moves are final.
    */
   async redirects() {
-    const movedToPost = [
+    const postSlugs = [
       "streamflix-reborn-apk",
       "streamflix-2-apk",
       "streamflix-apk-old-versions",
@@ -58,11 +59,14 @@ const nextConfig: NextConfig = {
     ];
     return [
       { source: "/guides", destination: "/blog", permanent: true },
-      ...movedToPost.map((slug) => ({
-        source: `/${slug}`,
-        destination: `/post/${slug}`,
+      ...postSlugs.map((slug) => ({
+        source: `/post/${slug}`,
+        destination: `/${slug}`,
         permanent: true,
       })),
+      // Catch anything else that was briefly published under /post.
+      { source: "/post/:slug", destination: "/:slug", permanent: true },
+      { source: "/post", destination: "/blog", permanent: true },
     ];
   },
   async headers() {

@@ -24,19 +24,13 @@ function read(path) {
   return readFile(join(ROOT, path), "utf8");
 }
 
-/**
- * Pull route values out of the routes module without importing TS.
- * Handles both literal paths and the `post("slug")` helper.
- */
+/** Pull `key: "/value"` pairs out of the routes module without importing TS. */
 function parseRoutes(source) {
   const start = source.indexOf("export const R = {");
   const body = source.slice(start, source.indexOf("} as const;", start));
-  const prefix = /export const POST_PREFIX = "([^"]+)"/.exec(source)?.[1] ?? "/post";
   const out = {};
-  for (const [, key, literal, slug] of body.matchAll(
-    /(\w+):\s*(?:"(\/[^"]*)"|post\("([^"]+)"\))/g,
-  )) {
-    out[key] = literal ?? `${prefix}/${slug}`;
+  for (const [, key, value] of body.matchAll(/(\w+):\s*"(\/[^"]*)"/g)) {
+    out[key] = value;
   }
   return out;
 }
@@ -68,7 +62,8 @@ async function main() {
     return [...body.matchAll(/R\.(\w+)/g)].map((m) => R[m[1]]);
   }
 
-  const clusterPaths = parsePathArray("CLUSTER_PATHS");
+  const postPaths = parsePathArray("POST_PATHS");
+  const clusterPaths = [R.home, ...postPaths];
   const noIndexPaths = parsePathArray("NOINDEX_PATHS");
 
   const indexablePaths = [...clusterPaths, R.blog, R.about];
@@ -89,23 +84,34 @@ async function main() {
 
   // 3. Every cluster page is in the post catalogue (the home hub is the root).
   const blogSrc = await read("lib/blog.ts");
+  // Bound the scan to postCategories — hubCards further down also uses
+  // `href: R.x` and would otherwise inflate the catalogue count.
+  const categoriesSrc = blogSrc.slice(
+    blogSrc.indexOf("export const postCategories"),
+    blogSrc.indexOf("export const allPosts"),
+  );
   const catalogued = new Set(
-    [...blogSrc.matchAll(/href:\s*R\.(\w+)/g)].map((m) => R[m[1]]),
+    [...categoriesSrc.matchAll(/href:\s*R\.(\w+)/g)].map((m) => R[m[1]]),
   );
   for (const path of clusterPaths) {
     if (path === R.home) continue;
     if (!catalogued.has(path)) fail.push(`orphan: ${path} is not in blog.ts`);
   }
 
-  // 3b. Every article must live under /post, and nothing else may.
-  for (const path of clusterPaths) {
-    if (path === R.home) continue;
-    if (!path.startsWith("/post/")) {
-      fail.push(`article ${path} is not under /post/`);
+  // 3b. Posts are flat root slugs — one segment, no directory prefix — and
+  // every post must be catalogued under the blog category.
+  for (const path of postPaths) {
+    if (path.split("/").filter(Boolean).length !== 1) {
+      fail.push(`post ${path} is not a flat root slug`);
+    }
+    if (!catalogued.has(path)) {
+      fail.push(`post ${path} is not filed under a blog category`);
     }
   }
-  for (const path of [R.blog, R.about]) {
-    if (path.startsWith("/post/")) fail.push(`${path} should not be under /post/`);
+  if (postPaths.length !== catalogued.size) {
+    fail.push(
+      `POST_PATHS has ${postPaths.length} entries but blog.ts catalogues ${catalogued.size}`,
+    );
   }
 
   // 4. Related-links coverage and sibling count.
@@ -175,9 +181,7 @@ async function main() {
 
   for (const path of indexablePaths) {
     const file =
-      path === "/"
-        ? "app/(site)/page.tsx"
-        : `app/(site)${path}/page.tsx`;
+      path === "/" ? "app/(site)/page.tsx" : `app/(site)${path}/page.tsx`;
     let src;
     try {
       src = await read(file);
@@ -215,7 +219,7 @@ async function main() {
   console.log(
     `routes: ${indexablePaths.length} indexable, ${noIndexPaths.length} noindex`,
   );
-  console.log(`cluster pages: ${clusterPaths.length}`);
+  console.log(`cluster pages: ${clusterPaths.length} (1 hub + ${postPaths.length} posts)`);
   console.log(`FAQ questions: ${seen.size} unique across ${banks.length} banks`);
   console.log(`entities: ${entityKeys.size} grounded in lib/entities.ts`);
   for (const message of warn) console.warn(`warn  ${message}`);
