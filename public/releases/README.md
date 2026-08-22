@@ -4,12 +4,20 @@ APK binaries go here. Filenames must match the values in `lib/variants.ts`
 byte for byte, because `lib/releases.ts` checks for them by name and
 `variantApkPath()` builds the href from them.
 
-Current expected filenames:
+The site serves exactly one package, described in `lib/package.ts`. Every
+download button on every page points at it, so a visitor can never reach a dead
+link.
 
-- `StreamFlix Reborn latest version.apk`  (v1.7.230, 31.43 MB)
-- `StreamFlix 2.0 latest version.apk`     (build 142, 76.8 MB)
+Currently staged:
 
-Archive builds listed in `lib/versions.ts` use their own `fileName` values.
+- `StreamFlix.xapk` (35.2 MB)
+  - package `com.ajpro.streamflix2`, version 138, minSdk 23
+  - XAPK, not a plain APK: a container holding the base APK plus arm64-v8a,
+    English and xhdpi splits. Android cannot install it by tapping the file the
+    way it can a single APK; it needs a split-APK installer.
+
+To replace it, drop the new file here and update `lib/package.ts` to match.
+Nothing else needs editing.
 
 ## Behaviour when a file is absent
 

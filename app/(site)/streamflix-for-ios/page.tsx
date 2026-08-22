@@ -32,6 +32,7 @@ const toc = [
   { href: "#sideloading", label: "iOS sideloading, and why it doesn't help" },
   { href: "#workarounds", label: "Workarounds that genuinely work" },
   { href: "#alternatives", label: "What to use on an iPhone instead" },
+  { href: "#why-android-only", label: "Why this whole category is Android only" },
 ];
 
 export default function IosPage() {
@@ -45,7 +46,7 @@ export default function IosPage() {
       dateModified="2026-08-11"
       kicker="iOS"
       h1="StreamFlix for iPhone and iPad: There Isn't One"
-      answer="Neither StreamFlix app has an iOS build, and an APK cannot run on an iPhone or iPad under any circumstances — it is an Android package format that iOS has no ability to open. Any page offering a 'StreamFlix APK for iOS' is offering something else entirely."
+      answer="Neither StreamFlix app has an iOS build, and an APK cannot run on an iPhone or iPad under any circumstances. It is an Android package format that iOS has no ability to open. Any page offering a 'StreamFlix APK for iOS' is offering something else entirely."
       toc={toc}
       faqs={iosFaqs}
       showDownload={false}
@@ -85,7 +86,7 @@ export default function IosPage() {
       <p>
         The two platforms share no application layer. An APK contains calls into
         Android system services that simply do not exist on iOS. There is
-        nothing on an iPhone capable of loading one — no converter, no emulator
+        nothing on an iPhone capable of loading one, no converter, no emulator
         on the App Store, and no setting to enable.
       </p>
       <p>
@@ -138,7 +139,7 @@ export default function IosPage() {
 
       <h2 id="sideloading">iOS sideloading, and why it doesn&rsquo;t help</h2>
       <p>
-        Sideloading on iOS does exist in a limited form — AltStore, developer
+        Sideloading on iOS does exist in a limited form: AltStore, developer
         certificates, and in the EU, alternative app marketplaces. None of it
         changes the answer here.
       </p>
@@ -152,7 +153,7 @@ export default function IosPage() {
       >
         <p>
           Every iOS sideloading method assumes the app exists in iOS form. The
-          obstacle here is not distribution — it is that the software was never
+          obstacle here is not distribution. It is that the software was never
           written for the platform.
         </p>
       </QuickSummary>
@@ -172,7 +173,7 @@ export default function IosPage() {
         </li>
         <li>
           <strong>Use a desktop instead.</strong> An emulator on a Mac or PC
-          runs the real app. Slower than a phone, but it works — see{" "}
+          runs the real app. Slower than a phone, but it works. See{" "}
           <InternalLink intent="pc" currentPath={R.ios} />.
         </li>
         <li>
@@ -188,6 +189,42 @@ export default function IosPage() {
         installer&rdquo;, and any web player claiming to be StreamFlix.
       </p>
 
+      <h2 id="why-android-only">Why this whole category is Android only</h2>
+      <p>
+        It is worth understanding why the answer here is structural rather than
+        an oversight, because the same reasoning applies to every app people ask
+        about alongside StreamFlix.
+      </p>
+      <p>
+        Android permits installation from outside its official store. That one
+        design decision is what makes an aggregator possible at all: a developer
+        can publish a build, users can install it, and no gatekeeper reviews it
+        first. Every app in this category depends on that route existing.
+      </p>
+      <p>
+        iOS has no equivalent. Apple reviews every app before it reaches the App
+        Store, and an aggregator that resolves streams from unvetted third-party
+        providers would not survive that review. There is no second route to
+        publish through. So the absence of a StreamFlix for iPhone is not a gap
+        the developers have failed to fill. It is the platform working exactly
+        as designed.
+      </p>
+      <p>
+        This also explains a pattern you will notice across our comparison
+        pages. When{" "}
+        <InternalLink intent="alternatives" currentPath={R.ios} /> lists
+        alternatives, almost every entry is Android only, and that is not a
+        selection bias on our part. Cinema HD, OnStream, HD Streamz and the rest
+        all rely on the same sideloading route.
+      </p>
+      <p>
+        The practical takeaway: if you own an iPhone and want this kind of app,
+        the realistic options are to add an inexpensive Android device for the
+        job, or to accept a licensed service. No amount of searching will
+        produce an iOS build, because the conditions that would allow one to
+        exist are not present.
+      </p>
+
       <h2 id="alternatives">What to use on an iPhone instead</h2>
       <p>
         If the actual goal is watching films on an iPhone rather than running
@@ -197,7 +234,7 @@ export default function IosPage() {
         <li>
           <strong>A licensed service.</strong> Native iOS apps, reliable
           downloads, consistent quality, and no risk of an app disappearing.
-          The trade-off is a subscription — weighed up on{" "}
+          The trade-off is a subscription: weighed up on{" "}
           <InternalLink intent="vsPaid" currentPath={R.ios} />.
         </li>
         <li>
@@ -214,7 +251,7 @@ export default function IosPage() {
         The broader landscape is on{" "}
         <InternalLink intent="alternatives" currentPath={R.ios} />, though
         almost everything there is Android-only for the same reason StreamFlix
-        is — this entire category is built on sideloading, which iOS does not
+        is. This entire category is built on sideloading, which iOS does not
         permit in the way Android does.
       </p>
     </ClusterPage>

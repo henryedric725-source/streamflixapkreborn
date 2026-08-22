@@ -86,7 +86,7 @@ export default function InstallPage() {
       dateModified="2026-08-17"
       kicker="Android install guide"
       h1="How to Install StreamFlix APK on Android"
-      answer="Download the package, open it, and approve the install-from-unknown-sources prompt for whichever app you downloaded with — on Android 8.0 and newer that permission is per app, not system-wide. Accept the Play Protect notice, install, then confirm the package name matches before you open it."
+      answer="Download the package, open it, and approve the install-from-unknown-sources prompt for whichever app you downloaded with, on Android 8.0 and newer that permission is per app, not system-wide. Accept the Play Protect notice, install, then confirm the package name matches before you open it."
       toc={toc}
       faqs={installFaqs}
       howTo={howTo}
@@ -94,7 +94,7 @@ export default function InstallPage() {
         "There is no system-wide 'unknown sources' switch on modern Android. The permission is granted to the specific app you are installing from.",
         "The Play Protect warning is triggered by the install method, not by anything found in the file. Every sideloaded app produces it.",
         "Verify the package name after install. It is the fastest way to catch a repackaged build, and it takes ten seconds.",
-        "Never uninstall before updating — install the new APK over the old one so favourites and watch history survive.",
+        "Never uninstall before updating. Install the new APK over the old one so favourites and watch history survive.",
         "A 'package conflict' almost always means an existing copy signed by someone else. Uninstall it, then install cleanly.",
       ]}
       featureAside={<AppScreenshot shot={screenshots.contentDetails} size="feature" priority />}
@@ -110,14 +110,14 @@ export default function InstallPage() {
           ["Download size", REBORN.sizeLabel, V2.sizeLabel],
           ["Minimum Android", REBORN.minAndroid, V2.minAndroid],
           ["Package name", REBORN.packageName, V2.packageName],
-          ["Needs sideloading?", "Yes", "No — it is on Google Play"],
+          ["Needs sideloading?", "Yes", "No. It is on Google Play"],
           ["Works on TV?", "Yes, full interface", "No"],
           ["Free space to leave", "~150 MB", "~350 MB"],
         ]}
       />
       <p>
         If you want StreamFlix 2.0 on a phone, the easiest route is Google Play
-        — none of this guide is necessary, and you avoid the Play Protect
+       : none of this guide is necessary, and you avoid the Play Protect
         warning entirely. Everything below applies to sideloading, which is
         mandatory for{" "}
         <InternalLink intent="reborn" currentPath={R.install} /> and optional
@@ -128,14 +128,14 @@ export default function InstallPage() {
         <div className="rounded-2xl border border-line bg-panel p-5">
           <p className="kicker">Open source, works on TV</p>
           <p className="mt-2 mb-4 text-sm leading-6 text-zinc-300">
-            {REBORN.sizeLabel} · Android {REBORN.minAndroid}
+            {REBORN.sizeLabel}, Android {REBORN.minAndroid}
           </p>
           <DownloadCta variant={REBORN} staged={staged.reborn} size="md" />
         </div>
         <div className="rounded-2xl border border-line bg-panel p-5">
           <p className="kicker">Play Store, offline downloads</p>
           <p className="mt-2 mb-4 text-sm leading-6 text-zinc-300">
-            {V2.sizeLabel} · Android {V2.minAndroid}
+            {V2.sizeLabel}, Android {V2.minAndroid}
           </p>
           <DownloadCta variant={V2} staged={staged.v2} size="md" />
         </div>
@@ -207,7 +207,7 @@ export default function InstallPage() {
 
       <h2 id="verify">Verify what you installed</h2>
       <p>
-        Ten seconds, and it catches the single most likely real problem — that
+        Ten seconds, and it catches the single most likely real problem: that
         you downloaded a repackaged build from a mirror rather than the app you
         intended.
       </p>
@@ -261,7 +261,7 @@ export default function InstallPage() {
       <p>
         The fix in every case: uninstall the existing copy completely, then
         install the new file. You will lose favourites and watch history,
-        because there is no account to restore them from — that is the real cost
+        because there is no account to restore them from. That is the real cost
         of having installed an unofficial build.
       </p>
 
@@ -292,7 +292,7 @@ export default function InstallPage() {
           ],
           [
             "Blocked by Play Protect",
-            "Blocked rather than warned — a stronger signal",
+            "Blocked rather than warned. A stronger signal",
             "Do not override it. Re-download from an official source and compare",
           ],
           [
@@ -323,7 +323,7 @@ export default function InstallPage() {
       </p>
       <p>
         After that, <InternalLink intent="howToUse" currentPath={R.install} />{" "}
-        covers server switching, subtitles, audio tracks and watchlists — and{" "}
+        covers server switching, subtitles, audio tracks and watchlists, and{" "}
         <InternalLink intent="update" currentPath={R.install} /> covers keeping
         the app current without losing what you have saved.
       </p>

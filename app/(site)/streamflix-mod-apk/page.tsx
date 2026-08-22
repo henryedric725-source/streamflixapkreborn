@@ -12,7 +12,7 @@ import { REBORN, V2 } from "@/lib/variants";
 
 const TITLE = "StreamFlix Mod APK: What You Actually Get";
 const DESCRIPTION =
-  "There is no official StreamFlix mod APK, and nothing to unlock — both apps are already free. What those listings really contain, and what to install instead.";
+  "There is no official StreamFlix mod APK, and nothing to unlock. Both apps are already free. What those listings really contain, and what to install instead.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -35,6 +35,7 @@ const toc = [
   { href: "#risks", label: "What you are actually risking" },
   { href: "#signature", label: "Why a mod breaks your updates" },
   { href: "#instead", label: "What to install instead" },
+  { href: "#spotting", label: "Spotting a mod listing before you download" },
 ];
 
 export default function ModPage() {
@@ -50,13 +51,13 @@ export default function ModPage() {
       dateModified="2026-08-14"
       kicker="Mod intent, answered honestly"
       h1="StreamFlix Mod APK: There Isn't One, and Here's Why"
-      answer="Neither StreamFlix developer publishes a mod, and there is nothing a mod could unlock — both apps are already free, with no subscription, no premium tier, and no paywalled features. What is distributed as a 'StreamFlix mod APK' is the ordinary app repackaged and re-signed by an anonymous third party."
+      answer="Neither StreamFlix developer publishes a mod, and there is nothing a mod could unlock. Both apps are already free, with no subscription, no premium tier, and no paywalled features. What is distributed as a 'StreamFlix mod APK' is the ordinary app repackaged and re-signed by an anonymous third party."
       toc={toc}
       faqs={modFaqs}
       takeaways={[
         "No official mod exists for either StreamFlix app. Every listing claiming one is third-party repackaging.",
         "There is no premium tier, no subscription, and no locked feature in either app, so a 'VIP unlock' has nothing to unlock.",
-        "If your goal was an ad-free experience, StreamFlix Reborn already carries no advertising in its own interface — for free, officially.",
+        "If your goal was an ad-free experience, StreamFlix Reborn already carries no advertising in its own interface, for free, officially.",
         "A repackaged build is re-signed, so it can never overlay-update your existing install and breaks the in-app updater permanently.",
         "The strongest argument against a mod here is that Reborn is open-source: you can read or rebuild the real thing, which no mod offers.",
       ]}
@@ -78,7 +79,7 @@ export default function ModPage() {
       <Definition term="Mod APK">
         A modified Android package: someone takes the original app, alters its
         code or resources, then re-signs it with their own certificate so
-        Android will install it. The re-signing is unavoidable — it is what
+        Android will install it. The re-signing is unavoidable. It is what
         makes a mod detectable, and what breaks its relationship with the
         original app.
       </Definition>
@@ -90,7 +91,7 @@ export default function ModPage() {
         rows={[
           ["Premium / VIP unlock", "No paid tier exists", "No paid tier exists"],
           ["Subscription bypass", "No subscription exists", "No subscription exists"],
-          ["Ad removal", "Already ad-free officially", "Ad-supported — the only claim with any basis"],
+          ["Ad removal", "Already ad-free officially", "Ad-supported: the only claim with any basis"],
           ["Unlimited streaming", "Already unlimited", "Already unlimited"],
           ["Region unlock", "Not region-locked by the app", "Not region-locked by the app"],
           ["4K / HD unlock", "Quality is the provider's, not the app's", "Quality is the catalog's, not a setting"],
@@ -99,7 +100,7 @@ export default function ModPage() {
       />
       <p>
         Only one row has any substance: StreamFlix 2.0 does carry advertising.
-        But the fix for that is not a mod — it is to install{" "}
+        But the fix for that is not a mod. It is to install{" "}
         <InternalLink intent="reborn" currentPath={R.mod} />, which carries no
         advertising in its own interface, officially, for free, with source code
         you can verify.
@@ -118,7 +119,7 @@ export default function ModPage() {
           },
           {
             title: "A different app entirely",
-            body: "Some listings are not StreamFlix at all. Check the package name after install — anything other than the two documented ones means you installed something else.",
+            body: "Some listings are not StreamFlix at all. Check the package name after install, anything other than the two documented ones means you installed something else.",
           },
           {
             title: "An old build with a new label",
@@ -133,7 +134,7 @@ export default function ModPage() {
 
       <h2 id="risks">What you are actually risking</h2>
       <p>
-        Being specific rather than alarmist — here is what changes when you
+        Being specific rather than alarmist. Here is what changes when you
         install a repackaged build instead of the real one:
       </p>
       <ul>
@@ -149,7 +150,7 @@ export default function ModPage() {
           them has been given a reason to.
         </li>
         <li>
-          <strong>Updates stop working.</strong> Covered below — this one is
+          <strong>Updates stop working.</strong> Covered below. This one is
           certain rather than probable.
         </li>
         <li>
@@ -167,8 +168,8 @@ export default function ModPage() {
       <p>
         This part is mechanical rather than a matter of opinion. Android
         identifies an app by its package name <em>and</em> its signing
-        certificate. An overlay install — where a new APK replaces an old one
-        and keeps its data — only works when both match.
+        certificate. An overlay install: where a new APK replaces an old one
+        and keeps its data. Only works when both match.
       </p>
       <p>
         A mod is signed by whoever repackaged it, so its certificate can never
@@ -188,7 +189,7 @@ export default function ModPage() {
         </li>
         <li>
           Returning to the real app means uninstalling, which deletes your
-          favourites and watch history — there is no account to restore them
+          favourites and watch history. There is no account to restore them
           from.
         </li>
       </ol>
@@ -197,10 +198,51 @@ export default function ModPage() {
         mechanics of signature mismatches.
       </p>
 
+      <h2 id="spotting">Spotting a mod listing before you download</h2>
+      <p>
+        Mod pages are written to rank, not to inform, and they share a set of
+        tells that are easy to recognise once you know them.
+      </p>
+      <ul>
+        <li>
+          <strong>Feature claims that contradict the app.</strong> &ldquo;Ad-free
+          unlocked&rdquo; for an app that already shows no ads, or
+          &ldquo;premium activated&rdquo; where no premium tier exists. The
+          claim describes a generic template rather than this software.
+        </li>
+        <li>
+          <strong>A version number that does not match any real release.</strong>{" "}
+          Mod listings routinely invent versions to look current. Cross-check
+          against the archive on{" "}
+          <InternalLink intent="oldVersions" currentPath={R.mod} />.
+        </li>
+        <li>
+          <strong>A file size well away from the published figure.</strong>{" "}
+          Repackaging adds weight. A build several megabytes larger than it
+          should be has had something inserted.
+        </li>
+        <li>
+          <strong>Download friction.</strong> Countdown timers, a
+          &ldquo;verify you are human&rdquo; step, or a chain of redirects. That
+          friction is the business model, and the file at the end of it is
+          incidental.
+        </li>
+        <li>
+          <strong>No mention of the package name.</strong> Legitimate
+          documentation names the package, because that is how you confirm what
+          you installed. A mod listing rarely does, since naming it invites the
+          check that would expose the build.
+        </li>
+      </ul>
+      <p>
+        None of these is proof on its own. Two or three together reliably mean
+        the page is not distributing what it claims.
+      </p>
+
       <h2 id="instead">What to install instead</h2>
       <QuickSummary
         bullets={[
-          "Wanted no ads? Install StreamFlix Reborn — officially ad-free in its own interface.",
+          "Wanted no ads? Install StreamFlix Reborn: officially ad-free in its own interface.",
           "Wanted better quality? Quality is a property of the provider. Switch sources instead of switching apps.",
           "Wanted unlocked features? Everything in both apps is already unlocked.",
           "Wanted offline downloads? StreamFlix 2.0 has them built in, no mod required.",
@@ -218,7 +260,7 @@ export default function ModPage() {
         <div className="rounded-2xl border border-line bg-panel p-5">
           <p className="kicker">Ad-free and open source</p>
           <p className="mt-2 mb-4 text-sm leading-6 text-zinc-300">
-            {REBORN.name} v{REBORN.version} — {REBORN.sizeLabel}, Apache 2.0,
+            {REBORN.name} v{REBORN.version}: {REBORN.sizeLabel}, Apache 2.0,
             with a full TV interface.
           </p>
           <DownloadCta variant={REBORN} staged={staged.reborn} size="md" />
@@ -226,7 +268,7 @@ export default function ModPage() {
         <div className="rounded-2xl border border-line bg-panel p-5">
           <p className="kicker">Play Store and offline downloads</p>
           <p className="mt-2 mb-4 text-sm leading-6 text-zinc-300">
-            {V2.name} build {V2.version} — {V2.sizeLabel}, with downloads built
+            {V2.name} build {V2.version}: {V2.sizeLabel}, with downloads built
             in.
           </p>
           <DownloadCta variant={V2} staged={staged.v2} size="md" />
@@ -234,8 +276,8 @@ export default function ModPage() {
       </div>
       <p className="mt-6">
         If you have already installed a mod and want to move back to an official
-        build, uninstall it first — the signature mismatch above means an
-        overlay install will not work — then follow{" "}
+        build, uninstall it first: the signature mismatch above means an
+        overlay install will not work, then follow{" "}
         <InternalLink intent="install" currentPath={R.mod} />.
       </p>
     </ClusterPage>

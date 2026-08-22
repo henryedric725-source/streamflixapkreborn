@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AppScreenshot } from "@/components/AppScreenshot";
 import { ClusterPage } from "@/components/ClusterPage";
 import { KeyFacts, QuickSummary, SpecTable } from "@/components/ContentBlocks";
-import { DownloadCta, OfficialSources } from "@/components/DownloadCta";
+import { DownloadCta } from "@/components/DownloadCta";
 import { FeatureCards } from "@/components/HomeSections";
 import { InternalLink } from "@/components/InternalLink";
 import { ProsCons } from "@/components/ProsCons";
@@ -16,7 +16,7 @@ import { REBORN, V2 } from "@/lib/variants";
 import { releasesForVariant } from "@/lib/versions";
 
 const TITLE = `StreamFlix 2.0 APK: Play Store Build ${V2.version}`;
-const DESCRIPTION = `StreamFlix 2.0: HD Movies & TV, build ${V2.version}, ${V2.sizeLabel}, ${V2.packageName}. A different app from StreamFlix Reborn — catalog, offline downloads, 8 subtitle languages.`;
+const DESCRIPTION = `StreamFlix 2.0: HD Movies & TV, build ${V2.version}, ${V2.sizeLabel}, ${V2.packageName}. A different app from StreamFlix Reborn: catalog, offline downloads, 8 subtitle languages.`;
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -66,7 +66,7 @@ export default function V2Page() {
       downloadVariant={V2}
       takeaways={[
         `StreamFlix 2.0 (${V2.packageName}) is published by a different developer from StreamFlix Reborn and shares nothing with it but the name.`,
-        "It is on Google Play, which means no sideloading, no Play Protect warning, and automatic updates — the strongest practical argument for choosing it.",
+        "It is on Google Play, which means no sideloading, no Play Protect warning, and automatic updates: the strongest practical argument for choosing it.",
         `At ${V2.sizeLabel} it is roughly 2.4× the size of Reborn, largely from bundled advertising and analytics libraries.`,
         "Offline downloads and eight-language subtitles are built in rather than provider dependent.",
         "It has no Android TV or Fire TV interface at all, so it is the wrong choice for a Firestick.",
@@ -84,17 +84,12 @@ export default function V2Page() {
         Its emphasis is different from Reborn&rsquo;s. Where Reborn searches
         third-party providers at the moment you press play, StreamFlix 2.0
         serves from its own indexed catalog. That makes it more consistent from
-        title to title, but narrower in what it covers, and — because it is
-        closed source — impossible to audit.
+        title to title, but narrower in what it covers, and, because it is
+        closed source: impossible to audit.
       </p>
 
       <div className="not-prose mt-6 rounded-2xl border border-line bg-panel p-5">
         <DownloadCta variant={V2} staged={staged.v2} />
-        <p className="mt-3 text-sm text-zinc-400">
-          Where Google Play is available it is the better route — it updates
-          itself and guarantees you have the developer&rsquo;s own build:
-        </p>
-        <OfficialSources variant={V2} />
       </div>
 
       <h2 id="not-reborn">It is not StreamFlix Reborn</h2>
@@ -175,7 +170,7 @@ export default function V2Page() {
           },
           {
             title: "Eight subtitle languages",
-            body: "English, Hindi, Bengali, Spanish, French, Korean, Tamil and Telugu — notably strong South Asian coverage.",
+            body: "English, Hindi, Bengali, Spanish, French, Korean, Tamil and Telugu, notably strong South Asian coverage.",
           },
           {
             title: "Watchlist with progress",
@@ -199,7 +194,7 @@ export default function V2Page() {
         One caveat worth stating plainly: the language list is a ceiling, not a
         guarantee. Subtitle availability is per title, so a language appearing in
         the app&rsquo;s settings does not mean every film carries a track in it.
-        Reborn approaches this differently — fewer guarantees, but it restyles
+        Reborn approaches this differently: fewer guarantees, but it restyles
         subtitle size, colour and background, which Reborn users on TVs find
         more useful. See{" "}
         <InternalLink intent="subtitles" currentPath={R.v2} />.
@@ -209,7 +204,7 @@ export default function V2Page() {
       <p>
         Downloads here are a first-class feature rather than a provider
         coincidence: pick a title, choose a quality, and it saves to the
-        app&rsquo;s own storage. That storage location matters — downloads do
+        app&rsquo;s own storage. That storage location matters. Downloads do
         not appear in your gallery or a file manager, and uninstalling the app
         deletes all of them.
       </p>
@@ -223,7 +218,7 @@ export default function V2Page() {
       <h2 id="size">Why it is 76.8 MB</h2>
       <p>
         StreamFlix 2.0 is roughly 2.4 times the size of Reborn while offering a
-        narrower feature set — no TV interface, no provider system, no
+        narrower feature set, no TV interface, no provider system, no
         server switching. The difference is largely bundled advertising and
         analytics libraries, which is also why the app is ad-supported where
         Reborn is not.
@@ -263,13 +258,13 @@ export default function V2Page() {
           (release) =>
             [
               release.label,
-              `${release.releasedOn} · ${release.sizeMb} MB · ${release.headline}`,
+              `${release.releasedOn}, ${release.sizeMb} MB, ${release.headline}`,
             ] as [string, string],
         )}
       />
       <p>
         If a Play update breaks the app on your device, rolling back means
-        sideloading an earlier build — the one situation where a Play-installed
+        sideloading an earlier build: the one situation where a Play-installed
         app benefits from an archive. See{" "}
         <InternalLink intent="oldVersions" currentPath={R.v2} /> and{" "}
         <InternalLink intent="update" currentPath={R.v2} />.
@@ -280,7 +275,7 @@ export default function V2Page() {
         bullets={[
           "Choose StreamFlix 2.0 for: a phone, a Play Store install, dependable offline downloads, or South Asian subtitle coverage.",
           "Choose StreamFlix Reborn for: any TV device, Android 5.x hardware, auditable code, or an ad-free interface.",
-          "Both at once is fine — different packages, no conflict.",
+          "Both at once is fine: different packages, no conflict.",
         ]}
       >
         <p>

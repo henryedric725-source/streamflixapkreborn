@@ -39,7 +39,7 @@ export const alternatives: readonly Alternative[] = [
     kind: "aggregator",
     status: "sporadic",
     positioning:
-      "The closest like-for-like aggregator. Same model as Reborn — scrapes third-party links, plays them in its own player.",
+      "The closest like-for-like aggregator. Same model as Reborn: scrapes third-party links, plays them in its own player.",
     strengths: [
       "Large provider list with real-debrid support for people who already pay for it",
       "Works on Firestick and Android TV with a usable remote layout",
@@ -91,7 +91,7 @@ export const alternatives: readonly Alternative[] = [
       "Large historical catalog index",
     ],
     weaknesses: [
-      "No longer updated — most sources fail to resolve",
+      "No longer updated. Most sources fail to resolve",
       "Recommending it in 2026 is a reliable sign a listicle was not tested",
       "No security fixes since abandonment",
     ],
@@ -107,14 +107,14 @@ export const alternatives: readonly Alternative[] = [
     kind: "live-tv",
     status: "sporadic",
     positioning:
-      "Solves a different problem — live channels rather than an on-demand catalog. Complements StreamFlix rather than replacing it.",
+      "Solves a different problem. Live channels rather than an on-demand catalog. Complements StreamFlix rather than replacing it.",
     strengths: [
       "Hundreds of live channels across many countries",
       "Multiple stream links per channel, so one dead link is not fatal",
       "Small download",
     ],
     weaknesses: [
-      "Almost no on-demand catalog — the wrong tool if you want films",
+      "Almost no on-demand catalog: the wrong tool if you want films",
       "Heavy ad load",
       "Channel list decays quickly between updates",
     ],
@@ -138,7 +138,7 @@ export const alternatives: readonly Alternative[] = [
     ],
     weaknesses: [
       "Ad load is the heaviest of anything here",
-      "Live only — no film or series catalog",
+      "Live only, no film or series catalog",
       "Interface is cluttered on a TV remote",
     ],
     tvInterface: false,

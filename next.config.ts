@@ -80,8 +80,10 @@ const nextConfig: NextConfig = {
         source: "/releases/:file*",
         headers: [
           {
+            // XAPK is a zip container, not an APK, so octet-stream is correct.
+            // Paired with Content-Disposition it downloads in one click.
             key: "Content-Type",
-            value: "application/vnd.android.package-archive",
+            value: "application/octet-stream",
           },
           {
             key: "Content-Disposition",

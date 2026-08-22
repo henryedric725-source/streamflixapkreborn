@@ -46,7 +46,7 @@ export default function DmcaPage() {
         aggregators that host nothing and surface streams from third-party
         providers. We have no relationship with those providers and no ability
         to remove anything from them. Notices about material carried by a
-        provider must go to that provider or its host — we cannot act on them,
+        provider must go to that provider or its host: we cannot act on them,
         and forwarding one to us delays rather than advances the matter. See{" "}
         <InternalLink intent="legalCheck" currentPath={R.legalDmca} />.
       </p>
@@ -55,7 +55,7 @@ export default function DmcaPage() {
       <p>
         Where an application package is served from this site, it is the
         developer&rsquo;s own unmodified build, published to make available what
-        we tested. We do not host modified, patched, or repackaged builds — see{" "}
+        we tested. We do not host modified, patched, or repackaged builds. See{" "}
         <InternalLink intent="mod" currentPath={R.legalDmca} />.
       </p>
       <p>
@@ -105,8 +105,8 @@ export default function DmcaPage() {
           or disable access to it promptly.
         </li>
         <li>
-          Where a notice relates to material we do not control — content carried
-          by a third-party provider, for example — we will say so and, where we
+          Where a notice relates to material we do not control: content carried
+          by a third-party provider, for example. We will say so and, where we
           can, indicate where it should be directed.
         </li>
         <li>

@@ -10,7 +10,7 @@ import { REBORN } from "@/lib/variants";
 
 const TITLE = "StreamFlix Alternatives Worth Installing";
 const DESCRIPTION =
-  "Apps that solve the same problem when StreamFlix providers dry up — what each does better, which are still maintained, and which stopped working years ago.";
+  "Apps that solve the same problem when StreamFlix providers dry up. What each does better, which are still maintained, and which stopped working years ago.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -30,8 +30,8 @@ export const metadata: Metadata = pageMetadata({
 const toc = [
   { href: "#why", label: "Why you would need one" },
   { href: "#maintained", label: "The maintenance filter" },
-  { href: "#aggregators", label: "Aggregators — the direct swaps" },
-  { href: "#live-tv", label: "Live TV — a different job" },
+  { href: "#aggregators", label: "Aggregators: the direct swaps" },
+  { href: "#live-tv", label: "Live TV: a different job" },
   { href: "#catalog", label: "Catalog apps" },
   { href: "#abandoned", label: "Names to stop recommending" },
   { href: "#compare", label: "Side by side" },
@@ -51,7 +51,7 @@ export default function AlternativesPage() {
       dateModified="2026-08-02"
       kicker="Alternatives"
       h1="StreamFlix Alternatives Worth Installing"
-      answer="OnStream is the closest actively maintained aggregator with a working TV interface. Cinema HD remains capable but updates irregularly. HD Streamz solves a different problem — live channels rather than a film catalog. CyberFlix TV is abandoned and should no longer be recommended."
+      answer="OnStream is the closest actively maintained aggregator with a working TV interface. Cinema HD remains capable but updates irregularly. HD Streamz solves a different problem. Live channels rather than a film catalog. CyberFlix TV is abandoned and should no longer be recommended."
       toc={toc}
       faqs={alternativesFaqs}
       comparison={{
@@ -67,7 +67,7 @@ export default function AlternativesPage() {
         "Check when an app was last updated before anything else. In this category an abandoned app degrades to useless within a year or two.",
         "OnStream is the closest like-for-like alternative to StreamFlix Reborn: same model, actively maintained, real TV interface.",
         "Very few apps here have a genuine leanback interface. Most Firestick recommendations are phone apps you fight with a remote.",
-        "Live TV apps like HD Streamz are not substitutes — they solve a different problem and have almost no film catalog.",
+        "Live TV apps like HD Streamz are not substitutes: they solve a different problem and have almost no film catalog.",
         "CyberFlix TV appears on nearly every 2026 listicle and has not shipped a build in years. Its presence is a reliable sign a list was not tested.",
       ]}
     >
@@ -78,14 +78,14 @@ export default function AlternativesPage() {
       </p>
       <QuickSummary
         bullets={[
-          "Your providers stopped resolving. Try switching provider first — a different app may hit the same dead sources.",
+          "Your providers stopped resolving. Try switching provider first. A different app may hit the same dead sources.",
           "You want live channels. StreamFlix's live coverage is thin. This is a genuine reason to add a second app rather than replace it.",
           "The app is too heavy for your device. A lighter app, or an older StreamFlix build, both work.",
           "You want a TV interface and installed the wrong variant. Install StreamFlix Reborn rather than a different app.",
         ]}
       >
         <p>
-          The last two are worth checking before you go anywhere else — they are
+          The last two are worth checking before you go anywhere else. They are
           fixed by <InternalLink intent="reborn" currentPath={R.alternatives} />{" "}
           and{" "}
           <InternalLink intent="oldVersions" currentPath={R.alternatives} />{" "}
@@ -102,7 +102,7 @@ export default function AlternativesPage() {
         These apps do not own their content. They index third-party providers,
         and when a provider changes shape or goes offline, the app breaks until
         someone ships an updated scraper. An app that stopped being maintained
-        does not stay as good as it was — it degrades continuously until it
+        does not stay as good as it was: it degrades continuously until it
         finds almost nothing.
       </p>
       <DataTable
@@ -112,7 +112,7 @@ export default function AlternativesPage() {
           item.name,
           statusLabels[item.status],
           item.status === "maintained"
-            ? "Scrapers are being kept current — worth your time"
+            ? "Scrapers are being kept current: worth your time"
             : item.status === "sporadic"
               ? "Works, but expect gaps when providers change"
               : item.status === "official"
@@ -121,7 +121,7 @@ export default function AlternativesPage() {
         ])}
       />
 
-      <h2 id="aggregators">Aggregators — the direct swaps</h2>
+      <h2 id="aggregators">Aggregators: the direct swaps</h2>
       <p>
         Same model as StreamFlix Reborn: search third-party providers, play the
         result. These are the genuine like-for-like alternatives.
@@ -131,7 +131,7 @@ export default function AlternativesPage() {
         .map((item) => (
           <div key={item.name}>
             <h3>
-              {item.name} — {statusLabels[item.status]}
+              {item.name}: {statusLabels[item.status]}
             </h3>
             <p>{item.positioning}</p>
             <DataTable
@@ -155,7 +155,7 @@ export default function AlternativesPage() {
           </div>
         ))}
 
-      <h2 id="live-tv">Live TV — a different job</h2>
+      <h2 id="live-tv">Live TV: a different job</h2>
       <p>
         Frequently recommended as StreamFlix alternatives, and they are not.
         These serve live channels and have almost no on-demand film catalog. If
@@ -166,7 +166,7 @@ export default function AlternativesPage() {
         .map((item) => (
           <div key={item.name}>
             <h3>
-              {item.name} — {statusLabels[item.status]}
+              {item.name}: {statusLabels[item.status]}
             </h3>
             <p>{item.positioning}</p>
             <p>
@@ -189,7 +189,7 @@ export default function AlternativesPage() {
         .map((item) => (
           <div key={item.name}>
             <h3>
-              {item.name} — {statusLabels[item.status]}
+              {item.name}: {statusLabels[item.status]}
             </h3>
             <p>{item.positioning}</p>
             <p>
@@ -203,7 +203,7 @@ export default function AlternativesPage() {
       <p>
         Catalog apps serve from their own backend rather than searching
         providers live. More consistent title to title, narrower overall, and
-        harder to audit — the same trade{" "}
+        harder to audit: the same trade{" "}
         <InternalLink intent="v2" currentPath={R.alternatives} /> makes against
         Reborn.
       </p>
@@ -217,7 +217,7 @@ export default function AlternativesPage() {
       </p>
       <p>
         Its continued presence on these lists is diagnostic. If a list
-        recommends it in 2026, nobody on that list was installed and tested — and
+        recommends it in 2026, nobody on that list was installed and tested, and
         you should discount the rest of the list accordingly.
       </p>
 
@@ -251,7 +251,7 @@ export default function AlternativesPage() {
           "Want a direct swap with a TV interface? OnStream. Same model, actively maintained, works on Firestick.",
           "Want more provider fallbacks? Run OnStream alongside StreamFlix Reborn rather than choosing between them.",
           "Want live channels and sport? HD Streamz, accepting a heavy ad load and no film catalog.",
-          "Want nothing to sideload? A licensed service — the only honest answer here.",
+          "Want nothing to sideload? A licensed service: the only honest answer here.",
           "Want auditable code? StreamFlix Reborn remains the only open-source option in this list.",
         ]}
       >

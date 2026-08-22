@@ -11,7 +11,7 @@ import { REBORN } from "@/lib/variants";
 
 const TITLE = "StreamFlix vs Netflix and Paid Apps";
 const DESCRIPTION =
-  "Catalog breadth, reliability, video quality, device coverage and total cost compared — including the places where the free option genuinely loses.";
+  "Catalog breadth, reliability, video quality, device coverage and total cost compared, including the places where the free option genuinely loses.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -30,12 +30,13 @@ export const metadata: Metadata = pageMetadata({
 const toc = [
   { href: "#question", label: "The question worth asking" },
   { href: "#catalog", label: "Catalog breadth" },
-  { href: "#reliability", label: "Reliability — the real gap" },
+  { href: "#reliability", label: "Reliability: the real gap" },
   { href: "#quality", label: "Video and audio quality" },
   { href: "#devices", label: "Device coverage" },
   { href: "#privacy", label: "Where free genuinely wins" },
   { href: "#cost", label: "The real cost comparison" },
   { href: "#both", label: "Why most people should use both" },
+  { href: "#households", label: "What changes in a shared household" },
 ];
 
 export default function VsPaidPage() {
@@ -54,7 +55,7 @@ export default function VsPaidPage() {
       faqs={vsPaidFaqs}
       showDownload={false}
       takeaways={[
-        "Catalog breadth is the one dimension where a free aggregator genuinely competes — it indexes many sources rather than one licensed library.",
+        "Catalog breadth is the one dimension where a free aggregator genuinely competes. It indexes many sources rather than one licensed library.",
         "Reliability is the real gap. A licensed stream starts and holds; an aggregated one may not, and the time spent switching servers is the actual price.",
         "Video quality is inconsistent by design, because quality belongs to whichever provider serves the title.",
         "Device coverage is not close: licensed services run on iOS, Smart TVs and consoles, where these apps run on Android only.",
@@ -71,7 +72,7 @@ export default function VsPaidPage() {
       </p>
       <p>
         This page is written by a site that documents the free app, so treat the
-        conclusions with appropriate scepticism — and note that it says the free
+        conclusions with appropriate scepticism, and note that it says the free
         option loses on most dimensions, which is simply what the comparison
         shows.
       </p>
@@ -86,7 +87,7 @@ export default function VsPaidPage() {
         leftItems={[
           { label: "Source", value: "One licensed library, negotiated per region" },
           { label: "Breadth", value: "Deep in originals, narrow outside them" },
-          { label: "Older films", value: "Poor — licensing older catalog rarely pays" },
+          { label: "Older films", value: "Poor, licensing older catalog rarely pays" },
           { label: "Regional cinema", value: "Limited to what that service licensed" },
           { label: "Stability", value: "Titles rotate out when licences lapse" },
         ]}
@@ -94,7 +95,7 @@ export default function VsPaidPage() {
         rightItems={[
           { label: "Source", value: "20+ third-party providers indexed live" },
           { label: "Breadth", value: "Very wide, spanning many regions and eras" },
-          { label: "Older films", value: "Strong — no licensing calculus applies" },
+          { label: "Older films", value: "Strong, no licensing calculus applies" },
           { label: "Regional cinema", value: "Often better, particularly South Asian" },
           { label: "Stability", value: "Changes constantly and unpredictably" },
         ]}
@@ -106,7 +107,7 @@ export default function VsPaidPage() {
         something specific or picking something to watch tonight.
       </p>
 
-      <h2 id="reliability">Reliability — the real gap</h2>
+      <h2 id="reliability">Reliability: the real gap</h2>
       <p>
         Where the comparison stops being close, and the dimension that most
         determines whether people stick with a free app.
@@ -120,15 +121,15 @@ export default function VsPaidPage() {
           ["Title still there next week", "Until a licence lapses", "Unpredictable"],
           ["Subtitles present and in sync", "Yes", "Varies by source"],
           ["Correct audio track", "Yes", "Usually, occasionally mislabelled"],
-          ["Right film under the right title", "Yes", "Mostly — mislabelling does occur"],
-          ["Resume works across devices", "Yes", "No — local only, no account"],
+          ["Right film under the right title", "Yes", "Mostly, mislabelling does occur"],
+          ["Resume works across devices", "Yes", "No: local only, no account"],
           ["Support if something breaks", "Yes", "None"],
         ]}
       />
       <p>
         The practical cost is time and attention. Switching servers takes
-        seconds and usually works — see{" "}
-        <InternalLink intent="switchServers" currentPath={R.vsPaid} /> — but
+        seconds and usually works. See{" "}
+        <InternalLink intent="switchServers" currentPath={R.vsPaid} />, but
         having to do it at all is the actual price of free. With four other
         people waiting on a sofa, that price is higher than it looks.
       </p>
@@ -137,14 +138,14 @@ export default function VsPaidPage() {
       <QuickSummary
         bullets={[
           "Licensed services deliver consistent 1080p or 4K with HDR and Dolby Audio through a pipeline they control end to end.",
-          "An aggregator delivers whatever the provider carries — sometimes excellent, sometimes 720p re-encodes, and you cannot predict which.",
+          "An aggregator delivers whatever the provider carries, sometimes excellent, sometimes 720p re-encodes, and you cannot predict which.",
           "There is no HDR or spatial audio pipeline in these apps, because there is no mastering chain behind the source.",
           "Asking for 1080p from a source that only carries 720p produces 720p. The setting is a ceiling, not a floor.",
         ]}
       >
         <p>
           On a phone the difference is modest. On a large television it is
-          immediately visible, and it is not something a setting can fix — see{" "}
+          immediately visible, and it is not something a setting can fix. See{" "}
           <InternalLink intent="howToUse" currentPath={R.vsPaid} />.
         </p>
       </QuickSummary>
@@ -155,10 +156,10 @@ export default function VsPaidPage() {
         headers={["Device", "Licensed service", "StreamFlix"]}
         rows={[
           ["Android phone", "Native app", "Yes"],
-          ["iPhone / iPad", "Native app", "No — and none is possible"],
+          ["iPhone / iPad", "Native app", "No, and none is possible"],
           ["Android TV / Google TV", "Native app", "Yes, Reborn only"],
           ["Fire TV", "Native app", "Yes, Reborn only"],
-          ["Samsung / LG Smart TV", "Native app", "No — cast or add a stick"],
+          ["Samsung / LG Smart TV", "Native app", "No. Cast or add a stick"],
           ["Windows / Mac", "App or browser", "Emulator only"],
           ["Games consoles", "Native app", "No"],
           ["Web browser", "Yes", "No"],
@@ -167,7 +168,7 @@ export default function VsPaidPage() {
       <p>
         Not close, and it matters more than a feature list suggests. If anyone in
         your household uses an iPhone or a Samsung television, the free option
-        simply does not reach them — see{" "}
+        simply does not reach them. See{" "}
         <InternalLink intent="ios" currentPath={R.vsPaid} /> and{" "}
         <InternalLink intent="smartTv" currentPath={R.vsPaid} />.
       </p>
@@ -179,7 +180,7 @@ export default function VsPaidPage() {
           "No payment details held anywhere",
           "No server-side watch history to be disclosed or breached",
           "No cross-device tracking profile, because there is no account to build one on",
-          "Reborn's code is auditable — you can verify what it does rather than trusting a policy",
+          "Reborn's code is auditable. You can verify what it does rather than trusting a policy",
           "Nothing to cancel, and nothing retained after you uninstall",
         ]}
         cons={[
@@ -188,7 +189,7 @@ export default function VsPaidPage() {
           "The third-party provider still sees your IP address",
           "StreamFlix 2.0's ad libraries collect device identifiers in the usual way",
           "No support, no accountability, and no recourse when something breaks",
-          "The app itself may disappear — the original StreamFlix already did",
+          "The app itself may disappear: the original StreamFlix already did",
         ]}
       />
       <p>
@@ -208,10 +209,10 @@ export default function VsPaidPage() {
           ["Monthly fee", "Yes", "None"],
           ["Setup time", "Minutes", "Sideloading, provider setup, per device"],
           ["Time lost to failed streams", "Effectively none", "Real and recurring"],
-          ["Extra hardware", "None — it runs on what you own", "Possibly a streaming stick"],
+          ["Extra hardware", "None. It runs on what you own", "Possibly a streaming stick"],
           ["VPN, if you decide you want one", "Not needed", "Sometimes worth it"],
           ["Maintenance", "None", "Updates, rollbacks, provider changes"],
-          ["Risk of it disappearing", "Low", "Real — it happened to the original"],
+          ["Risk of it disappearing", "Low", "Real: it happened to the original"],
         ]}
       />
       <p>
@@ -220,10 +221,34 @@ export default function VsPaidPage() {
         is worth to you.
       </p>
 
+      <h2 id="households">What changes in a shared household</h2>
+      <p>
+        Most of this comparison assumes one person choosing for themselves. Add
+        other people and the balance shifts, usually against the free option.
+      </p>
+      <p>
+        Device coverage stops being a technicality. One iPhone in the house and
+        the free app reaches nobody on it, as{" "}
+        <InternalLink intent="ios" currentPath={R.vsPaid} /> explains. A Samsung
+        or LG television has the same problem unless you add a streaming stick.
+      </p>
+      <p>
+        The absence of profiles matters more too. There is no account, so watch
+        history is per device and shared. Nothing separates one person&rsquo;s
+        viewing from another&rsquo;s, and there are no parental controls of the
+        kind a licensed service provides.
+      </p>
+      <p>
+        Then there is tolerance for failure. Switching server takes seconds when
+        you are watching alone. Doing it three times with four people waiting is
+        a different experience, and it is the point at which most households
+        conclude a subscription earns its cost for the main television.
+      </p>
+
       <h2 id="both">Why most people should use both</h2>
       <QuickSummary
         bullets={[
-          "One subscription for the things you watch attentively — new releases, series you follow, anything on the main television.",
+          "One subscription for the things you watch attentively: new releases, series you follow, anything on the main television.",
           "An aggregator for older, obscure, or regional titles no service currently licenses.",
           "That combination costs one subscription rather than four, and covers substantially more than four would.",
           "It also means a failed stream is an inconvenience rather than the end of the evening.",
@@ -244,7 +269,7 @@ export default function VsPaidPage() {
         <InternalLink intent="alternatives" currentPath={R.vsPaid} /> covers the
         direct alternatives. If you are weighing the legal side of that
         decision, <InternalLink intent="legalCheck" currentPath={R.vsPaid} />{" "}
-        sets out what is actually at stake — and{" "}
+        sets out what is actually at stake, and{" "}
         <InternalLink intent="reborn" currentPath={R.vsPaid} /> covers the app
         itself.
       </p>

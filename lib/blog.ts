@@ -32,7 +32,7 @@ export const postCategories: readonly PostCategory[] = [
         href: R.reborn,
         title: "StreamFlix Reborn APK: Open-Source Build Explained",
         summary:
-          "The Apache 2.0 fork on GitHub — provider system, Android TV interface, and how it replaced the original StreamFlix after the DMCA takedown.",
+          "The Apache 2.0 fork on GitHub: provider system, Android TV interface, and how it replaced the original StreamFlix after the DMCA takedown.",
         intent: "streamflix reborn",
       },
       {
@@ -53,7 +53,7 @@ export const postCategories: readonly PostCategory[] = [
         href: R.changelog,
         title: "StreamFlix APK Changelog: What Changed in Each Build",
         summary:
-          "Release-by-release notes for both variants — provider changes, player fixes, and which updates are worth installing.",
+          "Release-by-release notes for both variants. Provider changes, player fixes, and which updates are worth installing.",
         intent: "streamflix changelog",
       },
       {
@@ -96,7 +96,7 @@ export const postCategories: readonly PostCategory[] = [
         href: R.pc,
         title: "StreamFlix for PC: Windows and Mac",
         summary:
-          "There is no native desktop build. Emulator routes compared — BlueStacks, LDPlayer, Windows Subsystem for Android — with the trade-offs of each.",
+          "There is no native desktop build. Emulator routes compared, BlueStacks, LDPlayer, Windows Subsystem for Android, with the trade-offs of each.",
         intent: "streamflix for pc",
       },
       {
@@ -119,7 +119,7 @@ export const postCategories: readonly PostCategory[] = [
     id: "use",
     name: "Using and fixing",
     blurb:
-      "What to do after the app is installed — and what to do when it stops working.",
+      "What to do after the app is installed, and what to do when it stops working.",
     posts: [
       {
         href: R.howToUse,
@@ -139,7 +139,7 @@ export const postCategories: readonly PostCategory[] = [
         href: R.notWorking,
         title: "StreamFlix Not Working: Every Fix, Ranked",
         summary:
-          "No sources found, endless buffering, app won't install, black screen, crash on launch, Play Protect block — diagnosed in the order most likely to work.",
+          "No sources found, endless buffering, app won't install, black screen, crash on launch, Play Protect block: diagnosed in the order most likely to work.",
         intent: "streamflix not working",
       },
       {
@@ -197,14 +197,14 @@ export const postCategories: readonly PostCategory[] = [
         href: R.alternatives,
         title: "StreamFlix Alternatives Worth Installing",
         summary:
-          "Apps that solve the same problem when StreamFlix's providers dry up — what each does better, and which ones are no longer maintained.",
+          "Apps that solve the same problem when StreamFlix's providers dry up. What each does better, and which ones are no longer maintained.",
         intent: "streamflix alternatives",
       },
       {
         href: R.bestMovieApks,
         title: "Best Free Movie APKs for Android",
         summary:
-          "The category ranked on maintenance, ad load, provider health, and TV support — not on which one paid for the placement.",
+          "The category ranked on maintenance, ad load, provider health, and TV support, not on which one paid for the placement.",
         intent: "best free movie apk for android",
       },
       {
@@ -218,7 +218,7 @@ export const postCategories: readonly PostCategory[] = [
         href: R.vsPaid,
         title: "StreamFlix vs Netflix and Paid Streaming Apps",
         summary:
-          "An honest comparison of catalog reliability, video quality, and total cost — including where the free option genuinely loses.",
+          "An honest comparison of catalog reliability, video quality, and total cost, including where the free option genuinely loses.",
         intent: "netflix alternative free apk",
       },
     ],

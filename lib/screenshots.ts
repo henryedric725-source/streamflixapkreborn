@@ -35,7 +35,7 @@ export const screenshots = {
     height: 1154,
     alt: "Adding a movie to favourites in the StreamFlix app",
     caption:
-      "Favourites are stored on the device — there is no account, so nothing syncs to a server.",
+      "Favourites are stored on the device. There is no account, so nothing syncs to a server.",
   },
   contentDetails: {
     src: "/screenshots/streamflix-apk-content-details.webp",
@@ -59,7 +59,7 @@ export const screenshots = {
     height: 1042,
     alt: "Wide range of movies and TV shows in the StreamFlix catalog",
     caption:
-      "Catalog breadth is the aggregator's main selling point — the titles come from third-party providers, not from StreamFlix itself.",
+      "Catalog breadth is the aggregator's main selling point. The titles come from third-party providers, not from StreamFlix itself.",
   },
   daily: {
     src: "/screenshots/streamflix-apk-latest-content-daily.webp",

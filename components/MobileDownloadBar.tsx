@@ -1,15 +1,15 @@
 import { MobileDownloadBarClient } from "@/components/MobileDownloadBarClient";
-import { isVariantStaged } from "@/lib/releases";
-import { REBORN, variantApkPath } from "@/lib/variants";
+import { isPackageStaged } from "@/lib/releases";
+import { STAGED_PACKAGE, stagedPackagePath } from "@/lib/package";
 import { R } from "@/lib/routes";
 
 export function MobileDownloadBar() {
-  const staged = isVariantStaged(REBORN);
+  const staged = isPackageStaged();
   return (
     <MobileDownloadBarClient
-      href={staged ? variantApkPath(REBORN) : `${R.home}#get-apk`}
-      fileName={staged ? REBORN.fileName : undefined}
-      label={`Download ${REBORN.shortName} v${REBORN.version}`}
+      href={staged ? stagedPackagePath() : `${R.home}#get-apk`}
+      fileName={staged ? STAGED_PACKAGE.fileName : undefined}
+      label={`Download ${STAGED_PACKAGE.label}`}
     />
   );
 }

@@ -36,6 +36,7 @@ const toc = [
   { href: "#storage", label: "How much space to budget" },
   { href: "#manage", label: "Managing your downloads" },
   { href: "#limits", label: "Limits worth knowing" },
+  { href: "#battery", label: "Battery, data and downloading overnight" },
 ];
 
 const howTo: HowToData = {
@@ -49,7 +50,7 @@ const howTo: HowToData = {
   steps: [
     {
       name: "Open the title's detail page",
-      text: "Find the film or episode and open its detail view. The Download control sits alongside Play — in StreamFlix 2.0 it is always present, in Reborn it appears only when the serving provider supports it.",
+      text: "Find the film or episode and open its detail view. The Download control sits alongside Play, in StreamFlix 2.0 it is always present, in Reborn it appears only when the serving provider supports it.",
     },
     {
       name: "Choose a quality before starting",
@@ -87,7 +88,7 @@ export default function OfflinePage() {
         "Files are saved into the app's own storage, so they never appear in your gallery or a file manager.",
         "Uninstalling the app deletes every download with it. There is no account and no backup.",
         "Budget 700 MB to 1.5 GB per feature at 1080p. Choosing 720p roughly halves that.",
-        "Verify a download plays with the network off before you rely on it — a partial download looks complete until you try.",
+        "Verify a download plays with the network off before you rely on it: a partial download looks complete until you try.",
       ]}
     >
       <h2 id="which">Which app downloads reliably</h2>
@@ -97,8 +98,8 @@ export default function OfflinePage() {
         context="guaranteed offline downloads"
       />
       <p>
-        The strip above is deliberately blunt. Reborn <em>can</em> download —
-        many providers support it and it works well when they do — but you
+        The strip above is deliberately blunt. Reborn <em>can</em> download 
+        many providers support it and it works well when they do, but you
         cannot count on it for any given title, because the capability belongs
         to the third-party source rather than to the app.
       </p>
@@ -116,7 +117,7 @@ export default function OfflinePage() {
           ["Storage location", "The app's own private storage, in both"],
           ["Visible in a file manager", "No, in both"],
           ["Survives uninstall", "No, in both"],
-          ["Expiry", "None — downloads are not licensed and do not time out"],
+          ["Expiry", "None. Downloads are not licensed and do not time out"],
           ["Download queue", `${V2.shortName}: yes. ${REBORN.shortName}: one at a time`],
         ]}
       />
@@ -155,7 +156,7 @@ export default function OfflinePage() {
         </li>
         <li>
           <strong>Clearing app data deletes them too.</strong> Worth remembering
-          before you clear data as a troubleshooting step — see{" "}
+          before you clear data as a troubleshooting step. See{" "}
           <InternalLink intent="notWorking" currentPath={R.offline} />.
         </li>
       </ul>
@@ -209,18 +210,18 @@ export default function OfflinePage() {
         caption="Approximate storage per title by quality"
         headers={["Content", "1080p", "720p", "480p"]}
         rows={[
-          ["Feature film (~2 hours)", "1.2–1.5 GB", "600–800 MB", "300–400 MB"],
-          ["Short film (~90 minutes)", "800 MB–1.1 GB", "450–600 MB", "220–300 MB"],
-          ["TV episode (~45 minutes)", "400–600 MB", "220–300 MB", "110–160 MB"],
-          ["Full season (10 episodes)", "4–6 GB", "2.2–3 GB", "1.1–1.6 GB"],
+          ["Feature film (~2 hours)", "1.2-1.5 GB", "600-800 MB", "300-400 MB"],
+          ["Short film (~90 minutes)", "800 MB-1.1 GB", "450-600 MB", "220-300 MB"],
+          ["TV episode (~45 minutes)", "400-600 MB", "220-300 MB", "110-160 MB"],
+          ["Full season (10 episodes)", "4-6 GB", "2.2-3 GB", "1.1-1.6 GB"],
         ]}
       />
       <QuickSummary
         bullets={[
-          "720p is the sweet spot on a phone — roughly half the storage of 1080p, with little visible difference at that screen size.",
+          "720p is the sweet spot on a phone: roughly half the storage of 1080p, with little visible difference at that screen size.",
           "Leave headroom. Android needs working space, and a device running near full behaves badly in general.",
           "A season at 1080p will fill a 64 GB phone faster than expected once the OS and your other apps are accounted for.",
-          "An SD card does not help — app-private storage is on internal storage regardless.",
+          "An SD card does not help. App-private storage is on internal storage regardless.",
         ]}
       >
         <p>
@@ -254,6 +255,40 @@ export default function OfflinePage() {
         </li>
       </ul>
 
+      <h2 id="battery">Battery, data and downloading overnight</h2>
+      <p>
+        Downloading is the most demanding thing either app does, and a few
+        habits stop it costing more than it should.
+      </p>
+      <ul>
+        <li>
+          <strong>Download on Wi-Fi, deliberately.</strong> A feature at 1080p
+          moves well over a gigabyte. On a metered connection that is a
+          noticeable share of a monthly allowance for one film.
+        </li>
+        <li>
+          <strong>Keep the device on power.</strong> Sustained network activity
+          plus writing a large file is heavy, and a download interrupted at 80
+          percent by a flat battery usually has to restart from zero.
+        </li>
+        <li>
+          <strong>Do not queue overnight and walk away.</strong> Neither app
+          reliably downloads in the background with the screen off, so an
+          unattended queue often produces one finished file and several broken
+          entries by morning.
+        </li>
+        <li>
+          <strong>Download the night before, not the morning of.</strong> If a
+          source stalls you want time to switch server and try again, which is
+          not available thirty minutes before a flight.
+        </li>
+      </ul>
+      <p>
+        The general point: treat a download as something you verify rather than
+        something you assume. Playing the first minute with the network off
+        takes seconds and is the only real confirmation you have.
+      </p>
+
       <h2 id="limits">Limits worth knowing</h2>
       <p>
         Being honest about where offline viewing here falls short of a licensed
@@ -283,8 +318,8 @@ export default function OfflinePage() {
         </li>
       </ul>
       <p>
-        If dependable offline viewing genuinely matters — a long flight, a
-        commute with no signal — that is one of the clearest cases where a paid
+        If dependable offline viewing genuinely matters: a long flight, a
+        commute with no signal. That is one of the clearest cases where a paid
         service earns its cost. That comparison is on{" "}
         <InternalLink intent="vsPaid" currentPath={R.offline} />.
       </p>

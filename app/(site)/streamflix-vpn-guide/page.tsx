@@ -76,7 +76,7 @@ export default function VpnPage() {
       dateModified="2026-08-04"
       kicker="VPN"
       h1="Do You Need a VPN for StreamFlix?"
-      answer="Not to make the app work — StreamFlix functions perfectly well without one. A VPN changes two things: your ISP can no longer see which servers you connect to, and ISP-level blocking of specific providers stops applying. It does not make an unlicensed stream licensed."
+      answer="Not to make the app work: StreamFlix functions perfectly well without one. A VPN changes two things: your ISP can no longer see which servers you connect to, and ISP-level blocking of specific providers stops applying. It does not make an unlicensed stream licensed."
       toc={toc}
       faqs={vpnFaqs}
       showDownload={false}
@@ -85,19 +85,19 @@ export default function VpnPage() {
         "It genuinely helps with two things: ISP visibility of your traffic, and ISP-level blocking of provider domains.",
         "It cannot fix a provider that is simply offline, and it usually makes a slow source slightly slower.",
         "Try changing DNS first. It is free, instant, and solves ISP domain blocking without the bandwidth cost.",
-        "Free VPNs are generally a poor trade here — bandwidth caps and, on some, monetising the very traffic you installed them to protect.",
+        "Free VPNs are generally a poor trade here: bandwidth caps and, on some, monetising the very traffic you installed them to protect.",
       ]}
     >
       <h2 id="answer">The short answer</h2>
       <p>
         Every page in this niche recommends a VPN, and nearly all of them do so
         because VPN affiliate commissions are the business model. That does not
-        make a VPN useless — it makes the reasoning worth checking.
+        make a VPN useless. It makes the reasoning worth checking.
       </p>
       <QuickSummary
         bullets={[
           "Required for the app to work? No. StreamFlix functions normally without one.",
-          "Useful if your ISP blocks provider domains? Yes, decisively — though DNS may fix it more cheaply.",
+          "Useful if your ISP blocks provider domains? Yes, decisively, though DNS may fix it more cheaply.",
           "Useful if your ISP throttles streaming? Yes, sometimes dramatically.",
           "Useful if a provider is down? No. Nothing on your end fixes an offline server.",
           "Does it change the legal position? No. It changes who can see your traffic, not what the traffic is.",
@@ -116,7 +116,7 @@ export default function VpnPage() {
         A virtual private network routes your traffic through an intermediary
         server over an encrypted tunnel. Your ISP sees a connection to that
         server and nothing beyond it. The VPN provider sees what your ISP
-        otherwise would — trust is moved rather than eliminated.
+        otherwise would. Trust is moved rather than eliminated.
       </Definition>
       <DataTable
         caption="What a VPN changes and does not change when using StreamFlix"
@@ -149,7 +149,7 @@ export default function VpnPage() {
           ],
           [
             "Slow source servers",
-            "No — usually worse",
+            "No, usually worse",
             "You have added a hop. The source is still the bottleneck",
           ],
           [
@@ -160,7 +160,7 @@ export default function VpnPage() {
           [
             "Malware in a repackaged APK",
             "No",
-            "Entirely unrelated — see the safety guide",
+            "Entirely unrelated. See the safety guide",
           ],
         ]}
       />
@@ -177,12 +177,12 @@ export default function VpnPage() {
           [
             "Symptom",
             "Streams play but buffer constantly",
-            "Sources do not resolve at all — 'no sources found'",
+            "Sources do not resolve at all: 'no sources found'",
           ],
           [
             "Speed test",
             "Shows full speed, because tests are not throttled",
-            "Normal — the connection is fine",
+            "Normal. The connection is fine",
           ],
           [
             "Time pattern",
@@ -192,7 +192,7 @@ export default function VpnPage() {
           [
             "Other streaming services",
             "Also affected",
-            "Unaffected — only specific domains are blocked",
+            "Unaffected. Only specific domains are blocked",
           ],
           [
             "Does a VPN fix it?",
@@ -203,7 +203,7 @@ export default function VpnPage() {
           [
             "Does changing DNS fix it?",
             "No",
-            "Often yes — and it is free",
+            "Often yes, and it is free",
           ],
         ]}
       />
@@ -212,7 +212,7 @@ export default function VpnPage() {
       <p>
         Underrated, free, and takes two minutes. Many ISP blocks are implemented
         at the DNS level, which means simply using a different DNS resolver
-        bypasses them entirely — with none of a VPN&rsquo;s bandwidth cost.
+        bypasses them entirely, with none of a VPN&rsquo;s bandwidth cost.
       </p>
       <ol>
         <li>
@@ -244,7 +244,7 @@ export default function VpnPage() {
       <ul>
         <li>Install the provider&rsquo;s app from Google Play and sign in.</li>
         <li>
-          Connect to a server geographically near you — distance costs speed,
+          Connect to a server geographically near you. Distance costs speed,
           and for streaming that matters more than which country you pick.
         </li>
         <li>
@@ -294,7 +294,7 @@ export default function VpnPage() {
         </li>
         <li>
           <strong>The business model.</strong> Some free providers monetise
-          traffic data — which is precisely the thing you installed a VPN to
+          traffic data. Which is precisely the thing you installed a VPN to
           protect.
         </li>
         <li>
@@ -315,11 +315,11 @@ export default function VpnPage() {
         caption="Typical speed and latency impact of a VPN on streaming"
         headers={["Setup", "Typical speed retained", "Suitable for"]}
         rows={[
-          ["Nearby server, good provider", "80–95%", "1080p comfortably"],
-          ["Same country, busy server", "60–80%", "1080p, occasional buffering"],
-          ["Different continent", "30–60%", "720p at best"],
-          ["Free VPN", "10–40%", "Marginal even at 480p"],
-          ["Router-level VPN", "70–90%", "Good, and covers every device"],
+          ["Nearby server, good provider", "80-95%", "1080p comfortably"],
+          ["Same country, busy server", "60-80%", "1080p, occasional buffering"],
+          ["Different continent", "30-60%", "720p at best"],
+          ["Free VPN", "10-40%", "Marginal even at 480p"],
+          ["Router-level VPN", "70-90%", "Good, and covers every device"],
         ]}
       />
       <p>
@@ -328,7 +328,7 @@ export default function VpnPage() {
         problem you had. If sources that failed now resolve, it clearly is. The
         privacy side of the same question is on{" "}
         <InternalLink intent="privacy" currentPath={R.vpn} />, and the legal
-        side — which a VPN does not change — is on{" "}
+        side, which a VPN does not change, is on{" "}
         <InternalLink intent="legalCheck" currentPath={R.vpn} />.
       </p>
     </ClusterPage>

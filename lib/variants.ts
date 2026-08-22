@@ -77,7 +77,7 @@ export const REBORN: AppVariant = {
   ],
   limitations: [
     "Playback depends entirely on third-party providers, so individual sources break without warning",
-    "Not on Google Play — it must be sideloaded, and Play Protect will warn on install",
+    "Not on Google Play. It must be sideloaded, and Play Protect will warn on install",
     "No official iOS, Windows, or web build",
     "Larger download than the phone-only build because it carries the TV interface",
   ],
@@ -121,7 +121,7 @@ export const V2: AppVariant = {
   limitations: [
     "Closed source, so the build cannot be independently audited the way Reborn's can",
     "Ad-supported, and the ad load is heavier than Reborn's",
-    "No dedicated Android TV or Fire TV interface — phone layout only",
+    "No dedicated Android TV or Fire TV interface: phone layout only",
     "Roughly 2.4× the download size of Reborn for a narrower feature set",
     "Requires Android 6.0, so it excludes older devices that Reborn still supports",
   ],
@@ -139,11 +139,6 @@ export function variantById(id: VariantId): AppVariant {
   return id === "reborn" ? REBORN : V2;
 }
 
-/** `/releases/...` href for a variant's current package. */
-export function variantApkPath(variant: AppVariant) {
-  return `/releases/${encodeURIComponent(variant.fileName)}`;
-}
-
 /**
  * Rows for the side-by-side spec board. Kept here rather than in the component so
  * the same values feed `SpecTable`, the comparison copy, and both
@@ -158,7 +153,7 @@ export const VARIANT_COMPARE_ROWS = [
   { label: "Licence", reborn: REBORN.license, v2: V2.license },
   { label: "Source code", reborn: "Public on GitHub", v2: "Not published" },
   { label: "Distribution", reborn: "GitHub, Uptodown", v2: "Google Play, APKPure, Softonic" },
-  { label: "TV interface", reborn: "Yes — Android TV, Google TV, Fire TV", v2: "No — phone layout only" },
+  { label: "TV interface", reborn: "Yes, Android TV, Google TV, Fire TV", v2: "No, phone layout only" },
   { label: "Offline downloads", reborn: "Provider dependent", v2: "Yes, built in" },
   { label: "Account required", reborn: "No", v2: "No" },
   { label: "Ads", reborn: "None in the app's own interface", v2: "Ad-supported" },

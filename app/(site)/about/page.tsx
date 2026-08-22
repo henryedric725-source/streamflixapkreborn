@@ -59,7 +59,7 @@ export default function AboutPage() {
         "We are an independent documentation site. We are not affiliated with either StreamFlix developer.",
         "Version, size and requirement figures come from the developer's own distribution point, cross-checked against mirrors.",
         "StreamFlix Reborn and StreamFlix 2.0 are documented as separate apps because that is what they are.",
-        "Where an app cannot do something — no iOS build, no TV interface, no real mod — we say so plainly.",
+        "Where an app cannot do something, no iOS build, no TV interface, no real mod, we say so plainly.",
         "Updated dates reflect an actual review of that page's facts, not an automatic timestamp.",
       ]}
     >
@@ -120,7 +120,7 @@ export default function AboutPage() {
         ]}
       />
       <p>
-        If any of these has moved since we last reviewed it, tell us — see{" "}
+        If any of these has moved since we last reviewed it, tell us. See{" "}
         <a href="#contact">corrections</a> below.
       </p>
 

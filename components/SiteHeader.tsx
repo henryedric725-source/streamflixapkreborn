@@ -2,16 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Download, Menu } from "lucide-react";
 import { NavLinks } from "@/components/NavLinks";
-import { isVariantStaged } from "@/lib/releases";
-import { REBORN, variantApkPath } from "@/lib/variants";
+import { isPackageStaged } from "@/lib/releases";
+import { STAGED_PACKAGE, stagedPackagePath } from "@/lib/package";
 import { R } from "@/lib/routes";
 import { LOGO_ALT, SITE_SHORT_NAME, SITE_TAGLINE, navItems } from "@/lib/site";
 
 export function SiteHeader() {
-  // Header CTA points at Reborn: it is the variant that runs on every device
-  // class this site covers, including TV.
-  const available = isVariantStaged(REBORN);
-  const downloadHref = available ? variantApkPath(REBORN) : `${R.home}#get-apk`;
+  const available = isPackageStaged();
+  const downloadHref = available ? stagedPackagePath() : `${R.home}#get-apk`;
 
   return (
     <header className="sticky top-0 z-40 border-b border-line/80 bg-ink/95 backdrop-blur">
@@ -50,7 +48,7 @@ export function SiteHeader() {
           <a
             href={downloadHref}
             className="btn-download hidden px-3 py-2 text-sm lg:inline-flex"
-            {...(available ? { download: REBORN.fileName } : {})}
+            {...(available ? { download: STAGED_PACKAGE.fileName } : {})}
           >
             <Download className="h-4 w-4" aria-hidden />
             Download APK

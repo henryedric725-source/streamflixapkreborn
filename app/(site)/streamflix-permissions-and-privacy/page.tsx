@@ -33,6 +33,7 @@ const toc = [
   { href: "#local-data", label: "What is stored on your device" },
   { href: "#compare", label: "Compared with a licensed service" },
   { href: "#reduce", label: "Reducing your exposure" },
+  { href: "#audit", label: "Auditing permissions after an update" },
 ];
 
 export default function PrivacyGuidePage() {
@@ -46,7 +47,7 @@ export default function PrivacyGuidePage() {
       dateModified="2026-08-03"
       kicker="Permissions and privacy"
       h1="StreamFlix Permissions and Privacy Explained"
-      answer="Neither app requires an account, so there is no profile linking your viewing to an identity — a genuine privacy advantage over licensed services. StreamFlix 2.0 is ad-supported and its advertising libraries still collect device identifiers in the ordinary way; StreamFlix Reborn carries none."
+      answer="Neither app requires an account, so there is no profile linking your viewing to an identity: a genuine privacy advantage over licensed services. StreamFlix 2.0 is ad-supported and its advertising libraries still collect device identifiers in the ordinary way; StreamFlix Reborn carries none."
       toc={toc}
       faqs={privacyFaqs}
       showDownload={false}
@@ -55,7 +56,7 @@ export default function PrivacyGuidePage() {
         "StreamFlix Reborn carries no advertising or analytics libraries in its own interface. StreamFlix 2.0 is ad-supported and does.",
         "Requested permissions are network, scoped storage, and a wake lock. Anything beyond that means you have a repackaged build.",
         "Your ISP can still see which servers you connect to. That is the visibility a VPN addresses, not the app.",
-        "Everything is stored locally, which is private but fragile — an uninstall deletes all of it with no backup.",
+        "Everything is stored locally, which is private but fragile: an uninstall deletes all of it with no backup.",
       ]}
     >
       <h2 id="no-account">The no-account model</h2>
@@ -157,13 +158,13 @@ export default function PrivacyGuidePage() {
         rows={[
           [
             "The app developer",
-            "Nothing for Reborn — there is no telemetry endpoint",
+            "Nothing for Reborn. There is no telemetry endpoint",
             "Your identity, your viewing, anything at all",
           ],
           [
             "The third-party provider",
             "Your IP address and which titles you requested from them",
-            "Who you are — there is no account to attach it to",
+            "Who you are. There is no account to attach it to",
           ],
           [
             "Your ISP",
@@ -189,7 +190,7 @@ export default function PrivacyGuidePage() {
       />
       <p>
         The provider row deserves attention. You are not anonymous to the
-        service actually serving the video — it sees your IP and your requests.
+        service actually serving the video: it sees your IP and your requests.
         It just cannot connect them to a person, because no identity was ever
         supplied. A VPN changes the IP part; see{" "}
         <InternalLink intent="vpn" currentPath={R.privacy} />.
@@ -204,7 +205,7 @@ export default function PrivacyGuidePage() {
         bullets={[
           "StreamFlix Reborn carries no advertising or analytics libraries in its own interface. There is no ad SDK to collect anything.",
           "StreamFlix 2.0 is ad-supported, so it embeds an ad SDK that collects your advertising ID, device model, and coarse location in the ordinary way.",
-          "That is standard for free Android apps rather than unusual — but it is a real difference between the two.",
+          "That is standard for free Android apps rather than unusual, but it is a real difference between the two.",
           "You can reset your advertising ID, or opt out of personalisation, in Android's privacy settings.",
           "Ads shown by a third-party provider during playback are separate again, and neither app controls them.",
         ]}
@@ -225,23 +226,23 @@ export default function PrivacyGuidePage() {
       <h2 id="local-data">What is stored on your device</h2>
       <ul>
         <li>
-          <strong>Favourites and watchlist</strong> — a local database. Never
+          <strong>Favourites and watchlist</strong>: a local database. Never
           uploaded.
         </li>
         <li>
-          <strong>Watch history and resume positions</strong> — local, per
+          <strong>Watch history and resume positions</strong>: local, per
           title.
         </li>
         <li>
-          <strong>Settings</strong> — provider choice, quality, subtitle
+          <strong>Settings</strong>: provider choice, quality, subtitle
           preferences.
         </li>
         <li>
-          <strong>Playback cache</strong> — temporary fragments. Safe to clear
+          <strong>Playback cache</strong>: temporary fragments. Safe to clear
           at any time.
         </li>
         <li>
-          <strong>Downloads</strong> — in app-private storage, invisible to
+          <strong>Downloads</strong>, in app-private storage, invisible to
           other apps and to file managers.
         </li>
       </ul>
@@ -273,6 +274,36 @@ export default function PrivacyGuidePage() {
         <InternalLink intent="vsPaid" currentPath={R.privacy} />.
       </p>
 
+      <h2 id="audit">Auditing permissions after an update</h2>
+      <p>
+        Permissions are not fixed for the life of an app. A new build can
+        request something the previous one did not, and Android will not
+        necessarily interrupt you to say so.
+      </p>
+      <p>
+        Runtime permissions such as storage prompt you when the app first needs
+        them, so those are visible. Install-time permissions declared in the
+        manifest are not: they are granted when the package installs, and an
+        overlay update carries them across without a fresh prompt. That is the
+        gap worth checking.
+      </p>
+      <p>
+        The check itself takes under a minute. Open Settings, Apps, then the
+        app, then Permissions, and compare what is listed against the table
+        above. On most Android builds the same screen offers a permissions
+        history, which shows what has actually been accessed rather than only
+        what was requested.
+      </p>
+      <p>
+        Do this after any update that arrived from outside a store, and
+        certainly after installing a build from a mirror you have not used
+        before. A newly appearing request for contacts, SMS or accessibility is
+        not a subtle signal. It means the build is not the developer&rsquo;s,
+        and{" "}
+        <InternalLink intent="safe" currentPath={R.privacy} /> covers what to do
+        next.
+      </p>
+
       <h2 id="reduce">Reducing your exposure</h2>
       <ol>
         <li>
@@ -284,7 +315,7 @@ export default function PrivacyGuidePage() {
           Android&rsquo;s privacy settings, and opt out of personalisation.
         </li>
         <li>
-          <strong>Use a VPN if ISP visibility concerns you</strong> — accepting
+          <strong>Use a VPN if ISP visibility concerns you</strong>, accepting
           that you are moving trust to the VPN provider rather than removing it.
         </li>
         <li>
@@ -297,13 +328,13 @@ export default function PrivacyGuidePage() {
         </li>
         <li>
           <strong>Only install from official sources.</strong> A repackaged
-          build can add exactly the tracking this page says is absent — see{" "}
+          build can add exactly the tracking this page says is absent. See{" "}
           <InternalLink intent="installVerify" currentPath={R.privacy} />.
         </li>
       </ol>
       <p>
-        Our own handling of your data on this website — as distinct from the apps
-        — is set out in the privacy policy linked in the footer.
+        Our own handling of your data on this website, as distinct from the apps
+       . Is set out in the privacy policy linked in the footer.
       </p>
     </ClusterPage>
   );

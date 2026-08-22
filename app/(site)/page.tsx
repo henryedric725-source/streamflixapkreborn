@@ -62,7 +62,7 @@ const androidHowTo: HowToData = {
   steps: [
     {
       name: "Download the package",
-      text: "Tap the download button for the variant you want. Reborn is 31.43 MB; StreamFlix 2.0 is 76.8 MB. Wait for the download to finish completely — a partial file is the most common cause of a failed install.",
+      text: "Tap the download button for the variant you want. Reborn is 31.43 MB; StreamFlix 2.0 is 76.8 MB. Wait for the download to finish completely. A partial file is the most common cause of a failed install.",
     },
     {
       name: "Allow installs from that app",
@@ -132,7 +132,7 @@ export default function HomePage() {
       takeaways={[
         `StreamFlix Reborn (${REBORN.packageName}) and StreamFlix 2.0 (${V2.packageName}) are unrelated apps from different developers, not two versions of one app.`,
         `Reborn is ${REBORN.sizeLabel}, Apache 2.0 licensed, open-source, and the only one of the two with a real Android TV and Fire TV interface.`,
-        `StreamFlix 2.0 is ${V2.sizeLabel}, closed-source, ad-supported, and available on Google Play — which means no sideloading and no Play Protect warning.`,
+        `StreamFlix 2.0 is ${V2.sizeLabel}, closed-source, ad-supported, and available on Google Play. Which means no sideloading and no Play Protect warning.`,
         "Neither app hosts video. Both surface streams from third-party providers, which is why titles come and go without an app update.",
         "Both are free with no account and no premium tier, so any 'mod' or 'VIP unlock' build has nothing real to unlock.",
       ]}
@@ -168,7 +168,7 @@ export default function HomePage() {
           { label: "Reborn size / requirement", value: `${REBORN.sizeLabel}, Android ${REBORN.minAndroid}` },
           { label: "StreamFlix 2.0 size / requirement", value: `${V2.sizeLabel}, Android ${V2.minAndroid}` },
           { label: "Licences", value: "Apache 2.0 (Reborn), proprietary (StreamFlix 2.0)" },
-          { label: "Price", value: "Free — neither app has a paid tier" },
+          { label: "Price", value: "Free. Neither app has a paid tier" },
         ]}
       />
 
@@ -202,7 +202,7 @@ export default function HomePage() {
         </li>
       </ul>
       <p>
-        They can both be installed at once — different package names mean
+        They can both be installed at once. Different package names mean
         Android treats them as unrelated apps. Full breakdowns live on{" "}
         <InternalLink intent="reborn" currentPath={R.home} /> and{" "}
         <InternalLink intent="v2" currentPath={R.home} />.
@@ -211,12 +211,12 @@ export default function HomePage() {
       <h2 id="which">Which StreamFlix should you install?</h2>
       <QuickSummary
         bullets={[
-          "Firestick, Android TV, or Google TV — install StreamFlix Reborn. It is the only one with a TV interface.",
-          "Android phone and you want a Play Store install — install StreamFlix 2.0.",
-          "Android 5.0 or 5.1 device — StreamFlix Reborn is your only option, as StreamFlix 2.0 needs Android 6.0.",
-          "You care about auditable code — StreamFlix Reborn, because the source is published.",
-          "You want offline downloads that always work — StreamFlix 2.0 has them built in.",
-          "iPhone or iPad — neither. No iOS build of either app exists.",
+          "Firestick, Android TV, or Google TV. Install StreamFlix Reborn. It is the only one with a TV interface.",
+          "Android phone and you want a Play Store install. Install StreamFlix 2.0.",
+          "Android 5.0 or 5.1 device. StreamFlix Reborn is your only option, as StreamFlix 2.0 needs Android 6.0.",
+          "You care about auditable code: StreamFlix Reborn, because the source is published.",
+          "You want offline downloads that always work. StreamFlix 2.0 has them built in.",
+          "iPhone or iPad: neither. No iOS build of either app exists.",
         ]}
       >
         <p>
@@ -256,7 +256,7 @@ export default function HomePage() {
         items={[
           {
             title: "Provider and server switching",
-            body: "Reborn exposes both. When a stream stalls you change source from inside the player rather than abandoning the title — the single most useful habit for this class of app.",
+            body: "Reborn exposes both. When a stream stalls you change source from inside the player rather than abandoning the title: the single most useful habit for this class of app.",
           },
           {
             title: "Real TV navigation",
@@ -330,12 +330,12 @@ export default function HomePage() {
           "One universal package covers phones, tablets, Android TV, Google TV and Fire TV",
           "Genuine TV interface rather than a phone layout fought with a remote",
           "Provider and server switching turns most playback failures into a two-tap fix",
-          "Small download — Reborn is 31.43 MB, well under most apps in this category",
+          "Small download. Reborn is 31.43 MB, well under most apps in this category",
         ]}
         cons={[
           "Neither app owns its content, so individual streams break without warning",
           "Play Protect warns on every sideload, which alarms first-time installers",
-          "No iOS build exists, and none can — an APK cannot run on iPhone or iPad",
+          "No iOS build exists, and none can. An APK cannot run on iPhone or iPad",
           "Stream quality is inconsistent because it is a property of the provider, not the app",
           "The original StreamFlix was removed by DMCA, and the fork carries the same structural risk",
           "StreamFlix 2.0 is ad-supported and has no TV layout at all",

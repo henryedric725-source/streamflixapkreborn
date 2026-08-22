@@ -45,14 +45,14 @@ export default function LegalPage() {
       dateModified="2026-08-05"
       kicker="Legality"
       h1="Is StreamFlix Legal? The Honest Answer"
-      answer="The software itself is lawful — StreamFlix Reborn is open-source under Apache 2.0 and hosts no content. The legal question attaches to the third-party streams it indexes, whose licensing cannot be verified from inside the app, and streaming law differs substantially between countries."
+      answer="The software itself is lawful. StreamFlix Reborn is open-source under Apache 2.0 and hosts no content. The legal question attaches to the third-party streams it indexes, whose licensing cannot be verified from inside the app, and streaming law differs substantially between countries."
       toc={toc}
       faqs={legalFaqs}
       showDownload={false}
       takeaways={[
         "The app is not the legal question. An open-source aggregator that hosts nothing is lawful software; what it points at is the issue.",
         "The original StreamFlix was removed after a DMCA complaint. Reborn is the fork that continued from the open-source code.",
-        "Aggregating and hosting are treated differently in law, which is why these apps exist at all — but the distinction protects the developer more than the viewer.",
+        "Aggregating and hosting are treated differently in law, which is why these apps exist at all, but the distinction protects the developer more than the viewer.",
         "Streaming law varies by country: some treat viewing an infringing stream differently from downloading it, others do not distinguish.",
         "If you cannot establish that a stream is licensed, the safe assumption is that it is not.",
       ]}
@@ -96,14 +96,14 @@ export default function LegalPage() {
         The distinction is real in law and is why this class of app exists at
         all. A service that stores and serves infringing files is directly
         liable. A tool that searches the public web occupies more contested
-        ground — closer to a search engine than to a file host.
+        ground: closer to a search engine than to a file host.
       </p>
       <DataTable
         caption="How the law has generally treated hosting versus aggregating"
         headers={["", "Hosting service", "Aggregator app"]}
         rows={[
           ["Stores the content", "Yes", "No"],
-          ["Serves the video", "Yes", "No — the third-party provider does"],
+          ["Serves the video", "Yes", "No. The third-party provider does"],
           ["Direct infringement exposure", "High", "Contested"],
           ["Takedown target", "The service itself", "Distribution channels and the providers"],
           ["Typical enforcement", "Servers seized, service closed", "Removed from stores; providers pursued separately"],
@@ -190,7 +190,7 @@ export default function LegalPage() {
       </p>
       <p>
         A VPN changes your ISP&rsquo;s visibility of your traffic. It does not
-        change the legal status of anything — that distinction is covered on{" "}
+        change the legal status of anything. That distinction is covered on{" "}
         <InternalLink intent="vpn" currentPath={R.legal} />.
       </p>
 
@@ -221,7 +221,7 @@ export default function LegalPage() {
       <ul>
         <li>
           <strong>Public-domain film.</strong> An enormous body of work has
-          entered the public domain — early cinema, pre-1930 features,
+          entered the public domain: early cinema, pre-1930 features,
           government productions, and works whose copyright lapsed. All of it is
           free to watch by anyone.
         </li>
@@ -231,7 +231,7 @@ export default function LegalPage() {
         </li>
         <li>
           <strong>Content you are already licensed for.</strong> If you hold a
-          subscription or bought a title, you have a licence to watch it — though
+          subscription or bought a title, you have a licence to watch it, though
           the terms of that licence usually specify how.
         </li>
         <li>
@@ -274,7 +274,7 @@ export default function LegalPage() {
           [
             "Malware from a repackaged build",
             "Moderate, and entirely avoidable",
-            `Verify what you install — see the safety guide`,
+            `Verify what you install. See the safety guide`,
           ],
           [
             "Losing your saved data",

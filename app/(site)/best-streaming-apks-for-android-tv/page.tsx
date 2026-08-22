@@ -37,6 +37,7 @@ const toc = [
   { href: "#hardware", label: "Hardware matters here" },
   { href: "#setup", label: "Setting one up" },
   { href: "#live", label: "Live TV is a separate question" },
+  { href: "#remote", label: "Making any app easier on a remote" },
 ];
 
 const tvCapable = alternatives.filter(
@@ -74,7 +75,7 @@ export default function BestTvApksPage() {
         "A real leanback interface is the only criterion that matters on a TV. An app without one is unpleasant regardless of its catalog.",
         "Needing a virtual-mouse app is the clearest proof an app was never built for television.",
         "Only three free apps in this category genuinely qualify: StreamFlix Reborn, OnStream, and Cinema HD.",
-        "StreamFlix 2.0 will install on a Firestick and should not be — it is phone-layout only.",
+        "StreamFlix 2.0 will install on a Firestick and should not be. It is phone-layout only.",
         "Hardware matters more on TV than on a phone. A 1 GB box struggles where a Shield does not.",
       ]}
     >
@@ -118,7 +119,7 @@ export default function BestTvApksPage() {
       {tvCapable.map((item, index) => (
         <div key={item.name}>
           <h3>
-            {index + 2}. {item.name} — {statusLabels[item.status]}
+            {index + 2}. {item.name}: {statusLabels[item.status]}
           </h3>
           <p>{item.positioning}</p>
           <p>
@@ -202,18 +203,18 @@ export default function BestTvApksPage() {
         caption="Streaming APK performance expectations by TV hardware class"
         headers={["Device", "RAM", "Expect"]}
         rows={[
-          ["Nvidia Shield TV", "3 GB", "Best in class — no device-side bottleneck"],
+          ["Nvidia Shield TV", "3 GB", "Best in class, no device-side bottleneck"],
           ["Fire TV Stick 4K Max", "2 GB", "Excellent for everything in this list"],
           ["Chromecast with Google TV 4K", "2 GB", "Good; close background apps first"],
           ["Fire TV Stick 4K", "1.5 GB", "Good at 1080p, occasional stutter on heavy sources"],
           ["Fire TV Stick Lite", "1 GB", "Adequate; avoid running a VPN alongside"],
-          ["Budget Android TV box", "1 GB", "Marginal — use an older, lighter build"],
+          ["Budget Android TV box", "1 GB", "Marginal. Use an older, lighter build"],
         ]}
       />
       <p>
         On constrained devices, an older build is often genuinely better than
         the newest. A 1.6 series Reborn build has a lighter memory footprint
-        than 1.7, and that difference is decisive on a 1 GB box — see{" "}
+        than 1.7, and that difference is decisive on a 1 GB box. See{" "}
         <InternalLink intent="oldVersions" currentPath={R.bestTvApks} />.
       </p>
       <p>
@@ -228,7 +229,7 @@ export default function BestTvApksPage() {
         bullets={[
           "Fire TV: install Downloader from the Amazon Appstore, enable it under Developer Options, and fetch the APK by URL.",
           "Android TV box: install a file manager first, then sideload from a USB stick.",
-          "Google TV: sideload the same way, then use a shortcut utility — Google TV hides sideloaded apps from its launcher.",
+          "Google TV: sideload the same way, then use a shortcut utility: Google TV hides sideloaded apps from its launcher.",
           "After installing, check the provider setting before browsing. It resolves most 'nothing plays' complaints.",
           "Use Ethernet where you can. It is the single biggest quality improvement available on a TV device.",
         ]}
@@ -242,11 +243,43 @@ export default function BestTvApksPage() {
         </p>
       </QuickSummary>
 
+      <h2 id="remote">Making any app easier on a remote</h2>
+      <p>
+        If you are stuck with an app that has no TV layout, a few adjustments
+        make it tolerable without pretending they make it good.
+      </p>
+      <ul>
+        <li>
+          <strong>Raise the system font size.</strong> Android TV applies this
+          across apps, and phone layouts benefit most because their text was
+          sized for a screen held at arm&rsquo;s length.
+        </li>
+        <li>
+          <strong>Pair a Bluetooth remote with a trackpad, or a small
+          keyboard.</strong> This solves the reachability problem properly,
+          where a virtual mouse only works around it.
+        </li>
+        <li>
+          <strong>Set your preferences once, on a phone.</strong> Configure
+          provider, quality and subtitles where the interface is comfortable,
+          then leave the TV install for playback only.
+        </li>
+        <li>
+          <strong>Use the remote app instead of the physical remote</strong> for
+          anything involving typing. Searching by title with a D-pad keyboard is
+          the single most tedious thing about TV streaming.
+        </li>
+      </ul>
+      <p>
+        These are mitigations, not fixes. An app built for a television needs
+        none of them, which is the whole argument for the shortlist above.
+      </p>
+
       <h2 id="live">Live TV is a separate question</h2>
       <p>
         Live-channel apps are frequently mixed into TV streaming lists, and they
         answer a different question. HD Streamz and Live NetTV serve channels
-        and sport, with almost no on-demand film catalog — and neither has a
+        and sport, with almost no on-demand film catalog, and neither has a
         leanback interface, which on a television is a real cost.
       </p>
       <p>

@@ -3,7 +3,7 @@ import { DownloadCard } from "@/components/DownloadCta";
 import { ShareRail } from "@/components/ShareRail";
 import { ImportantPages, RelatedArticles } from "@/components/SidebarLinks";
 import { TrustBar } from "@/components/PageIntro";
-import { isVariantStaged } from "@/lib/releases";
+import { isPackageStaged } from "@/lib/releases";
 import { REBORN, type AppVariant } from "@/lib/variants";
 import { SITE_NAME, absoluteUrl } from "@/lib/site";
 
@@ -38,7 +38,7 @@ export function ArticleShell({
   /** Which app the sidebar download card advertises. Defaults to Reborn. */
   downloadVariant?: AppVariant;
 }) {
-  const staged = isVariantStaged(downloadVariant);
+  const staged = isPackageStaged();
   const shareUrl = absoluteUrl(currentPath);
   const shareLabel =
     shareTitle ?? crumbs[crumbs.length - 1]?.name ?? SITE_NAME;

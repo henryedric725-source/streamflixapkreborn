@@ -36,6 +36,7 @@ const toc = [
   { href: "#mac", label: "Running it on a Mac" },
   { href: "#performance", label: "Realistic performance" },
   { href: "#alternatives", label: "When an emulator is the wrong answer" },
+  { href: "#troubleshooting", label: "Emulator problems and fixes" },
 ];
 
 const howTo: HowToData = {
@@ -57,7 +58,7 @@ const howTo: HowToData = {
     },
     {
       name: "Complete first-run setup",
-      text: "BlueStacks asks for a Google account on first run. That is for Play Store access — you can skip it, since sideloading an APK needs no account.",
+      text: "BlueStacks asks for a Google account on first run. That is for Play Store access. You can skip it, since sideloading an APK needs no account.",
     },
     {
       name: "Install the APK",
@@ -87,7 +88,7 @@ export default function PcPage() {
       howTo={howTo}
       takeaways={[
         "No native desktop build exists for either app. Any site offering a 'StreamFlix.exe' is offering something else.",
-        "An emulator runs the same APK you would install on a phone — there is no PC-specific version to find.",
+        "An emulator runs the same APK you would install on a phone. There is no PC-specific version to find.",
         "Allocate at least 4 GB of RAM and two cores to the emulator. The defaults are the usual cause of poor performance.",
         "Download emulators from their own official sites only. An emulator has far more system access than an ordinary app.",
         "If you own an Android phone or a cheap streaming stick, that is a better experience than any emulator.",
@@ -104,7 +105,7 @@ export default function PcPage() {
       </p>
       <Definition term="Android emulator">
         Software that creates a virtual Android device on your desktop. The APK
-        does not know it is not on a phone — it runs the same code, with the
+        does not know it is not on a phone. It runs the same code, with the
         same interface, using your mouse and keyboard in place of touch.
       </Definition>
       <p>
@@ -133,14 +134,14 @@ export default function PcPage() {
           [
             "Windows Subsystem for Android",
             "Windows 11",
-            "Cleanest technically — apps run as native windows",
+            "Cleanest technically. Apps run as native windows",
             "Manual APK install via ADB; Microsoft is no longer expanding it",
           ],
           [
             "Android Studio emulator",
             "Windows, macOS, Linux",
             "Closest to a real device; excellent for verification",
-            "A developer tool — heavy download and unfriendly setup",
+            "A developer tool: heavy download and unfriendly setup",
           ],
         ]}
       />
@@ -167,7 +168,7 @@ export default function PcPage() {
 
       <h2 id="wsa">Windows Subsystem for Android</h2>
       <p>
-        WSA is the technically cleanest option on Windows 11 — Android apps run
+        WSA is the technically cleanest option on Windows 11. Android apps run
         in ordinary resizable windows with no emulator shell around them. It is
         also the most work, and Microsoft has stopped expanding it.
       </p>
@@ -199,7 +200,7 @@ export default function PcPage() {
         bullets={[
           "Apple silicon (M-series): BlueStacks Air runs Android acceptably. This is the best Mac option.",
           "Intel Mac: noticeably slower, and support is winding down across emulators.",
-          "There is no macOS build of either StreamFlix app — an emulator is the only route.",
+          "There is no macOS build of either StreamFlix app. An emulator is the only route.",
           "An iPhone or iPad in the same household cannot help here; iOS cannot run an APK at all.",
         ]}
       >
@@ -230,11 +231,11 @@ export default function PcPage() {
           ],
           [
             "Playback",
-            "Generally fine on a modern desktop CPU — this is the part that works well",
+            "Generally fine on a modern desktop CPU. This is the part that works well",
           ],
           [
             "Memory use",
-            "3–6 GB. On an 8 GB machine this is the dominant cost",
+            "3-6 GB. On an 8 GB machine this is the dominant cost",
           ],
           [
             "Battery on a laptop",
@@ -247,6 +248,51 @@ export default function PcPage() {
         ]}
       />
 
+      <h2 id="troubleshooting">Emulator problems and fixes</h2>
+      <p>
+        Emulator faults look like app faults, so it is worth separating them
+        before you conclude anything about StreamFlix itself.
+      </p>
+      <ul>
+        <li>
+          <strong>Everything is unusably slow.</strong> Almost always hardware
+          virtualisation being switched off. BlueStacks warns about this on
+          launch, and people skip the warning. Enable Intel VT-x or AMD-V in
+          your BIOS and the difference is not subtle.
+        </li>
+        <li>
+          <strong>The emulator will not start at all on Windows.</strong> Hyper-V
+          and third-party emulators contend for the same virtualisation layer.
+          Either disable Hyper-V, or use an emulator build that supports it
+          rather than fighting the conflict.
+        </li>
+        <li>
+          <strong>Playback stutters while navigation is fine.</strong> A
+          graphics-backend mismatch. Switch the emulator between DirectX and
+          OpenGL rendering; one of the two will usually behave on your GPU.
+        </li>
+        <li>
+          <strong>The app installs but immediately closes.</strong> Often an ABI
+          mismatch. Emulators default to x86 images, and an ARM-only build needs
+          an ARM translation layer or an ARM image.
+        </li>
+        <li>
+          <strong>No sound.</strong> Emulators register their own audio device,
+          and Windows may route it somewhere you are not listening to. Check the
+          per-application volume mixer before touching anything in the app.
+        </li>
+        <li>
+          <strong>The machine crawls generally.</strong> Memory. The emulator
+          holds several gigabytes for as long as it is open, and closing it is
+          the fix.
+        </li>
+      </ul>
+      <p>
+        Symptoms that survive all of the above are genuinely the app or its
+        providers, and{" "}
+        <InternalLink intent="notWorking" currentPath={R.pc} /> covers those.
+      </p>
+
       <h2 id="alternatives">When an emulator is the wrong answer</h2>
       <p>
         Worth saying plainly, since the honest recommendation is often not to
@@ -255,7 +301,7 @@ export default function PcPage() {
       <ul>
         <li>
           <strong>You own an Android phone.</strong> Install it there and cast
-          to a screen. Better experience, no setup — see{" "}
+          to a screen. Better experience, no setup. See{" "}
           <InternalLink intent="smartTv" currentPath={R.pc} />.
         </li>
         <li>

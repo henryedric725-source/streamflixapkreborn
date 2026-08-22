@@ -33,7 +33,7 @@ export const EDITORIAL_METHOD = [
   {
     title: "Facts come from the developer first",
     detail:
-      "Version, size, and minimum Android are taken from the developer's own distribution point — GitHub releases for StreamFlix Reborn, Google Play for StreamFlix 2.0 — then cross-checked against Uptodown, APKPure, Softonic and FileHippo. Where mirrors disagree with the developer, the developer wins.",
+      "Version, size, and minimum Android are taken from the developer's own distribution point, GitHub releases for StreamFlix Reborn, Google Play for StreamFlix 2.0, then cross-checked against Uptodown, APKPure, Softonic and FileHippo. Where mirrors disagree with the developer, the developer wins.",
   },
   {
     title: "Every build is installed before it is described",
@@ -48,7 +48,7 @@ export const EDITORIAL_METHOD = [
   {
     title: "Negative findings are published",
     detail:
-      "Where an app has no iOS build, no TV interface, or a heavier ad load than its listing implies, that is stated plainly rather than omitted. Pages that would have been promotional — mod APKs, iOS, legality — say no where no is the answer.",
+      "Where an app has no iOS build, no TV interface, or a heavier ad load than its listing implies, that is stated plainly rather than omitted. Pages that would have been promotional, mod APKs, iOS, legality, say no where no is the answer.",
   },
   {
     title: "Dates are real",

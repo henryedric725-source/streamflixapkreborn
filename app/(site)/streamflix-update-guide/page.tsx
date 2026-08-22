@@ -61,7 +61,7 @@ const howTo: HowToData = {
     },
     {
       name: "Verify the version and your data",
-      text: "Open the app's settings, confirm the version reads what you installed, and check your favourites are still present. If they are gone, the install replaced rather than updated — the signature did not match.",
+      text: "Open the app's settings, confirm the version reads what you installed, and check your favourites are still present. If they are gone, the install replaced rather than updated. The signature did not match.",
     },
   ],
 };
@@ -83,7 +83,7 @@ export default function UpdatePage() {
       howTo={howTo}
       takeaways={[
         "Never uninstall before updating. An overlay install preserves your data; a clean install deletes it permanently.",
-        "Overlay installs only work when the signing certificate matches — which is why a repackaged build can never be updated to the official one.",
+        "Overlay installs only work when the signing certificate matches. Which is why a repackaged build can never be updated to the official one.",
         "Reborn has an in-app updater. StreamFlix 2.0 updates through Google Play if you installed it there.",
         "An update changes how the app searches, not what it can find. It never adds titles to the catalog.",
         "Staying on a build that works is a defensible choice, especially on older TV hardware.",
@@ -98,8 +98,8 @@ export default function UpdatePage() {
       <p>
         With most apps that habit is harmless, because a cloud account restores
         your state on next sign-in. Neither StreamFlix app has an account.
-        Favourites, watch history, downloads and settings exist in one place —
-        your device — and uninstalling deletes all of it with no way back.
+        Favourites, watch history, downloads and settings exist in one place 
+        your device, and uninstalling deletes all of it with no way back.
       </p>
 
       <h2 id="overlay">How an overlay install works</h2>
@@ -146,7 +146,7 @@ export default function UpdatePage() {
         ]}
       >
         <p>
-          For most people the in-app updater is the right route — it removes the
+          For most people the in-app updater is the right route. It removes the
           chance of downloading from a mirror and getting a repackaged file. The
           exception is if you have deliberately stayed on an older build.
         </p>
@@ -160,7 +160,7 @@ export default function UpdatePage() {
       </p>
       <p>
         The one thing Play cannot do is <em>downgrade</em>. If build{" "}
-        {V2.version} misbehaves on your device, Play offers no route back — you
+        {V2.version} misbehaves on your device, Play offers no route back. You
         must sideload the earlier build, which means enabling unknown sources for
         an app you otherwise never needed it for. Earlier builds are listed on{" "}
         <InternalLink intent="oldVersions" currentPath={R.update} />.
@@ -177,13 +177,13 @@ export default function UpdatePage() {
         headers={["What you see", "What it means", "Resolution"]}
         rows={[
           [
-            "App not installed — signatures do not match",
+            "App not installed. Signatures do not match",
             "Your existing copy was signed by a different party than the new file",
             "Uninstall the existing copy, then install the new one. Local data is lost",
           ],
           [
             "Update option missing; only Install is offered",
-            "Android does not recognise it as the same app — usually a different package name",
+            "Android does not recognise it as the same app, usually a different package name",
             "Check you downloaded the right variant; the two apps are not interchangeable",
           ],
           [
@@ -206,7 +206,7 @@ export default function UpdatePage() {
       <p>
         Every row above traces back to the same cause: a build signed by someone
         other than the developer. Verifying before you install prevents all of
-        them — see{" "}
+        them. See{" "}
         <InternalLink intent="installVerify" currentPath={R.update} />.
       </p>
 
@@ -217,7 +217,7 @@ export default function UpdatePage() {
       </p>
       <p>
         An update to an aggregator mainly changes provider scrapers. It does not
-        add films — the catalog belongs to third parties and changes constantly
+        add films: the catalog belongs to third parties and changes constantly
         regardless of your build. So an update can genuinely make things worse
         for you personally by dropping support for a source you relied on.
       </p>
@@ -278,7 +278,7 @@ export default function UpdatePage() {
         </li>
       </ol>
       <p>
-        The archive exists for exactly this — every catalogued build with its
+        The archive exists for exactly this: every catalogued build with its
         size, requirement and what it is good for is on{" "}
         <InternalLink intent="oldVersions" currentPath={R.update} />, and
         release-by-release notes are on{" "}

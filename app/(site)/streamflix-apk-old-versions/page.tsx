@@ -12,7 +12,7 @@ import { releases } from "@/lib/versions";
 
 const TITLE = "StreamFlix APK Old Versions Archive";
 const DESCRIPTION =
-  "Every archived StreamFlix build for both apps — Reborn 1.5 to 1.7.230 and StreamFlix 2.0 130 to 142 — with size, minimum Android, and when to roll back.";
+  "Every archived StreamFlix build for both apps, Reborn 1.5 to 1.7.230 and StreamFlix 2.0 130 to 142, with size, minimum Android, and when to roll back.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -35,6 +35,7 @@ const toc = [
   { href: "#reborn-builds", label: "StreamFlix Reborn builds" },
   { href: "#v2-builds", label: "StreamFlix 2.0 builds" },
   { href: "#risks", label: "What an old build costs you" },
+  { href: "#keeping", label: "Keeping a known-good build" },
 ];
 
 export default function OldVersionsPage() {
@@ -65,11 +66,11 @@ export default function OldVersionsPage() {
       faqs={archiveFaqs}
       releases={releases}
       takeaways={[
-        "An older build is a legitimate fix, not a workaround — provider support changes between releases, and a newer version occasionally drops a source you relied on.",
+        "An older build is a legitimate fix, not a workaround. Provider support changes between releases, and a newer version occasionally drops a source you relied on.",
         "Install the older APK over the current one without uninstalling first, so favourites and watch history survive.",
         "Android blocks some downgrades. When it does, uninstalling is the only route and you lose local data.",
         "Legacy builds are archived for reference. Several of their bundled providers no longer resolve, so they are not a daily-use option.",
-        "StreamFlix 2.0 installed from Google Play cannot be rolled back through Play — a downgrade means sideloading.",
+        "StreamFlix 2.0 installed from Google Play cannot be rolled back through Play. A downgrade means sideloading.",
       ]}
     >
       <h2 id="when">When to roll back</h2>
@@ -82,7 +83,7 @@ export default function OldVersionsPage() {
       </p>
       <QuickSummary
         bullets={[
-          "A provider you relied on stopped resolving right after an update — the update changed the scraper, not your connection.",
+          "A provider you relied on stopped resolving right after an update. The update changed the scraper, not your connection.",
           "The app started crashing on launch or stuttering on an older TV box after a player change.",
           "A specific feature behaves differently and the new behaviour does not suit your device.",
           "You are testing whether a problem is the app or your network, and need a known-good build to compare against.",
@@ -91,7 +92,7 @@ export default function OldVersionsPage() {
         <p>
           Roll back for a specific, reproducible reason. If the app simply
           shows &ldquo;no sources found&rdquo; on one title, that is a provider
-          problem and an older build will not help — see{" "}
+          problem and an older build will not help. See{" "}
           <InternalLink intent="noSources" currentPath={R.oldVersions} />{" "}
           first.
         </p>
@@ -149,7 +150,7 @@ export default function OldVersionsPage() {
         .map((release) => (
           <div key={release.catalogId} id={release.catalogId}>
             <h3>
-              {REBORN.shortName} {release.label} — {release.headline}
+              {REBORN.shortName} {release.label}: {release.headline}
             </h3>
             <SpecTable
               caption={`${REBORN.name} ${release.label} details`}
@@ -182,7 +183,7 @@ export default function OldVersionsPage() {
         .map((release) => (
           <div key={release.catalogId} id={release.catalogId}>
             <h3>
-              {V2.shortName} {release.label} — {release.headline}
+              {V2.shortName} {release.label}: {release.headline}
             </h3>
             <SpecTable
               caption={`${V2.name} ${release.label} details`}
@@ -202,6 +203,31 @@ export default function OldVersionsPage() {
             </ul>
           </div>
         ))}
+
+      <h2 id="keeping">Keeping a known-good build</h2>
+      <p>
+        The people who never get stranded by a bad update are the ones who kept
+        the file that was working. It costs a few megabytes and removes the
+        entire problem.
+      </p>
+      <p>
+        When a build has run well for a fortnight, copy its APK somewhere that
+        is not the device: a computer, or cloud storage. Name it with the
+        version, because a folder of files called <code>download.apk</code> is
+        no use in six months. Note the date you started running it.
+      </p>
+      <p>
+        The reason this matters is that older builds do not stay available
+        forever. Projects tidy their release pages, mirrors rotate their
+        catalogues, and the build you want may simply not be downloadable by the
+        time you want it. Holding your own copy makes you independent of that.
+      </p>
+      <p>
+        One caution: only keep files you obtained from a source you trust, and
+        verify before archiving rather than after. An unverified build kept for
+        a year is a worse problem than no archive at all, and the checks are on{" "}
+        <InternalLink intent="safe" currentPath={R.oldVersions} />.
+      </p>
 
       <h2 id="risks">What an old build costs you</h2>
       <p>

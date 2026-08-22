@@ -56,7 +56,7 @@ const setupHowTo: HowToData = {
     },
     {
       name: "Set your default playback quality",
-      text: "Reborn defaults to 1080p where the source supports it. On a slow connection or a metered one, drop this to 720p — it prevents the buffering that people otherwise blame on the app.",
+      text: "Reborn defaults to 1080p where the source supports it. On a slow connection or a metered one, drop this to 720p. It prevents the buffering that people otherwise blame on the app.",
     },
     {
       name: "Configure subtitles before you need them",
@@ -80,14 +80,14 @@ export default function HowToUsePage() {
       dateModified="2026-08-10"
       kicker="Using the app"
       h1="How to Use StreamFlix Properly"
-      answer="Open settings and check your provider before you browse — that single step prevents most playback complaints. Then learn the source and server picker inside the player: when a stream stalls, switching server fixes it far more often than restarting the app or reinstalling it."
+      answer="Open settings and check your provider before you browse. That single step prevents most playback complaints. Then learn the source and server picker inside the player: when a stream stalls, switching server fixes it far more often than restarting the app or reinstalling it."
       toc={toc}
       faqs={howToUseFaqs}
       howTo={setupHowTo}
       takeaways={[
         "Check the provider setting before browsing. The default is not always the best for your region, and most 'nothing plays' reports trace back to it.",
         "Switching server inside the player is the single most useful skill. A title that fails on one server usually plays on the next.",
-        "A stream failing is a provider problem, not an app problem — reinstalling the app achieves nothing.",
+        "A stream failing is a provider problem, not an app problem, reinstalling the app achieves nothing.",
         "Set subtitle preferences before you need them, especially on a TV where adjusting mid-film means fighting a remote.",
         "There is no account, so favourites and history are local. They do not sync, and they do not survive an uninstall.",
       ]}
@@ -117,7 +117,7 @@ export default function HowToUsePage() {
       </p>
       <p>
         If a provider that used to work stops resolving anything, it has
-        probably changed shape and needs an updated scraper — that is what most{" "}
+        probably changed shape and needs an updated scraper. That is what most{" "}
         <InternalLink intent="changelog" currentPath={R.howToUse} /> entries
         actually are.
       </p>
@@ -134,7 +134,7 @@ export default function HowToUsePage() {
       </p>
       <QuickSummary
         bullets={[
-          "Open the source or server menu during playback — it is in the player controls, not in settings.",
+          "Open the source or server menu during playback. It is in the player controls, not in settings.",
           "Pick a different entry from the list. Playback restarts on the new source, usually within seconds.",
           "Do not back out to the catalog first. You lose your place and gain nothing.",
           "If three or four servers all fail on one title, that title genuinely has no working source right now. Try a different one.",
@@ -148,7 +148,7 @@ export default function HowToUsePage() {
         </p>
       </QuickSummary>
       <p>
-        Buffering that survives every server switch is a different problem —
+        Buffering that survives every server switch is a different problem 
         see <InternalLink intent="buffering" currentPath={R.howToUse} />.
       </p>
 
@@ -169,7 +169,7 @@ export default function HowToUsePage() {
           },
           {
             title: "When no subtitles appear",
-            body: "The source has none. Switch server for the same title — a different source frequently carries a subtitle track the first one lacked.",
+            body: "The source has none. Switch server for the same title: a different source frequently carries a subtitle track the first one lacked.",
           },
           {
             title: "Subtitles out of sync",
@@ -177,7 +177,7 @@ export default function HowToUsePage() {
           },
           {
             title: "StreamFlix 2.0 languages",
-            body: "Eight built in: English, Hindi, Bengali, Spanish, French, Korean, Tamil and Telugu — notably strong South Asian coverage.",
+            body: "Eight built in: English, Hindi, Bengali, Spanish, French, Korean, Tamil and Telugu, notably strong South Asian coverage.",
           },
         ]}
       />
@@ -188,11 +188,11 @@ export default function HowToUsePage() {
           {
             title: "Default quality",
             value: "1080p",
-            body: "Reborn's default where the source supports it. Drop to 720p on a slow or metered connection — it prevents more buffering than any other single change.",
+            body: "Reborn's default where the source supports it. Drop to 720p on a slow or metered connection. It prevents more buffering than any other single change.",
           },
           {
             title: "Playback speed",
-            value: "0.5×–2×",
+            value: "0.5×-2×",
             body: "Adjustable, which is unusual in this category. Genuinely useful for long-form content.",
           },
           {
@@ -220,13 +220,13 @@ export default function HowToUsePage() {
           ["Watch history", "Local only, never uploaded", "No"],
           ["Downloads", "Stored in the app's own storage", "No"],
           ["Provider and quality settings", "Local preferences", "No"],
-          ["Sync between devices", "Not available — there is no account", "n/a"],
+          ["Sync between devices", "Not available. There is no account", "n/a"],
         ]}
       />
       <p>
-        Everything is local. That is a privacy advantage — there is no profile
+        Everything is local. That is a privacy advantage. There is no profile
         anywhere to leak, as covered on{" "}
-        <InternalLink intent="privacy" currentPath={R.howToUse} /> — and a
+        <InternalLink intent="privacy" currentPath={R.howToUse} />, and a
         practical disadvantage, because nothing transfers to a new device and an
         uninstall is final.
       </p>
@@ -248,7 +248,7 @@ export default function HowToUsePage() {
         </li>
         <li>
           <strong>The detail page</strong> carries runtime, release year,
-          original language, and a rating before you commit — worth reading, as
+          original language, and a rating before you commit: worth reading, as
           catalog artwork in this category is frequently mislabelled.
         </li>
         <li>
@@ -261,7 +261,7 @@ export default function HowToUsePage() {
       <QuickSummary
         bullets={[
           "Switch server first, always. Before restarting, reinstalling, or concluding anything is broken.",
-          "Test with a popular title when something seems wrong — it isolates provider problems from title problems.",
+          "Test with a popular title when something seems wrong: it isolates provider problems from title problems.",
           "Keep the previous build available. When an update drops a provider you relied on, rolling back is a two-minute fix.",
           "Lower the default quality on a weak connection rather than tolerating constant buffering.",
           "Do not uninstall to fix things. It rarely helps and it deletes everything you have saved.",

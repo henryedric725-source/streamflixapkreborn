@@ -10,7 +10,7 @@ import { REBORN, V2 } from "@/lib/variants";
 
 const TITLE = "StreamFlix Not Working? Every Fix Ranked";
 const DESCRIPTION =
-  "No sources found, endless buffering, app won't install, black screen, crash on launch, Play Protect block — diagnosed in the order most likely to work.";
+  "No sources found, endless buffering, app won't install, black screen, crash on launch, Play Protect block: diagnosed in the order most likely to work.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -50,13 +50,13 @@ export default function NotWorkingPage() {
       dateModified="2026-08-08"
       kicker="Troubleshooting"
       h1="StreamFlix Not Working? Fixes in Order of What Works"
-      answer="Switch server first — most playback failures are a third-party source being down, and changing source fixes them in seconds. If every server fails on every title, the problem is your connection. If the app will not open at all, clear its cache before you clear data, and roll back before you reinstall."
+      answer="Switch server first. Most playback failures are a third-party source being down, and changing source fixes them in seconds. If every server fails on every title, the problem is your connection. If the app will not open at all, clear its cache before you clear data, and roll back before you reinstall."
       toc={toc}
       faqs={troubleshootingFaqs}
       takeaways={[
         "Switch server before doing anything else. It resolves the majority of playback complaints and takes two taps.",
         "One title failing is a source problem. Every title failing is a connection, DNS or provider-selection problem.",
-        "Clear cache before clearing data — clearing data deletes your favourites and downloads.",
+        "Clear cache before clearing data, clearing data deletes your favourites and downloads.",
         "Reinstalling almost never helps and always loses your saved data. Roll back to an earlier build instead.",
         "The Play Protect warning and a Play Protect block are different things: one asks, the other refuses. Do not override a block.",
       ]}
@@ -71,7 +71,7 @@ export default function NotWorkingPage() {
           {
             n: "01",
             title: "Does one title fail, or all of them?",
-            body: "One title failing is a source problem — switch server. All titles failing is a provider-selection, connection or DNS problem, and switching server will not help.",
+            body: "One title failing is a source problem. Switch server. All titles failing is a provider-selection, connection or DNS problem, and switching server will not help.",
           },
           {
             n: "02",
@@ -86,7 +86,7 @@ export default function NotWorkingPage() {
           {
             n: "04",
             title: "Is it only on one device?",
-            body: "If a phone works and a TV box does not, the problem is device-specific — memory, decoding, or network — rather than the app or the source.",
+            body: "If a phone works and a TV box does not, the problem is device-specific, memory, decoding, or network, rather than the app or the source.",
           },
         ]}
       />
@@ -99,7 +99,7 @@ export default function NotWorkingPage() {
       </p>
       <ol>
         <li>
-          <strong>Switch provider in settings.</strong> Not server — provider.
+          <strong>Switch provider in settings.</strong> Not server. Provider.
           Different providers index different catalogs entirely.
         </li>
         <li>
@@ -113,7 +113,7 @@ export default function NotWorkingPage() {
         <li>
           <strong>Check your DNS.</strong> Some ISPs block provider domains
           outright. Switching DNS often restores them instantly, and a VPN does
-          the same more heavily — see{" "}
+          the same more heavily. See{" "}
           <InternalLink intent="vpn" currentPath={R.notWorking} />.
         </li>
         <li>
@@ -130,10 +130,10 @@ export default function NotWorkingPage() {
       <h2 id="buffering">Buffering and stalling</h2>
       <QuickSummary
         bullets={[
-          "Switch server first — one overloaded source causes most buffering, and the next one is often instant.",
+          "Switch server first: one overloaded source causes most buffering, and the next one is often instant.",
           "Lower the playback quality. Asking a marginal connection for 1080p guarantees buffering.",
           "Prefer 5 GHz Wi-Fi, or Ethernet on a TV box. This is the single biggest fix on a TV.",
-          "Close background apps on a device with 1 GB or 2 GB of RAM — memory pressure presents as buffering.",
+          "Close background apps on a device with 1 GB or 2 GB of RAM: memory pressure presents as buffering.",
           "Test your actual speed. Below roughly 10 Mbps, 1080p will not hold reliably from any source.",
         ]}
       >
@@ -150,7 +150,7 @@ export default function NotWorkingPage() {
           [
             "Overloaded source",
             "Switching server fixes it immediately",
-            "Switch server — this is the majority of cases",
+            "Switch server. This is the majority of cases",
           ],
           [
             "Quality above what the connection supports",
@@ -192,7 +192,7 @@ export default function NotWorkingPage() {
         </li>
         <li>
           <strong>Signature conflict.</strong> An existing copy signed by someone
-          else — typically a repackaged build. Uninstall it first. See{" "}
+          else, typically a repackaged build. Uninstall it first. See{" "}
           <InternalLink intent="installConflict" currentPath={R.notWorking} />.
         </li>
         <li>
@@ -206,7 +206,7 @@ export default function NotWorkingPage() {
         </li>
         <li>
           <strong>Permission granted to the wrong app.</strong> Install-from-unknown-sources
-          is per app. Grant it to whatever you are opening the file from — see{" "}
+          is per app. Grant it to whatever you are opening the file from. See{" "}
           <InternalLink intent="installUnknownSources" currentPath={R.notWorking} />.
         </li>
       </ul>
@@ -246,7 +246,7 @@ export default function NotWorkingPage() {
       <h2 id="crash">Crashes on launch</h2>
       <p>
         The app installs, then closes immediately or within seconds of opening.
-        Work through these in order — each is less destructive than the next.
+        Work through these in order. Each is less destructive than the next.
       </p>
       <ol>
         <li>
@@ -259,7 +259,7 @@ export default function NotWorkingPage() {
           where memory fragmentation after long uptime is a real cause.
         </li>
         <li>
-          <strong>Clear the data.</strong> Destructive — this deletes favourites,
+          <strong>Clear the data.</strong> Destructive: this deletes favourites,
           history and downloads. It resolves crashes caused by a corrupt local
           database.
         </li>
@@ -307,7 +307,7 @@ export default function NotWorkingPage() {
       <QuickSummary
         bullets={[
           "Do not reinstall. It will fetch the same build that broke things and delete your data on the way.",
-          "Install the previous build over the top without uninstalling — favourites survive if the signature matches.",
+          "Install the previous build over the top without uninstalling: favourites survive if the signature matches.",
           "Decline the in-app updater afterwards, or it will put you straight back where you started.",
           "If Android refuses the downgrade, uninstalling is the only route and you lose local data.",
         ]}
@@ -316,14 +316,14 @@ export default function NotWorkingPage() {
           Updates to an aggregator mainly change provider scrapers, so an update
           genuinely can be a downgrade for you personally by dropping a source
           you relied on. Rolling back is a legitimate fix here, not a
-          workaround — see{" "}
+          workaround. See{" "}
           <InternalLink intent="oldVersions" currentPath={R.notWorking} />.
         </p>
       </QuickSummary>
 
       <h2 id="nuclear">When nothing else works</h2>
       <p>
-        In order, from least to most destructive. Do not skip ahead — the
+        In order, from least to most destructive. Do not skip ahead. The
         aggressive steps lose data and usually fix nothing that the gentle ones
         would not have.
       </p>

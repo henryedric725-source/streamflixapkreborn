@@ -53,7 +53,7 @@ const usbHowTo: HowToData = {
   steps: [
     {
       name: "Install a file manager on the TV first",
-      text: "Android TV ships without a usable file manager. Install one from the Play Store on the device before you need it — doing this after you have already plugged in the USB stick is more awkward than it sounds.",
+      text: "Android TV ships without a usable file manager. Install one from the Play Store on the device before you need it, doing this after you have already plugged in the USB stick is more awkward than it sounds.",
     },
     {
       name: "Copy the APK to a USB stick",
@@ -85,13 +85,13 @@ export default function AndroidTvPage() {
       dateModified="2026-08-15"
       kicker="Android TV and Google TV"
       h1="StreamFlix for Android TV and Google TV"
-      answer="Install StreamFlix Reborn by sideloading — via USB with a file manager, or over your network with a sideload helper. Reborn ships a genuine leanback interface for D-pad navigation; StreamFlix 2.0 has no TV layout, so it is the wrong choice on any television."
+      answer="Install StreamFlix Reborn by sideloading, via USB with a file manager, or over your network with a sideload helper. Reborn ships a genuine leanback interface for D-pad navigation; StreamFlix 2.0 has no TV layout, so it is the wrong choice on any television."
       toc={toc}
       faqs={androidTvFaqs}
       howTo={usbHowTo}
       downloadVariant={REBORN}
       takeaways={[
-        "StreamFlix Reborn is the only variant with a real leanback interface. On a TV that difference is not cosmetic — it decides whether the app is usable.",
+        "StreamFlix Reborn is the only variant with a real leanback interface. On a TV that difference is not cosmetic: it decides whether the app is usable.",
         "Install a file manager on the TV box before you need one. Android TV does not ship with a usable one.",
         "Google TV deliberately hides sideloaded apps from the main launcher. The app is installed; only the launcher entry is missing.",
         "An Nvidia Shield handles high-bitrate streams without stuttering where 1 GB budget boxes do not.",
@@ -156,8 +156,8 @@ export default function AndroidTvPage() {
 
       <h2 id="network">The network method</h2>
       <p>
-        Useful when the device has no USB port — a Chromecast with Google TV,
-        for instance — or when you expect to sideload more than once.
+        Useful when the device has no USB port: a Chromecast with Google TV,
+        for instance, or when you expect to sideload more than once.
       </p>
       <ol>
         <li>
@@ -178,7 +178,7 @@ export default function AndroidTvPage() {
         </li>
       </ol>
       <p>
-        Both devices must be on the same network and the same subnet — guest
+        Both devices must be on the same network and the same subnet: guest
         Wi-Fi networks usually isolate clients from each other, which makes the
         address unreachable and is the most common reason this method appears
         broken.
@@ -194,7 +194,7 @@ export default function AndroidTvPage() {
           "Google TV curates its Apps row and deliberately excludes sideloaded apps from it.",
           "Reach it via Settings, Apps, See all apps, then select it and choose Open.",
           "A launcher shortcut utility from the Play Store will pin it to the home screen permanently.",
-          "Some Android TV builds do show sideloaded apps in the Apps row — behaviour differs by manufacturer and OS version.",
+          "Some Android TV builds do show sideloaded apps in the Apps row. Behaviour differs by manufacturer and OS version.",
         ]}
       >
         <p>
@@ -212,7 +212,7 @@ export default function AndroidTvPage() {
           },
           {
             title: "The source picker",
-            body: "The most useful control on a TV. Open it during playback to switch server without leaving the title — far quicker than backing out and re-entering.",
+            body: "The most useful control on a TV. Open it during playback to switch server without leaving the title: far quicker than backing out and re-entering.",
           },
           {
             title: "Subtitle styling",
@@ -252,14 +252,14 @@ export default function AndroidTvPage() {
           ],
           [
             "Built-in Android TV (Sony, TCL, Philips)",
-            "1.5–2 GB",
+            "1.5-2 GB",
             "Varies widely by model and by how much the manufacturer preloaded",
           ],
         ]}
       />
       <p>
         If you are buying hardware specifically to run this kind of app on a TV,
-        the Shield is the safest choice — it has enough headroom that playback
+        the Shield is the safest choice. It has enough headroom that playback
         problems become network problems rather than device problems.
       </p>
 
@@ -271,7 +271,7 @@ export default function AndroidTvPage() {
           [
             "App installed but not on the home screen",
             "Google TV hides sideloaded apps",
-            "Settings, Apps, See all apps — or install a shortcut utility",
+            "Settings, Apps, See all apps, or install a shortcut utility",
           ],
           [
             "No file manager to open the APK with",
@@ -304,7 +304,7 @@ export default function AndroidTvPage() {
       <p>
         For Fire TV specifically see{" "}
         <InternalLink intent="firestick" currentPath={R.androidTv} />, and for
-        Samsung or LG sets — which cannot run an APK at all — see{" "}
+        Samsung or LG sets, which cannot run an APK at all, see{" "}
         <InternalLink intent="smartTv" currentPath={R.androidTv} />.
       </p>
     </ClusterPage>

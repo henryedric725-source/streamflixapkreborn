@@ -1,9 +1,8 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import type { AppVariant } from "@/lib/variants";
-import { REBORN, V2 } from "@/lib/variants";
+import { STAGED_PACKAGE } from "@/lib/package";
 
-function releaseOnDisk(fileName: string) {
+function onDisk(fileName: string) {
   return existsSync(join(process.cwd(), "public", "releases", fileName));
 }
 
@@ -13,34 +12,26 @@ function releaseOnDisk(fileName: string) {
  * even when `/releases/...` returns 200. Treat production as staged once the
  * binaries are committed for publish.
  */
-function packageAvailable(fileName: string) {
-  if (releaseOnDisk(fileName)) return true;
+function available(fileName: string) {
+  if (onDisk(fileName)) return true;
   return process.env.NODE_ENV === "production";
 }
 
 /**
- * Gate for `downloadUrl` in SoftwareApplication schema and for the primary
- * download button. While a binary is absent the button falls back to the
- * official-sources row and schema omits `downloadUrl` entirely, so we never
- * advertise a file that would 404.
+ * Gate for `downloadUrl` in SoftwareApplication schema and for every download
+ * button. While the binary is absent the button falls back to the on-page
+ * download section and schema omits `downloadUrl`, so we never advertise a file
+ * that would 404.
  */
-export function isVariantStaged(variant: AppVariant) {
-  return packageAvailable(variant.fileName);
+export function isPackageStaged() {
+  return available(STAGED_PACKAGE.fileName);
 }
 
 export function isFileStaged(fileName: string) {
-  return packageAvailable(fileName);
+  return available(fileName);
 }
 
 export function stagedMap() {
-  return {
-    reborn: isVariantStaged(REBORN),
-    v2: isVariantStaged(V2),
-  } as const;
-}
-
-export function stagedFileMap(fileNames: string[]) {
-  return Object.fromEntries(
-    fileNames.map((fileName) => [fileName, isFileStaged(fileName)]),
-  );
+  const staged = isPackageStaged();
+  return { reborn: staged, v2: staged } as const;
 }

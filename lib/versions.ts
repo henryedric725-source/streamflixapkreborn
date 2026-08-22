@@ -49,11 +49,11 @@ export const releases: ApkRelease[] = [
     headline: "Current stable Reborn build",
     notes: [
       "Latest published release on the project's GitHub and Uptodown listings",
-      "Universal package — the same file serves phones, Android TV, Google TV and Fire TV",
+      "Universal package: the same file serves phones, Android TV, Google TV and Fire TV",
       "Overlay-installs over any 1.7.x build and keeps favourites and playback history",
       "Provider list and server failover from the 1.7 series",
     ],
-    recommendedFor: "Everyone on Android 5.0 or newer — this is the default choice",
+    recommendedFor: "Everyone on Android 5.0 or newer. This is the default choice",
   },
   {
     variant: "reborn",
@@ -87,7 +87,7 @@ export const releases: ApkRelease[] = [
     fileName: "streamflix-reborn-1.6.120.apk",
     headline: "Last of the 1.6 series",
     notes: [
-      "Predates the 1.7 player rewrite — worth trying if 1.7 stutters on older hardware",
+      "Predates the 1.7 player rewrite: worth trying if 1.7 stutters on older hardware",
       "Lighter memory footprint on 1 GB and 2 GB Android TV boxes",
       "Settings migrate forward to 1.7 but not backward from it",
     ],
@@ -106,11 +106,11 @@ export const releases: ApkRelease[] = [
     fileName: "streamflix-reborn-1.5.90.apk",
     headline: "Legacy build, archived for reference",
     notes: [
-      "Kept for completeness — several providers bundled here no longer resolve",
+      "Kept for completeness: several providers bundled here no longer resolve",
       "No in-app updater path to the current series; install 1.7.230 over the top instead",
       "Not recommended for daily use",
     ],
-    recommendedFor: "Reference only — do not install unless you are testing a specific regression",
+    recommendedFor: "Reference only. Do not install unless you are testing a specific regression",
   },
   {
     variant: "v2",
@@ -127,7 +127,7 @@ export const releases: ApkRelease[] = [
     notes: [
       "Matches the build currently listed on Google Play and APKPure",
       "Offline downloads and the eight-language subtitle set are both present",
-      "Installing from Play is preferable where available — it updates itself",
+      "Installing from Play is preferable where available: it updates itself",
     ],
     recommendedFor: "Phones and tablets on Android 6.0 or newer",
   },

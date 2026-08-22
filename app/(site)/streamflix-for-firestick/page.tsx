@@ -62,7 +62,7 @@ const howTo: HowToData = {
     },
     {
       name: "Enter the APK URL",
-      text: "Open Downloader, select the URL field, type the direct APK address, and press Go. Typing a URL with a remote is tedious, so keep it short — this is why sideload URLs are usually shortened.",
+      text: "Open Downloader, select the URL field, type the direct APK address, and press Go. Typing a URL with a remote is tedious, so keep it short. This is why sideload URLs are usually shortened.",
     },
     {
       name: "Install, then delete the installer",
@@ -86,7 +86,7 @@ export default function FirestickPage() {
       dateModified="2026-08-16"
       kicker="Fire TV install"
       h1="How to Install StreamFlix on Firestick and Fire TV"
-      answer="Install StreamFlix Reborn with the Downloader app: enable it under Settings, My Fire TV, Developer Options, Install unknown apps, then fetch the APK by URL. Reborn is the only variant worth installing here — it ships a real leanback interface, where StreamFlix 2.0 has none."
+      answer="Install StreamFlix Reborn with the Downloader app: enable it under Settings, My Fire TV, Developer Options, Install unknown apps, then fetch the APK by URL. Reborn is the only variant worth installing here: it ships a real leanback interface, where StreamFlix 2.0 has none."
       toc={toc}
       faqs={firestickFaqs}
       howTo={howTo}
@@ -101,7 +101,7 @@ export default function FirestickPage() {
       }}
       takeaways={[
         "Neither StreamFlix app is in the Amazon Appstore, so sideloading through Downloader is the only route on Fire TV.",
-        "Install StreamFlix Reborn, not StreamFlix 2.0 — only Reborn has a D-pad interface, and the difference is severe on a remote.",
+        "Install StreamFlix Reborn, not StreamFlix 2.0. Only Reborn has a D-pad interface, and the difference is severe on a remote.",
         "Developer Options may be hidden. Reveal it by clicking the device name seven times under Settings, My Fire TV, About.",
         "Delete the downloaded APK after installing. Fire TV Stick storage is tight and the installer serves no further purpose.",
         "Sideloaded apps appear at the end of the Apps row, never on the home screen. Move it forward or you will hunt for it every time.",
@@ -114,7 +114,7 @@ export default function FirestickPage() {
         context="Fire TV Stick and Fire TV"
       />
       <p>
-        Both apps will technically install — Fire OS is Android underneath — but
+        Both apps will technically install, Fire OS is Android underneath, but
         only one is usable. StreamFlix Reborn ships a leanback interface built
         for a D-pad: focus states land where you aimed, text is sized for
         viewing across a room, and no virtual-cursor app is needed.
@@ -123,7 +123,7 @@ export default function FirestickPage() {
         StreamFlix 2.0 has a phone layout only. On a television that means
         controls positioned for a fingertip, text sized for arm&rsquo;s length,
         and scrolling that fights the remote. If you have already installed it
-        on a Firestick and found it unpleasant, that is why — install{" "}
+        on a Firestick and found it unpleasant, that is why. Install{" "}
         <InternalLink intent="reborn" currentPath={R.firestick} /> instead.
       </p>
 
@@ -188,7 +188,7 @@ export default function FirestickPage() {
       <h2 id="find-it">Finding a sideloaded app</h2>
       <p>
         Amazon deliberately keeps sideloaded apps off the home screen. After
-        installing, the app is not missing — it is at the end of the Apps row.
+        installing, the app is not missing. It is at the end of the Apps row.
       </p>
       <ul>
         <li>
@@ -223,14 +223,14 @@ export default function FirestickPage() {
           ["Select", "Open a title", "Play or pause"],
           ["Back", "Return to the previous screen", "Exit playback"],
           ["Menu (three lines)", "Open contextual options", "Open the source and server picker"],
-          ["Play/Pause", "—", "Play or pause"],
-          ["Long-press select", "App options in the Apps row", "—"],
+          ["Play/Pause", ", ", "Play or pause"],
+          ["Long-press select", "App options in the Apps row", ", "],
         ]}
       />
       <p>
         The source and server picker is the control worth knowing. When a stream
         stalls, opening it and choosing another entry is faster and more likely
-        to work than backing out and re-entering the title — see{" "}
+        to work than backing out and re-entering the title. See{" "}
         <InternalLink intent="switchServers" currentPath={R.firestick} />.
       </p>
 
@@ -269,7 +269,7 @@ export default function FirestickPage() {
       <p>
         On the older sticks, an earlier build is often genuinely smoother
         because the 1.6 player is lighter on memory. That is a legitimate fix
-        rather than a compromise — see{" "}
+        rather than a compromise. See{" "}
         <InternalLink intent="oldVersions" currentPath={R.firestick} />.
       </p>
 
@@ -280,10 +280,10 @@ export default function FirestickPage() {
       </p>
       <QuickSummary
         bullets={[
-          "Delete the downloaded APK from Downloader immediately after installing — it is 31 MB doing nothing.",
+          "Delete the downloaded APK from Downloader immediately after installing. It is 31 MB doing nothing.",
           "Clear Downloader's own cache periodically; it accumulates.",
           "Uninstall preinstalled apps you never open. This frees more than anything else you can do.",
-          "Clear StreamFlix's cache if playback becomes erratic — cache growth is a common cause on constrained devices.",
+          "Clear StreamFlix's cache if playback becomes erratic. Cache growth is a common cause on constrained devices.",
         ]}
       >
         <p>
@@ -301,7 +301,7 @@ export default function FirestickPage() {
         rows={[
           [
             "Downloader shows a blank page",
-            "Mistyped URL — easy with a remote",
+            "Mistyped URL: easy with a remote",
             "Re-enter carefully, or use Downloader's browser to navigate instead",
           ],
           [
@@ -332,8 +332,8 @@ export default function FirestickPage() {
         ]}
       />
       <p>
-        Symptoms that are not Fire TV specific — no sources found, crashes,
-        black screen with audio — are diagnosed on{" "}
+        Symptoms that are not Fire TV specific, no sources found, crashes,
+        black screen with audio. Are diagnosed on{" "}
         <InternalLink intent="notWorking" currentPath={R.firestick} />. For a
         VPN on Fire TV specifically, see{" "}
         <InternalLink intent="vpn" currentPath={R.firestick} />.

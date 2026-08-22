@@ -79,14 +79,14 @@ export default function SmartTvPage() {
       dateModified="2026-08-13"
       kicker="Smart TV and casting"
       h1="StreamFlix on Smart TV: What Works and What Cannot"
-      answer="It depends entirely on what your television runs. Samsung's Tizen and LG's webOS are not Android and cannot install an APK at all — casting or a streaming stick are your only routes. TVs running Android TV or Google TV can install StreamFlix Reborn directly."
+      answer="It depends entirely on what your television runs. Samsung's Tizen and LG's webOS are not Android and cannot install an APK at all, casting or a streaming stick are your only routes. TVs running Android TV or Google TV can install StreamFlix Reborn directly."
       toc={toc}
       faqs={smartTvFaqs}
       howTo={castHowTo}
       downloadVariant={REBORN}
       takeaways={[
         "Samsung (Tizen) and LG (webOS) cannot run an APK under any circumstances. No tutorial changes this.",
-        "TVs running Android TV or Google TV — Sony, TCL, Philips, Hisense and others — can install StreamFlix Reborn by sideloading.",
+        "TVs running Android TV or Google TV, Sony, TCL, Philips, Hisense and others, can install StreamFlix Reborn by sideloading.",
         "Casting works from an Android phone but ties up the phone for the whole session and depends on your Wi-Fi.",
         "A streaming stick is usually the right answer: cheap, gives you the proper TV interface, and frees the phone.",
         "Chromecast with Google TV installs apps; older cast-only Chromecast dongles do not run apps at all.",
@@ -101,14 +101,14 @@ export default function SmartTvPage() {
         caption="Whether each Smart TV platform can install StreamFlix directly"
         headers={["Your TV brand", "Operating system", "Can it install an APK?"]}
         rows={[
-          ["Samsung", "Tizen", "No — not Android"],
-          ["LG", "webOS", "No — not Android"],
+          ["Samsung", "Tizen", "No, not Android"],
+          ["LG", "webOS", "No, not Android"],
           ["Sony", "Google TV / Android TV", "Yes, by sideloading"],
           ["TCL", "Google TV or Roku, depending on model", "Google TV models yes; Roku models no"],
           ["Hisense", "Google TV, VIDAA or Roku, by model", "Google TV models only"],
           ["Philips", "Android TV or Titan OS, by model", "Android TV models only"],
-          ["Any TV + Fire TV Stick", "Fire OS on the stick", "Yes — the stick runs it, not the TV"],
-          ["Any TV + Chromecast with Google TV", "Google TV on the dongle", "Yes — the dongle runs it"],
+          ["Any TV + Fire TV Stick", "Fire OS on the stick", "Yes. The stick runs it, not the TV"],
+          ["Any TV + Chromecast with Google TV", "Google TV on the dongle", "Yes. The dongle runs it"],
         ]}
       />
       <p>
@@ -129,7 +129,7 @@ export default function SmartTvPage() {
         that changes this. Tutorials claiming otherwise are describing a
         different device or are simply wrong. Both platforms do have developer
         modes, but they exist for installing Tizen and webOS apps that a
-        developer built — not for running Android packages.
+        developer built, not for running Android packages.
       </p>
       <p>
         Your two real options on these sets are casting from a phone, or adding
@@ -176,7 +176,7 @@ export default function SmartTvPage() {
         bullets={[
           "A Fire TV Stick or Chromecast with Google TV plugs into any HDMI port and runs Android underneath.",
           "That gives you StreamFlix Reborn's real leanback interface rather than a mirrored phone screen.",
-          "The phone is freed entirely — the stick streams directly and is driven by its own remote.",
+          "The phone is freed entirely: the stick streams directly and is driven by its own remote.",
           "It works on Samsung and LG sets exactly as it does on any other TV, because the TV is only acting as a display.",
         ]}
       >
@@ -192,14 +192,14 @@ export default function SmartTvPage() {
       <h2 id="android-tvs">TVs that can install it directly</h2>
       <p>
         A significant share of televisions sold in the last few years run
-        Android TV or Google TV as their built-in system — Sony across the
+        Android TV or Google TV as their built-in system: Sony across the
         range, plus many TCL, Hisense and Philips models. On those, no extra
         hardware is needed.
       </p>
       <p>
         Check under Settings → About: if it mentions Android TV or Google TV,
         you can sideload directly. Be careful with brands that ship different
-        operating systems by model — a TCL running Roku cannot install an APK
+        operating systems by model: a TCL running Roku cannot install an APK
         while a TCL running Google TV can, despite the same badge on the bezel.
       </p>
       <p>
@@ -231,7 +231,7 @@ export default function SmartTvPage() {
           then confirm the install.
         </li>
         <li>
-          Verify the package name reads <code>{REBORN.packageName}</code> — see{" "}
+          Verify the package name reads <code>{REBORN.packageName}</code>. See{" "}
           <InternalLink intent="installVerify" currentPath={R.smartTv} />.
         </li>
       </ol>
@@ -243,31 +243,31 @@ export default function SmartTvPage() {
         rows={[
           [
             "Streaming stick",
-            "Best — decoded on the device, no re-encode",
+            "Best: decoded on the device, no re-encode",
             "No",
             "Anyone using a TV regularly",
           ],
           [
             "Built-in Android TV",
-            "Best — same as a stick, no extra hardware",
+            "Best: same as a stick, no extra hardware",
             "No",
             "Sony, and Google TV models from other brands",
           ],
           [
             "Screen mirroring",
-            "Fair — re-encoded and sent over Wi-Fi",
+            "Fair: re-encoded and sent over Wi-Fi",
             "Yes",
             "Occasional viewing on a Samsung or LG set",
           ],
           [
             "HDMI cable from phone",
-            "Good — no wireless hop",
+            "Good, no wireless hop",
             "Yes",
             "Weak Wi-Fi, if your phone supports video out",
           ],
           [
             "Emulator on a laptop, HDMI to TV",
-            "Fair — emulator overhead",
+            "Fair: emulator overhead",
             "No",
             "You already have the laptop set up",
           ],
@@ -275,7 +275,7 @@ export default function SmartTvPage() {
       />
       <DeviceMatrix caption="Full device support matrix for both StreamFlix apps" />
       <p>
-        For iPhone users specifically, casting is not available either — see{" "}
+        For iPhone users specifically, casting is not available either. See{" "}
         <InternalLink intent="ios" currentPath={R.smartTv} /> for why, and what
         the realistic alternatives are.
       </p>

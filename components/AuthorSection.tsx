@@ -48,7 +48,7 @@ export function AuthorSection({ reviewedOn }: { reviewedOn?: string }) {
             <span className="font-normal text-zinc-400">({SITE_AUTHOR.name})</span>
           </h2>
           <p className="mt-1 text-sm text-zinc-500">
-            {SITE_AUTHOR.role} &middot; {SITE_AUTHOR.experienceYears} years
+            {SITE_AUTHOR.role}, {SITE_AUTHOR.experienceYears} years
             documenting Android sideloading
           </p>
         </div>

@@ -48,7 +48,7 @@ export function Sources({ path }: { path: string }) {
                 {source.title}
                 <ExternalLink className="h-3 w-3 shrink-0" aria-hidden />
               </a>
-              <span className="text-zinc-500"> — {source.publisher}</span>
+              <span className="text-zinc-500">: {source.publisher}</span>
               <span className="mt-0.5 block text-zinc-400">
                 Cited for: {source.supports}.
               </span>

@@ -96,7 +96,7 @@ export const v2Faqs: FaqItem[] = [
   },
   {
     question: "Why is StreamFlix 2.0 so much larger than Reborn?",
-    answer: `StreamFlix 2.0 is ${V2.sizeLabel} against Reborn's ${REBORN.sizeLabel}, roughly 2.4 times the size, largely due to bundled advertising and analytics libraries. The larger download does not buy a broader feature set — it has no TV interface, where Reborn does.`,
+    answer: `StreamFlix 2.0 is ${V2.sizeLabel} against Reborn's ${REBORN.sizeLabel}, roughly 2.4 times the size, largely due to bundled advertising and analytics libraries. The larger download does not buy a broader feature set. It has no TV interface, where Reborn does.`,
   },
 ];
 
@@ -155,12 +155,12 @@ export const androidTvFaqs: FaqItem[] = [
   {
     question: "Does StreamFlix have a proper Android TV app?",
     answer:
-      "StreamFlix Reborn does — it ships a genuine leanback interface designed for D-pad navigation on Android TV, Google TV and Fire TV. StreamFlix 2.0 does not and only offers its phone layout, which is frustrating with a remote.",
+      "StreamFlix Reborn does: it ships a genuine leanback interface designed for D-pad navigation on Android TV, Google TV and Fire TV. StreamFlix 2.0 does not and only offers its phone layout, which is frustrating with a remote.",
   },
   {
     question: "Why doesn't my sideloaded app show in the Google TV launcher?",
     answer:
-      "Google TV deliberately hides sideloaded apps from the main Apps row. Reach it through Settings, Apps, See all apps, or install a shortcut utility that pins it to the launcher. The app itself is installed and working — it is only the launcher entry that is missing.",
+      "Google TV deliberately hides sideloaded apps from the main Apps row. Reach it through Settings, Apps, See all apps, or install a shortcut utility that pins it to the launcher. The app itself is installed and working. It is only the launcher entry that is missing.",
   },
   {
     question: "What is the easiest way to get an APK onto an Android TV box?",
@@ -178,7 +178,7 @@ export const pcFaqs: FaqItem[] = [
   {
     question: "Is there a StreamFlix app for PC?",
     answer:
-      "No native Windows or Mac build exists for either variant. Every 'StreamFlix for PC' route is an Android emulator — BlueStacks, LDPlayer, or Windows Subsystem for Android — running the same APK you would install on a phone.",
+      "No native Windows or Mac build exists for either variant. Every 'StreamFlix for PC' route is an Android emulator, BlueStacks, LDPlayer, or Windows Subsystem for Android, running the same APK you would install on a phone.",
   },
   {
     question: "Which emulator works best for StreamFlix?",
@@ -188,7 +188,7 @@ export const pcFaqs: FaqItem[] = [
   {
     question: "Can I run StreamFlix on a Mac?",
     answer:
-      "On Apple silicon, yes — BlueStacks Air runs Android natively enough for this. On Intel Macs the experience is markedly slower. There is no macOS build of either app, so an emulator is the only route either way.",
+      "On Apple silicon, yes. BlueStacks Air runs Android natively enough for this. On Intel Macs the experience is markedly slower. There is no macOS build of either app, so an emulator is the only route either way.",
   },
   {
     question: "Is an emulator slower than running StreamFlix on a phone?",
@@ -234,7 +234,7 @@ export const smartTvFaqs: FaqItem[] = [
   {
     question: "Does StreamFlix work on a Chromecast?",
     answer:
-      "On Chromecast with Google TV, yes — it runs full Google TV and installs the APK properly. On the older cast-only Chromecast dongles, no: those run no apps at all and can only receive a cast from another device.",
+      "On Chromecast with Google TV, yes. It runs full Google TV and installs the APK properly. On the older cast-only Chromecast dongles, no: those run no apps at all and can only receive a cast from another device.",
   },
 ];
 
@@ -298,7 +298,7 @@ export const troubleshootingFaqs: FaqItem[] = [
   {
     question: "Why does StreamFlix crash on launch?",
     answer:
-      "Clear the app's cache first, then its data if that fails. If it still crashes, the current build may not agree with your device — install an earlier build from the archive, which is the specific reason we keep one.",
+      "Clear the app's cache first, then its data if that fails. If it still crashes, the current build may not agree with your device. Install an earlier build from the archive, which is the specific reason we keep one.",
   },
   {
     question: "Why do I get a black screen with sound but no video?",
@@ -431,7 +431,7 @@ export const modFaqs: FaqItem[] = [
   {
     question: "Is there an official StreamFlix mod APK?",
     answer:
-      "No. Neither developer publishes a mod, and there is nothing for a mod to unlock — both apps are already free with no premium tier, no subscription, and no paywalled features.",
+      "No. Neither developer publishes a mod, and there is nothing for a mod to unlock. Both apps are already free with no premium tier, no subscription, and no paywalled features.",
   },
   {
     question: "What do 'StreamFlix mod APK' downloads actually contain?",
@@ -459,7 +459,7 @@ export const alternativesFaqs: FaqItem[] = [
   {
     question: "Are Cinema HD and CyberFlix TV still working?",
     answer:
-      "Cinema HD still works but its updates have become irregular. CyberFlix TV has not been updated in years and most of its sources no longer resolve — any 2026 listicle still recommending it was not tested.",
+      "Cinema HD still works but its updates have become irregular. CyberFlix TV has not been updated in years and most of its sources no longer resolve: any 2026 listicle still recommending it was not tested.",
   },
   {
     question: "What is the difference between an aggregator and a catalog app?",
@@ -533,7 +533,7 @@ export const vsPaidFaqs: FaqItem[] = [
   {
     question: "Can I use both a free app and a paid subscription?",
     answer:
-      "Plenty of people do — a subscription for the things they watch attentively, and an aggregator for older or harder-to-find titles no service currently licenses. That is the most defensible use of an app like this.",
+      "Plenty of people do: a subscription for the things they watch attentively, and an aggregator for older or harder-to-find titles no service currently licenses. That is the most defensible use of an app like this.",
   },
 ];
 
@@ -592,7 +592,7 @@ export const blogIndexFaqs: FaqItem[] = [
   {
     question: "Which StreamFlix guide should I read first?",
     answer:
-      "The download hub, if you have not installed anything yet — it covers both apps side by side so you can tell which one you actually want. If something is already installed and misbehaving, go straight to the troubleshooting guide instead.",
+      "The download hub, if you have not installed anything yet. It covers both apps side by side so you can tell which one you actually want. If something is already installed and misbehaving, go straight to the troubleshooting guide instead.",
   },
   {
     question: "Why does this site have separate pages for each device?",
@@ -606,7 +606,7 @@ export const aboutFaqs: FaqItem[] = [
   {
     question: "How do you verify the version numbers on this site?",
     answer:
-      "Every figure is checked against the developer's own distribution point first — GitHub releases for StreamFlix Reborn and Google Play for StreamFlix 2.0 — then cross-checked against Uptodown, APKPure, Softonic and FileHippo. Where those disagree, the developer's own listing wins.",
+      "Every figure is checked against the developer's own distribution point first, GitHub releases for StreamFlix Reborn and Google Play for StreamFlix 2.0, then cross-checked against Uptodown, APKPure, Softonic and FileHippo. Where those disagree, the developer's own listing wins.",
   },
   {
     question: "Why do you cover two different apps under one name?",

@@ -112,7 +112,7 @@ const APACHE: Citation = {
 };
 
 const DMCA_LAW: Citation = {
-  title: "17 U.S. Code § 512 — Limitations on liability",
+  title: "17 U.S. Code § 512: Limitations on liability",
   publisher: "Cornell Law School, Legal Information Institute",
   url: "https://www.law.cornell.edu/uscode/text/17/512",
   supports:

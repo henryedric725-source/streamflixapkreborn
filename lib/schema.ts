@@ -16,7 +16,8 @@ import { citationsFor } from "@/lib/citations";
 import { ALL_ENTITY_NAMES, entityRefs, type EntityKey } from "@/lib/entities";
 import { R, isPostPath } from "@/lib/routes";
 import type { ApkRelease } from "@/lib/versions";
-import { REBORN, V2, variantApkPath, type AppVariant } from "@/lib/variants";
+import { REBORN, V2, type AppVariant } from "@/lib/variants";
+import { STAGED_PACKAGE, stagedPackagePath } from "@/lib/package";
 
 type Thing = Record<string, unknown>;
 
@@ -125,7 +126,11 @@ export function softwareApplicationNode(input: {
       : {}),
   };
   if (input.staged) {
-    node.downloadUrl = absoluteUrl(variantApkPath(variant));
+    // The site serves one package, so both nodes point at the same file and at
+    // its real size rather than the published figure for the app.
+    node.downloadUrl = absoluteUrl(stagedPackagePath());
+    node.fileSize = STAGED_PACKAGE.sizeLabel;
+    node.fileFormat = "application/octet-stream";
   }
   return node;
 }

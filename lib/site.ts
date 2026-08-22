@@ -5,7 +5,7 @@ import { REBORN, V2 } from "@/lib/variants";
 export const SITE_NAME = "StreamFlix APK";
 export const SITE_SHORT_NAME = "StreamFlix";
 export const SITE_TAGLINE =
-  "Free Android apps for movies, TV shows, and live channels — documented properly.";
+  "Free Android apps for movies, TV shows, and live channels: documented properly.";
 
 function resolveSiteUrl() {
   const explicit = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");

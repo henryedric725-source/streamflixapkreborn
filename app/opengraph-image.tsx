@@ -38,7 +38,7 @@ export default function OpenGraphImage() {
           {/* Single text child: satchel/ImageResponse requires explicit display
               on any element with more than one child node. */}
           <div style={{ marginTop: 18, fontSize: 30, color: "#A1A1A6" }}>
-            {`Reborn v${REBORN.version}  ·  StreamFlix 2.0 build ${V2.version}`}
+            {`Reborn v${REBORN.version}, StreamFlix 2.0 build ${V2.version}`}
           </div>
         </div>
         <div style={{ display: "flex", fontSize: 22, color: "#6B6B73" }}>

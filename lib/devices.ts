@@ -45,7 +45,7 @@ export const deviceMatrix: readonly DeviceRow[] = [
     device: "Android tablet",
     reborn: "sideload",
     v2: "native",
-    method: "Identical to phone — the same universal package",
+    method: "Identical to phone: the same universal package",
     difficulty: "Easy",
     guide: R.install,
     note: "Both variants scale to tablet layouts without a separate build.",
@@ -102,7 +102,7 @@ export const deviceMatrix: readonly DeviceRow[] = [
     device: "iPhone and iPad",
     reborn: "none",
     v2: "none",
-    method: "No method exists — iOS cannot install an APK",
+    method: "No method exists. IOS cannot install an APK",
     difficulty: "Fiddly",
     guide: R.ios,
     note:
@@ -130,7 +130,7 @@ export const deviceMatrix: readonly DeviceRow[] = [
     device: "Chromecast with Google TV",
     reborn: "native",
     v2: "none",
-    method: "Sideload — it runs full Google TV, so Reborn installs properly",
+    method: "Sideload. It runs full Google TV, so Reborn installs properly",
     difficulty: "Moderate",
     guide: R.smartTv,
     note:
@@ -143,7 +143,7 @@ export const deviceMatrix: readonly DeviceRow[] = [
     method: "Sideload via a file manager",
     difficulty: "Easy",
     guide: R.androidTv,
-    note: "The most capable Android TV hardware for this app — no transcoding bottleneck.",
+    note: "The most capable Android TV hardware for this app, no transcoding bottleneck.",
   },
 ];
 

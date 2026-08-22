@@ -49,7 +49,7 @@ export default function SafePage() {
       dateModified="2026-08-06"
       kicker="Safety and verification"
       h1="Is StreamFlix APK Safe? How to Check for Yourself"
-      answer="The official builds scan clean, and StreamFlix Reborn's Apache 2.0 source can be independently audited — something no closed-source app in this category allows. The real risk is not the official package but repackaged copies redistributed by mirror sites, which four quick checks will catch."
+      answer="The official builds scan clean, and StreamFlix Reborn's Apache 2.0 source can be independently audited, something no closed-source app in this category allows. The real risk is not the official package but repackaged copies redistributed by mirror sites, which four quick checks will catch."
       toc={toc}
       faqs={safetyFaqs}
       takeaways={[
@@ -64,7 +64,7 @@ export default function SafePage() {
       <p>
         The packages published by the two developers are clean. StreamFlix
         Reborn is additionally verifiable in a way almost nothing else in this
-        category is, because its source is public under Apache 2.0 — you do not
+        category is, because its source is public under Apache 2.0. You do not
         have to take anyone&rsquo;s word for what it does.
       </p>
       <p>
@@ -127,7 +127,7 @@ export default function SafePage() {
       <QuickSummary
         bullets={[
           "It confirms the file contains no known malware signature. That is genuinely useful.",
-          "It does not confirm the file is the developer's build — a repackaged APK with no malware also scans clean.",
+          "It does not confirm the file is the developer's build: a repackaged APK with no malware also scans clean.",
           "It does not evaluate what the app legitimately does, such as contacting third-party providers.",
           "A single engine flagging an app as 'riskware' or 'PUA' is common for sideloaded streaming apps and is a category label rather than a detection.",
         ]}
@@ -146,7 +146,7 @@ export default function SafePage() {
           [
             "Internet / network state",
             "Fetching catalog data and streams. The app does nothing without it",
-            "Yes — unavoidable",
+            "Yes: unavoidable",
           ],
           [
             "Storage (scoped)",
@@ -171,22 +171,22 @@ export default function SafePage() {
           [
             "Contacts",
             "No streaming function requires it",
-            "No — treat as repackaged",
+            "No. Treat as repackaged",
           ],
           [
             "SMS / call log",
             "No streaming function requires it",
-            "No — treat as repackaged",
+            "No. Treat as repackaged",
           ],
           [
             "Location",
             "No streaming function requires it",
-            "No — treat as repackaged",
+            "No. Treat as repackaged",
           ],
           [
             "Accessibility service",
             "Grants broad control over the device",
-            "No — a serious red flag here",
+            "No: a serious red flag here",
           ],
         ]}
       />
@@ -212,7 +212,7 @@ export default function SafePage() {
           {
             n: "03",
             title: "Check the signing certificate",
-            body: "An APK analyser app will show the signing certificate hash. Compare it against a build you already trust from an official source. Repackaging always changes the signature — it is the one thing a repackager cannot fake.",
+            body: "An APK analyser app will show the signing certificate hash. Compare it against a build you already trust from an official source. Repackaging always changes the signature. It is the one thing a repackager cannot fake.",
           },
           {
             n: "04",
@@ -232,7 +232,7 @@ export default function SafePage() {
       <h2 id="open-source">The open-source advantage</h2>
       <Definition term="Verifiable build">
         When source code is public, a published binary can be checked against
-        it — or rebuilt from scratch. That turns &ldquo;trust the
+        it, or rebuilt from scratch. That turns &ldquo;trust the
         publisher&rdquo; into &ldquo;check for yourself&rdquo;, which is a
         categorically different security position.
       </Definition>
@@ -247,7 +247,7 @@ export default function SafePage() {
         </li>
         <li>
           You can clone the repository, open it in Android Studio, and build
-          your own APK — bypassing the trust question entirely.
+          your own APK, bypassing the trust question entirely.
         </li>
         <li>
           Because the project signs its releases, a repackaged copy is
@@ -261,7 +261,7 @@ export default function SafePage() {
       </ul>
       <p>
         StreamFlix 2.0 offers none of this. It compensates with Google Play
-        distribution, where Google verifies the developer and the signature —
+        distribution, where Google verifies the developer and the signature 
         a different guarantee, weaker in kind but real. See{" "}
         <InternalLink intent="reborn" currentPath={R.safe} />.
       </p>
@@ -310,7 +310,7 @@ export default function SafePage() {
           [
             "'This app was not scanned' with an Install anyway option",
             "Routine sideload notice, shown for every app from outside Play",
-            "Proceed — it is about provenance, not content",
+            "Proceed. It is about provenance, not content",
           ],
           [
             "'Send to Google for scanning'",

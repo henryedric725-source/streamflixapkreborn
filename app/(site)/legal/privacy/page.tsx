@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
         <li>We do not sell, rent, or trade personal data.</li>
         <li>We do not build advertising profiles of visitors.</li>
         <li>We do not require or offer accounts.</li>
-        <li>We do not track what you watch — we have no way to observe that.</li>
+        <li>We do not track what you watch. We have no way to observe that.</li>
         <li>
           We do not receive any data from the StreamFlix apps. They do not
           communicate with this Site.
@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
       <h2>Cookies</h2>
       <p>
         The Site does not set advertising or cross-site tracking cookies. Any
-        cookies present are strictly functional — for example, remembering a
+        cookies present are strictly functional, for example, remembering a
         preference you set. Your browser can block or clear cookies at any time,
         and the Site remains fully usable if you do.
       </p>

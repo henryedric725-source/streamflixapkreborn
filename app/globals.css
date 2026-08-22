@@ -75,17 +75,40 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  border-radius: 0.4rem;
-  background: var(--color-flame);
+  gap: 0.6rem;
+  border-radius: 0.6rem;
+  /* Deeper than --color-flame so white label text clears 4.5:1 rather than
+     sitting just under it. */
+  background: #c60d26;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.25;
   letter-spacing: 0.01em;
-  transition: background 0.15s ease;
+  text-align: center;
+  text-decoration: none;
+  text-wrap: balance;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset;
+  transition:
+    background 0.15s ease,
+    transform 0.12s ease;
 }
 
 .btn-download:hover {
-  background: var(--color-flame-dark);
+  background: #e01530;
+  transform: translateY(-1px);
+}
+
+.btn-download:active {
+  transform: translateY(0);
+}
+
+/* The button often sits inside .prose-hub, whose anchor rule would otherwise
+   repaint the label pink and underline it. */
+.prose-hub a.btn-download,
+.btn-download:hover,
+.btn-download:visited {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .btn-download:focus-visible {

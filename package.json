@@ -14,7 +14,8 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "screenshots": "node scripts/build-screenshots.mjs",
     "audit": "node scripts/audit-content.mjs",
-    "logo": "node scripts/build-logo.mjs"
+    "logo": "node scripts/build-logo.mjs",
+    "typography": "node scripts/clean-typography.mjs"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.2",

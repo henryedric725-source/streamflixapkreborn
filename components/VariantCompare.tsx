@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Check, Minus } from "lucide-react";
-import { DownloadCta, OfficialSources } from "@/components/DownloadCta";
+import { DownloadCta } from "@/components/DownloadCta";
 import { REBORN, V2, VARIANT_COMPARE_ROWS } from "@/lib/variants";
 
 /**
@@ -69,8 +69,7 @@ export function VariantCompare({
             </p>
 
             <div className="mt-auto pt-5">
-              <DownloadCta variant={variant} staged={staged} showMeta={false} />
-              <OfficialSources variant={variant} />
+              <DownloadCta variant={variant} staged={staged} />
               <p className="mt-3 text-sm">
                 <Link
                   href={variant.path}

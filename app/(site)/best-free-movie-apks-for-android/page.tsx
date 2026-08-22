@@ -11,7 +11,7 @@ import { REBORN } from "@/lib/variants";
 
 const TITLE = "Best Free Movie APKs for Android (2026)";
 const DESCRIPTION =
-  "Free movie APKs ranked on maintenance, provider health, ad load and TV support — not on which one paid for placement. Includes the ones that stopped working.";
+  "Free movie APKs ranked on maintenance, provider health, ad load and TV support, not on which one paid for placement. Includes the ones that stopped working.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -77,10 +77,10 @@ export default function BestMovieApksPage() {
       }}
       takeaways={[
         "Last-updated date is the most important criterion in this category. An unmaintained app degrades to useless within a year or two.",
-        "StreamFlix Reborn ranks first for being maintained, open-source, ad-free in its own interface, and TV-capable — an uncommon combination.",
+        "StreamFlix Reborn ranks first for being maintained, open-source, ad-free in its own interface, and TV-capable: an uncommon combination.",
         "Catalog-size claims are marketing. The catalog belongs to third-party providers, so no app can honestly claim ownership of it.",
         "A real leanback TV interface is rare. Most apps recommended for Firestick are phone apps you fight with a remote.",
-        "Every app here shares the same structural weakness — none owns its content, so all of them break unpredictably.",
+        "Every app here shares the same structural weakness: none owns its content, so all of them break unpredictably.",
       ]}
     >
       <h2 id="criteria">How we ranked these</h2>
@@ -99,7 +99,7 @@ export default function BestMovieApksPage() {
           {
             n: "02",
             title: "How many provider fallbacks does it have?",
-            body: "More providers means more chances a given title resolves. This, not catalog size, is the real measure of coverage — because the catalog was never the app's to begin with.",
+            body: "More providers means more chances a given title resolves. This, not catalog size, is the real measure of coverage, because the catalog was never the app's to begin with.",
           },
           {
             n: "03",
@@ -121,7 +121,7 @@ export default function BestMovieApksPage() {
 
       <h2 id="ranking">The ranking</h2>
 
-      <h3>1. StreamFlix Reborn — the current pick</h3>
+      <h3>1. StreamFlix Reborn: the current pick</h3>
       <p>
         Ranks first on the criteria above rather than on catalog claims. It is
         actively maintained with frequent releases, carries 20+ providers,
@@ -143,7 +143,7 @@ export default function BestMovieApksPage() {
       {ranked.map((item, index) => (
         <div key={item.name}>
           <h3>
-            {index + 2}. {item.name} — {statusLabels[item.status]}
+            {index + 2}. {item.name}: {statusLabels[item.status]}
           </h3>
           <p>{item.positioning}</p>
           <p>
@@ -170,7 +170,7 @@ export default function BestMovieApksPage() {
       <Definition term="Free movie APK">
         An Android app, installed outside the Play Store, that indexes
         third-party streaming sources and plays them in its own player. It
-        almost never hosts video itself — which is both why it can be free and
+        almost never hosts video itself. Which is both why it can be free and
         why it breaks so often.
       </Definition>
       <p>
@@ -196,7 +196,7 @@ export default function BestMovieApksPage() {
         </li>
         <li>
           <strong>Why they disappear.</strong> Distribution channels get taken
-          down. It happened to the original StreamFlix — see{" "}
+          down. It happened to the original StreamFlix. See{" "}
           <InternalLink intent="dmcaHistory" currentPath={R.bestMovieApks} />.
         </li>
       </ul>
@@ -204,7 +204,7 @@ export default function BestMovieApksPage() {
       <h2 id="judge">How to judge one yourself</h2>
       <p>
         Rankings age badly in this category, so the useful skill is evaluating
-        an app rather than trusting a list — including this one.
+        an app rather than trusting a list, including this one.
       </p>
       <DataTable
         caption="How to evaluate any free movie APK before committing to it"
@@ -213,7 +213,7 @@ export default function BestMovieApksPage() {
           [
             "Last release date",
             "Within the last couple of months",
-            "Over a year ago — walk away",
+            "Over a year ago. Walk away",
           ],
           [
             "Where it is distributed",
@@ -243,7 +243,7 @@ export default function BestMovieApksPage() {
           [
             "Size",
             "Proportionate to the feature set",
-            "Very large for a simple app — usually bundled ad libraries",
+            "Very large for a simple app, usually bundled ad libraries",
           ],
         ]}
       />
@@ -254,7 +254,7 @@ export default function BestMovieApksPage() {
           "It recommends CyberFlix TV in 2026. The app has been dead for years; nothing on that list was tested.",
           "It claims a specific catalog size. No aggregator owns a catalog, so no honest number exists.",
           "Every app is described as 'safe and secure' with no distinctions drawn between them.",
-          "There is no last-updated date for any app listed — the single most important fact is missing.",
+          "There is no last-updated date for any app listed: the single most important fact is missing.",
           "Every download link routes through the same shortener or survey wall.",
           "It says an app 'works on Firestick' without distinguishing a real TV interface from an app that merely installs.",
         ]}
@@ -275,7 +275,7 @@ export default function BestMovieApksPage() {
         <li>Download from the developer&rsquo;s own source, or an established mirror that verifies signatures.</li>
         <li>Check the file size against the published figure.</li>
         <li>Confirm the package name after install.</li>
-        <li>Review the permission list — network and storage only.</li>
+        <li>Review the permission list: network and storage only.</li>
       </ol>
       <p>
         Detail on all four is on{" "}
@@ -294,13 +294,13 @@ export default function BestMovieApksPage() {
         None of these apps owns its content. That means streams fail
         unpredictably, quality varies per source, subtitles are inconsistent,
         offline downloads cannot be relied on, and any of them may disappear.
-        Switching between them does not fix that — it is the shape of the whole
+        Switching between them does not fix that. It is the shape of the whole
         category.
       </p>
       <p>
-        If you need a stream to start reliably and hold its quality — a long
+        If you need a stream to start reliably and hold its quality: a long
         flight, a film night with other people, anything where restarting three
-        times is unacceptable — a licensed service is the honest answer. That
+        times is unacceptable. A licensed service is the honest answer. That
         comparison is made properly on{" "}
         <InternalLink intent="vsPaid" currentPath={R.bestMovieApks} />. For a TV
         specifically, the shortlist narrows considerably:{" "}

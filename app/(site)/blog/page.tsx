@@ -9,7 +9,7 @@ import { R } from "@/lib/routes";
 import { CONTENT_UPDATED_DISPLAY } from "@/lib/site";
 
 const TITLE = "StreamFlix Blog: Every Guide and Article";
-const DESCRIPTION = `Every StreamFlix article on this site — ${allPosts.length} posts covering both apps, install per device, troubleshooting, safety, legality and alternatives.`;
+const DESCRIPTION = `Every StreamFlix article on this site: ${allPosts.length} posts covering both apps, install per device, troubleshooting, safety, legality and alternatives.`;
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -50,7 +50,7 @@ export default function BlogPage() {
       takeaways={[
         "One post per question. Nothing important is buried inside an article about something else.",
         "Start with the download hub if you are not sure which of the two StreamFlix apps you want.",
-        "Device posts cover only the method that device actually supports — including the ones where the answer is no.",
+        "Device posts cover only the method that device actually supports, including the ones where the answer is no.",
         "The troubleshooting post is ordered by what resolves problems most often, not alphabetically.",
         "Safety, legality and privacy are three separate questions and have three separate posts.",
       ]}
@@ -101,7 +101,7 @@ export default function BlogPage() {
       <p>
         One post per search intent, deliberately. Where two topics would compete
         for the same question, the weaker one lives as a section on the stronger
-        post rather than as its own thin URL — which is why there is no separate
+        post rather than as its own thin URL. Which is why there is no separate
         article for, say, &ldquo;StreamFlix unknown sources&rdquo;: it belongs
         inside <InternalLink intent="install" currentPath={R.blog} />.
       </p>

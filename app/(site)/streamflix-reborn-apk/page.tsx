@@ -3,7 +3,7 @@ import { AppScreenshot } from "@/components/AppScreenshot";
 import { ClusterPage } from "@/components/ClusterPage";
 import { KeyFacts, QuickSummary, SpecTable } from "@/components/ContentBlocks";
 import { DeviceMatrix } from "@/components/DeviceMatrix";
-import { DownloadCta, OfficialSources } from "@/components/DownloadCta";
+import { DownloadCta } from "@/components/DownloadCta";
 import { FeatureCards } from "@/components/HomeSections";
 import { InternalLink } from "@/components/InternalLink";
 import { ProsCons } from "@/components/ProsCons";
@@ -68,7 +68,7 @@ export default function RebornPage() {
       software={[{ variant: REBORN, staged: staged.reborn, installPath: `${R.reborn}#spec` }]}
       downloadVariant={REBORN}
       takeaways={[
-        `Package name is ${REBORN.packageName} — check it after install, because a different package name means you installed something else.`,
+        `Package name is ${REBORN.packageName}. Check it after install, because a different package name means you installed something else.`,
         "Apache 2.0 licensing means the source is public and the published build can be verified against it. No closed-source app in this category offers that.",
         "It is the only StreamFlix variant with a real leanback interface, which makes it the only sensible choice for Firestick, Android TV or Google TV.",
         "The original StreamFlix was removed after a DMCA complaint; Reborn continued from the open-source code and carries the same structural risk.",
@@ -100,10 +100,6 @@ export default function RebornPage() {
 
       <div className="not-prose mt-6 rounded-2xl border border-line bg-panel p-5">
         <DownloadCta variant={REBORN} staged={staged.reborn} />
-        <p className="mt-3 text-sm text-zinc-400">
-          Also published at the project&rsquo;s own distribution points:
-        </p>
-        <OfficialSources variant={REBORN} />
       </div>
 
       <h2 id="spec">Specification</h2>
@@ -128,7 +124,7 @@ export default function RebornPage() {
           ["Release date", REBORN.releasedOnDisplay],
           ["File size", REBORN.sizeLabel],
           ["Minimum Android", REBORN.minAndroid],
-          ["Architecture", "Universal — one file for all supported devices"],
+          ["Architecture", "Universal: one file for all supported devices"],
           ["Developer", REBORN.developer],
           ["Licence", REBORN.license],
           ["Source code", "Public on GitHub"],
@@ -173,7 +169,7 @@ export default function RebornPage() {
         <li>
           <strong>You can rebuild it.</strong> Clone the repository, open it in
           Android Studio, and produce your own build. That is the strongest
-          possible answer to &ldquo;is this APK safe&rdquo; — you can bypass the
+          possible answer to &ldquo;is this APK safe&rdquo;. You can bypass the
           question entirely.
         </li>
         <li>
@@ -185,7 +181,7 @@ export default function RebornPage() {
         <li>
           <strong>It explains the absence of ads.</strong> There is no
           advertising in Reborn&rsquo;s own interface because it is a project
-          rather than a monetised product — not because of a mod or a patch.
+          rather than a monetised product, not because of a mod or a patch.
         </li>
       </ul>
 
@@ -217,7 +213,7 @@ export default function RebornPage() {
         This is rarer than the listicles suggest. Most apps recommended for
         Firestick are phone apps that technically install on a TV and are then
         unpleasant to drive. Whether an app needs a mouse toggle utility is a
-        reliable test of whether it was actually built for TV — and Reborn does
+        reliable test of whether it was actually built for TV, and Reborn does
         not. Install steps are on{" "}
         <InternalLink intent="firestick" currentPath={R.reborn} /> and{" "}
         <InternalLink intent="androidTv" currentPath={R.reborn} />.
@@ -244,7 +240,7 @@ export default function RebornPage() {
           },
           {
             title: "Subtitle styling",
-            body: "Beyond selecting a track, Reborn adjusts subtitle size, colour and background — genuinely useful on a TV viewed from a distance.",
+            body: "Beyond selecting a track, Reborn adjusts subtitle size, colour and background: genuinely useful on a TV viewed from a distance.",
           },
           {
             title: "Audio track selection",
@@ -282,7 +278,7 @@ export default function RebornPage() {
           (release) =>
             [
               release.label,
-              `${release.releasedOn} · ${release.sizeMb} MB · ${release.headline}`,
+              `${release.releasedOn}, ${release.sizeMb} MB, ${release.headline}`,
             ] as [string, string],
         )}
       />
