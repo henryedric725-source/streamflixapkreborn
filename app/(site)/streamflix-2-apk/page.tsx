@@ -227,7 +227,7 @@ export default function V2Page() {
         That is a fair trade if you want a Play Store install and reliable
         downloads. It is a poor one if you are on a device with limited storage
         or a metered connection, and it is the reason the{" "}
-        <InternalLink intent="privacy" currentPath={R.v2} /> picture differs
+        <InternalLink intent="safe" currentPath={R.v2} /> picture differs
         between the two apps.
       </p>
 

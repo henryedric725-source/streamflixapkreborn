@@ -36,7 +36,6 @@ const nextConfig: NextConfig = {
       "streamflix-reborn-apk",
       "streamflix-2-apk",
       "streamflix-apk-old-versions",
-      "streamflix-apk-changelog",
       "streamflix-mod-apk",
       "how-to-install-streamflix-apk",
       "streamflix-for-firestick",
@@ -51,9 +50,7 @@ const nextConfig: NextConfig = {
       "is-streamflix-apk-safe",
       "is-streamflix-legal",
       "streamflix-vpn-guide",
-      "streamflix-permissions-and-privacy",
       "streamflix-alternatives",
-      "best-free-movie-apks-for-android",
       "best-streaming-apks-for-android-tv",
       "streamflix-vs-paid-streaming-apps",
     ];

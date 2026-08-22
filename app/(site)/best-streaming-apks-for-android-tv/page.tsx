@@ -287,7 +287,7 @@ export default function BestTvApksPage() {
         it. Detail on each is on{" "}
         <InternalLink intent="alternatives" currentPath={R.bestTvApks} />, and
         the broader category ranking that includes phone-only apps is on{" "}
-        <InternalLink intent="bestMovieApks" currentPath={R.bestTvApks} />.
+        <InternalLink intent="alternatives" currentPath={R.bestTvApks} />.
       </p>
     </ClusterPage>
   );

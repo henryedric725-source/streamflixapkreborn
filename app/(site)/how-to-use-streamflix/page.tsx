@@ -118,7 +118,7 @@ export default function HowToUsePage() {
       <p>
         If a provider that used to work stops resolving anything, it has
         probably changed shape and needs an updated scraper. That is what most{" "}
-        <InternalLink intent="changelog" currentPath={R.howToUse} /> entries
+        <InternalLink intent="oldVersions" currentPath={R.howToUse} /> entries
         actually are.
       </p>
       <p>
@@ -226,7 +226,7 @@ export default function HowToUsePage() {
       <p>
         Everything is local. That is a privacy advantage. There is no profile
         anywhere to leak, as covered on{" "}
-        <InternalLink intent="privacy" currentPath={R.howToUse} />, and a
+        <InternalLink intent="safe" currentPath={R.howToUse} />, and a
         practical disadvantage, because nothing transfers to a new device and an
         uninstall is final.
       </p>

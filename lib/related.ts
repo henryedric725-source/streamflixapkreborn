@@ -25,8 +25,6 @@ const related: Record<string, RelatedLink[]> = {
     { href: L.firestick.href, title: linkLabel("firestick", "body") },
     { href: L.safe.href, title: linkLabel("safe", "body") },
   ],
-
-  // Cluster A
   [R.reborn]: [
     { href: L.v2.href, title: "How StreamFlix 2.0 differs" },
     { href: L.androidTv.href, title: linkLabel("androidTv", "body") },
@@ -37,19 +35,14 @@ const related: Record<string, RelatedLink[]> = {
     { href: L.reborn.href, title: "How StreamFlix Reborn differs" },
     { href: L.offline.href, title: linkLabel("offline", "body") },
     { href: L.install.href, title: linkLabel("install", "body") },
-    { href: L.privacy.href, title: linkLabel("privacy", "body") },
+    { href: L.safe.href, title: linkLabel("safe", "body") },
   ],
   [R.oldVersions]: [
     { href: L.downloadHub.href, title: "Current builds for both variants" },
-    { href: L.changelog.href, title: linkLabel("changelog", "body") },
-    { href: L.update.href, title: linkLabel("update", "body") },
-    { href: L.notWorking.href, title: "When an older build is the fix" },
-  ],
-  [R.changelog]: [
     { href: L.oldVersions.href, title: linkLabel("oldVersions", "body") },
     { href: L.update.href, title: linkLabel("update", "body") },
+    { href: L.notWorking.href, title: "When an older build is the fix" },
     { href: L.reborn.href, title: linkLabel("reborn", "body") },
-    { href: L.v2.href, title: linkLabel("v2", "body") },
   ],
   [R.mod]: [
     { href: L.downloadHub.href, title: "The official builds instead" },
@@ -57,8 +50,6 @@ const related: Record<string, RelatedLink[]> = {
     { href: L.reborn.href, title: "Reborn is already ad-free and open-source" },
     { href: L.installVerify.href, title: linkLabel("installVerify", "body") },
   ],
-
-  // Cluster B
   [R.install]: [
     { href: L.downloadHub.href, title: linkLabel("downloadHub", "sidebar") },
     { href: L.notWorking.href, title: linkLabel("notWorking", "body") },
@@ -95,8 +86,6 @@ const related: Record<string, RelatedLink[]> = {
     { href: L.ios.href, title: linkLabel("ios", "body") },
     { href: L.bestTvApks.href, title: linkLabel("bestTvApks", "body") },
   ],
-
-  // Cluster C
   [R.howToUse]: [
     { href: L.notWorking.href, title: linkLabel("notWorking", "body") },
     { href: L.offline.href, title: linkLabel("offline", "body") },
@@ -106,7 +95,7 @@ const related: Record<string, RelatedLink[]> = {
   [R.offline]: [
     { href: L.howToUse.href, title: linkLabel("howToUse", "body") },
     { href: L.v2.href, title: "StreamFlix 2.0 has downloads built in" },
-    { href: L.privacy.href, title: linkLabel("privacy", "body") },
+    { href: L.safe.href, title: linkLabel("safe", "body") },
     { href: L.notWorking.href, title: linkLabel("notWorking", "body") },
   ],
   [R.notWorking]: [
@@ -117,17 +106,15 @@ const related: Record<string, RelatedLink[]> = {
   ],
   [R.update]: [
     { href: L.oldVersions.href, title: linkLabel("oldVersions", "body") },
-    { href: L.changelog.href, title: linkLabel("changelog", "body") },
     { href: L.install.href, title: linkLabel("install", "body") },
     { href: L.safe.href, title: linkLabel("safe", "body") },
   ],
-
-  // Cluster D
   [R.safe]: [
-    { href: L.privacy.href, title: linkLabel("privacy", "body") },
+    { href: L.safe.href, title: linkLabel("safe", "body") },
     { href: L.legalCheck.href, title: linkLabel("legalCheck", "body") },
     { href: L.mod.href, title: "Why mod builds fail these checks" },
     { href: L.installVerify.href, title: linkLabel("installVerify", "body") },
+    { href: L.vpn.href, title: linkLabel("vpn", "body") },
   ],
   [R.legal]: [
     { href: L.safe.href, title: linkLabel("safe", "body") },
@@ -137,44 +124,27 @@ const related: Record<string, RelatedLink[]> = {
   ],
   [R.vpn]: [
     { href: L.legalCheck.href, title: linkLabel("legalCheck", "body") },
-    { href: L.privacy.href, title: linkLabel("privacy", "body") },
+    { href: L.safe.href, title: linkLabel("safe", "body") },
     { href: L.buffering.href, title: linkLabel("buffering", "body") },
     { href: L.firestick.href, title: "Running a VPN on Firestick" },
   ],
-  [R.privacy]: [
-    { href: L.safe.href, title: linkLabel("safe", "body") },
-    { href: L.vpn.href, title: linkLabel("vpn", "body") },
-    { href: L.legalCheck.href, title: linkLabel("legalCheck", "body") },
-    { href: L.v2.href, title: "Why the ad-supported build collects more" },
-  ],
-
-  // Cluster E
   [R.alternatives]: [
-    { href: L.bestMovieApks.href, title: linkLabel("bestMovieApks", "body") },
+    { href: L.alternatives.href, title: linkLabel("alternatives", "body") },
     { href: L.bestTvApks.href, title: linkLabel("bestTvApks", "body") },
     { href: L.vsPaid.href, title: linkLabel("vsPaid", "body") },
     { href: L.downloadHub.href, title: "Back to StreamFlix itself" },
-  ],
-  [R.bestMovieApks]: [
-    { href: L.alternatives.href, title: linkLabel("alternatives", "body") },
-    { href: L.bestTvApks.href, title: linkLabel("bestTvApks", "body") },
     { href: L.safe.href, title: linkLabel("safe", "body") },
-    { href: L.install.href, title: linkLabel("install", "body") },
   ],
   [R.bestTvApks]: [
-    { href: L.bestMovieApks.href, title: linkLabel("bestMovieApks", "body") },
+    { href: L.alternatives.href, title: linkLabel("alternatives", "body") },
     { href: L.firestick.href, title: linkLabel("firestick", "body") },
     { href: L.androidTv.href, title: linkLabel("androidTv", "body") },
-    { href: L.alternatives.href, title: linkLabel("alternatives", "body") },
   ],
   [R.vsPaid]: [
     { href: L.alternatives.href, title: linkLabel("alternatives", "body") },
     { href: L.legalCheck.href, title: linkLabel("legalCheck", "body") },
     { href: L.ios.href, title: "Where paid services win outright" },
-    { href: L.bestMovieApks.href, title: linkLabel("bestMovieApks", "body") },
   ],
-
-  // Support
   [R.blog]: [
     { href: L.downloadHub.href, title: linkLabel("downloadHub", "sidebar") },
     { href: L.install.href, title: linkLabel("install", "body") },
@@ -187,13 +157,11 @@ const related: Record<string, RelatedLink[]> = {
     { href: L.legalCheck.href, title: linkLabel("legalCheck", "body") },
     { href: R.legalPrivacy, title: "Privacy policy" },
   ],
-
-  // Legal
   [R.legalPrivacy]: [
     { href: R.legalTerms, title: "Terms of use" },
     { href: R.legalDisclaimer, title: "Disclaimer" },
     { href: R.legalDmca, title: "DMCA and copyright" },
-    { href: L.privacy.href, title: linkLabel("privacy", "body") },
+    { href: L.safe.href, title: linkLabel("safe", "body") },
   ],
   [R.legalTerms]: [
     { href: R.legalPrivacy, title: "Privacy policy" },

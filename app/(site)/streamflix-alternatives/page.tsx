@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ClusterPage } from "@/components/ClusterPage";
-import { DataTable, QuickSummary } from "@/components/ContentBlocks";
+import { DataTable, Definition, QuickSummary } from "@/components/ContentBlocks";
+import { Roadmap } from "@/components/HomeSections";
 import { InternalLink } from "@/components/InternalLink";
 import { alternatives, statusLabels } from "@/lib/alternatives";
 import { alternativesFaqs } from "@/lib/faqs";
@@ -8,9 +9,9 @@ import { pageMetadata } from "@/lib/metadata";
 import { R } from "@/lib/routes";
 import { REBORN } from "@/lib/variants";
 
-const TITLE = "StreamFlix Alternatives Worth Installing";
+const TITLE = "StreamFlix Alternatives and Best Free Movie APKs";
 const DESCRIPTION =
-  "Apps that solve the same problem when StreamFlix providers dry up. What each does better, which are still maintained, and which stopped working years ago.";
+  "Free movie APKs ranked on maintenance, provider health, ad load and TV support, including the ones that stopped working years ago and are still recommended.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -20,10 +21,13 @@ export const metadata: Metadata = pageMetadata({
   keywords: [
     "streamflix alternatives",
     "apps like streamflix",
-    "apps like onstream",
+    "best movie apk for android",
+    "best free movie apk",
+    "movie apks",
+    "hd movies apk",
+    "film apk",
     "onstream alternative",
     "hd streamz alternative android",
-    "cinema hd alternative",
   ],
 });
 
@@ -36,6 +40,12 @@ const toc = [
   { href: "#abandoned", label: "Names to stop recommending" },
   { href: "#compare", label: "Side by side" },
   { href: "#verdict", label: "What to actually install" },
+  { href: "#criteria", label: "How these are ranked" },
+  { href: "#how-they-work", label: "How free movie APKs work" },
+  { href: "#judge", label: "How to judge one yourself" },
+  { href: "#red-flags", label: "Red flags in a recommendation" },
+  { href: "#safety", label: "Installing any of them safely" },
+  { href: "#honest", label: "The honest caveat" },
 ];
 
 const freeAlts = alternatives.filter((item) => item.kind !== "paid");
@@ -50,7 +60,7 @@ export default function AlternativesPage() {
       mentions={["androidTv", "fireTv", "openSource", "android"]}
       dateModified="2026-08-02"
       kicker="Alternatives"
-      h1="StreamFlix Alternatives Worth Installing"
+      h1="StreamFlix Alternatives and the Best Free Movie APKs for Android"
       answer="OnStream is the closest actively maintained aggregator with a working TV interface. Cinema HD remains capable but updates irregularly. HD Streamz solves a different problem. Live channels rather than a film catalog. CyberFlix TV is abandoned and should no longer be recommended."
       toc={toc}
       faqs={alternativesFaqs}
@@ -263,11 +273,188 @@ export default function AlternativesPage() {
       </QuickSummary>
       <p>
         Category-wide rankings are on{" "}
-        <InternalLink intent="bestMovieApks" currentPath={R.alternatives} />,
+        <InternalLink intent="alternatives" currentPath={R.alternatives} />,
         the TV-specific shortlist is on{" "}
         <InternalLink intent="bestTvApks" currentPath={R.alternatives} />, and
         the case for paying instead is on{" "}
         <InternalLink intent="vsPaid" currentPath={R.alternatives} />.
+      </p>
+
+      <h2 id="criteria">How we ranked these</h2>
+      <p>
+        Most rankings in this category are affiliate placements or copies of
+        older rankings that were themselves copies. The criteria below are the
+        ones that actually predict whether an app will work for you next month.
+      </p>
+      <Roadmap
+        items={[
+          {
+            n: "01",
+            title: "Is it still maintained?",
+            body: "The dominant criterion. These apps depend on scrapers that break when third-party providers change shape. An unmaintained app finds progressively less until it finds nothing. Everything else is secondary to this.",
+          },
+          {
+            n: "02",
+            title: "How many provider fallbacks does it have?",
+            body: "More providers means more chances a given title resolves. This, not catalog size, is the real measure of coverage, because the catalog was never the app's to begin with.",
+          },
+          {
+            n: "03",
+            title: "How heavy is the ad load?",
+            body: "Ranges from none to intrusive. It is the single biggest difference in day-to-day experience between apps that otherwise look identical on a feature list.",
+          },
+          {
+            n: "04",
+            title: "Does it have a real TV interface?",
+            body: "If you use a Firestick or Android TV, this decides whether the app is usable at all. A phone layout on a television is genuinely unpleasant, not merely suboptimal.",
+          },
+          {
+            n: "05",
+            title: "Can the build be verified?",
+            body: "Open source means you can check a published build against published code, or build it yourself. Only one app in this category offers that.",
+          },
+        ]}
+      />
+
+      <h2 id="how-they-work">How free movie APKs work</h2>
+      <Definition term="Free movie APK">
+        An Android app, installed outside the Play Store, that indexes
+        third-party streaming sources and plays them in its own player. It
+        almost never hosts video itself. Which is both why it can be free and
+        why it breaks so often.
+      </Definition>
+      <p>
+        Understanding this explains everything else about the category:
+      </p>
+      <ul>
+        <li>
+          <strong>Why they are free.</strong> No content licensing costs,
+          because no content is licensed. Hosting costs are near zero because
+          nothing is hosted.
+        </li>
+        <li>
+          <strong>Why the catalog changes constantly.</strong> It belongs to
+          providers, not to the app, and shifts without any update.
+        </li>
+        <li>
+          <strong>Why titles fail unpredictably.</strong> A source went offline.
+          This is normal operation rather than a fault.
+        </li>
+        <li>
+          <strong>Why they need frequent updates.</strong> Scrapers break when
+          providers change structure.
+        </li>
+        <li>
+          <strong>Why they disappear.</strong> Distribution channels get taken
+          down. It happened to the original StreamFlix. See{" "}
+          <InternalLink intent="dmcaHistory" currentPath={R.alternatives} />.
+        </li>
+      </ul>
+
+      <h2 id="judge">How to judge one yourself</h2>
+      <p>
+        Rankings age badly in this category, so the useful skill is evaluating
+        an app rather than trusting a list, including this one.
+      </p>
+      <DataTable
+        caption="How to evaluate any free movie APK before committing to it"
+        headers={["Check", "Good sign", "Bad sign"]}
+        rows={[
+          [
+            "Last release date",
+            "Within the last couple of months",
+            "Over a year ago. Walk away",
+          ],
+          [
+            "Where it is distributed",
+            "The developer's own GitHub or an established mirror",
+            "Only on blogs with survey walls",
+          ],
+          [
+            "Provider count",
+            "Several, with a visible picker",
+            "One source, or no way to switch",
+          ],
+          [
+            "Ad behaviour",
+            "None, or contained within the interface",
+            "Full-screen interstitials between every action",
+          ],
+          [
+            "Permissions",
+            "Network and storage",
+            "Contacts, SMS, location, accessibility",
+          ],
+          [
+            "TV interface",
+            "Focus states work with a D-pad",
+            "You need a virtual mouse app to use it",
+          ],
+          [
+            "Size",
+            "Proportionate to the feature set",
+            "Very large for a simple app, usually bundled ad libraries",
+          ],
+        ]}
+      />
+
+      <h2 id="red-flags">Red flags in a recommendation</h2>
+      <QuickSummary
+        bullets={[
+          "It recommends CyberFlix TV in 2026. The app has been dead for years; nothing on that list was tested.",
+          "It claims a specific catalog size. No aggregator owns a catalog, so no honest number exists.",
+          "Every app is described as 'safe and secure' with no distinctions drawn between them.",
+          "There is no last-updated date for any app listed: the single most important fact is missing.",
+          "Every download link routes through the same shortener or survey wall.",
+          "It says an app 'works on Firestick' without distinguishing a real TV interface from an app that merely installs.",
+        ]}
+      >
+        <p>
+          Apply the same scepticism to this page. The claims here are checkable:
+          package names, licences, and last-update dates are all verifiable at
+          the sources we link.
+        </p>
+      </QuickSummary>
+
+      <h2 id="safety">Installing any of them safely</h2>
+      <p>
+        The risk in this category is concentrated in distribution rather than
+        the apps themselves. Four checks catch nearly everything:
+      </p>
+      <ol>
+        <li>Download from the developer&rsquo;s own source, or an established mirror that verifies signatures.</li>
+        <li>Check the file size against the published figure.</li>
+        <li>Confirm the package name after install.</li>
+        <li>Review the permission list: network and storage only.</li>
+      </ol>
+      <p>
+        Detail on all four is on{" "}
+        <InternalLink intent="safe" currentPath={R.alternatives} />, and why
+        &ldquo;mod&rdquo; versions fail every one of them is on{" "}
+        <InternalLink intent="mod" currentPath={R.alternatives} />.
+      </p>
+
+      <h2 id="honest">The honest caveat</h2>
+      <p>
+        A ranking of free movie APKs should end by saying what none of them do
+        well, because the shared weakness is structural rather than a matter of
+        which one you pick.
+      </p>
+      <p>
+        None of these apps owns its content. That means streams fail
+        unpredictably, quality varies per source, subtitles are inconsistent,
+        offline downloads cannot be relied on, and any of them may disappear.
+        Switching between them does not fix that. It is the shape of the whole
+        category.
+      </p>
+      <p>
+        If you need a stream to start reliably and hold its quality: a long
+        flight, a film night with other people, anything where restarting three
+        times is unacceptable. A licensed service is the honest answer. That
+        comparison is made properly on{" "}
+        <InternalLink intent="vsPaid" currentPath={R.alternatives} />. For a TV
+        specifically, the shortlist narrows considerably:{" "}
+        <InternalLink intent="bestTvApks" currentPath={R.alternatives} />.
       </p>
     </ClusterPage>
   );

@@ -9,9 +9,9 @@ import { pageMetadata } from "@/lib/metadata";
 import { R } from "@/lib/routes";
 import { REBORN, V2 } from "@/lib/variants";
 
-const TITLE = "Is StreamFlix APK Safe? How to Verify";
+const TITLE = "Is StreamFlix Safe? Permissions and Privacy";
 const DESCRIPTION =
-  "Scan results, the permission list explained line by line, signature and size verification, and why repackaged copies are the risk, not official builds.";
+  "Scan results, every permission explained, signature verification, what the no-account model means for your data, and why repackaged copies are the real risk.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -23,6 +23,8 @@ export const metadata: Metadata = pageMetadata({
     "streamflix apk virus",
     "streamflix safe to install",
     "streamflix permissions",
+    "streamflix privacy",
+    "streamflix data collection",
     "verify apk signature",
   ],
 });
@@ -36,6 +38,13 @@ const toc = [
   { href: "#open-source", label: "The open-source advantage" },
   { href: "#red-flags", label: "Red flags in a downloaded APK" },
   { href: "#play-protect", label: "What Play Protect is telling you" },
+  { href: "#no-account", label: "The no-account model" },
+  { href: "#who-sees", label: "Who can see what" },
+  { href: "#ads", label: "What ad-supported playback exposes" },
+  { href: "#local-data", label: "What is stored on your device" },
+  { href: "#audit", label: "Auditing permissions after an update" },
+  { href: "#compare", label: "Compared with a licensed service" },
+  { href: "#reduce", label: "Reducing your exposure" },
 ];
 
 export default function SafePage() {
@@ -45,10 +54,10 @@ export default function SafePage() {
       title={TITLE}
       description={DESCRIPTION}
       about={["malware", "digitalSignature"]}
-      mentions={["playProtect", "sideloading", "apk", "openSource", "privacy"]}
+      mentions={["playProtect", "sideloading", "apk", "openSource", "privacy", "advertising"]}
       dateModified="2026-08-06"
       kicker="Safety and verification"
-      h1="Is StreamFlix APK Safe? How to Check for Yourself"
+      h1="Is StreamFlix Safe? Permissions, Privacy and How to Verify"
       answer="The official builds scan clean, and StreamFlix Reborn's Apache 2.0 source can be independently audited, something no closed-source app in this category allows. The real risk is not the official package but repackaged copies redistributed by mirror sites, which four quick checks will catch."
       toc={toc}
       faqs={safetyFaqs}
@@ -334,7 +343,221 @@ export default function SafePage() {
         two are not, and are worth acting on. Full install context is on{" "}
         <InternalLink intent="install" currentPath={R.safe} />, and what
         happens to your data is on{" "}
-        <InternalLink intent="privacy" currentPath={R.safe} />.
+        <InternalLink intent="safe" currentPath={R.safe} />.
+      </p>
+
+      <h2 id="no-account">The no-account model</h2>
+      <p>
+        The most significant privacy property of both apps, and one that gets
+        surprisingly little attention: there is no sign-up. No email address, no
+        password, no phone number, no payment method.
+      </p>
+      <Definition term="What an account enables">
+        On a licensed service, an account links every title you watch, every
+        search, every pause and resume, and your payment details to one
+        persistent identity. That record follows you across devices, persists
+        after you stop using the service, and is disclosable.
+      </Definition>
+      <p>
+        Neither StreamFlix app has that record, because it has nowhere to keep
+        one. Favourites, watch history and resume positions live in the
+        app&rsquo;s local storage and are never uploaded. There is no server-side
+        profile because there is no server-side account.
+      </p>
+      <p>
+        The cost is the flip side of the same fact: nothing syncs between
+        devices, and nothing survives an uninstall. See{" "}
+        <InternalLink intent="update" currentPath={R.safe} /> for why that
+        makes overlay installs important.
+      </p>
+
+      <h2 id="who-sees">Who can see what</h2>
+      <p>
+        The useful mental model. Different parties see different things, and
+        conflating them is why privacy discussion in this area gets muddled.
+      </p>
+      <DataTable
+        caption="What each party in the chain can observe"
+        headers={["Party", "What they see", "What they cannot see"]}
+        rows={[
+          [
+            "The app developer",
+            "Nothing for Reborn. There is no telemetry endpoint",
+            "Your identity, your viewing, anything at all",
+          ],
+          [
+            "The third-party provider",
+            "Your IP address and which titles you requested from them",
+            "Who you are. There is no account to attach it to",
+          ],
+          [
+            "Your ISP",
+            "Which servers you connect to and how much data flows",
+            "The video content itself, where the connection is encrypted",
+          ],
+          [
+            "Ad networks (StreamFlix 2.0 only)",
+            "Advertising ID, device model, coarse location, app usage",
+            "Your name, unless linked elsewhere in the ad ecosystem",
+          ],
+          [
+            "A VPN provider, if you use one",
+            "What your ISP otherwise would",
+            "Depends entirely on their logging policy",
+          ],
+          [
+            "This site",
+            "Nothing about your viewing. We document the apps, we do not run them",
+            "Anything you do inside the app",
+          ],
+        ]}
+      />
+      <p>
+        The provider row deserves attention. You are not anonymous to the
+        service actually serving the video: it sees your IP and your requests.
+        It just cannot connect them to a person, because no identity was ever
+        supplied. A VPN changes the IP part; see{" "}
+        <InternalLink intent="vpn" currentPath={R.safe} />.
+      </p>
+
+      <h2 id="ads">What ad-supported playback exposes</h2>
+      <p>
+        The clearest privacy divergence between the two apps, and the practical
+        cost of StreamFlix 2.0&rsquo;s Play Store convenience.
+      </p>
+      <QuickSummary
+        bullets={[
+          "StreamFlix Reborn carries no advertising or analytics libraries in its own interface. There is no ad SDK to collect anything.",
+          "StreamFlix 2.0 is ad-supported, so it embeds an ad SDK that collects your advertising ID, device model, and coarse location in the ordinary way.",
+          "That is standard for free Android apps rather than unusual, but it is a real difference between the two.",
+          "You can reset your advertising ID, or opt out of personalisation, in Android's privacy settings.",
+          "Ads shown by a third-party provider during playback are separate again, and neither app controls them.",
+        ]}
+      >
+        <p>
+          If minimising data collection is the priority, Reborn is the clearly
+          better choice, and this is one of the more concrete reasons why. See{" "}
+          <InternalLink intent="reborn" currentPath={R.safe} />.
+        </p>
+      </QuickSummary>
+      <p>
+        Worth noting the size connection: much of the difference between{" "}
+        {REBORN.sizeLabel} and {V2.sizeLabel} is exactly these bundled
+        advertising and analytics libraries. The larger download is partly the
+        data collection.
+      </p>
+
+      <h2 id="local-data">What is stored on your device</h2>
+      <ul>
+        <li>
+          <strong>Favourites and watchlist</strong>: a local database. Never
+          uploaded.
+        </li>
+        <li>
+          <strong>Watch history and resume positions</strong>: local, per
+          title.
+        </li>
+        <li>
+          <strong>Settings</strong>: provider choice, quality, subtitle
+          preferences.
+        </li>
+        <li>
+          <strong>Playback cache</strong>: temporary fragments. Safe to clear
+          at any time.
+        </li>
+        <li>
+          <strong>Downloads</strong>, in app-private storage, invisible to
+          other apps and to file managers.
+        </li>
+      </ul>
+      <p>
+        Clearing cache removes only the temporary fragments. Clearing{" "}
+        <em>data</em> removes everything above including downloads, which is
+        worth remembering before using it as a troubleshooting step on{" "}
+        <InternalLink intent="notWorking" currentPath={R.safe} />.
+      </p>
+
+      <h2 id="audit">Auditing permissions after an update</h2>
+      <p>
+        Permissions are not fixed for the life of an app. A new build can
+        request something the previous one did not, and Android will not
+        necessarily interrupt you to say so.
+      </p>
+      <p>
+        Runtime permissions such as storage prompt you when the app first needs
+        them, so those are visible. Install-time permissions declared in the
+        manifest are not: they are granted when the package installs, and an
+        overlay update carries them across without a fresh prompt. That is the
+        gap worth checking.
+      </p>
+      <p>
+        The check itself takes under a minute. Open Settings, Apps, then the
+        app, then Permissions, and compare what is listed against the table
+        above. On most Android builds the same screen offers a permissions
+        history, which shows what has actually been accessed rather than only
+        what was requested.
+      </p>
+      <p>
+        Do this after any update that arrived from outside a store, and
+        certainly after installing a build from a mirror you have not used
+        before. A newly appearing request for contacts, SMS or accessibility is
+        not a subtle signal. It means the build is not the developer&rsquo;s,
+        and{" "} the verification checks above covers what to do
+        next.
+      </p>
+
+      <h2 id="compare">Compared with a licensed service</h2>
+      <DataTable
+        caption="Privacy properties compared: StreamFlix apps versus a licensed streaming service"
+        headers={["", REBORN.shortName, V2.shortName, "Licensed service"]}
+        rows={[
+          ["Account required", "No", "No", "Yes"],
+          ["Payment details held", "No", "No", "Yes"],
+          ["Viewing history on a server", "No", "No", "Yes"],
+          ["Cross-device profile", "No", "No", "Yes"],
+          ["Ad tracking", "No", "Yes", "Varies by tier"],
+          ["Data disclosable on request", "Nothing to disclose", "Ad data only", "Full viewing history"],
+          ["Your data if the service closes", "Nothing existed", "Nothing beyond ad data", "Held until deleted"],
+        ]}
+      />
+      <p>
+        Read fairly, the no-account model is a genuine privacy advantage, and it
+        is one of the few dimensions on which a free aggregator clearly beats a
+        paid service. Every other dimension of that comparison is on{" "}
+        <InternalLink intent="vsPaid" currentPath={R.safe} />.
+      </p>
+
+      <h2 id="reduce">Reducing your exposure</h2>
+      <ol>
+        <li>
+          <strong>Prefer Reborn if privacy is the priority.</strong> No ad SDK,
+          no analytics, and auditable source code.
+        </li>
+        <li>
+          <strong>Reset your advertising ID</strong> periodically in
+          Android&rsquo;s privacy settings, and opt out of personalisation.
+        </li>
+        <li>
+          <strong>Use a VPN if ISP visibility concerns you</strong>, accepting
+          that you are moving trust to the VPN provider rather than removing it.
+        </li>
+        <li>
+          <strong>Change your DNS</strong> to a resolver that does not log. Free,
+          and it stops your ISP seeing every domain you look up.
+        </li>
+        <li>
+          <strong>Clear cache periodically.</strong> Non-destructive, and it
+          keeps the app&rsquo;s local footprint small.
+        </li>
+        <li>
+          <strong>Only install from official sources.</strong> A repackaged
+          build can add exactly the tracking this page says is absent. See{" "}
+          <InternalLink intent="installVerify" currentPath={R.safe} />.
+        </li>
+      </ol>
+      <p>
+        Our own handling of your data on this website, as distinct from the apps
+       . Is set out in the privacy policy linked in the footer.
       </p>
     </ClusterPage>
   );

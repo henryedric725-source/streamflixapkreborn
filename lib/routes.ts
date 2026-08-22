@@ -29,7 +29,6 @@ export const R = {
   reborn: "/streamflix-reborn-apk",
   v2: "/streamflix-2-apk",
   oldVersions: "/streamflix-apk-old-versions",
-  changelog: "/streamflix-apk-changelog",
   mod: "/streamflix-mod-apk",
 
   /** Cluster B — install and devices. */
@@ -50,11 +49,9 @@ export const R = {
   safe: "/is-streamflix-apk-safe",
   legal: "/is-streamflix-legal",
   vpn: "/streamflix-vpn-guide",
-  privacy: "/streamflix-permissions-and-privacy",
 
   /** Cluster E — comparisons and alternatives. */
   alternatives: "/streamflix-alternatives",
-  bestMovieApks: "/best-free-movie-apks-for-android",
   bestTvApks: "/best-streaming-apks-for-android-tv",
   vsPaid: "/streamflix-vs-paid-streaming-apps",
 
@@ -79,7 +76,6 @@ export const POST_PATHS = [
   R.reborn,
   R.v2,
   R.oldVersions,
-  R.changelog,
   R.mod,
   R.install,
   R.firestick,
@@ -94,9 +90,7 @@ export const POST_PATHS = [
   R.safe,
   R.legal,
   R.vpn,
-  R.privacy,
   R.alternatives,
-  R.bestMovieApks,
   R.bestTvApks,
   R.vsPaid,
 ] as const;

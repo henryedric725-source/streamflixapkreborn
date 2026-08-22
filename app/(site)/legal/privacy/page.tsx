@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
         the Site collects, why, and what choices you have. It covers this
         website only. It does not describe the behaviour of the StreamFlix apps
         themselves, which is documented separately on{" "}
-        <InternalLink intent="privacy" currentPath={R.legalPrivacy} />.
+        <InternalLink intent="safe" currentPath={R.legalPrivacy} />.
       </p>
 
       <h2>What we collect</h2>

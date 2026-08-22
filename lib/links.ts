@@ -66,14 +66,6 @@ export const L = {
     href: `${R.oldVersions}#rollback`,
     labels: { body: "roll back to an earlier build" },
   },
-  changelog: {
-    href: R.changelog,
-    labels: {
-      body: "StreamFlix changelog for every build",
-      sidebar: "Changelog",
-      breadcrumb: "Changelog",
-    },
-  },
   mod: {
     href: R.mod,
     labels: {
@@ -252,15 +244,6 @@ export const L = {
       breadcrumb: "VPN guide",
     },
   },
-  privacy: {
-    href: R.privacy,
-    labels: {
-      footer: "Permissions and privacy",
-      body: "the permissions StreamFlix requests",
-      sidebar: "Permissions and privacy",
-      breadcrumb: "Permissions and privacy",
-    },
-  },
 
   // --- Cluster E: comparisons and alternatives -------------------------------
   alternatives: {
@@ -271,15 +254,6 @@ export const L = {
       body: "StreamFlix alternatives worth installing",
       sidebar: "StreamFlix alternatives",
       breadcrumb: "Alternatives",
-    },
-  },
-  bestMovieApks: {
-    href: R.bestMovieApks,
-    labels: {
-      footer: "Best free movie APKs",
-      body: "the best free movie APKs for Android",
-      sidebar: "Best free movie APKs",
-      breadcrumb: "Best free movie APKs",
     },
   },
   bestTvApks: {

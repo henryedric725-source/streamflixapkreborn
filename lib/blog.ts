@@ -44,17 +44,10 @@ export const postCategories: readonly PostCategory[] = [
       },
       {
         href: R.oldVersions,
-        title: "StreamFlix APK Old Versions Archive",
+        title: "StreamFlix Old Versions and Changelog",
         summary:
-          "Every catalogued build for both variants with size, minimum Android, and release date, so you can roll back to a version that worked.",
+          "Every catalogued build for both apps with size, minimum Android and release notes, plus how to read the version numbers and when rolling back is the right fix.",
         intent: "streamflix old versions",
-      },
-      {
-        href: R.changelog,
-        title: "StreamFlix APK Changelog: What Changed in Each Build",
-        summary:
-          "Release-by-release notes for both variants. Provider changes, player fixes, and which updates are worth installing.",
-        intent: "streamflix changelog",
       },
       {
         href: R.mod,
@@ -159,9 +152,9 @@ export const postCategories: readonly PostCategory[] = [
     posts: [
       {
         href: R.safe,
-        title: "Is StreamFlix APK Safe? How to Verify It Yourself",
+        title: "Is StreamFlix Safe? Permissions and Privacy",
         summary:
-          "Scan results, the permission list explained line by line, signature and checksum verification, and the repackaged builds to avoid.",
+          "Scan results, every permission explained, signature verification, what the no-account model means for your data, and the repackaged builds to avoid.",
         intent: "is streamflix safe",
       },
       {
@@ -178,13 +171,6 @@ export const postCategories: readonly PostCategory[] = [
           "What a VPN does and does not change here, ISP throttling versus blocking, DNS alternatives, and setup on both phone and Firestick.",
         intent: "streamflix vpn",
       },
-      {
-        href: R.privacy,
-        title: "StreamFlix Permissions and Privacy, Line by Line",
-        summary:
-          "Every permission each variant requests, why it asks, what the no-account model means for your data, and what ad-supported playback exposes.",
-        intent: "streamflix permissions privacy",
-      },
     ],
   },
   {
@@ -199,13 +185,6 @@ export const postCategories: readonly PostCategory[] = [
         summary:
           "Apps that solve the same problem when StreamFlix's providers dry up. What each does better, and which ones are no longer maintained.",
         intent: "streamflix alternatives",
-      },
-      {
-        href: R.bestMovieApks,
-        title: "Best Free Movie APKs for Android",
-        summary:
-          "The category ranked on maintenance, ad load, provider health, and TV support, not on which one paid for the placement.",
-        intent: "best free movie apk for android",
       },
       {
         href: R.bestTvApks,

@@ -377,7 +377,7 @@ export default function HomePage() {
         Each of those has its own page:{" "}
         <InternalLink intent="safe" currentPath={R.home} />,{" "}
         <InternalLink intent="legalCheck" currentPath={R.home} />,{" "}
-        <InternalLink intent="privacy" currentPath={R.home} />, and{" "}
+        <InternalLink intent="safe" currentPath={R.home} />, and{" "}
         <InternalLink intent="vpn" currentPath={R.home} />.
       </p>
 

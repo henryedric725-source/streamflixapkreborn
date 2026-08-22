@@ -327,7 +327,7 @@ export default function VpnPage() {
         streams were fine before and worse after, the VPN is not solving a
         problem you had. If sources that failed now resolve, it clearly is. The
         privacy side of the same question is on{" "}
-        <InternalLink intent="privacy" currentPath={R.vpn} />, and the legal
+        <InternalLink intent="safe" currentPath={R.vpn} />, and the legal
         side, which a VPN does not change, is on{" "}
         <InternalLink intent="legalCheck" currentPath={R.vpn} />.
       </p>

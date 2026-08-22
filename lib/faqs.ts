@@ -356,6 +356,21 @@ export const safetyFaqs: FaqItem[] = [
     answer:
       "No. It is triggered by the install method rather than by anything found in the file, and it appears for every sideloaded app regardless of content. A genuine malware detection uses different wording and blocks the install outright rather than asking you to confirm.",
   },
+  {
+    question: "Does StreamFlix collect my personal data?",
+    answer:
+      "Neither app requires an account, an email address, or a payment method, so there is no profile to attach activity to. StreamFlix 2.0 is ad-supported, which means its advertising libraries do collect device-level identifiers in the ordinary way.",
+  },
+  {
+    question: "Can my ISP see what I watch on StreamFlix?",
+    answer:
+      "Your ISP can see which servers you connect to and how much data you transfer, though not the video content itself where the connection is encrypted. A VPN removes that visibility from the ISP and gives it to the VPN provider instead.",
+  },
+  {
+    question: "What happens to my watch history if I uninstall?",
+    answer:
+      "It is deleted. Because there is no account, favourites, watch history and downloads live only in the app's local storage, and uninstalling removes all of it with no way to restore.",
+  },
 ];
 
 export const legalFaqs: FaqItem[] = [
@@ -404,28 +419,6 @@ export const vpnFaqs: FaqItem[] = [
   },
 ];
 
-export const privacyFaqs: FaqItem[] = [
-  {
-    question: "Does StreamFlix collect my personal data?",
-    answer:
-      "Neither app requires an account, an email address, or a payment method, so there is no profile to attach activity to. StreamFlix 2.0 is ad-supported, which means its advertising libraries do collect device-level identifiers in the ordinary way.",
-  },
-  {
-    question: "Can my ISP see what I watch on StreamFlix?",
-    answer:
-      "Your ISP can see which servers you connect to and how much data you transfer, though not the video content itself where the connection is encrypted. A VPN removes that visibility from the ISP and gives it to the VPN provider instead.",
-  },
-  {
-    question: "What happens to my watch history if I uninstall?",
-    answer:
-      "It is deleted. Because there is no account, favourites, watch history and downloads live only in the app's local storage, and uninstalling removes all of it with no way to restore.",
-  },
-  {
-    question: "Why does StreamFlix need storage permission?",
-    answer:
-      "For caching during playback and for saving offline downloads. On modern Android this is scoped to the app's own directory rather than your whole filesystem, so it cannot read your photos or documents.",
-  },
-];
 
 export const modFaqs: FaqItem[] = [
   {
@@ -471,9 +464,6 @@ export const alternativesFaqs: FaqItem[] = [
     answer:
       "Very few. StreamFlix Reborn, OnStream and Cinema HD have genuine leanback layouts. Most apps recommended for Firestick are phone apps that technically install on a TV and are then unpleasant to drive with a remote.",
   },
-];
-
-export const bestApksFaqs: FaqItem[] = [
   {
     question: "What is the best free movie APK for Android?",
     answer:
@@ -489,12 +479,8 @@ export const bestApksFaqs: FaqItem[] = [
     answer:
       "The official builds generally scan clean. The risk sits with repackaged copies from third-party mirror sites, and it is the reason an open-source app whose build you can verify against published code is structurally safer than a closed-source one.",
   },
-  {
-    question: "Why do free movie apps stop working so often?",
-    answer:
-      "Because they do not own their content. They index third-party providers, and when a provider goes offline or changes structure the app breaks until someone updates its scraper. This is also why an abandoned app degrades to uselessness within a year or two.",
-  },
 ];
+
 
 export const bestTvApksFaqs: FaqItem[] = [
   {
@@ -559,9 +545,6 @@ export const archiveFaqs: FaqItem[] = [
     answer:
       "Because their bundled provider scrapers decay. Providers change structure or go offline, and an old build has no updated scraper to follow them. This is why legacy builds are archived for reference rather than recommended for daily use.",
   },
-];
-
-export const changelogFaqs: FaqItem[] = [
   {
     question: "What changed in the latest StreamFlix build?",
     answer: `StreamFlix Reborn v${REBORN.version}, released ${REBORN.releasedOnDisplay}, continues the 1.7 series with its provider list and server failover. StreamFlix 2.0 build ${V2.version}, released ${V2.releasedOnDisplay}, is the current Play Store listing with offline downloads and eight-language subtitles.`,
@@ -571,17 +554,8 @@ export const changelogFaqs: FaqItem[] = [
     answer:
       "No, and this is the most common misunderstanding. The catalog belongs to third-party providers, not to the app, so titles appear and disappear without any update. What an update changes is how the app searches, not what exists to be found.",
   },
-  {
-    question: "How often is StreamFlix updated?",
-    answer:
-      "StreamFlix Reborn ships frequent point releases because provider scrapers need maintenance. StreamFlix 2.0 updates through Google Play on a slower cadence, typically every couple of months.",
-  },
-  {
-    question: "Is it worth installing every StreamFlix update?",
-    answer:
-      "Not automatically. Updates mainly bring provider changes, and those occasionally remove a source that was working for you. If the current build works on your hardware, there is a reasonable case for staying on it.",
-  },
 ];
+
 
 export const blogIndexFaqs: FaqItem[] = [
   {

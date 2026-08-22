@@ -24,9 +24,8 @@ export const metadata: Metadata = pageMetadata({
     "streamflix android tv",
     "streamflix google tv",
     "free movie apps for android tv",
-    "tv streaming apk",
-    "stream tv apk",
-    "best streaming apk",
+    "streamflix android tv box",
+    "sideload apk android tv",
     "android tv sideload apk",
   ],
 });

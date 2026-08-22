@@ -286,7 +286,7 @@ export default function RebornPage() {
         Full notes and download rows are on{" "}
         <InternalLink intent="oldVersions" currentPath={R.reborn} />, and
         release-by-release detail is on{" "}
-        <InternalLink intent="changelog" currentPath={R.reborn} />.
+        <InternalLink intent="oldVersions" currentPath={R.reborn} />.
       </p>
 
       <h2 id="vs">How it differs from StreamFlix 2.0</h2>

@@ -194,7 +194,7 @@ export default function VsPaidPage() {
       />
       <p>
         The privacy advantage is real and rarely acknowledged. Full detail on{" "}
-        <InternalLink intent="privacy" currentPath={R.vsPaid} />.
+        <InternalLink intent="safe" currentPath={R.vsPaid} />.
       </p>
 
       <h2 id="cost">The real cost comparison</h2>
@@ -264,7 +264,7 @@ export default function VsPaidPage() {
       </QuickSummary>
       <p>
         If you are choosing which free app to add,{" "}
-        <InternalLink intent="bestMovieApks" currentPath={R.vsPaid} /> ranks the
+        <InternalLink intent="alternatives" currentPath={R.vsPaid} /> ranks the
         category and{" "}
         <InternalLink intent="alternatives" currentPath={R.vsPaid} /> covers the
         direct alternatives. If you are weighing the legal side of that

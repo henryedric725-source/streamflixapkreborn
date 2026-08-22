@@ -282,7 +282,7 @@ export default function UpdatePage() {
         size, requirement and what it is good for is on{" "}
         <InternalLink intent="oldVersions" currentPath={R.update} />, and
         release-by-release notes are on{" "}
-        <InternalLink intent="changelog" currentPath={R.update} />.
+        <InternalLink intent="oldVersions" currentPath={R.update} />.
       </p>
     </ClusterPage>
   );

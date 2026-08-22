@@ -25,8 +25,8 @@ export const metadata: Metadata = pageMetadata({
     "streamflix firestick",
     "streamflix fire tv",
     "install streamflix on firestick",
-    "free streaming apps for android tv",
-    "streaming apk",
+    "streamflix downloader code",
+    "sideload firestick apk",
     "downloader app firestick",
   ],
 });

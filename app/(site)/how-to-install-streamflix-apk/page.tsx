@@ -26,10 +26,8 @@ export const metadata: Metadata = pageMetadata({
   keywords: [
     "how to install streamflix apk",
     "install apk android",
-    "free movie apk",
-    "apk movie apps",
-    "free movies apk download",
-    "movie download apk app",
+    "install apk from unknown sources",
+    "app not installed error android",
     "install unknown sources android",
   ],
 });

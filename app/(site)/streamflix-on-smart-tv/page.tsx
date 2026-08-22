@@ -24,8 +24,8 @@ export const metadata: Metadata = pageMetadata({
     "streamflix samsung tv",
     "streamflix lg tv",
     "streamflix chromecast",
-    "movie tv apk",
-    "movies and tv shows apk",
+    "streamflix tizen webos",
+    "watch streamflix on tv without apk",
     "cast streamflix to tv",
   ],
 });

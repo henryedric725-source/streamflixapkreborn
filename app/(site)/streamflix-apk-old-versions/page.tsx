@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ClusterPage } from "@/components/ClusterPage";
-import { QuickSummary, SpecTable } from "@/components/ContentBlocks";
+import { DataTable, QuickSummary, SpecTable } from "@/components/ContentBlocks";
 import { InternalLink } from "@/components/InternalLink";
 import { VersionDirectory } from "@/components/archive/VersionDirectory";
 import { archiveFaqs } from "@/lib/faqs";
@@ -12,7 +12,7 @@ import { releases } from "@/lib/versions";
 
 const TITLE = "StreamFlix APK Old Versions Archive";
 const DESCRIPTION =
-  "Every archived StreamFlix build for both apps, Reborn 1.5 to 1.7.230 and StreamFlix 2.0 130 to 142, with size, minimum Android, and when to roll back.";
+  "Every archived StreamFlix build with size, minimum Android and release notes, plus how to read the version numbers and when rolling back is the right fix.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -22,9 +22,12 @@ export const metadata: Metadata = pageMetadata({
   keywords: [
     "streamflix old versions",
     "streamflix apk old version download",
-    "streamflix reborn 1.7.180",
+    "streamflix changelog",
+    "streamflix update notes",
+    "streamflix reborn release notes",
     "streamflix apk archive",
     "streamflix downgrade",
+    "new movie apk",
   ],
 });
 
@@ -36,6 +39,11 @@ const toc = [
   { href: "#v2-builds", label: "StreamFlix 2.0 builds" },
   { href: "#risks", label: "What an old build costs you" },
   { href: "#keeping", label: "Keeping a known-good build" },
+  { href: "#what-updates-change", label: "What an update actually changes" },
+  { href: "#version-numbers", label: "How to read the version numbers" },
+  { href: "#compare", label: "Release cadence compared" },
+  { href: "#worth-it", label: "Is this update worth installing?" },
+  { href: "#track", label: "Tracking releases yourself" },
 ];
 
 export default function OldVersionsPage() {
@@ -60,7 +68,7 @@ export default function OldVersionsPage() {
       mentions={["android", "digitalSignature", "androidTv", "fireTv"]}
       dateModified="2026-08-18"
       kicker="Package archive"
-      h1="StreamFlix APK Old Versions and Archived Builds"
+      h1="StreamFlix Old Versions, Archived Builds and Changelog"
       answer="Roll back when a new build breaks something that worked: a provider that stopped resolving, a crash on older hardware, or a player change your device dislikes. This archive lists every catalogued build for both StreamFlix apps with size, minimum Android, and what each release is actually good for."
       toc={toc}
       faqs={archiveFaqs}
@@ -258,7 +266,148 @@ export default function OldVersionsPage() {
       <p>
         Treat rolling back as a targeted fix with a plan to return to the
         current build, not a permanent state. Release-by-release detail is on{" "}
-        <InternalLink intent="changelog" currentPath={R.oldVersions} />.
+        <InternalLink intent="oldVersions" currentPath={R.oldVersions} />.
+      </p>
+
+      <h2 id="what-updates-change">What an update actually changes</h2>
+      <p>
+        The single most common misunderstanding about this class of app is what
+        an update is for. People install one expecting new films, do not find
+        any, and conclude the update failed.
+      </p>
+      <QuickSummary
+        bullets={[
+          "Provider scrapers: the code that knows how to search each third-party source. This is the bulk of every release.",
+          "Server failover logic: how quickly the app gives up on a stalled source and offers you another.",
+          "Player behaviour: codec handling, subtitle rendering, hardware decoding decisions.",
+          "Interface fixes, particularly focus handling on TV where a mis-aimed D-pad press is genuinely disruptive.",
+          "Nothing about the catalog. Not one title is added or removed by an update.",
+        ]}
+      >
+        <p>
+          Once you internalise that, update decisions become straightforward:
+          you update when something is broken for you, not on a schedule. The
+          mechanics of updating without losing data are on{" "}
+          <InternalLink intent="update" currentPath={R.oldVersions} />.
+        </p>
+      </QuickSummary>
+
+      <h2 id="version-numbers">How to read the version numbers</h2>
+      <p>
+        The two apps number their releases on completely different systems, and
+        knowing which you are looking at tells you how much a jump actually
+        changes.
+      </p>
+      <p>
+        StreamFlix Reborn uses semantic versioning, so a release reads as
+        major.minor.patch. In practice the <strong>minor</strong> number carries
+        almost all the meaning here. A move within the 1.7 series is a scraper
+        refresh: providers added, providers repaired, occasionally a provider
+        dropped because its source went dark. A move from 1.6 to 1.7 is a
+        different proposition, because that boundary is where the player was
+        rewritten. Anything crossing a minor boundary is worth treating as a
+        real change rather than routine maintenance, particularly on hardware
+        that was already close to its limit.
+      </p>
+      <p>
+        StreamFlix 2.0 publishes a bare incrementing build number with no public
+        notes attached. Build 142 tells you it came after 138, and nothing else.
+        There is no way to tell a catalog tweak from a player change by looking
+        at the number, which is why the log above records what each build is
+        useful for instead of paraphrasing release notes that do not exist.
+      </p>
+      <p>
+        One consequence catches people out: because the two schemes are
+        unrelated, a higher number on one app means nothing about the other.
+        Build 142 is not newer than v1.7.230 in any meaningful sense. They are
+        separate products from separate developers, as{" "}
+        <InternalLink intent="reborn" currentPath={R.oldVersions} /> and{" "}
+        <InternalLink intent="v2" currentPath={R.oldVersions} /> set out.
+      </p>
+
+      <h2 id="compare">Release cadence compared</h2>
+      <DataTable
+        caption="Release cadence and update mechanism for both StreamFlix apps"
+        headers={["", REBORN.name, V2.name]}
+        rows={[
+          ["Versioning", "Semantic (1.7.230)", "Bare build number (142)"],
+          ["Cadence", "Frequent point releases", "Every few months"],
+          ["Public release notes", "Yes, on GitHub", "No"],
+          ["Update mechanism", "In-app updater plus manual sideload", "Google Play, or manual sideload"],
+          ["Can you roll back?", "Yes, install the older APK over the top", "Only by sideloading: Play cannot downgrade"],
+          ["Reason for frequency", "Provider scrapers need constant maintenance", "Catalog backend changes server-side, not in the app"],
+        ]}
+      />
+      <p>
+        The cadence difference follows directly from the architecture. Reborn
+        has to ship code every time a provider changes shape. StreamFlix 2.0
+        serves from its own backend, so most of its changes happen server-side
+        and never require an app update at all.
+      </p>
+
+      <h2 id="worth-it">Is this update worth installing?</h2>
+      <p>
+        A short decision procedure, in the order worth applying it:
+      </p>
+      <ol>
+        <li>
+          <strong>Is anything broken right now?</strong> If playback works and
+          your usual sources resolve, an update buys you little and risks
+          dropping a provider that currently works. Staying put is reasonable.
+        </li>
+        <li>
+          <strong>Did sources stop resolving recently?</strong> This is the
+          strongest reason to update. A provider changed shape and the new
+          build has the updated scraper.
+        </li>
+        <li>
+          <strong>Are you on old hardware?</strong> Player changes between
+          series occasionally cost performance on 1 GB and 2 GB TV boxes. Check{" "}
+          <InternalLink intent="oldVersions" currentPath={R.oldVersions} /> before
+          updating so you have a known-good build to return to.
+        </li>
+        <li>
+          <strong>Did you just update and lose something?</strong> Roll back.
+          It is a legitimate fix here, not a workaround. See{" "}
+          <InternalLink intent="rollback" currentPath={R.oldVersions} />.
+        </li>
+      </ol>
+      <p>
+        If an update leaves the app in a worse state than before, the
+        symptom-by-symptom fixes are on{" "}
+        <InternalLink intent="notWorking" currentPath={R.oldVersions} />.
+      </p>
+
+      <h2 id="track">Tracking releases yourself</h2>
+      <p>
+        If you would rather not depend on a third party to tell you when
+        something shipped, both apps can be watched directly.
+      </p>
+      <ul>
+        <li>
+          <strong>Reborn:</strong> the project publishes releases on GitHub, and
+          the repository supports watching releases only, so you are notified
+          about builds without every commit landing in your inbox. The in-app
+          updater covers the same ground if you would rather stay inside the
+          app.
+        </li>
+        <li>
+          <strong>StreamFlix 2.0:</strong> Google Play shows the last updated
+          date on the listing. If you installed from Play, updates arrive on
+          their own and the question is usually whether to let them.
+        </li>
+        <li>
+          <strong>Either app:</strong> check the version inside the app&rsquo;s
+          own settings rather than trusting a download page. Mirror sites
+          frequently label an old build with a current version number, which is
+          one of the checks on{" "}
+          <InternalLink intent="safe" currentPath={R.oldVersions} />.
+        </li>
+      </ul>
+      <p>
+        A habit worth forming: before you accept any update, note which build
+        you are leaving. If the new one drops a provider you relied on, that
+        note is the difference between a two-minute rollback and guessing.
       </p>
     </ClusterPage>
   );
