@@ -16,11 +16,12 @@ export function SiteFooter() {
         <div>
           <Link href="/" className="flex items-center gap-3" aria-label={LOGO_ALT}>
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt={LOGO_ALT}
               width={40}
               height={40}
               className="rounded-lg"
+              unoptimized
             />
             <span className="font-serif text-lg text-paper">{SITE_NAME}</span>
           </Link>

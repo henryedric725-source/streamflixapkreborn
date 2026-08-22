@@ -22,12 +22,13 @@ export function SiteHeader() {
           aria-label={LOGO_ALT}
         >
           <Image
-            src="/logo.png"
+            src="/logo.svg"
             alt={LOGO_ALT}
             width={40}
             height={40}
             className="rounded-lg"
             priority
+            unoptimized
           />
           <span className="min-w-0">
             <span className="block font-serif text-xl leading-none tracking-tight text-paper">
