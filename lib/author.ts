@@ -4,6 +4,19 @@ export const SITE_AUTHOR = {
   role: "Android APK documentation writer",
   url: "https://hbkblogger.vercel.app",
   photo: "/images/author-hbk.svg",
+  /** Verifiable profiles. Feeds Person.sameAs — identity grounding for E-E-A-T. */
+  sameAs: [
+    process.env.NEXT_PUBLIC_AUTHOR_GITHUB,
+    process.env.NEXT_PUBLIC_AUTHOR_LINKEDIN,
+    process.env.NEXT_PUBLIC_AUTHOR_TWITTER,
+  ].filter(Boolean) as string[],
+  /** Stated experience, surfaced in the author box and Person.description. */
+  experienceYears: 8,
+  credentials: [
+    "Installs and tests every documented build on physical Android phone, Android TV and Fire TV hardware",
+    "Verifies package names and signing certificates before publishing specifications",
+    "Documents StreamFlix Reborn and StreamFlix 2.0 as separate applications",
+  ],
   description:
     "HBK (Habibullah Khan) has documented Android sideloading since 2018. For this site he installs every build on a phone, an Android TV box, and a Fire TV Stick before it is written about, records package names and signing certificates, and separates StreamFlix Reborn from StreamFlix 2.0 rather than treating them as one app.",
 } as const;

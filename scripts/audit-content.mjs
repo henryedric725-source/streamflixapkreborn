@@ -24,13 +24,19 @@ function read(path) {
   return readFile(join(ROOT, path), "utf8");
 }
 
-/** Pull `key: "/value"` pairs out of the routes module without importing TS. */
+/**
+ * Pull route values out of the routes module without importing TS.
+ * Handles both literal paths and the `post("slug")` helper.
+ */
 function parseRoutes(source) {
   const start = source.indexOf("export const R = {");
   const body = source.slice(start, source.indexOf("} as const;", start));
+  const prefix = /export const POST_PREFIX = "([^"]+)"/.exec(source)?.[1] ?? "/post";
   const out = {};
-  for (const [, key, value] of body.matchAll(/(\w+):\s*"(\/[^"]*)"/g)) {
-    out[key] = value;
+  for (const [, key, literal, slug] of body.matchAll(
+    /(\w+):\s*(?:"(\/[^"]*)"|post\("([^"]+)"\))/g,
+  )) {
+    out[key] = literal ?? `${prefix}/${slug}`;
   }
   return out;
 }
@@ -65,7 +71,7 @@ async function main() {
   const clusterPaths = parsePathArray("CLUSTER_PATHS");
   const noIndexPaths = parsePathArray("NOINDEX_PATHS");
 
-  const indexablePaths = [...clusterPaths, R.guides, R.about];
+  const indexablePaths = [...clusterPaths, R.blog, R.about];
 
   // 1. Every indexable path has a page file.
   const onDisk = new Set(await listPageRoutes(SITE_DIR));
@@ -81,14 +87,25 @@ async function main() {
     }
   }
 
-  // 3. Every cluster page is in the guide catalogue (the home hub is the root).
-  const guidesSrc = await read("lib/guides.ts");
+  // 3. Every cluster page is in the post catalogue (the home hub is the root).
+  const blogSrc = await read("lib/blog.ts");
   const catalogued = new Set(
-    [...guidesSrc.matchAll(/href:\s*R\.(\w+)/g)].map((m) => R[m[1]]),
+    [...blogSrc.matchAll(/href:\s*R\.(\w+)/g)].map((m) => R[m[1]]),
   );
   for (const path of clusterPaths) {
     if (path === R.home) continue;
-    if (!catalogued.has(path)) fail.push(`orphan: ${path} is not in guides.ts`);
+    if (!catalogued.has(path)) fail.push(`orphan: ${path} is not in blog.ts`);
+  }
+
+  // 3b. Every article must live under /post, and nothing else may.
+  for (const path of clusterPaths) {
+    if (path === R.home) continue;
+    if (!path.startsWith("/post/")) {
+      fail.push(`article ${path} is not under /post/`);
+    }
+  }
+  for (const path of [R.blog, R.about]) {
+    if (path.startsWith("/post/")) fail.push(`${path} should not be under /post/`);
   }
 
   // 4. Related-links coverage and sibling count.
@@ -142,7 +159,48 @@ async function main() {
     }
   }
 
-  // 7. Legal pages must never appear in the sitemap.
+  // 7. Every indexable page must declare grounded entities and a review date.
+  const entitiesSrc = await read("lib/entities.ts");
+  const entityKeys = new Set(
+    [
+      ...entitiesSrc
+        .slice(entitiesSrc.indexOf("export const E = {"))
+        .matchAll(/^  (\w+): \{$/gm),
+    ].map((m) => m[1]),
+  );
+  const citationsSrc = await read("lib/citations.ts");
+  const cited = new Set(
+    [...citationsSrc.matchAll(/\[R\.(\w+)\]:/g)].map((m) => R[m[1]]),
+  );
+
+  for (const path of indexablePaths) {
+    const file =
+      path === "/"
+        ? "app/(site)/page.tsx"
+        : `app/(site)${path}/page.tsx`;
+    let src;
+    try {
+      src = await read(file);
+    } catch {
+      continue; // absence already reported by check 1
+    }
+    if (!/\n      about=\{\[/.test(src)) {
+      fail.push(`${path} declares no \`about\` entities`);
+    }
+    if (!/\n      dateModified="\d{4}-\d{2}-\d{2}"/.test(src)) {
+      fail.push(`${path} declares no dateModified review date`);
+    }
+    for (const [, key] of src.matchAll(/(?:about|mentions)=\{\[([^\]]*)\]\}/g)) {
+      for (const [, name] of key.matchAll(/"(\w+)"/g)) {
+        if (!entityKeys.has(name)) {
+          fail.push(`${path} references unknown entity "${name}"`);
+        }
+      }
+    }
+    if (!cited.has(path)) warn.push(`${path} has no explicit citation list`);
+  }
+
+  // 8. Legal pages must never appear in the sitemap.
   const siteSrc = await read("lib/site.ts");
   if (!siteSrc.includes("allIndexablePaths = INDEXABLE_PATHS")) {
     fail.push("allIndexablePaths no longer derives from INDEXABLE_PATHS");
@@ -159,6 +217,7 @@ async function main() {
   );
   console.log(`cluster pages: ${clusterPaths.length}`);
   console.log(`FAQ questions: ${seen.size} unique across ${banks.length} banks`);
+  console.log(`entities: ${entityKeys.size} grounded in lib/entities.ts`);
   for (const message of warn) console.warn(`warn  ${message}`);
   for (const message of fail) console.error(`FAIL  ${message}`);
 

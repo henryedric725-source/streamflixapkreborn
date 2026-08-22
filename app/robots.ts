@@ -17,5 +17,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Baiduspider", allow: "/", disallow: ["/releases/", "/sitemap.xml"] },
     ],
     host: SITE_URL,
+    // No public sitemap — it is served only at /private-sitemap/<secret>.
   };
 }

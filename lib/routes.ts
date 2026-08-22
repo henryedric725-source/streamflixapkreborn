@@ -1,53 +1,65 @@
 /**
  * Every indexable path on the site, declared once.
  *
+ * URL structure:
+ *   /                 the download hub (money page)
+ *   /blog             the post index
+ *   /post/<slug>      every article
+ *   /about            editorial policy
+ *   /legal/<slug>     noIndex policy pages
+ *
  * Cluster rule: one path = one search intent = one primary keyword head. Where a
  * secondary keyword set would collide with an existing page it becomes an anchor
  * on that page (see `lib/links.ts`) instead of a new route.
  *
- * Kept in its own module so `site.ts`, `links.ts`, `related.ts` and `guides.ts`
+ * Kept in its own module so `site.ts`, `links.ts`, `related.ts` and `blog.ts`
  * can all import paths without an import cycle.
  */
+
+/** Every article lives under this prefix. */
+export const POST_PREFIX = "/post";
+
+const post = (slug: string) => `${POST_PREFIX}/${slug}`;
 
 export const R = {
   /** Cluster 0 — the dual-primary download hub. */
   home: "/",
 
   /** Cluster A — versions and variants. */
-  reborn: "/streamflix-reborn-apk",
-  v2: "/streamflix-2-apk",
-  oldVersions: "/streamflix-apk-old-versions",
-  changelog: "/streamflix-apk-changelog",
-  mod: "/streamflix-mod-apk",
+  reborn: post("streamflix-reborn-apk"),
+  v2: post("streamflix-2-apk"),
+  oldVersions: post("streamflix-apk-old-versions"),
+  changelog: post("streamflix-apk-changelog"),
+  mod: post("streamflix-mod-apk"),
 
   /** Cluster B — install and devices. */
-  install: "/how-to-install-streamflix-apk",
-  firestick: "/streamflix-for-firestick",
-  androidTv: "/streamflix-for-android-tv",
-  pc: "/streamflix-for-pc",
-  ios: "/streamflix-for-ios",
-  smartTv: "/streamflix-on-smart-tv",
+  install: post("how-to-install-streamflix-apk"),
+  firestick: post("streamflix-for-firestick"),
+  androidTv: post("streamflix-for-android-tv"),
+  pc: post("streamflix-for-pc"),
+  ios: post("streamflix-for-ios"),
+  smartTv: post("streamflix-on-smart-tv"),
 
   /** Cluster C — use, offline, and fixes. */
-  howToUse: "/how-to-use-streamflix",
-  offline: "/streamflix-download-movies-offline",
-  notWorking: "/streamflix-not-working",
-  update: "/streamflix-update-guide",
+  howToUse: post("how-to-use-streamflix"),
+  offline: post("streamflix-download-movies-offline"),
+  notWorking: post("streamflix-not-working"),
+  update: post("streamflix-update-guide"),
 
   /** Cluster D — safety, legality, trust. */
-  safe: "/is-streamflix-apk-safe",
-  legal: "/is-streamflix-legal",
-  vpn: "/streamflix-vpn-guide",
-  privacy: "/streamflix-permissions-and-privacy",
+  safe: post("is-streamflix-apk-safe"),
+  legal: post("is-streamflix-legal"),
+  vpn: post("streamflix-vpn-guide"),
+  privacy: post("streamflix-permissions-and-privacy"),
 
   /** Cluster E — comparisons and alternatives. */
-  alternatives: "/streamflix-alternatives",
-  bestMovieApks: "/best-free-movie-apks-for-android",
-  bestTvApks: "/best-streaming-apks-for-android-tv",
-  vsPaid: "/streamflix-vs-paid-streaming-apps",
+  alternatives: post("streamflix-alternatives"),
+  bestMovieApks: post("best-free-movie-apks-for-android"),
+  bestTvApks: post("best-streaming-apks-for-android-tv"),
+  vsPaid: post("streamflix-vs-paid-streaming-apps"),
 
   /** Support. */
-  guides: "/guides",
+  blog: "/blog",
   about: "/about",
 
   /** Legal — all `noIndex`, excluded from the sitemap. */
@@ -88,7 +100,7 @@ export const CLUSTER_PATHS = [
 ] as const;
 
 /** Everything that may appear in the sitemap: clusters + indexable support pages. */
-export const INDEXABLE_PATHS = [...CLUSTER_PATHS, R.guides, R.about] as const;
+export const INDEXABLE_PATHS = [...CLUSTER_PATHS, R.blog, R.about] as const;
 
 /** `noIndex` pages — never emitted into the sitemap. */
 export const NOINDEX_PATHS = [
@@ -97,3 +109,8 @@ export const NOINDEX_PATHS = [
   R.legalDisclaimer,
   R.legalDmca,
 ] as const;
+
+/** True for any article URL. Drives the three-level breadcrumb trail. */
+export function isPostPath(path: string) {
+  return path.startsWith(`${POST_PREFIX}/`);
+}

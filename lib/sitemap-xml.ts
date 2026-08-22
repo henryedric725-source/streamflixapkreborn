@@ -1,4 +1,5 @@
 import { R } from "@/lib/routes";
+import { screenshots } from "@/lib/screenshots";
 import { CONTENT_UPDATED, SITE_URL, allIndexablePaths } from "@/lib/site";
 
 function escapeXml(value: string) {
@@ -21,17 +22,32 @@ export function buildSitemapXml() {
       const priority =
         path === R.home ? "1.0" : WEEKLY.has(path) ? "0.9" : "0.7";
       const changefreq = WEEKLY.has(path) ? "weekly" : "monthly";
+      // The hub renders the full screenshot gallery, so it carries the image
+      // entries. Declaring them everywhere would just duplicate the same set.
+      const images =
+        path === R.home
+          ? Object.values(screenshots)
+              .map(
+                (shot) => `
+    <image:image>
+      <image:loc>${escapeXml(`${SITE_URL}${shot.src}`)}</image:loc>
+      <image:title>${escapeXml(shot.alt)}</image:title>
+    </image:image>`,
+              )
+              .join("")
+          : "";
       return `  <url>
     <loc>${escapeXml(loc)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <priority>${priority}</priority>${images}
   </url>`;
     })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urls}
 </urlset>`;
 }

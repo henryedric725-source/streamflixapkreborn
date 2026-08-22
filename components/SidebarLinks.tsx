@@ -57,10 +57,10 @@ export function RelatedArticles({ current }: { current: string }) {
         </ul>
         <p className="mt-4 px-2 text-sm">
           <Link
-            href={L.guides.href}
+            href={L.blog.href}
             className="font-medium text-flame underline-offset-2 hover:text-kicker hover:underline"
           >
-            {linkLabel("guides", "sidebar")}
+            {linkLabel("blog", "sidebar")}
           </Link>
         </p>
       </nav>

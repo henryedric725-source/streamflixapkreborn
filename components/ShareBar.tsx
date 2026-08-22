@@ -81,7 +81,7 @@ export function ShareBar({ url, title }: { url: string; title: string }) {
             <a
               href={network.href(url, title)}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className={itemClass}
             >
               {network.name}

@@ -36,7 +36,7 @@ export const SITE_LOCALE = "en";
 export const SCHEMA_LANGUAGE = "en";
 
 export const HOME_TITLE =
-  "StreamFlix APK Download (2026): Reborn v1.7.230 and StreamFlix 2.0 for Android and TV";
+  "StreamFlix APK Download 2026: Reborn v1.7.230 + 2.0";
 
 export const HOME_H1 =
   "StreamFlix APK Download for Android, Firestick and Android TV (2026)";

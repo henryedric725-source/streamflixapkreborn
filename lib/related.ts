@@ -175,7 +175,7 @@ const related: Record<string, RelatedLink[]> = {
   ],
 
   // Support
-  [R.guides]: [
+  [R.blog]: [
     { href: L.downloadHub.href, title: linkLabel("downloadHub", "sidebar") },
     { href: L.install.href, title: linkLabel("install", "body") },
     { href: L.notWorking.href, title: linkLabel("notWorking", "body") },
@@ -217,7 +217,7 @@ const related: Record<string, RelatedLink[]> = {
 
 const fallback: RelatedLink[] = [
   { href: L.downloadHub.href, title: linkLabel("downloadHub", "sidebar") },
-  { href: L.guides.href, title: linkLabel("guides", "sidebar") },
+  { href: L.blog.href, title: linkLabel("blog", "sidebar") },
   { href: L.install.href, title: linkLabel("install", "sidebar") },
 ];
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { hubCards } from "@/lib/guides";
+import { hubCards } from "@/lib/blog";
 
 export function RelatedHubs({ current }: { current: string }) {
   const items = hubCards.filter((hub) => hub.href !== current).slice(0, 5);

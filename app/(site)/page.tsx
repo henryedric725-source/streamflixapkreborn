@@ -15,7 +15,7 @@ import { ProsCons } from "@/components/ProsCons";
 import { ProviderGrid } from "@/components/ProviderGrid";
 import { VariantCompare } from "@/components/VariantCompare";
 import { homeFaqs } from "@/lib/faqs";
-import { guideClusters } from "@/lib/guides";
+import { postCategories } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
 import { stagedMap } from "@/lib/releases";
 import { R } from "@/lib/routes";
@@ -33,6 +33,7 @@ export const metadata: Metadata = pageMetadata({
   title: HOME_TITLE,
   description: DEFAULT_DESCRIPTION,
   path: R.home,
+  dateModified: "2026-08-22",
   keywords: [...PRIMARY_KEYWORDS],
   absoluteTitle: true,
 });
@@ -48,7 +49,7 @@ const toc = [
   { href: "#install", label: "Install in four steps" },
   { href: "#pros-cons", label: "Strengths and limits" },
   { href: "#safety", label: "Safety, legality and privacy" },
-  { href: "#guides", label: "Every guide on this site" },
+  { href: "#blog", label: "Every article on this site" },
 ];
 
 const androidHowTo: HowToData = {
@@ -114,6 +115,9 @@ export default function HomePage() {
       path={R.home}
       title={HOME_TITLE}
       description={DEFAULT_DESCRIPTION}
+      about={["apk", "android", "streaming"]}
+      mentions={["sideloading", "androidTv", "fireTv", "googlePlay", "openSource", "playProtect"]}
+      dateModified="2026-08-22"
       kicker="Android package documentation"
       h1={HOME_H1}
       answer={`Two different Android apps share the StreamFlix name. StreamFlix Reborn v${REBORN.version} is the open-source build for phones and TV; StreamFlix 2.0 build ${V2.version} is a separate closed-source app on Google Play. Pick Reborn for a Firestick or Android TV, and StreamFlix 2.0 for a phone with offline downloads.`}
@@ -377,20 +381,20 @@ export default function HomePage() {
         <InternalLink intent="vpn" currentPath={R.home} />.
       </p>
 
-      <h2 id="guides">Every guide on this site</h2>
+      <h2 id="blog">Every article on this site</h2>
       <p>
         One page per question, so nothing is buried inside a page about
         something else.
       </p>
       <div className="not-prose mt-6 space-y-6">
-        {guideClusters.map((cluster) => (
+        {postCategories.map((cluster) => (
           <section key={cluster.id}>
             <h3 className="font-serif text-xl text-paper">{cluster.name}</h3>
             <p className="mt-1 text-sm leading-6 text-zinc-400">
               {cluster.blurb}
             </p>
             <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {cluster.guides.map((guide) => (
+              {cluster.posts.map((guide) => (
                 <li key={guide.href}>
                   <Link
                     href={guide.href}

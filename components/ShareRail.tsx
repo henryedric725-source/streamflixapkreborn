@@ -84,7 +84,7 @@ export function ShareRail({ url, title }: { url: string; title: string }) {
               key={network.name}
               href={network.href(url, title)}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               title={network.label}
               aria-label={network.label}
               className="share-btn"

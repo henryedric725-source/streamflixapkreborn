@@ -583,7 +583,7 @@ export const changelogFaqs: FaqItem[] = [
   },
 ];
 
-export const guidesIndexFaqs: FaqItem[] = [
+export const blogIndexFaqs: FaqItem[] = [
   {
     question: "How is this StreamFlix guide index organised?",
     answer:

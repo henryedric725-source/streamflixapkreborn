@@ -302,14 +302,14 @@ export const L = {
   },
 
   // --- Support ---------------------------------------------------------------
-  guides: {
-    href: R.guides,
+  blog: {
+    href: R.blog,
     labels: {
-      nav: "Guides",
-      footer: "All guides",
-      body: "the full StreamFlix guide index",
-      sidebar: "Browse every guide",
-      breadcrumb: "Guides",
+      nav: "Blog",
+      footer: "All articles",
+      body: "the full StreamFlix article index",
+      sidebar: "Browse every article",
+      breadcrumb: "Blog",
     },
   },
   about: {
@@ -355,7 +355,7 @@ export function navItemsFromLinks() {
     { href: L.firestick.href, label: linkLabel("firestick", "nav") },
     { href: L.notWorking.href, label: linkLabel("notWorking", "nav") },
     { href: L.alternatives.href, label: linkLabel("alternatives", "nav") },
-    { href: L.guides.href, label: linkLabel("guides", "nav") },
+    { href: L.blog.href, label: linkLabel("blog", "nav") },
   ] as const;
 }
 
@@ -368,7 +368,7 @@ export function quickLinksFromLinks() {
     { href: L.firestick.href, label: linkLabel("firestick", "footer") },
     { href: L.notWorking.href, label: linkLabel("notWorking", "footer") },
     { href: L.safe.href, label: linkLabel("safe", "footer") },
-    { href: L.guides.href, label: linkLabel("guides", "footer") },
+    { href: L.blog.href, label: linkLabel("blog", "footer") },
     { href: L.about.href, label: linkLabel("about", "footer") },
   ] as const;
 }

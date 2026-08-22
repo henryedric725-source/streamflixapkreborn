@@ -2,14 +2,21 @@ import type { ReactNode } from "react";
 import { ArticleShell } from "@/components/ArticleShell";
 import { AuthorSection } from "@/components/AuthorSection";
 import { FaqList } from "@/components/FaqList";
-import { PageSchema, type ComparisonSpec, type SoftwareSpec } from "@/components/JsonLd";
+import {
+  PageSchema,
+  type ComparisonSpec,
+  type SoftwareSpec,
+  type VideoSpec,
+} from "@/components/JsonLd";
 import { DirectAnswer } from "@/components/PageIntro";
 import { RelatedHubs } from "@/components/RelatedHubs";
+import { Sources } from "@/components/Sources";
 import { Toc } from "@/components/Toc";
 import { Takeaways } from "@/components/ContentBlocks";
 import type { FaqItem } from "@/lib/faqs";
+import type { EntityKey } from "@/lib/entities";
 import { L, linkLabel } from "@/lib/links";
-import { R } from "@/lib/routes";
+import { R, isPostPath } from "@/lib/routes";
 import type { HowToData } from "@/lib/schema";
 import type { AppVariant } from "@/lib/variants";
 import type { ApkRelease } from "@/lib/versions";
@@ -39,7 +46,14 @@ export function ClusterPage({
   howTos,
   releases,
   comparison,
-  guideList,
+  video,
+  about,
+  mentions,
+  dateModified,
+  primaryImage,
+  isCollection,
+  blogList,
+  blog,
   featureAside,
   leadContent,
   downloadVariant,
@@ -61,7 +75,16 @@ export function ClusterPage({
   howTos?: HowToData[];
   releases?: ApkRelease[];
   comparison?: ComparisonSpec;
-  guideList?: boolean;
+  video?: VideoSpec;
+  /** Primary subject entities. Grounded with sameAs in lib/entities.ts. */
+  about?: readonly EntityKey[];
+  mentions?: readonly EntityKey[];
+  /** ISO date this page's facts were last reviewed. */
+  dateModified?: string;
+  primaryImage?: { url: string; width: number; height: number; caption: string };
+  isCollection?: boolean;
+  blogList?: boolean;
+  blog?: boolean;
   featureAside?: ReactNode;
   leadContent?: ReactNode;
   downloadVariant?: AppVariant;
@@ -82,7 +105,14 @@ export function ClusterPage({
         howTos={howTos}
         releases={releases}
         comparison={comparison}
-        guideList={guideList}
+        video={video}
+        about={about}
+        mentions={mentions}
+        dateModified={dateModified}
+        primaryImage={primaryImage}
+        isCollection={isCollection}
+        blogList={blogList}
+        blog={blog}
       />
       <ArticleShell
         crumbs={crumbs}
@@ -98,7 +128,8 @@ export function ClusterPage({
         <div className="prose-hub max-w-none">{children}</div>
         <Takeaways items={takeaways} />
         <FaqList items={faqs} />
-        <AuthorSection />
+        <Sources path={path} />
+        <AuthorSection reviewedOn={dateModified} />
         <div className="mt-10">
           <RelatedHubs current={path} />
         </div>
@@ -119,5 +150,14 @@ export function breadcrumbsFor(path: string, fallbackName: string) {
   const name =
     (entry?.labels as { breadcrumb?: string } | undefined)?.breadcrumb ??
     fallbackName;
+
+  // Articles live under /post, so their trail passes through the blog index.
+  if (isPostPath(path)) {
+    return [
+      home,
+      { name: linkLabel("blog", "breadcrumb"), href: R.blog },
+      { name, href: path },
+    ];
+  }
   return [home, { name, href: path }];
 }

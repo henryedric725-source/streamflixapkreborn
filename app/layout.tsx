@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: HOME_TITLE,
-    template: "%s | StreamFlix APK",
+    template: "%s | StreamFlix",
   },
   description: DEFAULT_DESCRIPTION,
   keywords: [...PRIMARY_KEYWORDS],
@@ -136,6 +136,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <meta name="baiduspider" content="index, follow" />
         <link rel="icon" href="/logo.png" type="image/png" sizes="any" title={LOGO_ALT} />
         <link rel="apple-touch-icon" href="/apple-icon.png" title={LOGO_ALT} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="StreamFlix APK blog"
+          href="/blog/rss.xml"
+        />
         <link rel="author" href="/humans.txt" />
         <link rel="alternate" type="text/plain" href="/llms.txt" />
       </head>

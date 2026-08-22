@@ -26,6 +26,45 @@ const nextConfig: NextConfig = {
   compress: true,
   reactStrictMode: true,
   agentRules: false,
+  /**
+   * Articles moved from root slugs to /post/<slug>, and /guides became /blog.
+   * Permanent redirects preserve any link equity and stop old URLs 404ing.
+   */
+  async redirects() {
+    const movedToPost = [
+      "streamflix-reborn-apk",
+      "streamflix-2-apk",
+      "streamflix-apk-old-versions",
+      "streamflix-apk-changelog",
+      "streamflix-mod-apk",
+      "how-to-install-streamflix-apk",
+      "streamflix-for-firestick",
+      "streamflix-for-android-tv",
+      "streamflix-for-pc",
+      "streamflix-for-ios",
+      "streamflix-on-smart-tv",
+      "how-to-use-streamflix",
+      "streamflix-download-movies-offline",
+      "streamflix-not-working",
+      "streamflix-update-guide",
+      "is-streamflix-apk-safe",
+      "is-streamflix-legal",
+      "streamflix-vpn-guide",
+      "streamflix-permissions-and-privacy",
+      "streamflix-alternatives",
+      "best-free-movie-apks-for-android",
+      "best-streaming-apks-for-android-tv",
+      "streamflix-vs-paid-streaming-apps",
+    ];
+    return [
+      { source: "/guides", destination: "/blog", permanent: true },
+      ...movedToPost.map((slug) => ({
+        source: `/${slug}`,
+        destination: `/post/${slug}`,
+        permanent: true,
+      })),
+    ];
+  },
   async headers() {
     return [
       {

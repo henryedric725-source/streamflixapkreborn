@@ -6,7 +6,7 @@ import { Roadmap } from "@/components/HomeSections";
 import { InternalLink } from "@/components/InternalLink";
 import { EDITORIAL_METHOD, SITE_AUTHOR } from "@/lib/author";
 import { aboutFaqs } from "@/lib/faqs";
-import { allGuides } from "@/lib/guides";
+import { allPosts } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
 import { INDEXABLE_PATHS, R } from "@/lib/routes";
 import {
@@ -17,7 +17,7 @@ import {
 } from "@/lib/site";
 import { REBORN, V2 } from "@/lib/variants";
 
-const TITLE = "About This Site: Editorial Policy and Testing Method";
+const TITLE = "About: Editorial and Testing Policy";
 const DESCRIPTION =
   "How we verify version numbers, why we treat StreamFlix Reborn and StreamFlix 2.0 as separate apps, what we test before publishing, and how to reach us.";
 
@@ -25,6 +25,7 @@ export const metadata: Metadata = pageMetadata({
   title: TITLE,
   description: DESCRIPTION,
   path: R.about,
+  dateModified: "2026-08-22",
   keywords: ["about streamflix apk site", "editorial policy", "streamflix documentation"],
 });
 
@@ -45,6 +46,9 @@ export default function AboutPage() {
       path={R.about}
       title={TITLE}
       description={DESCRIPTION}
+      about={["apk", "openSource"]}
+      mentions={["android", "streaming", "sideloading"]}
+      dateModified="2026-08-22"
       kicker="Editorial policy"
       h1="About This Site"
       answer={`${SITE_NAME} documents the two unrelated Android apps published under the StreamFlix name. Every specification comes from the developer's own distribution point first, every build is installed on a phone, a TV box and a Fire TV Stick before it is written about, and negative findings are published rather than omitted.`}
@@ -204,7 +208,7 @@ export default function AboutPage() {
 
       <h2 id="urls">Every page on this site</h2>
       <p>
-        {allGuides.length} guides plus this page and the download hub. Legal
+        {allPosts.length} articles plus this page and the download hub. Legal
         pages are excluded from search indexes but linked in the footer.
       </p>
       <ul className="not-prose mt-4 grid gap-1.5 sm:grid-cols-2">
