@@ -150,17 +150,15 @@ export function ClusterPage({
         intro={<DirectAnswer kicker={kicker} title={h1} answer={answer} />}
       >
         {showToc ? <Toc items={toc} /> : null}
-        <div className={contentClassName}>{children}</div>
-        {takeaways.length > 0 ? <Takeaways items={takeaways} /> : null}
-        {faqs.length > 0 ? <FaqList items={faqs} /> : null}
-        {authorVisible ? (
-          <AuthorSection reviewedOn={dateModified} path={path} />
-        ) : null}
-        {showRelatedHubs ? (
-          <div className="mt-10">
-            <RelatedHubs current={path} />
-          </div>
-        ) : null}
+        <div className={contentClassName}>
+          {children}
+          {takeaways.length > 0 ? <Takeaways items={takeaways} /> : null}
+          {faqs.length > 0 ? <FaqList items={faqs} /> : null}
+          {authorVisible ? (
+            <AuthorSection reviewedOn={dateModified} path={path} />
+          ) : null}
+          {showRelatedHubs ? <RelatedHubs current={path} /> : null}
+        </div>
       </ArticleShell>
     </>
   );

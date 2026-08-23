@@ -2,7 +2,7 @@ import { AppScreenshot } from "@/components/AppScreenshot";
 
 export function TrustChips({ items }: { items: string[] }) {
   return (
-    <ul className="mt-5 flex flex-wrap gap-2">
+    <ul className="not-prose flex flex-wrap gap-2">
       {items.map((item) => (
         <li
           key={item}
@@ -81,7 +81,7 @@ export function FeatureCards({
   items: { title: string; body: string }[];
 }) {
   return (
-    <div className="mt-4 grid gap-4 md:grid-cols-3">
+    <div className="not-prose grid gap-4 md:grid-cols-3">
       {items.map((item) => (
         <article key={item.title} className="rounded-xl border border-line bg-panel p-5">
           <h3 className="font-serif text-xl text-paper">{item.title}</h3>
@@ -98,7 +98,7 @@ export function StepCards({
   items: { n: string; title: string; body: string }[];
 }) {
   return (
-    <ol className="mt-4 grid gap-4 sm:grid-cols-2">
+    <ol className="not-prose grid gap-4 sm:grid-cols-2">
       {items.map((item) => (
         <li key={item.n} className="rounded-xl border border-line bg-panel p-5">
           <p className="font-mono text-xs uppercase tracking-[0.16em] text-flame">{item.n}</p>
@@ -127,7 +127,7 @@ export function LibraryCards({
   }[];
 }) {
   return (
-    <ul className="library-shots not-prose mt-6">
+    <ul className="library-shots not-prose">
       {items.map((item) => (
         <li key={item.title}>
           {item.shot ? <AppScreenshot shot={item.shot} size="thumb" /> : null}

@@ -49,8 +49,10 @@ export function LegalPage({
           Last updated:{" "}
           <time dateTime={LEGAL_UPDATED}>{LEGAL_UPDATED_DISPLAY}</time>
         </p>
-        <div className="prose-hub max-w-none">{children}</div>
-        <LegalRelatedPolicies current={path} />
+        <div className="prose-hub max-w-none">
+          {children}
+          <LegalRelatedPolicies current={path} />
+        </div>
       </ArticleShell>
     </>
   );

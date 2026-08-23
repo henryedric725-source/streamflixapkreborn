@@ -30,7 +30,7 @@ export function Toc({ items }: { items: { href: string; label: string }[] }) {
   }, [ids]);
 
   return (
-    <nav aria-label="On this page" className="page-index mt-8 mb-10">
+    <nav aria-label="On this page" className="page-index mt-6 mb-5">
       <div className="page-index-head">
         <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-flame/15 text-flame">
           <ListTree className="h-5 w-5" aria-hidden strokeWidth={2} />

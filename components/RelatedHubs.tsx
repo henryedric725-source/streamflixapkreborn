@@ -4,7 +4,7 @@ import { hubCards } from "@/lib/blog";
 export function RelatedHubs({ current }: { current: string }) {
   const items = hubCards.filter((hub) => hub.href !== current).slice(0, 5);
   return (
-    <aside className="card-panel p-5">
+    <aside className="not-prose card-panel p-5">
       <p className="kicker">Other hubs</p>
       <p className="mt-2 text-sm text-zinc-400">
         One intent per URL \u2014 pick the hub that matches what you need next.

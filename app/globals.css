@@ -286,7 +286,7 @@ body {
 .library-shots {
   display: grid;
   gap: 1rem;
-  margin-top: 1.25rem;
+  margin-top: 0;
   padding: 0;
   list-style: none;
 }
@@ -325,28 +325,59 @@ body {
   color: #c7c7cc;
 }
 
-.prose-hub h2 {
-  margin-top: 2.4rem;
+.prose-hub {
+  /* Equal vertical rhythm across every cluster/legal page. */
+  --prose-stack: 1.25rem;
+  --prose-section: 3rem;
+}
+
+.prose-hub > :first-child {
+  margin-top: 0 !important;
+}
+
+.prose-hub > * + * {
+  margin-top: var(--prose-stack) !important;
+  margin-bottom: 0 !important;
+}
+
+.prose-hub > h2 {
+  margin-top: var(--prose-section) !important;
+  margin-bottom: 0 !important;
+  padding-top: 0.15rem;
   font-family: var(--font-serif), Newsreader, Georgia, serif;
   font-size: 1.75rem;
+  line-height: 1.25;
   color: var(--color-paper);
+  scroll-margin-top: 6rem;
 }
 
-.prose-hub h3 {
-  margin-top: 1.5rem;
+.prose-hub > h2:first-child {
+  margin-top: 0 !important;
+  padding-top: 0;
+}
+
+.prose-hub > h3 {
+  margin-top: calc(var(--prose-stack) + 0.25rem) !important;
+  margin-bottom: 0 !important;
   font-size: 1.05rem;
   font-weight: 600;
+  line-height: 1.35;
   color: var(--color-paper);
 }
 
-.prose-hub p,
+.prose-hub p {
+  margin: 0;
+  line-height: 1.75;
+  color: #c7c7cc;
+}
+
 .prose-hub li {
   line-height: 1.75;
   color: #c7c7cc;
 }
 
 .prose-hub ul {
-  margin-top: 0.75rem;
+  margin: 0;
   list-style: disc;
   padding-left: 1.2rem;
 }
@@ -355,6 +386,22 @@ body {
   color: #ff6b7a;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* Major post-body blocks (takeaways, FAQ, author, hubs) get a section gap. */
+.prose-hub > .takeaways-block,
+.prose-hub > .faq-block,
+.prose-hub > #author,
+.prose-hub > aside.card-panel {
+  margin-top: var(--prose-section) !important;
+}
+
+/* Callout cards inside prose: keep internal padding even; spacing comes from the stack. */
+.prose-hub > section,
+.prose-hub > .not-prose,
+.prose-hub > div,
+.prose-hub > aside {
+  scroll-margin-top: 6rem;
 }
 
 .archive-body {

@@ -8,7 +8,7 @@ export function ProsCons({
   cons: string[];
 }) {
   return (
-    <div className="balance-board mt-5">
+    <div className="balance-board not-prose">
       <div className="balance-board-rail" aria-hidden />
       <section className="balance-col balance-col-pro">
         <header className="balance-head">

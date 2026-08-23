@@ -36,7 +36,7 @@ export function AuthorSection({
   return (
     <aside
       id="author"
-      className="not-prose mt-10 rounded-2xl border border-line bg-panel/80 p-5 sm:p-6"
+      className="not-prose rounded-2xl border border-line bg-panel/80 p-5 sm:p-6"
       aria-labelledby="about-the-author"
     >
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">

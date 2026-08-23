@@ -446,12 +446,12 @@ export default function HomePage() {
         Note the detail view: runtime, release year, original language, budget,
         revenue and director all render before you commit to playing anything.
       </p>
-      <div className="not-prose mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="not-prose grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {galleryOrder.slice(0, 4).map((key) => (
           <AppScreenshot key={key} shot={screenshots[key]} size="phone" />
         ))}
       </div>
-      <div className="not-prose mt-6 grid gap-5 md:grid-cols-2">
+      <div className="not-prose grid gap-5 md:grid-cols-2">
         {galleryOrder.slice(4).map((key) => (
           <AppScreenshot key={key} shot={screenshots[key]} size="wide" />
         ))}

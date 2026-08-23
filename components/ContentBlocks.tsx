@@ -6,10 +6,13 @@ export function KeyFacts({
   items: { label: string; value: string }[];
 }) {
   return (
-    <section className="key-facts mt-8 rounded-xl border border-line bg-panel p-5" aria-labelledby="key-facts-heading">
-      <h2 id="key-facts-heading" className="font-serif text-2xl text-paper">
+    <section
+      className="key-facts not-prose rounded-xl border border-line bg-panel p-5"
+      aria-labelledby="key-facts-heading"
+    >
+      <h3 id="key-facts-heading" className="font-serif text-xl text-paper">
         Key facts
-      </h2>
+      </h3>
       <dl className="mt-4 grid gap-3 sm:grid-cols-2">
         {items.map((item) => (
           <div key={item.label}>
@@ -32,7 +35,7 @@ export function SpecTable({
   rows: [string, string][];
 }) {
   return (
-    <div className="mt-4 overflow-x-auto rounded-xl border border-line">
+    <div className="not-prose overflow-x-auto rounded-xl border border-line">
       <table className="min-w-full text-left text-sm">
         <caption className="sr-only">{caption}</caption>
         <tbody>
@@ -60,7 +63,7 @@ export function DataTable({
   rows: string[][];
 }) {
   return (
-    <div className="mt-4 overflow-x-auto rounded-xl border border-line">
+    <div className="not-prose overflow-x-auto rounded-xl border border-line">
       <table className="min-w-full text-left text-sm">
         <caption className="sr-only">{caption}</caption>
         <thead className="bg-white/5 text-paper">
@@ -92,11 +95,14 @@ export { Toc } from "@/components/Toc";
 
 export function Takeaways({ items }: { items: string[] }) {
   return (
-    <section className="mt-8 rounded-xl border border-line bg-panel p-5" aria-labelledby="takeaways-heading">
-      <h2 id="takeaways-heading" className="font-serif text-2xl text-paper">
+    <section
+      className="takeaways-block not-prose rounded-xl border border-line bg-panel p-5"
+      aria-labelledby="takeaways-heading"
+    >
+      <h3 id="takeaways-heading" className="font-serif text-xl text-paper">
         Key takeaways
-      </h2>
-      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-zinc-300">
+      </h3>
+      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-zinc-300">
         {items.map((item) => (
           <li key={item}>{item}</li>
         ))}
@@ -115,13 +121,15 @@ export function QuickSummary({
   return (
     <section
       id="quick-summary"
-      className="mt-8 rounded-xl border border-line bg-panel/60 p-5"
+      className="not-prose rounded-xl border border-line bg-panel/60 p-5"
       aria-labelledby="quick-summary-heading"
     >
-      <h2 id="quick-summary-heading" className="font-serif text-2xl text-paper">
+      <h3 id="quick-summary-heading" className="font-serif text-xl text-paper">
         Quick summary
-      </h2>
-      <div className="mt-3 text-sm leading-7 text-zinc-300">{children}</div>
+      </h3>
+      <div className="mt-3 space-y-3 text-sm leading-7 text-zinc-300 [&_p]:m-0">
+        {children}
+      </div>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-zinc-300">
         {bullets.map((item) => (
           <li key={item}>{item}</li>
@@ -139,10 +147,13 @@ export function Definition({
   children: ReactNode;
 }) {
   return (
-    <section className="mt-8 rounded-xl border border-line bg-panel p-5" aria-labelledby="definition-heading">
-      <h2 id="definition-heading" className="font-serif text-2xl text-paper">
+    <section
+      className="not-prose rounded-xl border border-line bg-panel p-5"
+      aria-labelledby="definition-heading"
+    >
+      <h3 id="definition-heading" className="font-serif text-xl text-paper">
         Definition: {term}
-      </h2>
+      </h3>
       <p className="mt-3 text-sm leading-7 text-zinc-300">{children}</p>
     </section>
   );

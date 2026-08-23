@@ -11,25 +11,33 @@ export function FaqList({
 }) {
   const archive = tone === "archive";
   return (
-    <section aria-labelledby="faq-heading" className="mt-14">
-      <h2
-        id="faq-heading"
-        className={
-          archive
-            ? "font-mono text-sm uppercase tracking-[0.14em] text-archive-ink"
-            : "font-serif text-3xl text-paper"
-        }
-      >
-        {heading}
-      </h2>
-      <p className={archive ? "mt-2 max-w-2xl text-sm text-archive-muted" : "mt-2 max-w-2xl text-zinc-400"}>
-        Short answers first.
-      </p>
+    <section aria-labelledby="faq-heading" className="faq-block not-prose flex flex-col gap-4">
+      <div>
+        <h2
+          id="faq-heading"
+          className={
+            archive
+              ? "font-mono text-sm uppercase tracking-[0.14em] text-archive-ink"
+              : "font-serif text-[1.75rem] leading-tight text-paper"
+          }
+        >
+          {heading}
+        </h2>
+        <p
+          className={
+            archive
+              ? "pt-2 max-w-2xl text-sm text-archive-muted"
+              : "pt-2 max-w-2xl text-sm text-zinc-400"
+          }
+        >
+          Short answers first.
+        </p>
+      </div>
       <div
         className={
           archive
-            ? "mt-6 divide-y divide-archive-rule border border-archive-rule bg-archive-paper"
-            : "mt-6 divide-y divide-line rounded-xl border border-line bg-panel"
+            ? "divide-y divide-archive-rule border border-archive-rule bg-archive-paper"
+            : "divide-y divide-line rounded-xl border border-line bg-panel"
         }
       >
         {items.map((item) => (

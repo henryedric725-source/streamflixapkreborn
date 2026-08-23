@@ -36,7 +36,7 @@ const concepts = [
 
 export function ProviderGrid() {
   return (
-    <div className="not-prose mt-5 grid gap-3 sm:grid-cols-2">
+    <div className="not-prose grid gap-3 sm:grid-cols-2">
       {concepts.map((item) => (
         <article
           key={item.title}
