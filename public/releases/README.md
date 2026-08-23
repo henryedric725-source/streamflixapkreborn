@@ -3,35 +3,22 @@
 APK binaries live in **`storage/releases/`** (not `public/`), because Cloudflare
 Workers static assets cannot exceed **25 MiB** and these packages are ~31 MiB.
 
-Production serves them from the **`streamflix-apk-releases`** R2 bucket via
-`app/releases/[file]/route.ts`. Local `next dev` / `next start` reads the same
-filenames from disk.
+Production download buttons point at the public R2 base URL
+(`NEXT_PUBLIC_RELEASES_BASE_URL` / `lib/package.ts`). Local `next dev` serves
+the same filenames from disk via `/releases/<file>`.
 
-Filenames must match `lib/package.ts` and `lib/variants.ts` byte for byte:
+Filenames:
 
-- `StreamFlix APK.apk` — header / mobile bar (“Download APK”)
+- `StreamFlix APK.apk` — header / mobile bar
 - `StreamFlix Reborn latest version.apk` — Reborn buttons
 - `StreamFlix 2.0 latest version.apk` — StreamFlix 2.0 buttons
 
-## Upload / deploy
+## Upload
 
 ```bash
-npm run upload:releases   # wrangler r2 object put …
-npm run cf:deploy         # upload then wrangler deploy
+npm run upload:releases
 ```
 
-Cloudflare Workers Builds **deploy command** must be:
-
-```text
-npm run cf:deploy
-```
-
-not plain `npx wrangler deploy`, or R2 will be empty and downloads 404.
-
-## Behaviour when a file is absent
-
-`isPackageStaged()` returns false in development, and the site degrades
-gracefully rather than serving a 404:
-
-- The download button falls back to the `/#get-apk` section on the hub.
-- `SoftwareApplication` schema omits `downloadUrl` entirely.
+The Worker deploy does **not** need an R2 binding (Workers Builds may use an
+account where R2 is disabled). Keep objects in sync with `npm run upload:releases`
+from a Wrangler login that has R2 enabled.

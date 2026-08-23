@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
- * Upload staged APKs to the RELEASES R2 bucket.
+ * Upload staged APKs to the public R2 bucket used for download buttons.
  *
- * Workers static assets cannot exceed 25 MiB; these packages are ~31 MiB, so
- * downloads are served from R2 via app/releases/[file]/route.ts.
+ * Workers static assets cannot exceed 25 MiB. Downloads therefore point at the
+ * public r2.dev (or custom) base URL — no R2 binding is required on the Worker,
+ * so Cloudflare Workers Builds can deploy even when that account has R2 off.
  */
 import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
@@ -25,10 +26,24 @@ if (!files.length) {
 
 for (const file of files) {
   const local = join(DIR, file);
+  const disposition = `attachment; filename="${file}"`;
   console.log(`[upload-releases] put ${file} -> r2://${BUCKET}/${file}`);
   execFileSync(
     "npx",
-    ["wrangler", "r2", "object", "put", `${BUCKET}/${file}`, "--file", local, "--remote"],
+    [
+      "wrangler",
+      "r2",
+      "object",
+      "put",
+      `${BUCKET}/${file}`,
+      "--file",
+      local,
+      "--remote",
+      "--content-type",
+      "application/vnd.android.package-archive",
+      "--content-disposition",
+      disposition,
+    ],
     { stdio: "inherit" },
   );
 }

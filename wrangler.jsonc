@@ -19,14 +19,9 @@
   "observability": {
     "enabled": true
   },
-  "r2_buckets": [
-    {
-      "binding": "RELEASES",
-      "bucket_name": "streamflix-apk-releases"
-    }
-  ],
   "vars": {
     "NEXT_PUBLIC_SITE_URL": "https://streamflixreborn.com",
+    "NEXT_PUBLIC_RELEASES_BASE_URL": "https://pub-1694258d29c94e3f93443e1725794890.r2.dev",
     "SITEMAP_SECRET": "51ee7ca42bedf8a31c1bccf9478e3172d17122a2848d26a4299c77573274e40f"
   },
   "services": [

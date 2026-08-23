@@ -1,8 +1,7 @@
 import { createReadStream, existsSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { Readable } from "node:stream";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { STAGED_PACKAGE } from "@/lib/package";
+import { RELEASES_PUBLIC_BASE, STAGED_PACKAGE } from "@/lib/package";
 import { releaseFileNames } from "@/lib/versions";
 import { REBORN, V2 } from "@/lib/variants";
 
@@ -15,7 +14,7 @@ const ALLOWED = new Set<string>([
 
 function attachmentHeaders(fileName: string, size?: number): HeadersInit {
   const headers: Record<string, string> = {
-    "Content-Type": "application/octet-stream",
+    "Content-Type": "application/vnd.android.package-archive",
     "Content-Disposition": `attachment; filename="${fileName.replace(/"/g, "")}"`,
     "Cache-Control": "public, max-age=3600, must-revalidate",
     "X-Content-Type-Options": "nosniff",
@@ -25,8 +24,8 @@ function attachmentHeaders(fileName: string, size?: number): HeadersInit {
 }
 
 /**
- * APKs are too large for Workers static assets (25 MiB cap). They live in the
- * RELEASES R2 bucket in production and under storage/releases locally.
+ * Local/dev download path. Production buttons point straight at the public R2
+ * base URL (see lib/package.ts) so this Worker does not need an R2 binding.
  */
 export async function GET(
   _request: Request,
@@ -38,18 +37,12 @@ export async function GET(
     return new Response("Not found", { status: 404 });
   }
 
-  try {
-    const { env } = await getCloudflareContext({ async: true });
-    const bucket = env.RELEASES;
-    if (bucket) {
-      const object = await bucket.get(fileName);
-      if (!object) return new Response("Not found", { status: 404 });
-      return new Response(object.body, {
-        headers: attachmentHeaders(fileName, object.size),
-      });
-    }
-  } catch {
-    // Local Next.js / missing binding — fall through to disk.
+  // In production, send callers to the public object store.
+  if (process.env.NODE_ENV === "production") {
+    return Response.redirect(
+      `${RELEASES_PUBLIC_BASE}/${encodeURIComponent(fileName)}`,
+      302,
+    );
   }
 
   const diskPath = join(process.cwd(), "storage", "releases", fileName);
