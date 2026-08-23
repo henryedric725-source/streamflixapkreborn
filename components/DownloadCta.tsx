@@ -9,10 +9,9 @@ import { REBORN, type AppVariant } from "@/lib/variants";
 /**
  * Primary download button.
  *
- * Every button on the site serves the one staged package, so a visitor never
- * lands on a dead link. When no binary is staged the button degrades to the
- * on-page download section rather than pointing at a file that would 404, which
- * is the same condition that gates `downloadUrl` in the schema.
+ * Each variant button serves the same APK bytes under that variant's filename
+ * so the saved file matches the button (Reborn vs StreamFlix 2.0). When no
+ * binary is staged the button falls back to the on-page download section.
  */
 export function DownloadCta({
   variant = REBORN,
@@ -28,7 +27,8 @@ export function DownloadCta({
   showMeta?: boolean;
 }) {
   const available = staged ?? isPackageStaged();
-  const href = available ? stagedPackagePath() : `${R.home}#get-apk`;
+  const fileName = variant.fileName;
+  const href = available ? stagedPackagePath(fileName) : `${R.home}#get-apk`;
   return (
     <div className="not-prose flex flex-col gap-2">
       <a
@@ -36,15 +36,15 @@ export function DownloadCta({
         className={`btn-download ${
           size === "lg" ? "px-6 py-4 text-base" : "px-4 py-3 text-sm"
         }`}
-        {...(available ? { download: STAGED_PACKAGE.fileName } : {})}
+        {...(available ? { download: fileName } : {})}
       >
         <Download className="h-5 w-5 shrink-0" aria-hidden />
         <span>{label ?? `Download ${variant.shortName}`}</span>
       </a>
       {showMeta ? (
         <p className="text-xs leading-5 text-zinc-400">
-          {STAGED_PACKAGE.fileName}, {STAGED_PACKAGE.sizeLabel}, requires
-          Android {STAGED_PACKAGE.minAndroid}
+          {fileName}, {STAGED_PACKAGE.sizeLabel}, requires Android{" "}
+          {variant.minAndroid}
         </p>
       ) : null}
     </div>

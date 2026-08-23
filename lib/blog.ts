@@ -241,8 +241,8 @@ export const hubCards = [
   },
   {
     href: R.blog,
-    title: "All articles",
+    title: "All guides",
     intent: "Post index",
-    summary: "Every StreamFlix article on this site, grouped by what you need.",
+    summary: "Install, device, troubleshooting, and safety articles.",
   },
 ] as const;

@@ -6,13 +6,15 @@ import {
   SITE_NAME,
   SITE_URL,
   absoluteUrl,
-  socialLinks,
 } from "@/lib/site";
-import { SITE_AUTHOR, authorProfileUrl } from "@/lib/author";
+import {
+  SITE_AUTHOR,
+  authorDescriptionFor,
+  authorProfileUrl,
+} from "@/lib/author";
 import type { FaqItem } from "@/lib/faqs";
 import { screenshotUrls } from "@/lib/screenshots";
 import { allPosts, categoryOf } from "@/lib/blog";
-import { citationsFor } from "@/lib/citations";
 import { ALL_ENTITY_NAMES, entityRefs, type EntityKey } from "@/lib/entities";
 import { R, isPostPath } from "@/lib/routes";
 import type { ApkRelease } from "@/lib/versions";
@@ -60,7 +62,6 @@ export function organizationNode(): Thing {
       url: absoluteUrl("/logo.png"),
       caption: "StreamFlix APK Download",
     },
-    ...(socialLinks.length ? { sameAs: socialLinks.map((item) => item.href) } : {}),
     description:
       "Independent documentation for the two Android apps published under the StreamFlix name: package specifications, install guides per device, version archives, and safety analysis.",
     knowsAbout: KNOWS_ABOUT,
@@ -121,14 +122,10 @@ export function softwareApplicationNode(input: {
     url: absoluteUrl(pagePath),
     installUrl: absoluteUrl(input.installPath ?? `${R.home}#get-apk`),
     screenshot: screenshotUrls.map((src) => absoluteUrl(src)),
-    ...(variant.sources.length
-      ? { sameAs: variant.sources.map((source) => source.url) }
-      : {}),
   };
   if (input.staged) {
-    // The site serves one package, so both nodes point at the same file and at
-    // its real size rather than the published figure for the app.
-    node.downloadUrl = absoluteUrl(stagedPackagePath());
+    // Same APK bytes under the variant's button filename so the saved name matches.
+    node.downloadUrl = absoluteUrl(stagedPackagePath(variant.fileName));
     node.fileSize = STAGED_PACKAGE.sizeLabel;
     node.fileFormat = "application/octet-stream";
   }
@@ -161,18 +158,17 @@ export function faqNode(path: string, faqs: FaqItem[]): Thing {
   };
 }
 
-export function authorPersonNode(): Thing {
+export function authorPersonNode(path?: string): Thing {
   return {
     "@type": "Person",
     "@id": authorProfileUrl(),
     name: SITE_AUTHOR.name,
     alternateName: SITE_AUTHOR.shortName,
     jobTitle: SITE_AUTHOR.role,
-    description: SITE_AUTHOR.description,
+    description: authorDescriptionFor(path),
     url: authorProfileUrl(),
     image: absoluteUrl(SITE_AUTHOR.photo),
     knowsAbout: KNOWS_ABOUT,
-    ...(SITE_AUTHOR.sameAs.length ? { sameAs: [...SITE_AUTHOR.sameAs] } : {}),
     worksFor: { "@id": absoluteUrl("/#organization") },
     mainEntityOfPage: absoluteUrl(R.about),
   };
@@ -287,7 +283,6 @@ export function articleNode(input: {
 }): Thing {
   const isPost = isPostPath(input.path);
   const category = categoryOf(input.path);
-  const citations = citationsFor(input.path);
   return {
     // BlogPosting for articles under /post, TechArticle for the hub and index.
     "@type": isPost ? ["TechArticle", "BlogPosting"] : "TechArticle",
@@ -312,13 +307,6 @@ export function articleNode(input: {
     // canonical Wikipedia/Wikidata records, so the topic is unambiguous.
     ...(input.about?.length ? { about: entityRefs(input.about) } : {}),
     ...(input.mentions?.length ? { mentions: entityRefs(input.mentions) } : {}),
-    // Sources every factual claim on the page traces back to.
-    citation: citations.map((source) => ({
-      "@type": "CreativeWork",
-      name: source.title,
-      url: source.url,
-      publisher: { "@type": "Organization", name: source.publisher },
-    })),
     // Answer-first blocks rendered by DirectAnswer / QuickSummary / Takeaways.
     speakable: {
       "@type": "SpeakableSpecification",

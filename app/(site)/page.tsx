@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AppScreenshot } from "@/components/AppScreenshot";
 import { ClusterPage } from "@/components/ClusterPage";
 import {
   DataTable,
+  Definition,
   KeyFacts,
   QuickSummary,
   SpecTable,
@@ -15,7 +15,6 @@ import { ProsCons } from "@/components/ProsCons";
 import { ProviderGrid } from "@/components/ProviderGrid";
 import { VariantCompare } from "@/components/VariantCompare";
 import { homeFaqs } from "@/lib/faqs";
-import { postCategories } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
 import { stagedMap } from "@/lib/releases";
 import { R } from "@/lib/routes";
@@ -38,18 +37,22 @@ export const metadata: Metadata = pageMetadata({
   absoluteTitle: true,
 });
 
+/** Homepage outline mirrors classic APK download hubs (OnStream-style). */
 const toc = [
-  { href: "#get-apk", label: "Download both versions" },
-  { href: "#compare", label: "Reborn vs StreamFlix 2.0" },
-  { href: "#which", label: "Which one should you install?" },
-  { href: "#what-is-it", label: "What StreamFlix actually is" },
-  { href: "#features", label: "Features that hold up in testing" },
+  { href: "#what-is-streamflix", label: "What is StreamFlix?" },
+  { href: "#get-apk", label: "Overview and download" },
+  { href: "#features", label: "Features" },
+  { href: "#latest", label: "Latest version 2026" },
+  { href: "#why-prefer", label: "Why users prefer it" },
+  { href: "#content-library", label: "Content library and providers" },
   { href: "#screenshots", label: "Inside the app" },
-  { href: "#devices", label: "Device support matrix" },
-  { href: "#install", label: "Install in four steps" },
-  { href: "#pros-cons", label: "Strengths and limits" },
-  { href: "#safety", label: "Safety, legality and privacy" },
-  { href: "#blog", label: "Every article on this site" },
+  { href: "#devices", label: "Device compatibility" },
+  { href: "#install", label: "How to download and install" },
+  { href: "#problems", label: "Troubleshooting" },
+  { href: "#pros-cons", label: "Pros and cons" },
+  { href: "#alternatives", label: "Alternatives" },
+  { href: "#safety", label: "Safety and legality" },
+  { href: "#specs", label: "Full specification" },
 ];
 
 const androidHowTo: HowToData = {
@@ -118,7 +121,7 @@ export default function HomePage() {
       about={["apk", "android", "streaming"]}
       mentions={["sideloading", "androidTv", "fireTv", "googlePlay", "openSource", "playProtect"]}
       dateModified="2026-08-22"
-      kicker="Android package documentation"
+      kicker="Free Android streaming APK"
       h1={HOME_H1}
       answer={`Two different Android apps share the StreamFlix name. StreamFlix Reborn v${REBORN.version} is the open-source build for phones and TV; StreamFlix 2.0 build ${V2.version} is a separate closed-source app on Google Play. Pick Reborn for a Firestick or Android TV, and StreamFlix 2.0 for a phone with offline downloads.`}
       toc={toc}
@@ -139,8 +142,64 @@ export default function HomePage() {
       featureAside={
         <AppScreenshot shot={screenshots.home} size="feature" priority />
       }
+      showAuthor={false}
+      showRelatedHubs={false}
+      showRelatedArticles={false}
     >
-      <h2 id="get-apk">Download StreamFlix APK</h2>
+      <QuickSummary
+        bullets={[
+          `StreamFlix Reborn v${REBORN.version}, ${REBORN.sizeLabel}, Apache 2.0, package ${REBORN.packageName}. Runs on Android 5.0 and up, plus Android TV, Google TV and Fire TV.`,
+          `StreamFlix 2.0 build ${V2.version}, ${V2.sizeLabel}, closed source, package ${V2.packageName}. Android 6.0 and up, phones and tablets only.`,
+          "Both are free. No account, no subscription, no premium tier, so nothing exists for a mod or VIP build to unlock.",
+          "Neither app hosts video. Reborn searches more than 20 third-party providers and plays whatever they return.",
+          "Firestick and Android TV owners want Reborn, installed with the Downloader app. There is no iPhone version of either app.",
+        ]}
+      >
+        <p>
+          Two unrelated Android apps ship under the StreamFlix name, and almost
+          every problem readers report starts with installing the wrong one.{" "}
+          <strong>StreamFlix Reborn</strong> is the open-source community fork,
+          built in Kotlin, published on GitHub, and designed for a remote as
+          well as a touchscreen. <strong>StreamFlix 2.0: HD Movies &amp; TV</strong>{" "}
+          is a different developer&rsquo;s closed-source catalog app that lives
+          on Google Play and works on phones.
+        </p>
+        <p>
+          This page documents both, with the package names, sizes, licences and
+          install routes verified against GitHub, Uptodown and Google Play in
+          August 2026. If you only read one line: install Reborn on a TV device,
+          install StreamFlix 2.0 on a phone if you want offline downloads and a
+          Play Store install.
+        </p>
+      </QuickSummary>
+
+      <h2 id="what-is-streamflix">What is StreamFlix?</h2>
+      <Definition term="StreamFlix">
+        StreamFlix is a free Android application for watching movies, television
+        series and anime without a subscription or an account. The active build,
+        StreamFlix Reborn, is an aggregator: it queries third-party streaming
+        providers on demand and plays the stream they return inside its own
+        player. It stores no video files, sells nothing, and asks for no
+        registration. A second and unrelated app, StreamFlix 2.0: HD Movies
+        &amp; TV, uses the same name and serves an indexed catalog instead.
+      </Definition>
+      <p>
+        The original StreamFlix project was taken offline after copyright
+        complaints. What people install today is the community continuation,
+        maintained in the open under the Apache License 2.0. That history
+        matters for two reasons. It explains why the app is absent from Google
+        Play, and it explains why the fork is careful to describe itself as an
+        interface to other people&rsquo;s catalogs rather than a library of its
+        own.
+      </p>
+      <p>
+        The practical shape of the app is simple. You open it, pick a provider,
+        search or browse, and press play. Metadata such as runtime, release
+        year, cast and director comes from TMDB. The video comes from whichever
+        provider answered first. Nothing in between belongs to StreamFlix.
+      </p>
+
+      <h2 id="get-apk">Overview of the StreamFlix APK</h2>
       <p>
         Most pages covering this app publish a single specification table, and it
         is wrong, because it merges two unrelated apps. Below are both, each with
@@ -172,7 +231,37 @@ export default function HomePage() {
         ]}
       />
 
-      <h2 id="compare">StreamFlix Reborn vs StreamFlix 2.0</h2>
+      <h2 id="features">Features of StreamFlix APK</h2>
+      <FeatureCards
+        items={[
+          {
+            title: "Provider and server switching",
+            body: "Reborn exposes both. When a stream stalls you change source from inside the player rather than abandoning the title: the single most useful habit for this class of app.",
+          },
+          {
+            title: "Real TV navigation",
+            body: "Reborn's leanback interface is built for a D-pad, with focus states that actually land on the control you aimed at. Very few apps in this category bother.",
+          },
+          {
+            title: "Subtitles and audio tracks",
+            body: "Both apps let you pick a subtitle track and an audio track per title. Reborn additionally restyles subtitle size, colour and background.",
+          },
+          {
+            title: "Offline downloads",
+            body: "Built into StreamFlix 2.0. In Reborn it depends on whether the serving provider supports it, so treat it as a bonus rather than a guarantee.",
+          },
+          {
+            title: "Resume where you stopped",
+            body: "Both track playback position. Because there is no account, that history is local to the device and does not follow you elsewhere.",
+          },
+          {
+            title: "No account, ever",
+            body: "Neither app asks for an email, a password, or a payment method. There is no profile to leak, and equally nothing to restore after an uninstall.",
+          },
+        ]}
+      />
+
+      <h2 id="latest">Latest StreamFlix APK version 2026</h2>
       <p>
         These two apps are confused constantly, and the confusion is the reason
         so much advice about StreamFlix does not work: a Firestick tutorial
@@ -205,29 +294,82 @@ export default function HomePage() {
         They can both be installed at once. Different package names mean
         Android treats them as unrelated apps. Full breakdowns live on{" "}
         <InternalLink intent="reborn" currentPath={R.home} /> and{" "}
-        <InternalLink intent="v2" currentPath={R.home} />.
+        <InternalLink intent="v2" context="generic" currentPath={R.home} />.
       </p>
 
-      <h2 id="which">Which StreamFlix should you install?</h2>
-      <QuickSummary
-        bullets={[
-          "Firestick, Android TV, or Google TV. Install StreamFlix Reborn. It is the only one with a TV interface.",
-          "Android phone and you want a Play Store install. Install StreamFlix 2.0.",
-          "Android 5.0 or 5.1 device. StreamFlix Reborn is your only option, as StreamFlix 2.0 needs Android 6.0.",
-          "You care about auditable code: StreamFlix Reborn, because the source is published.",
-          "You want offline downloads that always work. StreamFlix 2.0 has them built in.",
-          "iPhone or iPad: neither. No iOS build of either app exists.",
+      <h3 id="which">Which StreamFlix should you install?</h3>
+      <p>
+        Six situations cover almost everyone who lands here. Find yours and stop
+        reading this section.
+      </p>
+      <DataTable
+        caption="Which StreamFlix build suits which device and requirement"
+        headers={["Your situation", "Install", "Why"]}
+        rows={[
+          [
+            "Firestick, Fire TV, Android TV or Google TV",
+            "StreamFlix Reborn",
+            "It is the only build with a genuine leanback interface for a D-pad remote.",
+          ],
+          [
+            "Android phone and you want a Play Store install",
+            "StreamFlix 2.0",
+            "It is listed on Google Play, so there is no sideloading and no Play Protect notice.",
+          ],
+          [
+            "A device still on Android 5.0 or 5.1",
+            "StreamFlix Reborn",
+            "StreamFlix 2.0 requires Android 6.0 and will refuse to install.",
+          ],
+          [
+            "You want code you can read and verify",
+            "StreamFlix Reborn",
+            "Apache 2.0 source is published on GitHub, so the build can be audited.",
+          ],
+          [
+            "Offline downloads that always work",
+            "StreamFlix 2.0",
+            "Downloads are built in rather than left to the serving provider.",
+          ],
+          [
+            "iPhone or iPad",
+            "Neither",
+            "No iOS build exists. An Android package cannot run on iOS at all.",
+          ],
         ]}
-      >
-        <p>
-          If you are unsure, install StreamFlix Reborn. It runs on more devices,
-          it is smaller, it carries no advertising in its own interface, and its
-          code can be checked. StreamFlix 2.0 wins on exactly two things: a Play
-          Store install and guaranteed offline downloads.
-        </p>
-      </QuickSummary>
+      />
+      <p>
+        Still unsure? Install StreamFlix Reborn. It supports more devices, takes
+        less storage, carries no advertising in its own interface, and its code
+        can be checked by anyone. StreamFlix 2.0 wins on exactly two points: the
+        Play Store install and guaranteed offline downloads.
+      </p>
 
-      <h2 id="what-is-it">What StreamFlix actually is</h2>
+      <h2 id="why-prefer">Why users prefer StreamFlix</h2>
+      <p>
+        People land on StreamFlix for a short list of practical reasons: both
+        apps are free, neither forces an account, Reborn works with a TV remote,
+        and StreamFlix 2.0 installs from Google Play when you want a store
+        path. The catalog is wide because Reborn queries many providers, and
+        switching servers inside the player fixes most stalls without
+        reinstalling anything.
+      </p>
+      <ul>
+        <li>No subscription and no login wall on either app</li>
+        <li>One leanback package for Firestick and Android TV (Reborn)</li>
+        <li>Play Store install available for StreamFlix 2.0 on phones</li>
+        <li>Subtitles, multiple servers, and offline downloads on 2.0</li>
+        <li>Open-source Reborn build you can verify against GitHub</li>
+      </ul>
+      <p>
+        If a stream fails, the useful move is usually to change provider or
+        server — covered in{" "}
+        <InternalLink intent="howToUse" currentPath={R.home} /> and{" "}
+        <InternalLink intent="notWorking" context="generic" currentPath={R.home} />
+        — not to hunt for a &ldquo;mod&rdquo; unlock.
+      </p>
+
+      <h2 id="content-library">Content library and categories</h2>
       <p>
         StreamFlix Reborn is an <strong>aggregator</strong>, and understanding
         that single word explains almost every question people have about it. It
@@ -251,35 +393,52 @@ export default function HomePage() {
         title-to-title, but narrower, and impossible to audit.
       </p>
 
-      <h2 id="features">Features that hold up in testing</h2>
-      <FeatureCards
-        items={[
-          {
-            title: "Provider and server switching",
-            body: "Reborn exposes both. When a stream stalls you change source from inside the player rather than abandoning the title: the single most useful habit for this class of app.",
-          },
-          {
-            title: "Real TV navigation",
-            body: "Reborn's leanback interface is built for a D-pad, with focus states that actually land on the control you aimed at. Very few apps in this category bother.",
-          },
-          {
-            title: "Subtitles and audio tracks",
-            body: "Both apps let you pick a subtitle track and an audio track per title. Reborn additionally restyles subtitle size, colour and background.",
-          },
-          {
-            title: "Offline downloads",
-            body: "Built into StreamFlix 2.0. In Reborn it depends on whether the serving provider supports it, so treat it as a bonus rather than a guarantee.",
-          },
-          {
-            title: "Resume where you stopped",
-            body: "Both track playback position. Because there is no account, that history is local to the device and does not follow you elsewhere.",
-          },
-          {
-            title: "No account, ever",
-            body: "Neither app asks for an email, a password, or a payment method. There is no profile to leak, and equally nothing to restore after an uninstall.",
-          },
+      <h3 id="providers">Providers, and which one to choose</h3>
+      <p>
+        Provider choice is the single setting that decides whether StreamFlix
+        feels excellent or broken, and it is the question readers ask most after
+        installing. A provider is an external site the app knows how to query.
+        Reborn ships support for more than twenty of them, grouped by language
+        and content type.
+      </p>
+      <DataTable
+        caption="How to pick a StreamFlix provider by what you want to watch"
+        headers={["What you want to watch", "Provider type to select", "What to expect"]}
+        rows={[
+          [
+            "Mainstream English films and series",
+            "A TMDB-backed English provider",
+            "The most complete metadata and the closest match between search results and real titles.",
+          ],
+          [
+            "Anime, subbed or dubbed",
+            "A dedicated anime provider",
+            "Season and episode numbering that actually matches the series, which general providers often get wrong.",
+          ],
+          [
+            "Films in Spanish, French, Italian or German",
+            "The regional provider for that language",
+            "Native audio and local release catalogs rather than machine subtitles over an English source.",
+          ],
+          [
+            "A title that refuses to play anywhere",
+            "Any second provider, then a second server",
+            "Most failures are one dead source, not a missing title. Two switches resolve the majority of them.",
+          ],
         ]}
       />
+      <p>
+        There is no permanent best provider, and any page that names one as a
+        fixed answer is describing a snapshot. Providers are independent sites.
+        They change hosts, add rate limits, and go quiet, and the app has no
+        control over any of it. Treat the provider selector the way you would
+        treat channel buttons rather than a preference you set once.
+      </p>
+      <p>
+        StreamFlix 2.0 has no provider selector at all. It serves from a single
+        indexed catalog, which makes results more predictable and the library
+        considerably narrower.
+      </p>
 
       <h2 id="screenshots">Inside the app</h2>
       <p>
@@ -298,7 +457,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      <h2 id="devices">Device support matrix</h2>
+      <h2 id="devices">Device compatibility</h2>
       <p>
         The honest version, including the devices where the answer is no. If a
         row says &ldquo;Not supported&rdquo;, no APK, no tutorial, and no
@@ -306,7 +465,7 @@ export default function HomePage() {
       </p>
       <DeviceMatrix />
 
-      <h2 id="install">Install StreamFlix in four steps</h2>
+      <h2 id="install">How to download and install StreamFlix APK</h2>
       <StepCards
         items={androidHowTo.steps.map((step, index) => ({
           n: String(index + 1).padStart(2, "0"),
@@ -322,7 +481,138 @@ export default function HomePage() {
         <InternalLink intent="install" currentPath={R.home} /> guide.
       </p>
 
-      <h2 id="pros-cons">Strengths and limits</h2>
+      <h3 id="downloader-code">Downloader codes for Firestick and Android TV</h3>
+      <p>
+        Fire OS has no web browser, so the standard route onto a Firestick is
+        the Downloader app from the Amazon Appstore. Downloader accepts either a
+        full web address or a short numeric code that stands in for one. Those
+        codes are why almost every Firestick tutorial hands you six digits
+        instead of a link.
+      </p>
+      <p>
+        Worth knowing before you type one in: a Downloader code is not issued by
+        the StreamFlix developer and is not part of the app. Anyone can register
+        one, and it points wherever its owner decides. Codes such as 730116 and
+        250931 circulate widely and resolve to individual tutorial sites rather
+        than to the project. When a code stops working, the destination changed,
+        not the app.
+      </p>
+      <DataTable
+        caption="Downloader input methods compared"
+        headers={["Method", "What you type", "Trade-off"]}
+        rows={[
+          [
+            "Numeric code",
+            "Six digits in the Downloader URL field",
+            "Fast on a remote, but you cannot see where it leads until the page loads.",
+          ],
+          [
+            "Full APK address",
+            "The direct link to the package file",
+            "Longer to enter, and you know exactly which file you are fetching.",
+          ],
+          [
+            "Short redirect link",
+            "A shortened address supplied by a guide",
+            "Same convenience as a code, same uncertainty about the destination.",
+          ],
+        ]}
+      />
+      <p>
+        Whichever route you take, the check afterwards is the same. Open
+        Settings, Applications, Manage installed applications, and confirm the
+        package reads {REBORN.packageName}. A different package name means you
+        installed a repackaged build and should remove it. The full walkthrough
+        with screenshots sits in the{" "}
+        <InternalLink intent="firestick" currentPath={R.home} /> guide.
+      </p>
+
+      <h3 id="other-platforms">StreamFlix on PC, iPhone and Smart TV</h3>
+      <p>
+        Three platforms generate the most search traffic and the most
+        misinformation, so here are the direct answers.
+      </p>
+      <DataTable
+        caption="StreamFlix availability on non-Android platforms"
+        headers={["Platform", "Is there a native build?", "What actually works"]}
+        rows={[
+          [
+            "Windows 10 and Windows 11 PC",
+            "No",
+            "Run the APK inside an Android emulator such as BlueStacks, or use Windows Subsystem for Android where it is still available.",
+          ],
+          [
+            "macOS",
+            "No",
+            "An Android emulator is the only route, and performance on Apple silicon varies by emulator.",
+          ],
+          [
+            "iPhone and iPad",
+            "No, and none is possible",
+            "An APK cannot run on iOS. Pages advertising a StreamFlix IPA are collecting installs or survey completions.",
+          ],
+          [
+            "Samsung Tizen and LG webOS TVs",
+            "No",
+            "Neither platform accepts Android packages. Add a cheap Fire TV or Google TV stick, or cast from a phone.",
+          ],
+        ]}
+      />
+      <p>
+        Detailed instructions for each route live on{" "}
+        <InternalLink intent="pc" currentPath={R.home} />,{" "}
+        <InternalLink intent="ios" currentPath={R.home} /> and{" "}
+        <InternalLink intent="smartTv" currentPath={R.home} />.
+      </p>
+
+      <h2 id="problems">Troubleshooting common problems</h2>
+      <p>
+        Because the app depends on outside sources, most faults are provider
+        faults wearing an app-shaped error message. The fixes below are ordered
+        by how often they work.
+      </p>
+      <DataTable
+        caption="StreamFlix errors and their usual causes"
+        headers={["Symptom", "Most likely cause", "Fix that works"]}
+        rows={[
+          [
+            "No sources found",
+            "The selected provider has no copy of that title",
+            "Switch provider, then search again. Try the original title rather than a translated one.",
+          ],
+          [
+            "Constant buffering",
+            "A slow or overloaded provider server",
+            "Change server inside the player, then drop the quality one step.",
+          ],
+          [
+            "HTTP 403",
+            "The provider refused the request, often on geography",
+            "Switch provider or server. A VPN helps only when the block is regional.",
+          ],
+          [
+            "App not installed",
+            "A partial download or a conflicting signature",
+            "Delete the file, download it fully, and uninstall any older copy first.",
+          ],
+          [
+            "Black screen with sound",
+            "A codec the device player cannot decode",
+            "Select a different server, or set an external player in settings.",
+          ],
+          [
+            "Nothing loads at all",
+            "An outdated build with a stale provider list",
+            "Update to the current version. Old builds lose sources permanently.",
+          ],
+        ]}
+      />
+      <p>
+        Each of these is worked through in detail on the{" "}
+        <InternalLink intent="notWorking" currentPath={R.home} /> page.
+      </p>
+
+      <h2 id="pros-cons">Pros and cons</h2>
       <ProsCons
         pros={[
           "Free with no account, no subscription, and no paywalled features",
@@ -341,6 +631,24 @@ export default function HomePage() {
           "StreamFlix 2.0 is ad-supported and has no TV layout at all",
         ]}
       />
+
+      <h2 id="alternatives">Alternatives to StreamFlix APK</h2>
+      <p>
+        No single app in this category stays reliable indefinitely, so keeping a
+        second one installed is ordinary prudence rather than a workaround.
+        Apps most often compared with StreamFlix include Cinema HD, BeeTV,
+        CyberFlix TV, NetMirror, OnStream, Live NetTV and HD Streamz, each with
+        different strengths and different states of maintenance.
+      </p>
+      <p>
+        The distinction that matters when you compare them is aggregator against
+        catalog. Aggregators such as StreamFlix Reborn search external providers
+        and so have the widest reach and the least consistency. Catalog apps
+        serve their own index, which is steadier and smaller. The full
+        comparison, including which apps still have a working TV interface, is
+        on <InternalLink intent="alternatives" currentPath={R.home} /> and{" "}
+        <InternalLink intent="bestTvApks" context="generic" currentPath={R.home} />.
+      </p>
 
       <h2 id="safety">Safety, legality and privacy</h2>
       <p>
@@ -376,45 +684,12 @@ export default function HomePage() {
       <p>
         Each of those has its own page:{" "}
         <InternalLink intent="safe" currentPath={R.home} />,{" "}
-        <InternalLink intent="legalCheck" currentPath={R.home} />,{" "}
-        <InternalLink intent="safe" currentPath={R.home} />, and{" "}
-        <InternalLink intent="vpn" currentPath={R.home} />.
+        <InternalLink intent="legalCheck" context="generic" currentPath={R.home} />,{" "}
+        <InternalLink intent="vpn" currentPath={R.home} />, and{" "}
+        <InternalLink intent="about" context="generic" currentPath={R.home} />.
       </p>
 
-      <h2 id="blog">Every article on this site</h2>
-      <p>
-        One page per question, so nothing is buried inside a page about
-        something else.
-      </p>
-      <div className="not-prose mt-6 space-y-6">
-        {postCategories.map((cluster) => (
-          <section key={cluster.id}>
-            <h3 className="font-serif text-xl text-paper">{cluster.name}</h3>
-            <p className="mt-1 text-sm leading-6 text-zinc-400">
-              {cluster.blurb}
-            </p>
-            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {cluster.posts.map((guide) => (
-                <li key={guide.href}>
-                  <Link
-                    href={guide.href}
-                    className="block rounded-lg border border-line bg-panel px-4 py-3 transition hover:border-flame"
-                  >
-                    <span className="block text-sm font-medium text-paper">
-                      {guide.title}
-                    </span>
-                    <span className="mt-1 block text-xs leading-5 text-zinc-400">
-                      {guide.summary}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
-
-      <h2 id="specs">Full specification, both apps</h2>
+      <h2 id="specs">Full specification</h2>
       <SpecTable
         caption="StreamFlix Reborn specification"
         rows={[

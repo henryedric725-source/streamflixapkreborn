@@ -40,7 +40,7 @@ export function pageMetadata({
     title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords,
-    authors: [{ name: SITE_AUTHOR.name, url: SITE_AUTHOR.url }],
+    authors: [{ name: SITE_AUTHOR.name, url: absoluteUrl(SITE_AUTHOR.url) }],
     robots: noIndex
       ? {
           index: false,
@@ -63,9 +63,6 @@ export function pageMetadata({
       // Single-language site: x-default points at the same URL so hreflang is
       // well-formed rather than absent.
       languages: { "x-default": url, en: url },
-      ...(path === R.blog
-        ? { types: { "application/rss+xml": absoluteUrl("/blog/rss.xml") } }
-        : {}),
     },
     openGraph: {
       type: isArticle ? "article" : "website",
@@ -86,7 +83,7 @@ export function pageMetadata({
         ? {
             publishedTime: DATE_PUBLISHED,
             modifiedTime: modified,
-            authors: [SITE_AUTHOR.url],
+            authors: [absoluteUrl(SITE_AUTHOR.url)],
             ...(section ? { section } : {}),
             ...(keywords?.length ? { tags: keywords } : {}),
           }
@@ -97,6 +94,22 @@ export function pageMetadata({
       title,
       description,
       images: [ogImageUrl],
+      ...(process.env.NEXT_PUBLIC_TWITTER_URL
+        ? {
+            site: process.env.NEXT_PUBLIC_TWITTER_URL.replace(
+              /^https?:\/\/(www\.)?(twitter|x)\.com\//i,
+              "@",
+            ).replace(/\/$/, ""),
+          }
+        : {}),
+      ...(process.env.NEXT_PUBLIC_AUTHOR_TWITTER
+        ? {
+            creator: process.env.NEXT_PUBLIC_AUTHOR_TWITTER.replace(
+              /^https?:\/\/(www\.)?(twitter|x)\.com\//i,
+              "@",
+            ).replace(/\/$/, ""),
+          }
+        : {}),
     },
     other: {
       "og:url": url,

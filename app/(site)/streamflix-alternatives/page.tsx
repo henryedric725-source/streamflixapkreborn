@@ -19,8 +19,19 @@ export const metadata: Metadata = pageMetadata({
   path: R.alternatives,
   dateModified: "2026-08-02",
   keywords: [
+    "streamflix alternative",
     "streamflix alternatives",
     "apps like streamflix",
+    "apps similar to streamflix",
+    "alternatives to streamflix",
+    "app like streamflix",
+    "streamflix alternative app",
+    "streamflix alternative for ios",
+    "streamflix reborn alternative",
+    "streamflix vs stremio",
+    "stremio streamflix moviebox",
+    "streamflix unlinked",
+    "best streamflix alternatives android tv",
     "best movie apk for android",
     "best free movie apk",
     "movie apks",
@@ -32,11 +43,15 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const toc = [
+  { href: "#quick-summary", label: "Quick summary" },
   { href: "#why", label: "Why you would need one" },
   { href: "#maintained", label: "The maintenance filter" },
   { href: "#aggregators", label: "Aggregators: the direct swaps" },
+  { href: "#stremio", label: "StreamFlix versus Stremio" },
   { href: "#live-tv", label: "Live TV: a different job" },
   { href: "#catalog", label: "Catalog apps" },
+  { href: "#ios", label: "Alternatives on iPhone and iPad" },
+  { href: "#names", label: "Unlinked, MovieBox and other names" },
   { href: "#abandoned", label: "Names to stop recommending" },
   { href: "#compare", label: "Side by side" },
   { href: "#verdict", label: "What to actually install" },
@@ -57,7 +72,16 @@ export default function AlternativesPage() {
       title={TITLE}
       description={DESCRIPTION}
       about={["streaming", "apk"]}
-      mentions={["androidTv", "fireTv", "openSource", "android"]}
+      mentions={[
+        "androidTv",
+        "fireTv",
+        "openSource",
+        "android",
+        "ios",
+        "netflix",
+        "sideloading",
+        "copyright",
+      ]}
       dateModified="2026-08-02"
       kicker="Alternatives"
       h1="StreamFlix Alternatives and the Best Free Movie APKs for Android"
@@ -79,29 +103,67 @@ export default function AlternativesPage() {
         "Very few apps here have a genuine leanback interface. Most Firestick recommendations are phone apps you fight with a remote.",
         "Live TV apps like HD Streamz are not substitutes: they solve a different problem and have almost no film catalog.",
         "CyberFlix TV appears on nearly every 2026 listicle and has not shipped a build in years. Its presence is a reliable sign a list was not tested.",
+        "Stremio is the closest thing to a like-for-like alternative outside this list, and it is a different shape: an open-source player whose sources come from addons you add yourself, on far more platforms than any APK here.",
+        "There is no iOS alternative in the same sense. No app of this kind ships on the App Store, so the honest options on an iPhone are a browser, casting from an Android device, or a licensed service.",
+        "Unlinked is not a streaming app. It is a sideloading tool for fetching APK links on a Fire TV Stick, so it sits alongside an aggregator rather than replacing one.",
+        "The best answer for most people is two apps rather than one, because every app here depends on the same fragile third-party layer.",
       ]}
     >
+      <QuickSummary
+        bullets={[
+          "OnStream is the closest actively maintained like-for-like swap: same aggregator model, real TV interface, works on Firestick and Android TV.",
+          "Stremio is the strongest option outside the APK category. Open-source, addon-driven, and available on far more platforms than anything else here.",
+          "HD Streamz answers a different question. Live channels rather than a film catalog, so it complements an aggregator instead of replacing one.",
+          "CyberFlix TV is abandoned. It still appears on 2026 listicles, and its presence is a reliable sign nothing on that list was installed and tested.",
+          "There is no direct alternative for iOS. Nothing of this kind is on the App Store, so the honest routes on an iPhone are a browser, casting, or a licensed service such as Netflix.",
+          "StreamFlix Reborn remains the only open-source option among the Android apps compared here, which is the one property none of the others can match.",
+        ]}
+      >
+        <p>
+          The closest alternative to StreamFlix is OnStream: the same aggregator
+          model, still actively maintained, with a genuine television interface.
+          Stremio is the better answer if you want more platforms than Android.
+        </p>
+        <p>
+          Before installing anything else, check whether the problem is the app
+          at all. Two of the four common reasons for wanting an alternative are
+          fixed by installing the right StreamFlix variant or an older build,
+          not by switching to a different project entirely.
+        </p>
+      </QuickSummary>
+
       <h2 id="why">Why you would need one</h2>
       <p>
         Wanting an alternative to an aggregator usually comes down to one of
         four things, and knowing which one changes the answer entirely:
       </p>
-      <QuickSummary
-        bullets={[
-          "Your providers stopped resolving. Try switching provider first. A different app may hit the same dead sources.",
-          "You want live channels. StreamFlix's live coverage is thin. This is a genuine reason to add a second app rather than replace it.",
-          "The app is too heavy for your device. A lighter app, or an older StreamFlix build, both work.",
-          "You want a TV interface and installed the wrong variant. Install StreamFlix Reborn rather than a different app.",
-        ]}
-      >
-        <p>
-          The last two are worth checking before you go anywhere else. They are
-          fixed by <InternalLink intent="reborn" currentPath={R.alternatives} />{" "}
-          and{" "}
-          <InternalLink intent="oldVersions" currentPath={R.alternatives} />{" "}
-          rather than by a different app.
-        </p>
-      </QuickSummary>
+      <ul>
+        <li>
+          <strong>Your providers stopped resolving.</strong> Try switching
+          provider first. A different app may well hit the same dead sources.
+        </li>
+        <li>
+          <strong>You want live channels.</strong> StreamFlix&rsquo;s live
+          coverage is thin. This is a genuine reason to add a second app rather
+          than replace the first.
+        </li>
+        <li>
+          <strong>The app is too heavy for your device.</strong> A lighter app
+          works, and so does an older StreamFlix build.
+        </li>
+        <li>
+          <strong>You wanted a TV interface and installed the wrong
+          variant.</strong> Install StreamFlix Reborn rather than a different
+          app.
+        </li>
+      </ul>
+      <p>
+        The last two are worth checking before you go anywhere else. They are
+        fixed by <InternalLink intent="reborn" currentPath={R.alternatives} />{" "}
+        and{" "}
+        <InternalLink intent="oldVersions" currentPath={R.alternatives} />{" "}
+        rather than by a different app.
+      </p>
 
       <h2 id="maintained">The maintenance filter</h2>
       <p>
@@ -165,6 +227,87 @@ export default function AlternativesPage() {
           </div>
         ))}
 
+      <h2 id="stremio">StreamFlix versus Stremio</h2>
+      <p>
+        Stremio comes up more than any other name in this comparison, and it
+        deserves its own section because it is not the same shape of product.
+        StreamFlix Reborn ships its sources built in. Stremio ships almost none
+        and expects you to add them.
+      </p>
+      <Definition term="Addon-based player">
+        A media player that arrives with a catalog interface and no sources, and
+        gains them from addons the user installs one at a time. Each addon
+        supplies metadata, a catalog, or stream links. The consequence is that
+        two installs of the same player can behave completely differently, and
+        that what the player reaches depends on choices the user made rather
+        than on what the developer shipped.
+      </Definition>
+      <p>
+        That single architectural difference explains nearly every practical
+        distinction between them, including the ones that look like feature
+        gaps.
+      </p>
+      <DataTable
+        caption="StreamFlix Reborn compared with Stremio"
+        headers={["", REBORN.shortName, "Stremio"]}
+        rows={[
+          [
+            "Model",
+            "Aggregator with providers built into the app",
+            "Player with a catalog interface, sources supplied by addons you install",
+          ],
+          [
+            "Setup effort",
+            "Install, pick a provider, watch",
+            "Install, then add addons before most content becomes reachable",
+          ],
+          [
+            "Source code",
+            "Public on GitHub under the Apache License 2.0",
+            "The core application is open-source software; individual addons are separate projects with their own terms",
+          ],
+          [
+            "Platforms",
+            "Android phone, Android TV, Google TV, Amazon Fire TV",
+            "Desktop and mobile platforms plus a web player, a considerably wider spread than any APK on this page",
+          ],
+          [
+            "Television experience",
+            "Purpose-built leanback interface for a D-pad remote",
+            "Usable on TV hardware, though the experience varies by platform and build",
+          ],
+          [
+            "Who controls what you can reach",
+            "The developer, through the shipped provider list",
+            "You, through the addons you choose to install",
+          ],
+          [
+            "Copyright position",
+            "Depends on the provider serving a given title",
+            "Depends entirely on the addons installed, which shifts the question onto the user",
+          ],
+          [
+            "Best for",
+            "Someone who wants it working in two minutes on an Android TV device",
+            "Someone who wants one interface across a phone, a desktop and a television",
+          ],
+        ]}
+      />
+      <p>
+        Choose Reborn if your devices are Android and you want the shortest path
+        from install to playback. Choose Stremio if you want the same interface
+        on hardware Android does not cover, and you do not mind assembling the
+        sources yourself. Running both is entirely reasonable, and the point
+        made throughout this page about keeping a fallback applies here too.
+      </p>
+      <p>
+        One caveat that applies to both. Neither project licenses the content it
+        reaches, so the copyright question is decided by the provider or addon
+        rather than by the app, and{" "}
+        <InternalLink intent="legalCheck" currentPath={R.alternatives} /> sets
+        out how that question is actually structured.
+      </p>
+
       <h2 id="live-tv">Live TV: a different job</h2>
       <p>
         Frequently recommended as StreamFlix alternatives, and they are not.
@@ -218,6 +361,90 @@ export default function AlternativesPage() {
         Reborn.
       </p>
 
+      <h2 id="ios">Alternatives on iPhone and iPad</h2>
+      <p>
+        There is no StreamFlix build for iOS, and there is no equivalent app on
+        the App Store either. That is a platform property rather than an
+        oversight, so the honest answer to &ldquo;what is the StreamFlix
+        alternative for iOS&rdquo; is that a direct one does not exist.
+      </p>
+      <p>
+        Android permits sideloading, which is how every app on this page reaches
+        a device. iOS does not offer the same route to a general audience, and
+        Apple does not accept apps of this kind for review. Any page offering a
+        StreamFlix download for iPhone is offering something else.
+      </p>
+      <DataTable
+        caption="What actually works on an iPhone or iPad instead"
+        headers={["Route", "What it gets you", "Honest limitation"]}
+        rows={[
+          [
+            "A licensed service",
+            "Native apps, reliable playback, offline downloads, and support when something breaks",
+            "A monthly cost, and a catalog limited to what that service licensed in your region",
+          ],
+          [
+            "A web-based catalog in Safari",
+            "No install required, and it works on any iOS version",
+            "No offline viewing, frequently changing domains, and a browsing experience built for a desktop",
+          ],
+          [
+            "Casting from an Android phone",
+            "The Android app does the work and the iPhone is not involved",
+            "You need an Android device in the house, so it is a workaround rather than an alternative",
+          ],
+          [
+            "An Android TV device on the television",
+            "A Fire TV Stick or Android TV box runs Reborn properly, whatever phones the household uses",
+            "Solves the television and solves nothing on the iPhone itself",
+          ],
+        ]}
+      />
+      <p>
+        Why no iPhone build is possible, and what the download pages claiming
+        otherwise actually deliver, is set out on{" "}
+        <InternalLink intent="ios" currentPath={R.alternatives} />.
+      </p>
+
+      <h2 id="names">Unlinked, MovieBox and other names</h2>
+      <p>
+        Three names come up constantly in searches for StreamFlix alternatives,
+        and in each case the search results conflict because the name does not
+        mean what people assume.
+      </p>
+      <ul>
+        <li>
+          <strong>Unlinked is not a streaming app.</strong> It is a sideloading
+          tool, used mostly on a Fire TV Stick, that fetches lists of APK links
+          through codes people share. It installs other apps rather than playing
+          anything, so it sits alongside an aggregator instead of replacing one.
+          The Downloader route on{" "}
+          <InternalLink intent="firestickDownloader" currentPath={R.alternatives} />{" "}
+          does the same job.
+        </li>
+        <li>
+          <strong>MovieBox is a reused name.</strong> Several unrelated projects
+          have shipped under it over the years, on different platforms and with
+          different owners. That is why one search result calls it abandoned and
+          the next calls it current: they are describing different software.
+          Check the package name and the last release date before trusting any
+          claim attached to the name.
+        </li>
+        <li>
+          <strong>A StreamFlix Reborn alternative is a narrower request</strong>{" "}
+          than a StreamFlix alternative. People asking it usually want the two
+          properties Reborn has and the rest of this list does not: auditable
+          open-source code and a real leanback interface. OnStream matches the
+          second and not the first. Stremio matches the first in its core
+          application. Nothing on this page matches both.
+        </li>
+      </ul>
+      <p>
+        The general rule when a name is ambiguous: a package name and a release
+        date identify software, and a brand name does not. Both checks are on{" "}
+        <InternalLink intent="safe" currentPath={R.alternatives} />.
+      </p>
+
       <h2 id="abandoned">Names to stop recommending</h2>
       <p>
         CyberFlix TV appears on nearly every &ldquo;best free movie apps
@@ -256,21 +483,52 @@ export default function AlternativesPage() {
       />
 
       <h2 id="verdict">What to actually install</h2>
-      <QuickSummary
-        bullets={[
-          "Want a direct swap with a TV interface? OnStream. Same model, actively maintained, works on Firestick.",
-          "Want more provider fallbacks? Run OnStream alongside StreamFlix Reborn rather than choosing between them.",
-          "Want live channels and sport? HD Streamz, accepting a heavy ad load and no film catalog.",
-          "Want nothing to sideload? A licensed service: the only honest answer here.",
-          "Want auditable code? StreamFlix Reborn remains the only open-source option in this list.",
+      <p>
+        The practical recommendation for most people is two apps, not one. These
+        all depend on the same fragile third-party layer, so a fallback costs
+        around 30 MB and saves a great deal of frustration.
+      </p>
+      <DataTable
+        caption="What to install, by what you actually want"
+        headers={["What you want", "Install", "Why"]}
+        rows={[
+          [
+            "A direct swap with a TV interface",
+            "OnStream",
+            "Same aggregator model, actively maintained, and it works properly on a Firestick remote",
+          ],
+          [
+            "More provider fallbacks",
+            "OnStream alongside StreamFlix Reborn",
+            "Two apps rarely fail on the same title at the same time, and neither costs anything",
+          ],
+          [
+            "One interface across phone, desktop and television",
+            "Stremio",
+            "Far wider platform coverage than any APK here, at the cost of assembling sources yourself",
+          ],
+          [
+            "Live channels and sport",
+            "HD Streamz",
+            "Deep channel coverage, accepting a heavy ad load and effectively no film catalog",
+          ],
+          [
+            "Nothing to sideload at all",
+            "A licensed service",
+            "The only honest answer. Netflix and its competitors run natively on hardware no APK reaches",
+          ],
+          [
+            "Auditable code",
+            "StreamFlix Reborn",
+            "Still the only open-source software among the Android apps compared on this page",
+          ],
+          [
+            "Anything at all on an iPhone",
+            "None of these",
+            "No app of this kind ships on the App Store, so a browser or a licensed service is the route",
+          ],
         ]}
-      >
-        <p>
-          The practical recommendation for most people is two apps, not one.
-          These all depend on the same fragile third-party layer, so a fallback
-          costs 30 MB and saves a great deal of frustration.
-        </p>
-      </QuickSummary>
+      />
       <p>
         Category-wide rankings are on{" "}
         <InternalLink intent="alternatives" currentPath={R.alternatives} />,
@@ -399,22 +657,38 @@ export default function AlternativesPage() {
       />
 
       <h2 id="red-flags">Red flags in a recommendation</h2>
-      <QuickSummary
-        bullets={[
-          "It recommends CyberFlix TV in 2026. The app has been dead for years; nothing on that list was tested.",
-          "It claims a specific catalog size. No aggregator owns a catalog, so no honest number exists.",
-          "Every app is described as 'safe and secure' with no distinctions drawn between them.",
-          "There is no last-updated date for any app listed: the single most important fact is missing.",
-          "Every download link routes through the same shortener or survey wall.",
-          "It says an app 'works on Firestick' without distinguishing a real TV interface from an app that merely installs.",
-        ]}
-      >
-        <p>
-          Apply the same scepticism to this page. The claims here are checkable:
-          package names, licences, and last-update dates are all verifiable at
-          the sources we link.
-        </p>
-      </QuickSummary>
+      <ul>
+        <li>
+          <strong>It recommends CyberFlix TV in 2026.</strong> The app has been
+          dead for years, so nothing on that list was installed and tested.
+        </li>
+        <li>
+          <strong>It claims a specific catalog size.</strong> No aggregator owns
+          a catalog, so no honest number exists to quote.
+        </li>
+        <li>
+          <strong>Every app is described as safe and secure</strong> with no
+          distinctions drawn between any of them.
+        </li>
+        <li>
+          <strong>There is no last-updated date for any app listed.</strong> The
+          single most important fact in this category is simply missing.
+        </li>
+        <li>
+          <strong>Every download link routes through the same shortener</strong>{" "}
+          or survey wall, which tells you what the page is actually for.
+        </li>
+        <li>
+          <strong>It says an app works on Firestick</strong> without
+          distinguishing a real television interface from an app that merely
+          installs there.
+        </li>
+      </ul>
+      <p>
+        Apply the same scepticism to this page. The claims here are checkable:
+        package names, licences and last-update dates are all verifiable at the
+        sources we link.
+      </p>
 
       <h2 id="safety">Installing any of them safely</h2>
       <p>

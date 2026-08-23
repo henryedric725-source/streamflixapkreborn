@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { AppScreenshot } from "@/components/AppScreenshot";
 import { ClusterPage } from "@/components/ClusterPage";
-import { KeyFacts, QuickSummary, SpecTable } from "@/components/ContentBlocks";
+import {
+  DataTable,
+  Definition,
+  KeyFacts,
+  QuickSummary,
+  SpecTable,
+} from "@/components/ContentBlocks";
 import { DownloadCta } from "@/components/DownloadCta";
 import { FeatureCards } from "@/components/HomeSections";
 import { InternalLink } from "@/components/InternalLink";
@@ -22,6 +28,7 @@ export const metadata: Metadata = pageMetadata({
   title: TITLE,
   description: DESCRIPTION,
   path: R.v2,
+  dateModified: "2026-08-20",
   keywords: [
     "streamflix 2.0 apk",
     "streamflix hd movies tv",
@@ -29,18 +36,27 @@ export const metadata: Metadata = pageMetadata({
     "streamflix play store",
     "tv flix apk",
     "movies and tv shows apk",
+    "streamflix 2.0 apk download",
+    "streamflix 2.0 for pc",
+    "streamflix app download",
+    "streamflix premium",
+    "streamflix login",
   ],
 });
 
 const toc = [
+  { href: "#quick-summary", label: "Quick summary" },
   { href: "#what", label: "What StreamFlix 2.0 is" },
   { href: "#not-reborn", label: "It is not StreamFlix Reborn" },
   { href: "#spec", label: "Specification" },
+  { href: "#get", label: "How to download the app" },
+  { href: "#no-premium", label: "No premium, no VIP, no login" },
   { href: "#features", label: "What it does well" },
   { href: "#subtitles", label: "Subtitle and language support" },
   { href: "#downloads", label: "Offline downloads" },
   { href: "#size", label: "Why it is 76.8 MB" },
   { href: "#devices", label: "Device support" },
+  { href: "#pc", label: "StreamFlix 2.0 on a PC" },
   { href: "#versions", label: "Build history" },
   { href: "#verdict", label: "Strengths and limits" },
 ];
@@ -54,8 +70,19 @@ export default function V2Page() {
       path={R.v2}
       title={TITLE}
       description={DESCRIPTION}
-      about={["googlePlay", "apk"]}
-      mentions={["android", "subtitles", "advertising", "streaming", "sideloading"]}
+      about={["apk", "streaming"]}
+      mentions={[
+        "android",
+        "subtitles",
+        "advertising",
+        "streaming",
+        "sideloading",
+        "googlePlay",
+        "playProtect",
+        "emulator",
+        "bluestacks",
+        "wsa",
+      ]}
       dateModified="2026-08-20"
       kicker="Play Store variant"
       h1={`StreamFlix 2.0 APK: HD Movies & TV, Build ${V2.version}`}
@@ -70,10 +97,45 @@ export default function V2Page() {
         `At ${V2.sizeLabel} it is roughly 2.4× the size of Reborn, largely from bundled advertising and analytics libraries.`,
         "Offline downloads and eight-language subtitles are built in rather than provider dependent.",
         "It has no Android TV or Fire TV interface at all, so it is the wrong choice for a Firestick.",
+        "There is no StreamFlix login, no account, no premium tier and no free trial. Every feature is available from the first launch.",
+        "There is no Windows build. Running StreamFlix 2.0 on a PC means an Android emulator or Windows Subsystem for Android.",
       ]}
       featureAside={<AppScreenshot shot={screenshots.moviesTv} size="feature" priority />}
     >
+      <QuickSummary
+        bullets={[
+          `Build ${V2.version}, ${V2.sizeLabel}, released ${V2.releasedOnDisplay}, package ${V2.packageName}.`,
+          `Requires Android ${V2.minAndroid} or newer. Phones and tablets only, with no TV interface.`,
+          "Free and ad-supported. No subscription, no premium tier, no VIP level and no free trial.",
+          "No StreamFlix login or account. The watchlist and playback progress are stored on the device.",
+          "Offline downloads are built in, and subtitles cover eight languages including Hindi, Bengali, Tamil and Telugu.",
+          "Distributed through Google Play, APKPure, Softonic and FileHippo. A Play install avoids sideloading entirely.",
+        ]}
+      >
+        <p>
+          StreamFlix 2.0: HD Movies &amp; TV is a free, closed-source Android app
+          with a genre-organised catalog, offline downloads and eight subtitle
+          languages. Build {V2.version} is {V2.sizeLabel} and needs Android{" "}
+          {V2.minAndroid}.
+        </p>
+        <p>
+          It is a different app from StreamFlix Reborn, made by a different
+          developer, and the two share nothing but a name. This page covers the
+          StreamFlix 2.0 app download in both forms: the Google Play listing and
+          the standalone APK.
+        </p>
+      </QuickSummary>
+
       <h2 id="what">What StreamFlix 2.0 is</h2>
+      <Definition term="StreamFlix 2.0: HD Movies &amp; TV">
+        StreamFlix 2.0: HD Movies &amp; TV is a free, ad-supported Android
+        entertainment app published under the package{" "}
+        <code>{V2.packageName}</code>. It serves a browsable catalog of films and
+        web series sorted by genre, with subtitles in eight languages, offline
+        downloads, and a local watchlist. It is closed source, distributed through
+        Google Play and third-party stores, and requires no account, no
+        subscription and no payment of any kind.
+      </Definition>
       <p>
         StreamFlix 2.0: HD Movies &amp; TV is an Android entertainment app that
         presents a browsable catalog of films and web series organised by genre.
@@ -152,6 +214,93 @@ export default function V2Page() {
           ["Advertising", "Ad-supported"],
         ]}
       />
+
+      <h2 id="get">How to download the StreamFlix 2.0 app</h2>
+      <p>
+        Install from Google Play where Play is available. It is the shortest route
+        and the only one that updates itself. The APK exists for devices without
+        Play services and for rolling back a bad update.
+      </p>
+      <DataTable
+        caption="Routes to install StreamFlix 2.0 and what each involves"
+        headers={["Route", "Steps involved", "Trade-off"]}
+        rows={[
+          [
+            "Google Play",
+            "Search the listing and press install.",
+            "No sideloading and no Play Protect notice. Updates arrive automatically.",
+          ],
+          [
+            "Direct APK download",
+            "Download the file, allow installs from the app holding it, install.",
+            "Works without Play services. You update it manually from then on.",
+          ],
+          [
+            "APKPure, Softonic, FileHippo",
+            "Same as a direct APK, through a third-party store.",
+            "Mirrors, so verify the build number and file size before installing.",
+          ],
+          [
+            "Android emulator on a PC",
+            "Install the emulator, then sideload the APK inside it.",
+            "Touch layout driven with a mouse. Workable rather than comfortable.",
+          ],
+        ]}
+      />
+      <p>
+        Whichever route you take, confirm the package reads{" "}
+        <code>{V2.packageName}</code> afterwards. The full sideloading walkthrough
+        is on <InternalLink intent="install" currentPath={R.v2} />.
+      </p>
+
+      <h2 id="no-premium">No premium, no VIP, no login</h2>
+      <p>
+        StreamFlix 2.0 has no paid tier and no sign-in step. Every feature is
+        available from the first launch, which is why searches for StreamFlix
+        premium, StreamFlix VIP, a StreamFlix account or a StreamFlix free trial
+        never land on anything the developer publishes.
+      </p>
+      <DataTable
+        caption="Commonly searched StreamFlix account and premium features, and whether they exist"
+        headers={["What people look for", "Does it exist?", "What is actually there"]}
+        rows={[
+          [
+            "StreamFlix premium",
+            "No",
+            "No paid tier in either app. Everything is free and unlocked from install.",
+          ],
+          [
+            "StreamFlix VIP",
+            "No",
+            "No membership levels exist, so there is nothing for a VIP unlock to switch on.",
+          ],
+          [
+            "StreamFlix account",
+            "No",
+            "No registration. The watchlist and progress are stored locally on the device.",
+          ],
+          [
+            "StreamFlix login",
+            "No",
+            "No sign-in screen. A page asking you to log in is not run by either developer.",
+          ],
+          [
+            "StreamFlix free trial",
+            "No",
+            "A trial only exists ahead of a paid plan. There is no plan, so there is no trial.",
+          ],
+          [
+            "Ad-free version",
+            "Partly",
+            "StreamFlix 2.0 is ad-supported. Reborn carries no ads in its own interface, free.",
+          ],
+        ]}
+      />
+      <p>
+        The practical consequence is that any StreamFlix premium or mod build has
+        nothing real to unlock, which is covered in full on{" "}
+        <InternalLink intent="mod" currentPath={R.v2} />.
+      </p>
 
       <h2 id="features">What it does well</h2>
       <FeatureCards
@@ -251,6 +400,43 @@ export default function V2Page() {
         <InternalLink intent="reborn" currentPath={R.v2} /> instead.
       </p>
 
+      <h2 id="pc">StreamFlix 2.0 on a PC</h2>
+      <p>
+        There is no Windows, macOS or web build of StreamFlix 2.0. Running it on a
+        PC means running Android on the PC first, either through an emulator such
+        as BlueStacks or through Windows Subsystem for Android.
+      </p>
+      <DataTable
+        caption="Ways to run StreamFlix 2.0 on a computer"
+        headers={["Method", "What it needs", "How it behaves"]}
+        rows={[
+          [
+            "Android emulator",
+            "About 4 GB of RAM allocated, plus hardware virtualisation enabled.",
+            "Runs the phone layout in a window. Mouse clicks stand in for taps.",
+          ],
+          [
+            "Windows Subsystem for Android",
+            "Windows 11 and a sideloaded APK.",
+            "Closer to a native window, but the app still expects touch input.",
+          ],
+          [
+            "Casting from a phone",
+            "A phone running the app and a Chromecast or compatible display.",
+            "Avoids the emulator entirely. The phone stays the controller.",
+          ],
+          [
+            "Native PC build",
+            "Not available.",
+            "Neither developer ships a desktop application. Any offer of one is not theirs.",
+          ],
+        ]}
+      />
+      <p>
+        Emulator setup, performance figures and the same question for Reborn are
+        on <InternalLink intent="pc" currentPath={R.v2} />.
+      </p>
+
       <h2 id="versions">Build history</h2>
       <SpecTable
         caption="StreamFlix 2.0 catalogued builds"
@@ -271,19 +457,25 @@ export default function V2Page() {
       </p>
 
       <h2 id="verdict">Strengths and limits</h2>
-      <QuickSummary
-        bullets={[
-          "Choose StreamFlix 2.0 for: a phone, a Play Store install, dependable offline downloads, or South Asian subtitle coverage.",
-          "Choose StreamFlix Reborn for: any TV device, Android 5.x hardware, auditable code, or an ad-free interface.",
-          "Both at once is fine: different packages, no conflict.",
-        ]}
-      >
-        <p>
-          Neither is strictly better. They solve overlapping problems with
-          different trade-offs, and the right answer depends entirely on the
-          device you are installing on.
-        </p>
-      </QuickSummary>
+      <p>
+        Neither app is strictly better. They solve overlapping problems with
+        different trade-offs, and the right answer depends on the device you are
+        installing on.
+      </p>
+      <ul>
+        <li>
+          <strong>Choose StreamFlix 2.0</strong> for a phone, a Play Store
+          install, dependable offline downloads, or South Asian subtitle coverage.
+        </li>
+        <li>
+          <strong>Choose StreamFlix Reborn</strong> for any TV device, Android 5.x
+          hardware, auditable source code, or an interface with no advertising.
+        </li>
+        <li>
+          <strong>Install both</strong> if you want to. Different package names
+          mean no conflict and no shared data.
+        </li>
+      </ul>
       <ProsCons pros={[...V2.highlights]} cons={[...V2.limitations]} />
     </ClusterPage>
   );

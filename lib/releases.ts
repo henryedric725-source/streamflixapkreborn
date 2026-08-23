@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { STAGED_PACKAGE } from "@/lib/package";
+import { REBORN, V2 } from "@/lib/variants";
 
 function onDisk(fileName: string) {
   return existsSync(join(process.cwd(), "public", "releases", fileName));
@@ -17,6 +18,12 @@ function available(fileName: string) {
   return process.env.NODE_ENV === "production";
 }
 
+const STAGED_FILES = [
+  STAGED_PACKAGE.fileName,
+  REBORN.fileName,
+  V2.fileName,
+] as const;
+
 /**
  * Gate for `downloadUrl` in SoftwareApplication schema and for every download
  * button. While the binary is absent the button falls back to the on-page
@@ -24,7 +31,7 @@ function available(fileName: string) {
  * that would 404.
  */
 export function isPackageStaged() {
-  return available(STAGED_PACKAGE.fileName);
+  return STAGED_FILES.every((fileName) => available(fileName));
 }
 
 export function isFileStaged(fileName: string) {

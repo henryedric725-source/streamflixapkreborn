@@ -153,6 +153,12 @@ export const E = {
     type: "SoftwareApplication",
     sameAs: [wiki("Windows_Subsystem_for_Android")],
   },
+  tmdb: {
+    name: "The Movie Database",
+    type: "Organization",
+    sameAs: [wiki("The_Movie_Database"), wikidata("Q20871419")],
+    description: "Community-maintained film and television metadata service.",
+  },
   netflix: {
     name: "Netflix",
     type: "Organization",
@@ -188,18 +194,40 @@ export const E = {
     type: "Thing",
     sameAs: [wiki("Online_advertising"), wikidata("Q193479")],
   },
+  downloader: {
+    name: "Downloader (AFTVnews)",
+    type: "SoftwareApplication",
+    sameAs: [wiki("Amazon_Fire_TV")],
+    description:
+      "Fire TV and Android TV utility by AFTVnews used to fetch and install APK files by URL or short code.",
+  },
+  reddit: {
+    name: "Reddit",
+    type: "Organization",
+    sameAs: [wiki("Reddit"), wikidata("Q1136")],
+  },
+  amazonAppstore: {
+    name: "Amazon Appstore",
+    type: "Organization",
+    sameAs: [wiki("Amazon_Appstore"), wikidata("Q4740861")],
+  },
+  leanback: {
+    name: "Android TV Leanback",
+    type: "Thing",
+    sameAs: [wiki("Android_TV"), wikidata("Q17086468")],
+    description:
+      "Android TV user-interface library designed for D-pad remotes rather than touch screens.",
+  },
 } as const satisfies Record<string, Entity>;
 
 export type EntityKey = keyof typeof E;
 
-/** Emit a schema.org node for an entity, with a stable @id for cross-reference. */
+/** Emit a schema.org node for an entity (name only — no external sameAs URLs). */
 export function entityNode(key: EntityKey) {
   const entity = E[key] as Entity;
   return {
     "@type": entity.type,
-    "@id": entity.sameAs[0],
     name: entity.name,
-    sameAs: [...entity.sameAs],
     ...(entity.description ? { description: entity.description } : {}),
   };
 }

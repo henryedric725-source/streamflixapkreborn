@@ -3,44 +3,7 @@
 import { useState } from "react";
 import { Link2, Share2 } from "lucide-react";
 
-const networks = [
-  {
-    name: "Facebook",
-    href: (url: string, _title: string) =>
-      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-  },
-  {
-    name: "Twitter",
-    href: (url: string, title: string) =>
-      `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
-  },
-  {
-    name: "Threads",
-    href: (url: string, title: string) =>
-      `https://www.threads.net/intent/post?text=${encodeURIComponent(`${title} ${url}`)}`,
-  },
-  {
-    name: "Pinterest",
-    href: (url: string, title: string) =>
-      `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(title)}`,
-  },
-  {
-    name: "Reddit",
-    href: (url: string, title: string) =>
-      `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
-  },
-  {
-    name: "WhatsApp",
-    href: (url: string, title: string) =>
-      `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`,
-  },
-  {
-    name: "LinkedIn",
-    href: (url: string, _title: string) =>
-      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-  },
-] as const;
-
+/** Copy / native share only — no third-party share endpoints. */
 export function ShareBar({ url, title }: { url: string; title: string }) {
   const [copied, setCopied] = useState(false);
 
@@ -76,18 +39,6 @@ export function ShareBar({ url, title }: { url: string; title: string }) {
     >
       <p className="kicker">Share</p>
       <ul className="mt-3 space-y-2">
-        {networks.map((network) => (
-          <li key={network.name}>
-            <a
-              href={network.href(url, title)}
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              className={itemClass}
-            >
-              {network.name}
-            </a>
-          </li>
-        ))}
         <li>
           <button type="button" onClick={copy} className={itemClass}>
             <span className="inline-flex items-center gap-1.5">

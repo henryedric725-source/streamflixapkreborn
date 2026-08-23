@@ -18,6 +18,12 @@ export const metadata: Metadata = pageMetadata({
   path: R.bestTvApks,
   dateModified: "2026-07-31",
   keywords: [
+    "best apps like streamflix for android tv",
+    "best apps like streamflix for android tv 2026",
+    "top apps like streamflix for android tv",
+    "best streamflix alternatives for android tv",
+    "top streamflix alternatives android tv",
+    "best streaming apks for android tv 2026",
     "best streaming apps for android",
     "android streaming apps",
     "streaming apks",
@@ -30,14 +36,17 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const toc = [
+  { href: "#quick-summary", label: "Quick summary" },
   { href: "#test", label: "The test that eliminates most apps" },
+  { href: "#criteria-tv", label: "How this shortlist is selected" },
   { href: "#shortlist", label: "The shortlist" },
+  { href: "#shortlist-2026", label: "The 2026 shortlist at a glance" },
   { href: "#why-few", label: "Why so few qualify" },
   { href: "#phone-apps", label: "Phone apps on a TV" },
   { href: "#hardware", label: "Hardware matters here" },
   { href: "#setup", label: "Setting one up" },
-  { href: "#live", label: "Live TV is a separate question" },
   { href: "#remote", label: "Making any app easier on a remote" },
+  { href: "#live", label: "Live TV is a separate question" },
 ];
 
 const tvCapable = alternatives.filter(
@@ -54,7 +63,16 @@ export default function BestTvApksPage() {
       title={TITLE}
       description={DESCRIPTION}
       about={["androidTv", "fireTv"]}
-      mentions={["googleTv", "chromecast", "streaming", "apk", "sideloading"]}
+      mentions={[
+        "googleTv",
+        "chromecast",
+        "streaming",
+        "apk",
+        "sideloading",
+        "android",
+        "openSource",
+        "netflix",
+      ]}
       dateModified="2026-07-31"
       kicker="TV shortlist"
       h1="Best Streaming APKs for Android TV and Firestick"
@@ -77,8 +95,36 @@ export default function BestTvApksPage() {
         "Only three free apps in this category genuinely qualify: StreamFlix Reborn, OnStream, and Cinema HD.",
         "StreamFlix 2.0 will install on a Firestick and should not be. It is phone-layout only.",
         "Hardware matters more on TV than on a phone. A 1 GB box struggles where a Shield does not.",
+        "Six criteria decide the shortlist, and a real leanback interface plus current maintenance eliminate almost every app before the other four are reached.",
+        "Ranking by catalog size is meaningless here. No aggregator owns a catalog, so the number is either invented or borrowed from the providers.",
+        "Memory footprint is a first-class criterion on a television and barely matters on a phone, which is why phone-first rankings mislead on TV hardware.",
+        "None of these is a substitute for a licensed service on the main television. Netflix and its competitors run natively on hardware no sideloaded APK reaches.",
       ]}
     >
+      <QuickSummary
+        bullets={[
+          `StreamFlix Reborn v${REBORN.version}, ${REBORN.sizeLabel}, Android ${REBORN.minAndroid}. Open source under ${REBORN.license}, with a leanback interface for Android TV, Google TV and Amazon Fire TV.`,
+          "OnStream is second: the same aggregator model, actively maintained, and a working remote layout from a single universal package.",
+          "Cinema HD is third and conditional. Capable on a television, but its updates arrive irregularly, which in this category is the thing that eventually breaks an app.",
+          `${V2.name} installs on a Fire TV Stick and should not be. It is phone layout only, so every control needs a virtual cursor.`,
+          "Every app here depends on third-party providers, so none of them is a reliability match for a licensed service on the main television.",
+          "Storage is scarce on a Fire TV Stick, which makes download size a real criterion rather than a footnote.",
+        ]}
+      >
+        <p>
+          StreamFlix Reborn is the best streaming APK for Android TV in 2026,
+          because it ships a genuine leanback interface rather than a phone
+          layout stretched onto a television. OnStream and Cinema HD are the
+          only other credible options.
+        </p>
+        <p>
+          Almost every other app recommended for a Firestick has no television
+          layout at all. It installs, it launches, and then you drive a
+          simulated mouse pointer around with a directional pad. The shortlist
+          below is short for that reason and not because the category is small.
+        </p>
+      </QuickSummary>
+
       <h2 id="test">The test that eliminates most apps</h2>
       <Definition term="Leanback interface">
         A layout designed for a television: navigated by directional pad from
@@ -97,6 +143,57 @@ export default function BestTvApksPage() {
         a simulated pointer across a screen with a remote every time you want to
         change a setting. That is the actual daily experience most Firestick
         listicles neglect to mention.
+      </p>
+
+      <h2 id="criteria-tv">How this shortlist is selected</h2>
+      <p>
+        Rankings in this category are mostly affiliate placements or copies of
+        older rankings. The six criteria below are the ones that predict whether
+        an app will still be worth having on a television next month, in the
+        order they are applied.
+      </p>
+      <DataTable
+        caption="Selection criteria for the Android TV shortlist, in order of weight"
+        headers={["#", "Criterion", "Why it decides the ranking"]}
+        rows={[
+          [
+            "1",
+            "A genuine leanback interface",
+            "Pass or fail, applied before anything else. Rows must navigate on a D-pad, focus must be visible across a room, and no control may need a virtual cursor",
+          ],
+          [
+            "2",
+            "Current maintenance",
+            "These apps index third-party providers. When a provider changes shape the scraper breaks, so an unmaintained app finds progressively less until it finds nothing",
+          ],
+          [
+            "3",
+            "Provider fallbacks",
+            "The number of sources a title can resolve from. This, not catalog size, is the real measure of coverage, because the catalog was never the app's to begin with",
+          ],
+          [
+            "4",
+            "Memory and storage footprint",
+            "A 1 GB stick is normal television hardware and abnormal phone hardware. A large app that runs fine on a phone can be unusable on a Fire TV Stick Lite",
+          ],
+          [
+            "5",
+            "Ad load during playback",
+            "The biggest day-to-day difference between apps that look identical on a feature list, and worse on a television where dismissing an interstitial takes a remote",
+          ],
+          [
+            "6",
+            "Whether the build can be verified",
+            "Open-source software can be checked against published code or rebuilt from it. Only one app in this category offers that, which is a genuine tiebreaker rather than a slogan",
+          ],
+        ]}
+      />
+      <p>
+        Two things are deliberately absent. Catalog size, because no aggregator
+        owns a catalog and any number quoted for one is invented. And star
+        ratings from download sites, because those describe whichever build that
+        site happens to be serving, as{" "}
+        <InternalLink intent="safe" currentPath={R.bestTvApks} /> explains.
       </p>
 
       <h2 id="shortlist">The shortlist</h2>
@@ -134,6 +231,88 @@ export default function BestTvApksPage() {
           </p>
         </div>
       ))}
+
+      <h2 id="shortlist-2026">The 2026 shortlist at a glance</h2>
+      <p>
+        The same three apps scored against the six criteria above, with the two
+        most commonly mis-recommended options included so the contrast is
+        visible rather than implied.
+      </p>
+      <DataTable
+        caption="Best streaming APKs for Android TV and Fire TV in 2026, ranked"
+        headers={[
+          "Rank",
+          "App",
+          "TV interface",
+          "Maintenance",
+          "Size",
+          "Open source",
+          "Verdict for 2026",
+        ]}
+        rows={[
+          [
+            "1",
+            REBORN.name,
+            "Purpose-built leanback",
+            "Actively maintained",
+            REBORN.sizeLabel,
+            "Yes",
+            "The default recommendation. Smallest, only auditable build, and the only one designed for a remote from the start",
+          ],
+          [
+            "2",
+            "OnStream",
+            "Yes, works on a D-pad",
+            "Actively maintained",
+            "Comparable",
+            "No",
+            "The best second app. Install it alongside Reborn rather than instead of it",
+          ],
+          [
+            "3",
+            "Cinema HD",
+            "Yes, usable remote layout",
+            "Sporadic updates",
+            "Comparable",
+            "No",
+            "Conditional. Still capable, but irregular updates are what eventually kills an app in this category",
+          ],
+          [
+            "Not ranked",
+            V2.name,
+            "None. Phone layout only",
+            "Actively maintained",
+            V2.sizeLabel,
+            "No",
+            "Installs on Fire TV and should not be. Every control needs a virtual cursor",
+          ],
+          [
+            "Delisted",
+            "CyberFlix TV",
+            "None",
+            "No longer updated",
+            "Irrelevant",
+            "No",
+            "Abandoned. Its presence on a 2026 list means that list was not tested",
+          ],
+        ]}
+      />
+      <p>
+        Two notes on reading that table. Rank one and rank two are close enough
+        that most people should install both, because a fallback costs a few
+        tens of megabytes and removes the commonest reason an evening fails.
+        Rank three is a judgement about the future rather than the present:
+        Cinema HD works now, and sporadic maintenance is precisely how the
+        unranked entries below it got where they are.
+      </p>
+      <p>
+        Nothing here matches a licensed service for reliability on a main
+        television, and pretending otherwise would be dishonest. That comparison
+        is made properly on{" "}
+        <InternalLink intent="vsPaid" currentPath={R.bestTvApks} />, and the
+        full category ranking including phone-only apps is on{" "}
+        <InternalLink intent="alternatives" currentPath={R.bestTvApks} />.
+      </p>
 
       <h2 id="why-few">Why so few qualify</h2>
       <p>
@@ -225,23 +404,35 @@ export default function BestTvApksPage() {
       </p>
 
       <h2 id="setup">Setting one up</h2>
-      <QuickSummary
-        bullets={[
-          "Fire TV: install Downloader from the Amazon Appstore, enable it under Developer Options, and fetch the APK by URL.",
-          "Android TV box: install a file manager first, then sideload from a USB stick.",
-          "Google TV: sideload the same way, then use a shortcut utility: Google TV hides sideloaded apps from its launcher.",
-          "After installing, check the provider setting before browsing. It resolves most 'nothing plays' complaints.",
-          "Use Ethernet where you can. It is the single biggest quality improvement available on a TV device.",
-        ]}
-      >
-        <p>
-          Full walkthroughs are on{" "}
-          <InternalLink intent="firestick" currentPath={R.bestTvApks} /> and{" "}
-          <InternalLink intent="androidTv" currentPath={R.bestTvApks} />. For
-          Samsung and LG televisions, which cannot run an APK at all, see{" "}
-          <InternalLink intent="smartTv" currentPath={R.bestTvApks} />.
-        </p>
-      </QuickSummary>
+      <ol>
+        <li>
+          <strong>Fire TV:</strong> install Downloader from the Amazon Appstore,
+          enable it under Developer Options, and fetch the APK by URL.
+        </li>
+        <li>
+          <strong>Android TV box:</strong> install a file manager first, then
+          sideload from a USB stick.
+        </li>
+        <li>
+          <strong>Google TV:</strong> sideload the same way, then add a shortcut
+          utility, because Google TV hides sideloaded apps from its launcher.
+        </li>
+        <li>
+          <strong>Check the provider setting before browsing.</strong> That one
+          step resolves most complaints about nothing playing.
+        </li>
+        <li>
+          <strong>Use Ethernet where you can.</strong> It is the single biggest
+          quality improvement available on a television device.
+        </li>
+      </ol>
+      <p>
+        Full walkthroughs are on{" "}
+        <InternalLink intent="firestick" currentPath={R.bestTvApks} /> and{" "}
+        <InternalLink intent="androidTv" currentPath={R.bestTvApks} />. For
+        Samsung and LG televisions, which cannot run an APK at all, see{" "}
+        <InternalLink intent="smartTv" currentPath={R.bestTvApks} />.
+      </p>
 
       <h2 id="remote">Making any app easier on a remote</h2>
       <p>
@@ -284,10 +475,16 @@ export default function BestTvApksPage() {
       </p>
       <p>
         If you want both, run an aggregator for films and a live app alongside
-        it. Detail on each is on{" "}
-        <InternalLink intent="alternatives" currentPath={R.bestTvApks} />, and
-        the broader category ranking that includes phone-only apps is on{" "}
-        <InternalLink intent="alternatives" currentPath={R.bestTvApks} />.
+        it. Live-channel options such as HD Streamz and Live NetTV — and why they
+        are not film-catalog swaps — are covered under{" "}
+        <InternalLink intent="alternativesLive" currentPath={R.bestTvApks} />.
+        For phone-first apps as well as TV ones, see{" "}
+        <InternalLink
+          intent="alternatives"
+          context="generic"
+          currentPath={R.bestTvApks}
+        />
+        .
       </p>
     </ClusterPage>
   );

@@ -56,13 +56,21 @@ export const PRIMARY_KEYWORDS = [
   "free movie apk",
   "best movie apk for android",
   "free streaming apps for android",
+  "streamflix app",
+  "what is streamflix",
+  "streamflix downloader code",
+  "streamflix firestick",
+  "streamflix for android tv",
+  "streamflix providers",
+  "streamflix alternatives",
+  "is streamflix safe",
 ] as const;
 
 export const navItems = navItemsFromLinks();
 export const quickLinks = quickLinksFromLinks();
 
 export const SITE_CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contact@streamflixapk.help";
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contact@streamflixreborn.com";
 
 export const LEGAL_UPDATED = CONTENT_UPDATED;
 export const LEGAL_UPDATED_DISPLAY = CONTENT_UPDATED_DISPLAY;

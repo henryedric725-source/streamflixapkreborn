@@ -113,7 +113,7 @@ export function PageSchema({
   if (article) {
     nodes.push(
       articleNode({ title, description, path, dateModified, about, mentions }),
-      authorPersonNode(),
+      authorPersonNode(path),
     );
   }
   if (crumbs && crumbs.length > 0) nodes.push(breadcrumbNode(crumbs));

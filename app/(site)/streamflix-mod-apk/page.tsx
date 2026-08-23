@@ -25,17 +25,25 @@ export const metadata: Metadata = pageMetadata({
     "streamflix mod apk download",
     "streamflix no ads apk",
     "streamflix vip unlock",
+    "streamflix premium mod apk",
+    "streamflix premium mod apk latest version",
+    "streamflix pro apk",
+    "streamflix apk mod",
+    "streamflix unlocked",
   ],
 });
 
 const toc = [
+  { href: "#quick-summary", label: "Quick summary" },
   { href: "#short-answer", label: "The short answer" },
   { href: "#nothing-to-unlock", label: "There is nothing to unlock" },
   { href: "#what-they-are", label: "What mod listings actually contain" },
   { href: "#risks", label: "What you are actually risking" },
   { href: "#signature", label: "Why a mod breaks your updates" },
-  { href: "#instead", label: "What to install instead" },
   { href: "#spotting", label: "Spotting a mod listing before you download" },
+  { href: "#names", label: "Pro, VIP, premium and unlocked, decoded" },
+  { href: "#already-unlocked", label: "What is already unlocked" },
+  { href: "#instead", label: "What to install instead" },
 ];
 
 export default function ModPage() {
@@ -47,7 +55,16 @@ export default function ModPage() {
       title={TITLE}
       description={DESCRIPTION}
       about={["apk", "malware"]}
-      mentions={["digitalSignature", "sideloading", "playProtect", "openSource", "advertising"]}
+      mentions={[
+        "digitalSignature",
+        "sideloading",
+        "playProtect",
+        "openSource",
+        "advertising",
+        "apache2",
+        "github",
+        "googlePlay",
+      ]}
       dateModified="2026-08-14"
       kicker="Mod intent, answered honestly"
       h1="StreamFlix Mod APK: There Isn't One, and Here's Why"
@@ -60,8 +77,33 @@ export default function ModPage() {
         "If your goal was an ad-free experience, StreamFlix Reborn already carries no advertising in its own interface, for free, officially.",
         "A repackaged build is re-signed, so it can never overlay-update your existing install and breaks the in-app updater permanently.",
         "The strongest argument against a mod here is that Reborn is open-source: you can read or rebuild the real thing, which no mod offers.",
+        "Pro, VIP, Premium and Unlocked are template words applied to any app a mod site targets. Neither StreamFlix developer ships an edition using any of them.",
+        `A 'premium mod of the latest version' modifies nothing: Reborn v${REBORN.version} and StreamFlix 2.0 build ${V2.version} are already free in full.`,
       ]}
     >
+      <QuickSummary
+        bullets={[
+          "No StreamFlix mod APK is published by either developer. Every listing offering one is third-party repackaging.",
+          "Neither app has a subscription, an in-app purchase, a watch limit or a paywalled feature, so nothing exists to unlock.",
+          `Both current builds are free in full: Reborn v${REBORN.version} and StreamFlix 2.0 build ${V2.version}.`,
+          "Reborn already carries no advertising in its own interface, which is the outcome most 'no ads' mods claim to deliver.",
+          "A mod is re-signed by whoever built it, so it can never overlay-update and it breaks the in-app updater permanently.",
+          "Reborn's Apache 2.0 source is on GitHub, so you can read or rebuild the real app. No mod offers that.",
+        ]}
+      >
+        <p>
+          There is no StreamFlix mod APK, and no StreamFlix premium mod APK,
+          because there is no premium tier in either app to modify. Both are free
+          already, with every feature available from the first launch.
+        </p>
+        <p>
+          What circulates under those names is the ordinary app repackaged and
+          re-signed by an anonymous third party. This page explains what those
+          files actually contain, what the re-signing costs you, and what to
+          install instead.
+        </p>
+      </QuickSummary>
+
       <h2 id="short-answer">The short answer</h2>
       <p>
         Searching for a StreamFlix mod is a reasonable instinct carried over
@@ -239,22 +281,110 @@ export default function ModPage() {
         the page is not distributing what it claims.
       </p>
 
-      <h2 id="instead">What to install instead</h2>
-      <QuickSummary
-        bullets={[
-          "Wanted no ads? Install StreamFlix Reborn: officially ad-free in its own interface.",
-          "Wanted better quality? Quality is a property of the provider. Switch sources instead of switching apps.",
-          "Wanted unlocked features? Everything in both apps is already unlocked.",
-          "Wanted offline downloads? StreamFlix 2.0 has them built in, no mod required.",
-          "Wanted a TV interface? Reborn has one. No mod adds one to StreamFlix 2.0.",
+      <h2 id="names">Pro, VIP, premium and unlocked, decoded</h2>
+      <p>
+        Mod listings reuse a fixed vocabulary across every app they target,
+        regardless of what the app does. Knowing what each word normally signals
+        makes it obvious when it has been applied to software it does not fit.
+      </p>
+      <DataTable
+        caption="Mod listing terminology and what it means for StreamFlix specifically"
+        headers={["Term you searched", "What it usually signals", "What it means here"]}
+        rows={[
+          [
+            "StreamFlix mod APK",
+            "An app modified to bypass a restriction.",
+            "No restriction exists. The file is the same app with a stranger's signature.",
+          ],
+          [
+            "StreamFlix premium mod APK",
+            "A paid tier switched on without paying.",
+            `Neither app has a paid tier, in v${REBORN.version} or any other build.`,
+          ],
+          [
+            "StreamFlix Pro APK",
+            "A separate paid edition of the app.",
+            "No Pro edition exists. Neither developer publishes one under any name.",
+          ],
+          [
+            "StreamFlix VIP",
+            "A membership level with extra features.",
+            "There are no membership levels, so a VIP unlock has nothing to switch on.",
+          ],
+          [
+            "StreamFlix unlocked",
+            "Locked features made available.",
+            "Everything is already available. Nothing in either app is locked.",
+          ],
+          [
+            "StreamFlix APK mod, no ads",
+            "Advertising stripped out.",
+            "Reborn shows no ads in its own interface already, officially and for free.",
+          ],
         ]}
-      >
-        <p>
-          Every genuine motivation behind a mod search is already served by one
-          of the two official apps. That is unusual, and it is the reason this
-          page can be blunt rather than hedged.
-        </p>
-      </QuickSummary>
+      />
+      <p>
+        One tell is worth remembering on its own: a listing that never names the
+        package is avoiding the check that would expose it. Legitimate
+        documentation names <code>{REBORN.packageName}</code> or{" "}
+        <code>{V2.packageName}</code>, because that is how you confirm what you
+        installed.
+      </p>
+
+      <h2 id="already-unlocked">What is already unlocked</h2>
+      <p>
+        The full feature set of both apps, available to every user from the first
+        launch, with no payment, registration or unlock step:
+      </p>
+      <DataTable
+        caption="Features available for free in each StreamFlix app without any mod"
+        headers={["Feature", REBORN.shortName, V2.shortName]}
+        rows={[
+          ["Unlimited playback", "Yes, no watch limit", "Yes, no watch limit"],
+          ["Quality selection", "Yes, up to whatever the source offers", "Yes, per title"],
+          ["Subtitles", "Yes, with size, colour and background styling", "Yes, eight languages"],
+          ["Audio track selection", "Yes, where the source carries several", "Per title"],
+          ["Offline downloads", "Provider dependent", "Yes, built in"],
+          ["Watchlist and resume", "Yes, stored on the device", "Yes, stored on the device"],
+          ["TV interface", "Yes, full leanback layout", "No"],
+          ["Advertising", "None in the app's own interface", "Ad-supported"],
+          ["Cost", "Free", "Free"],
+        ]}
+      />
+      <p>
+        Only the advertising row differs in a way a mod could theoretically
+        address, and the official answer to that is already on this site: install{" "}
+        <InternalLink intent="reborn" currentPath={R.mod} />.
+      </p>
+
+      <h2 id="instead">What to install instead</h2>
+      <p>
+        Every genuine motivation behind a mod search is already served by one of
+        the two official apps. That is unusual, and it is the reason this page can
+        be blunt rather than hedged.
+      </p>
+      <ul>
+        <li>
+          <strong>Wanted no ads?</strong> Install StreamFlix Reborn. It is
+          officially ad-free in its own interface.
+        </li>
+        <li>
+          <strong>Wanted better quality?</strong> Quality is a property of the
+          provider. Switch sources rather than apps.
+        </li>
+        <li>
+          <strong>Wanted unlocked features?</strong> Everything in both apps is
+          already unlocked.
+        </li>
+        <li>
+          <strong>Wanted offline downloads?</strong> StreamFlix 2.0 has them built
+          in, with no mod required.
+        </li>
+        <li>
+          <strong>Wanted a TV interface?</strong> Reborn has one. No mod adds one
+          to StreamFlix 2.0.
+        </li>
+      </ul>
 
       <div className="not-prose mt-6 grid gap-4 sm:grid-cols-2">
         <div className="rounded-2xl border border-line bg-panel p-5">

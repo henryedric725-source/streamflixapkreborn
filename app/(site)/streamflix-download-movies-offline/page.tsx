@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { ClusterPage } from "@/components/ClusterPage";
-import { DataTable, QuickSummary, SpecTable } from "@/components/ContentBlocks";
+import {
+  DataTable,
+  Definition,
+  QuickSummary,
+  SpecTable,
+} from "@/components/ContentBlocks";
 import { StepCards } from "@/components/HomeSections";
 import { InternalLink } from "@/components/InternalLink";
 import { VariantSupportStrip } from "@/components/VariantCompare";
@@ -20,7 +25,13 @@ export const metadata: Metadata = pageMetadata({
   path: R.offline,
   dateModified: "2026-08-09",
   keywords: [
+    "streamflix download movies offline",
     "streamflix download movies",
+    "streamflix free movies",
+    "streamflix movies",
+    "streamflix online free",
+    "free hindi movie download streamflix",
+    "movie download website streamflix",
     "streamflix offline",
     "movie download apk free",
     "apk to watch free movies offline",
@@ -29,12 +40,16 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const toc = [
+  { href: "#quick-summary", label: "Quick summary" },
+  { href: "#free", label: "What free actually means here" },
   { href: "#which", label: "Which app downloads reliably" },
   { href: "#how", label: "How to download a title" },
   { href: "#where", label: "Where the files go" },
   { href: "#refuse", label: "Why some titles refuse" },
   { href: "#storage", label: "How much space to budget" },
   { href: "#manage", label: "Managing your downloads" },
+  { href: "#hindi", label: "Hindi and other language downloads" },
+  { href: "#websites", label: "App downloads versus download websites" },
   { href: "#limits", label: "Limits worth knowing" },
   { href: "#battery", label: "Battery, data and downloading overnight" },
 ];
@@ -74,7 +89,15 @@ export default function OfflinePage() {
       title={TITLE}
       description={DESCRIPTION}
       about={["streaming"]}
-      mentions={["android", "subtitles", "googlePlay"]}
+      mentions={[
+        "android",
+        "subtitles",
+        "googlePlay",
+        "malware",
+        "privacy",
+        "advertising",
+        "apk",
+      ]}
       dateModified="2026-08-09"
       kicker="Offline viewing"
       h1="Downloading Movies for Offline Viewing in StreamFlix"
@@ -89,8 +112,80 @@ export default function OfflinePage() {
         "Uninstalling the app deletes every download with it. There is no account and no backup.",
         "Budget 700 MB to 1.5 GB per feature at 1080p. Choosing 720p roughly halves that.",
         "Verify a download plays with the network off before you rely on it: a partial download looks complete until you try.",
+        "Both apps are free with no subscription, no trial and no account. StreamFlix 2.0 pays for itself with advertising; Reborn carries none in its own interface.",
+        "Hindi, Bengali, Tamil and Telugu subtitles are built into StreamFlix 2.0. For Hindi audio, select a regional provider in Reborn instead.",
+        "Downloading inside the app is safer than a movie download website, because no second APK and no unknown file ever reaches your device.",
+        "Nothing you download expires. There is no licence window, because there is no licence and no account.",
       ]}
     >
+      <QuickSummary
+        bullets={[
+          `StreamFlix 2.0 build ${V2.version}, ${V2.sizeLabel}, downloads any title in its own catalog. StreamFlix Reborn v${REBORN.version} downloads only where the serving provider allows it.`,
+          "Budget 1.2 to 1.5 GB per feature at 1080p, or 600 to 800 MB at 720p. Quality is chosen before the download starts and cannot be changed afterwards.",
+          "Files land in the app's private storage. They never appear in your gallery, a file manager or a computer, and an uninstall deletes every one of them.",
+          "Nothing expires. There is no licence window and no account, so a completed download stays playable for as long as the app is installed.",
+          "Both apps are free. StreamFlix 2.0 is ad-supported; Reborn shows no advertising in its own interface.",
+          "Play the first minute with Wi-Fi and mobile data switched off. That is the only real confirmation a download finished.",
+        ]}
+      >
+        <p>
+          StreamFlix downloads movies for offline viewing, reliably in
+          StreamFlix 2.0 and only where the provider permits it in StreamFlix
+          Reborn. There is no charge and no account either way.
+        </p>
+        <p>
+          The practical difference matters more than the feature list. In
+          StreamFlix 2.0 a Download control sits on every title because the app
+          controls its own catalog. In Reborn the control appears only when the
+          source serving that title supports downloading, so plan around
+          streaming and treat a download as a bonus.
+        </p>
+      </QuickSummary>
+
+      <Definition term="Offline download in StreamFlix">
+        An offline download in StreamFlix is a copy of a stream written to the
+        app&rsquo;s private storage so it plays with no network connection. It
+        is not a media file you own or can move: Android scopes app-private
+        storage, so no gallery, file manager or computer can reach it, and
+        clearing app data or uninstalling removes it permanently. Unlike a
+        licensed service&rsquo;s download, it carries no expiry timer and no
+        device limit, because no licence and no account exist to enforce either.
+      </Definition>
+
+      <h2 id="free">What free actually means here</h2>
+      <p>
+        Both apps are free to install and free to use. There is no subscription,
+        no trial period, no premium tier and no card details, and nothing in
+        either app is paywalled behind a sign-up.
+      </p>
+      <p>
+        The money comes from somewhere else. StreamFlix 2.0 is ad-supported, so
+        an advertising library is bundled in and part of its {V2.sizeLabel}{" "}
+        download is exactly that. StreamFlix Reborn shows no adverts in its own
+        interface at all, though a third-party provider can serve them inside a
+        stream it supplies, which neither app controls.
+      </p>
+      <DataTable
+        caption="What free covers and what it does not in each StreamFlix app"
+        headers={["", REBORN.shortName, V2.shortName]}
+        rows={[
+          ["Cost to install and use", "Free", "Free"],
+          ["Account or sign-up", "None", "None"],
+          ["Premium or VIP tier", "Does not exist", "Does not exist"],
+          ["Advertising in the app", "None in its own interface", "Yes, ad-supported"],
+          ["Watch online free", "Yes, streaming is the default mode", "Yes"],
+          ["Download for offline", "Provider dependent", "Built in"],
+          ["Catalog owner", "More than 20 third-party providers", "The app's own backend"],
+        ]}
+      />
+      <p>
+        Watching online free and downloading are the same pipeline with a
+        different destination. Streaming writes to a temporary cache and throws
+        it away; downloading writes the whole file and keeps it. That is why a
+        title which streams badly usually downloads badly too, and why switching
+        server helps in both cases.
+      </p>
+
       <h2 id="which">Which app downloads reliably</h2>
       <VariantSupportStrip
         rebornSupported={false}
@@ -98,10 +193,10 @@ export default function OfflinePage() {
         context="guaranteed offline downloads"
       />
       <p>
-        The strip above is deliberately blunt. Reborn <em>can</em> download 
-        many providers support it and it works well when they do, but you
-        cannot count on it for any given title, because the capability belongs
-        to the third-party source rather than to the app.
+        The strip above is deliberately blunt. Reborn <em>can</em> download,
+        and many providers support it well, but you cannot count on it for any
+        given title, because the capability belongs to the third-party source
+        rather than to the app.
       </p>
       <p>
         StreamFlix 2.0 serves from its own catalog, so downloading is a feature
@@ -216,20 +311,29 @@ export default function OfflinePage() {
           ["Full season (10 episodes)", "4-6 GB", "2.2-3 GB", "1.1-1.6 GB"],
         ]}
       />
-      <QuickSummary
-        bullets={[
-          "720p is the sweet spot on a phone: roughly half the storage of 1080p, with little visible difference at that screen size.",
-          "Leave headroom. Android needs working space, and a device running near full behaves badly in general.",
-          "A season at 1080p will fill a 64 GB phone faster than expected once the OS and your other apps are accounted for.",
-          "An SD card does not help. App-private storage is on internal storage regardless.",
-        ]}
-      >
-        <p>
-          Choosing a lower quality before downloading is by far the most
-          effective way to fit more on a limited device, and it is a decision you
-          cannot revisit afterwards without re-downloading.
-        </p>
-      </QuickSummary>
+      <p>
+        Choosing a lower quality before downloading is by far the most effective
+        way to fit more on a limited device, and it is a decision you cannot
+        revisit afterwards without re-downloading.
+      </p>
+      <ul>
+        <li>
+          <strong>720p is the sweet spot on a phone</strong>, roughly half the
+          storage of 1080p with little visible difference at that screen size.
+        </li>
+        <li>
+          <strong>Leave headroom.</strong> Android needs working space, and a
+          device running near full behaves badly in general.
+        </li>
+        <li>
+          <strong>A season at 1080p fills a 64 GB phone faster than expected</strong>{" "}
+          once the operating system and your other apps are accounted for.
+        </li>
+        <li>
+          <strong>An SD card does not help.</strong> App-private storage sits on
+          internal storage regardless of what else the device has.
+        </li>
+      </ul>
 
       <h2 id="manage">Managing your downloads</h2>
       <ul>
@@ -254,6 +358,123 @@ export default function OfflinePage() {
           safe; clearing data deletes your downloads.
         </li>
       </ul>
+
+      <h2 id="hindi">Hindi and other language downloads</h2>
+      <p>
+        Searches for free Hindi movie downloads land here constantly, so it is
+        worth separating what each app really offers from what those searches
+        assume.
+      </p>
+      <p>
+        StreamFlix 2.0 ships subtitles in eight languages: English, Hindi,
+        Bengali, Spanish, French, Korean, Tamil and Telugu. Those are subtitle
+        tracks rather than audio dubs, and they are among the strongest South
+        Asian subtitle coverage in this category. A title you download keeps
+        whichever subtitle tracks the source carried.
+      </p>
+      <p>
+        StreamFlix Reborn takes the other route. It has no fixed subtitle set of
+        its own; it inherits whatever the selected provider supplies, and
+        selecting a regional provider is how you get original-language audio.
+        For Hindi audio specifically, that means choosing a regional source
+        rather than an English one, then checking whether it offers a download
+        for that title.
+      </p>
+      <DataTable
+        caption="Language options for downloaded titles in each StreamFlix app"
+        headers={["What you want", "Where it comes from", "Reliability"]}
+        rows={[
+          [
+            "Hindi subtitles",
+            `${V2.shortName}, built in as one of eight languages`,
+            "Consistent across the catalog",
+          ],
+          [
+            "Hindi, Tamil, Telugu or Bengali audio",
+            "A regional provider in Reborn, where one carries the title",
+            "Varies by title and by provider",
+          ],
+          [
+            "Spanish, French, Italian or German",
+            "The matching regional provider in Reborn",
+            "Good for local releases, thinner on recent English titles",
+          ],
+          [
+            "Subtitles on a Reborn download",
+            "Whatever track the serving provider attached",
+            "Not guaranteed. Check before the download, not after",
+          ],
+          [
+            "Switching audio track after downloading",
+            "Only possible if the file carries more than one track",
+            "Uncommon. Most sources ship a single track",
+          ],
+        ]}
+      />
+      <p>
+        One caution that applies to every language: a subtitle track you can see
+        while streaming is not automatically written into the download. Play the
+        first minute offline with subtitles switched on, which is the same
+        verification step the rest of this page recommends for a different
+        reason.
+      </p>
+
+      <h2 id="websites">App downloads versus download websites</h2>
+      <p>
+        A large share of searches treat StreamFlix as a movie download website.
+        It is not one, and the distinction is the most useful safety point on
+        this page.
+      </p>
+      <p>
+        Downloading inside the app means one signed application writing a video
+        file into its own sandbox. A movie download website means a browser
+        fetching an unknown file, frequently an APK or an executable wearing a
+        film&rsquo;s name, from a host with no accountability. The second route
+        is where malware in this category actually lives.
+      </p>
+      <DataTable
+        caption="In-app downloading compared with a third-party movie download website"
+        headers={["", "Downloading in the app", "A movie download website"]}
+        rows={[
+          [
+            "What arrives on your device",
+            "A video file inside app-private storage",
+            "Whatever the site serves, often an installer rather than a film",
+          ],
+          [
+            "Malware exposure",
+            "None beyond the app you already installed and verified",
+            "The main vector in this category, and code signing tells you nothing about a video file",
+          ],
+          [
+            "Extra permissions needed",
+            "None. Install-from-unknown-sources is not involved",
+            "Usually a second sideload, with everything that implies",
+          ],
+          [
+            "Adverts and redirects",
+            "None in Reborn, standard ad slots in StreamFlix 2.0",
+            "Pop-ups, countdowns and survey walls are the business model",
+          ],
+          [
+            "Internet privacy",
+            "No account, no upload, nothing tied to an identity",
+            "Trackers, fingerprinting and an email address in exchange for a link",
+          ],
+          [
+            "What you can do with the file",
+            "Play it in the app only",
+            "Anything, which is the one genuine advantage",
+          ],
+        ]}
+      />
+      <p>
+        If a page offers a StreamFlix film as a direct file, or asks you to
+        install a downloader first, close it. The verification checks that
+        separate a genuine package from a repackaged one are on{" "}
+        <InternalLink intent="safe" currentPath={R.offline} />, and Google Play
+        Protect will flag some of these installers but not all of them.
+      </p>
 
       <h2 id="battery">Battery, data and downloading overnight</h2>
       <p>

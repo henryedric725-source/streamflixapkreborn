@@ -6,7 +6,6 @@ import {
   SITE_TAGLINE,
   legalLinks,
   quickLinks,
-  socialLinks,
 } from "@/lib/site";
 
 export function SiteFooter() {
@@ -57,23 +56,9 @@ export function SiteFooter() {
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-flame">
-            Social
+            Note
           </p>
-          <ul className="mt-3 space-y-2 text-sm">
-            {socialLinks.map((item) => (
-              <li key={item.name}>
-                <a
-                  className="hover:text-paper"
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-xs leading-5 text-paper/50">
+          <p className="mt-3 text-xs leading-5 text-paper/50">
             Installing third-party APK files carries risk. Scan the APK, then
             read the safety notes before enabling unknown sources. This catalog
             does not host patched or cracked APKs.

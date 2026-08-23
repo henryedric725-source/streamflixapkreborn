@@ -144,6 +144,36 @@ async function main() {
     }
   }
 
+  // 5b. No paragraph should stack two InternalLinks with the same intent
+  // (duplicate same-URL anchors hurt semantic internal linking).
+  for (const path of indexablePaths) {
+    const file =
+      path === "/" ? "app/(site)/page.tsx" : `app/(site)${path}/page.tsx`;
+    let src;
+    try {
+      src = await read(file);
+    } catch {
+      continue;
+    }
+    for (const [, block] of src.matchAll(
+      /<(?:p|li|dd|td)\b[^>]*>([\s\S]*?)<\/(?:p|li|dd|td)>/g,
+    )) {
+      const intents = [
+        ...block.matchAll(/<InternalLink\b[^>]*\bintent="(\w+)"/g),
+      ].map((m) => m[1]);
+      const seenIntent = new Set();
+      for (const intent of intents) {
+        if (seenIntent.has(intent)) {
+          fail.push(
+            `${path} repeats InternalLink intent="${intent}" inside one block`,
+          );
+          break;
+        }
+        seenIntent.add(intent);
+      }
+    }
+  }
+
   // 6. No duplicate FAQ questions across banks.
   const faqSrc = await read("lib/faqs.ts");
   const banks = [
@@ -174,11 +204,6 @@ async function main() {
         .matchAll(/^  (\w+): \{$/gm),
     ].map((m) => m[1]),
   );
-  const citationsSrc = await read("lib/citations.ts");
-  const cited = new Set(
-    [...citationsSrc.matchAll(/\[R\.(\w+)\]:/g)].map((m) => R[m[1]]),
-  );
-
   for (const path of indexablePaths) {
     const file =
       path === "/" ? "app/(site)/page.tsx" : `app/(site)${path}/page.tsx`;
@@ -201,7 +226,6 @@ async function main() {
         }
       }
     }
-    if (!cited.has(path)) warn.push(`${path} has no explicit citation list`);
   }
 
   // 8. Legal pages must never appear in the sitemap.

@@ -81,10 +81,7 @@ export const REBORN: AppVariant = {
     "No official iOS, Windows, or web build",
     "Larger download than the phone-only build because it carries the TV interface",
   ],
-  sources: [
-    { name: "GitHub releases", url: "https://github.com/streamflix-reborn2/streamflix" },
-    { name: "Uptodown", url: "https://com-streamflixreborn-streamflix.en.uptodown.com/android" },
-  ],
+  sources: [],
 };
 
 export const V2: AppVariant = {
@@ -125,12 +122,7 @@ export const V2: AppVariant = {
     "Roughly 2.4× the download size of Reborn for a narrower feature set",
     "Requires Android 6.0, so it excludes older devices that Reborn still supports",
   ],
-  sources: [
-    { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.ajpro.streamflix2" },
-    { name: "APKPure", url: "https://apkpure.com/streamflix-hd-movies-tv-app/com.ajpro.streamflix2" },
-    { name: "Softonic", url: "https://streamflix-movies-tv-shows-izv.en.softonic.com/android" },
-    { name: "FileHippo", url: "https://filehippo.com/android/download_streamflix-2-0-hd-movies-tv/" },
-  ],
+  sources: [],
 };
 
 export const VARIANTS = [REBORN, V2] as const;

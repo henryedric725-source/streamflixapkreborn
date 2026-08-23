@@ -29,10 +29,17 @@ export const metadata: Metadata = pageMetadata({
     "install apk from unknown sources",
     "app not installed error android",
     "install unknown sources android",
+    "how to download streamflix",
+    "streamflix install",
+    "streamflix setup",
+    "streamflix apk download latest version",
+    "streamflix apk download for android tv",
   ],
 });
 
 const toc = [
+  { href: "#quick-summary", label: "Quick summary" },
+  { href: "#download", label: "How to download StreamFlix" },
   { href: "#before", label: "Before you start" },
   { href: "#steps", label: "The four steps" },
   { href: "#unknown-sources", label: "Unknown sources on modern Android" },
@@ -41,6 +48,7 @@ const toc = [
   { href: "#conflict", label: "Fixing a package conflict" },
   { href: "#failures", label: "Other install failures" },
   { href: "#devices", label: "Installing on other devices" },
+  { href: "#tv-install", label: "Installing on Android TV and Fire TV" },
   { href: "#after", label: "What to do first after installing" },
 ];
 
@@ -80,7 +88,16 @@ export default function InstallPage() {
       title={TITLE}
       description={DESCRIPTION}
       about={["sideloading", "apk"]}
-      mentions={["android", "playProtect", "digitalSignature", "googlePlay"]}
+      mentions={[
+        "android",
+        "playProtect",
+        "digitalSignature",
+        "googlePlay",
+        "androidTv",
+        "fireTv",
+        "googleTv",
+        "apache2",
+      ]}
       dateModified="2026-08-17"
       kicker="Android install guide"
       h1="How to Install StreamFlix APK on Android"
@@ -94,9 +111,71 @@ export default function InstallPage() {
         "Verify the package name after install. It is the fastest way to catch a repackaged build, and it takes ten seconds.",
         "Never uninstall before updating. Install the new APK over the old one so favourites and watch history survive.",
         "A 'package conflict' almost always means an existing copy signed by someone else. Uninstall it, then install cleanly.",
+        "Budget about four minutes on a phone and six on a Fire TV Stick. Most of that is download time, not configuration.",
+        "A TV device has no usable browser. Use the Downloader app to fetch the package by URL instead.",
       ]}
       featureAside={<AppScreenshot shot={screenshots.contentDetails} size="feature" priority />}
     >
+      <QuickSummary
+        bullets={[
+          `StreamFlix Reborn: ${REBORN.sizeLabel}, Android ${REBORN.minAndroid} or newer, package ${REBORN.packageName}. Must be sideloaded.`,
+          `StreamFlix 2.0: ${V2.sizeLabel}, Android ${V2.minAndroid} or newer, package ${V2.packageName}. Available on Google Play.`,
+          "Since Android 8.0 the install permission is granted per app, not system-wide. Grant it to whichever app is holding the file.",
+          "The Play Protect notice appears for every sideloaded app. It reflects the install route, not a detection.",
+          "Leave several times the package size free. Android needs room to unpack, not just to store.",
+          "Verify the package name after installing. Ten seconds, and it catches a repackaged build.",
+        ]}
+      >
+        <p>
+          To install StreamFlix, download the APK, open it, approve the
+          install-from-unknown-sources prompt for the app holding the file, accept
+          the Play Protect notice, then confirm the package name.
+        </p>
+        <p>
+          Setup takes about four minutes on a phone and six on a Fire TV Stick,
+          most of it download time. The steps below cover phones, tablets, Android
+          TV, Google TV and Amazon Fire TV.
+        </p>
+      </QuickSummary>
+
+      <h2 id="download">How to download StreamFlix</h2>
+      <p>
+        Pick the variant first, because the download route differs. StreamFlix 2.0
+        installs from Google Play with no sideloading at all. StreamFlix Reborn is
+        not on any store and has to be downloaded as an APK.
+      </p>
+      <DataTable
+        caption="Where to download each StreamFlix build and what the route involves"
+        headers={["Build", "Where to download", "What the route involves"]}
+        rows={[
+          [
+            `${REBORN.name} v${REBORN.version}`,
+            "GitHub releases or Uptodown",
+            `Sideloading. ${REBORN.sizeLabel}, needs Android ${REBORN.minAndroid}, and Play Protect will warn.`,
+          ],
+          [
+            `${V2.name}, build ${V2.version}`,
+            "Google Play, or APKPure and Softonic as APK mirrors",
+            `A Play install needs none of this guide. ${V2.sizeLabel}, needs Android ${V2.minAndroid}.`,
+          ],
+          [
+            "Either build on a TV device",
+            "The Downloader app, by URL",
+            "No browser involved. Downloader fetches the file and offers to install it.",
+          ],
+          [
+            "An earlier build",
+            "The version archive on this site",
+            "Same sideload steps. Install it over the current copy rather than uninstalling.",
+          ],
+        ]}
+      />
+      <p>
+        Download the file completely before opening it. A truncated download is
+        the single most common cause of an &ldquo;App not installed&rdquo; error,
+        and nothing about the file tells you it was cut short.
+      </p>
+
       <h2 id="before">Before you start</h2>
       <p>
         Two decisions to make first, because they change what you download.
@@ -186,22 +265,31 @@ export default function InstallPage() {
         offering to send it to Google. This alarms people considerably more than
         it should.
       </p>
-      <QuickSummary
-        bullets={[
-          "It is triggered by the install method, not by an analysis of the file. Every sideloaded app produces it, including entirely benign ones.",
-          "A real malware detection uses different wording and blocks the install outright rather than asking you to confirm.",
-          "Choosing 'Install anyway' does not disable Play Protect or weaken your device's security.",
-          "StreamFlix 2.0 installed from Google Play never shows it, because Play distributed it.",
-        ]}
-      >
-        <p>
-          Treat it as a notice about provenance rather than a verdict on the
-          file. The actual safety checks worth doing are on{" "}
-          <InternalLink intent="safe" currentPath={R.install} />, and if Play
-          Protect blocks the install outright rather than warning, see{" "}
-          <InternalLink intent="playProtect" currentPath={R.install} />.
-        </p>
-      </QuickSummary>
+      <ul>
+        <li>
+          It is triggered by the install method, not by an analysis of the file.
+          Every sideloaded app produces it, including entirely benign ones.
+        </li>
+        <li>
+          A real malware detection uses different wording and blocks the install
+          outright rather than asking you to confirm.
+        </li>
+        <li>
+          Choosing &ldquo;Install anyway&rdquo; does not disable Play Protect or
+          weaken your device&rsquo;s security.
+        </li>
+        <li>
+          StreamFlix 2.0 installed from Google Play never shows it, because Play
+          distributed the file.
+        </li>
+      </ul>
+      <p>
+        Treat it as a notice about provenance rather than a verdict on the file.
+        The actual safety checks worth doing are on{" "}
+        <InternalLink intent="safe" currentPath={R.install} />, and if Play
+        Protect blocks the install outright rather than warning, see{" "}
+        <InternalLink intent="playProtect" currentPath={R.install} />.
+      </p>
 
       <h2 id="verify">Verify what you installed</h2>
       <p>
@@ -311,6 +399,47 @@ export default function InstallPage() {
         methods, mostly because they have no browser to download with.
       </p>
       <DeviceMatrix caption="Install method per device for both StreamFlix apps" />
+
+      <h2 id="tv-install">Installing on Android TV and Fire TV</h2>
+      <p>
+        Install StreamFlix Reborn on a TV device, not StreamFlix 2.0. Reborn is
+        the only build with a leanback interface a D-pad remote can drive.
+        StreamFlix 2.0 will install on Fire OS and Android TV, because both are
+        Android underneath, and then be unpleasant to use.
+      </p>
+      <DataTable
+        caption="Sideloading StreamFlix on TV platforms, step by step"
+        headers={["Step", "On Amazon Fire TV", "On Android TV or Google TV"]}
+        rows={[
+          [
+            "1. Allow the installer",
+            "Settings, My Fire TV, Developer Options, Install unknown apps, enable Downloader.",
+            "Settings, Apps, Security & restrictions, Unknown sources, enable Downloader.",
+          ],
+          [
+            "2. Fetch the package",
+            "Open Downloader, type the APK address into the URL field, press Go.",
+            "Same. Downloader is on the Play Store as well as the Amazon Appstore.",
+          ],
+          [
+            "3. Install",
+            "Choose Install, then Done, then Delete to reclaim the space.",
+            "Choose Install, then delete the downloaded file from Downloader.",
+          ],
+          [
+            "4. Find the app",
+            "Sideloaded apps land at the end of the Apps row. Long-press to move it forward.",
+            "It may not appear in the launcher at all. A sideloaded-app launcher exposes it.",
+          ],
+        ]}
+      />
+      <p>
+        Storage is the constraint worth planning for. A Fire TV Stick has very
+        little of it, so delete the installer file as soon as the install
+        finishes. Device-specific walkthroughs are on{" "}
+        <InternalLink intent="firestick" currentPath={R.install} /> and{" "}
+        <InternalLink intent="androidTv" currentPath={R.install} />.
+      </p>
 
       <h2 id="after">What to do first after installing</h2>
       <p>

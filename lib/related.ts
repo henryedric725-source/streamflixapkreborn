@@ -39,7 +39,6 @@ const related: Record<string, RelatedLink[]> = {
   ],
   [R.oldVersions]: [
     { href: L.downloadHub.href, title: "Current builds for both variants" },
-    { href: L.oldVersions.href, title: linkLabel("oldVersions", "body") },
     { href: L.update.href, title: linkLabel("update", "body") },
     { href: L.notWorking.href, title: "When an older build is the fix" },
     { href: L.reborn.href, title: linkLabel("reborn", "body") },
@@ -110,7 +109,6 @@ const related: Record<string, RelatedLink[]> = {
     { href: L.safe.href, title: linkLabel("safe", "body") },
   ],
   [R.safe]: [
-    { href: L.safe.href, title: linkLabel("safe", "body") },
     { href: L.legalCheck.href, title: linkLabel("legalCheck", "body") },
     { href: L.mod.href, title: "Why mod builds fail these checks" },
     { href: L.installVerify.href, title: linkLabel("installVerify", "body") },
@@ -128,22 +126,24 @@ const related: Record<string, RelatedLink[]> = {
     { href: L.buffering.href, title: linkLabel("buffering", "body") },
     { href: L.firestick.href, title: "Running a VPN on Firestick" },
   ],
-  [R.alternatives]: [
-    { href: L.alternatives.href, title: linkLabel("alternatives", "body") },
-    { href: L.bestTvApks.href, title: linkLabel("bestTvApks", "body") },
-    { href: L.vsPaid.href, title: linkLabel("vsPaid", "body") },
-    { href: L.downloadHub.href, title: "Back to StreamFlix itself" },
-    { href: L.safe.href, title: linkLabel("safe", "body") },
-  ],
   [R.bestTvApks]: [
-    { href: L.alternatives.href, title: linkLabel("alternatives", "body") },
+    { href: L.alternatives.href, title: "Live TV apps vs film aggregators" },
+    { href: `${L.alternatives.href}#live-tv`, title: "HD Streamz and Live NetTV" },
     { href: L.firestick.href, title: linkLabel("firestick", "body") },
-    { href: L.androidTv.href, title: linkLabel("androidTv", "body") },
+    { href: L.androidTv.href, title: "Leanback install on Android TV" },
+    { href: L.reborn.href, title: "Why Reborn is the TV-capable StreamFlix" },
   ],
   [R.vsPaid]: [
-    { href: L.alternatives.href, title: linkLabel("alternatives", "body") },
+    { href: L.alternatives.href, title: "Free apps that compete with StreamFlix" },
+    { href: L.bestTvApks.href, title: linkLabel("bestTvApks", "body") },
     { href: L.legalCheck.href, title: linkLabel("legalCheck", "body") },
     { href: L.ios.href, title: "Where paid services win outright" },
+  ],
+  [R.alternatives]: [
+    { href: L.bestTvApks.href, title: "TV-first shortlist with leanback UI" },
+    { href: L.vsPaid.href, title: linkLabel("vsPaid", "body") },
+    { href: L.downloadHub.href, title: "Back to StreamFlix itself" },
+    { href: L.safe.href, title: "Install any of them safely" },
   ],
   [R.blog]: [
     { href: L.downloadHub.href, title: linkLabel("downloadHub", "sidebar") },
@@ -190,7 +190,29 @@ const fallback: RelatedLink[] = [
 ];
 
 export function relatedArticles(path: string): RelatedLink[] {
-  return related[path] ?? fallback;
+  const items = (related[path] ?? fallback).filter((item) => item.href !== path);
+  // Mix keyword titles (from the map) with a few short generic anchors so the
+  // sidebar does not read as an identical keyword string on every page.
+  return items.map((item, index) =>
+    index % 3 === 2
+      ? { ...item, title: genericAnchorFor(item.href, item.title) }
+      : item,
+  );
+}
+
+function genericAnchorFor(href: string, fallbackTitle: string): string {
+  if (href === L.install.href) return "this install guide";
+  if (href === L.firestick.href) return "the Firestick walkthrough";
+  if (href === L.notWorking.href) return "this troubleshooting page";
+  if (href === L.safe.href) return "the safety guide";
+  if (href === L.alternatives.href) return "the full comparison";
+  if (href === L.reborn.href) return "the Reborn guide";
+  if (href === L.v2.href) return "the StreamFlix 2.0 guide";
+  if (href === L.vpn.href) return "the VPN notes";
+  if (href === L.update.href) return "the update steps";
+  if (href === L.blog.href) return "all guides";
+  if (href === L.about.href) return "our method";
+  return fallbackTitle;
 }
 
 /** Exposed so the content audit can assert coverage without re-deriving it. */

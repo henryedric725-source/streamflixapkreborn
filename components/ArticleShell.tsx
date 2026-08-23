@@ -18,11 +18,14 @@ export function ArticleShell({
   leadContent,
   showDownload = true,
   showImportantPages = true,
+  showRelatedArticles = true,
   featureAside,
   shareTitle,
   showShare = true,
   showTrustBar = true,
   downloadVariant = REBORN,
+  /** Single-column hub layout — no sidebar cards. Used for /blog. */
+  fullWidth = false,
 }: {
   crumbs: { name: string; href: string }[];
   currentPath: string;
@@ -31,23 +34,33 @@ export function ArticleShell({
   leadContent?: React.ReactNode;
   showDownload?: boolean;
   showImportantPages?: boolean;
+  showRelatedArticles?: boolean;
   featureAside?: React.ReactNode;
   shareTitle?: string;
   showShare?: boolean;
   showTrustBar?: boolean;
-  /** Which app the sidebar download card advertises. Defaults to Reborn. */
   downloadVariant?: AppVariant;
+  fullWidth?: boolean;
 }) {
   const staged = isPackageStaged();
   const shareUrl = absoluteUrl(currentPath);
   const shareLabel =
     shareTitle ?? crumbs[crumbs.length - 1]?.name ?? SITE_NAME;
 
+  const hasSidebar =
+    !fullWidth &&
+    (Boolean(featureAside && !intro && !leadContent) ||
+      showDownload ||
+      showRelatedArticles ||
+      showImportantPages);
+
   const sidebarCards = (
     <>
       {!intro && !leadContent && featureAside ? featureAside : null}
       {showDownload ? <DownloadCard variant={downloadVariant} staged={staged} /> : null}
-      <RelatedArticles current={currentPath} />
+      {showRelatedArticles ? (
+        <RelatedArticles current={currentPath} />
+      ) : null}
       {showImportantPages ? <ImportantPages current={currentPath} /> : null}
     </>
   );
@@ -64,40 +77,48 @@ export function ArticleShell({
     </aside>
   );
 
+  const body = fullWidth ? (
+    <article className="min-w-0">{children}</article>
+  ) : leadContent ? (
+    <>
+      <div className="mt-10">{leadContent}</div>
+      <div className={`mt-10 ${bodyGrid}`}>
+        <article className="order-3 min-w-0 lg:order-2 lg:col-start-1 lg:row-start-2">
+          {children}
+        </article>
+        {deferredSidebar}
+      </div>
+    </>
+  ) : (
+    <div className={`${intro ? "mt-10" : "mt-6"} ${hasSidebar ? bodyGrid : ""}`}>
+      <article className="min-w-0">{children}</article>
+      {hasSidebar ? linkSidebar : null}
+    </div>
+  );
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
-      <div className="share-page-shell">
-        <div className="share-page-content min-w-0 pr-12 sm:pr-0">
+      <div className={showShare ? "share-page-shell" : undefined}>
+        <div className={`min-w-0 ${showShare ? "share-page-content pr-12 sm:pr-0" : ""}`}>
           <Breadcrumbs items={crumbs} />
           {intro ? (
             <div
               className={
-                featureAside
+                featureAside && !fullWidth
                   ? `mt-6 ${bodyGrid}`
                   : "mt-6"
               }
             >
               <div className="min-w-0">{intro}</div>
-              {featureAside ? (
+              {featureAside && !fullWidth ? (
                 <div className="lg:self-start">{featureAside}</div>
               ) : null}
             </div>
           ) : null}
-          {leadContent ? (
-            <>
-              <div className="mt-10">{leadContent}</div>
-              <div className={`mt-10 ${bodyGrid}`}>
-                <article className="order-3 min-w-0 lg:order-2 lg:col-start-1 lg:row-start-2">
-                  {children}
-                </article>
-                {deferredSidebar}
-              </div>
-            </>
+          {fullWidth ? (
+            <div className={intro ? "mt-8" : "mt-6"}>{body}</div>
           ) : (
-            <div className={`${intro ? "mt-10" : "mt-6"} ${bodyGrid}`}>
-              <article className="min-w-0">{children}</article>
-              {linkSidebar}
-            </div>
+            body
           )}
           {showTrustBar ? (
             <div className="mt-10 border-t border-line pt-4">

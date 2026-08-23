@@ -7,7 +7,7 @@ import { pcFaqs } from "@/lib/faqs";
 import { pageMetadata } from "@/lib/metadata";
 import { R } from "@/lib/routes";
 import type { HowToData } from "@/lib/schema";
-import { REBORN } from "@/lib/variants";
+import { REBORN, V2 } from "@/lib/variants";
 
 const TITLE = "StreamFlix for PC: Windows and Mac";
 const DESCRIPTION =
@@ -20,19 +20,29 @@ export const metadata: Metadata = pageMetadata({
   dateModified: "2026-08-12",
   keywords: [
     "streamflix for pc",
+    "streamflix pc",
+    "streamflix on pc",
+    "streamflix for windows",
+    "streamflix for windows 11",
     "streamflix pc download",
-    "streamflix windows",
-    "streamflix mac",
-    "netmirror for pc",
+    "streamflix 2.0 for pc",
+    "streamflix web app",
+    "streamflix website for pc",
+    "streamflix apk download for pc",
+    "streamflix pour pc",
     "bluestacks streamflix",
   ],
 });
 
 const toc = [
+  { href: "#quick-summary", label: "Quick summary" },
   { href: "#no-native", label: "There is no native desktop build" },
+  { href: "#web", label: "The StreamFlix web app question" },
+  { href: "#which-variant", label: "Which APK to load on a desktop" },
   { href: "#emulators", label: "Emulators compared" },
   { href: "#bluestacks", label: "Installing with BlueStacks" },
   { href: "#wsa", label: "Windows Subsystem for Android" },
+  { href: "#windows-11", label: "Windows 11 specifics" },
   { href: "#mac", label: "Running it on a Mac" },
   { href: "#performance", label: "Realistic performance" },
   { href: "#alternatives", label: "When an emulator is the wrong answer" },
@@ -78,7 +88,15 @@ export default function PcPage() {
       title={TITLE}
       description={DESCRIPTION}
       about={["emulator", "bluestacks"]}
-      mentions={["wsa", "android", "apk", "sideloading"]}
+      mentions={[
+        "wsa",
+        "android",
+        "apk",
+        "sideloading",
+        "googlePlay",
+        "ios",
+        "streaming",
+      ]}
       dateModified="2026-08-12"
       kicker="Desktop"
       h1="StreamFlix for PC: Windows and Mac"
@@ -92,8 +110,33 @@ export default function PcPage() {
         "Allocate at least 4 GB of RAM and two cores to the emulator. The defaults are the usual cause of poor performance.",
         "Download emulators from their own official sites only. An emulator has far more system access than an ordinary app.",
         "If you own an Android phone or a cheap streaming stick, that is a better experience than any emulator.",
+        "There is no StreamFlix web app or browser player. Sites presenting one are unrelated streaming pages borrowing the name.",
+        `StreamFlix Reborn is the better desktop APK at ${REBORN.sizeLabel} and Android ${REBORN.minAndroid}, against ${V2.sizeLabel} and Android ${V2.minAndroid} for StreamFlix 2.0.`,
+        "On Windows 11 you have a genuine second option in Windows Subsystem for Android, though it needs developer mode and an adb install command.",
       ]}
     >
+      <QuickSummary
+        bullets={[
+          "No StreamFlix.exe, .msi or .dmg exists. Any file with those extensions offered as StreamFlix is something else.",
+          `Load the same Android package a phone would use: StreamFlix Reborn v${REBORN.version}, ${REBORN.sizeLabel}, ${REBORN.packageName}.`,
+          "BlueStacks is the easiest route on Windows and macOS. LDPlayer is lighter on older Windows machines.",
+          "Windows Subsystem for Android runs Android apps in ordinary windows on Windows 11, installed over adb.",
+          "Allocate at least 4 GB of memory and two CPU cores to the emulator. Default allocations cause most reported sluggishness.",
+          "There is no browser version. StreamFlix has no web player, so a browser cannot substitute for the Android runtime.",
+        ]}
+      >
+        <p>
+          StreamFlix for PC means running the Android APK inside an emulator or
+          Windows Subsystem for Android, because neither StreamFlix app has a
+          Windows or macOS build.
+        </p>
+        <p>
+          That is the whole answer, and everything below is about picking the
+          least painful Android runtime and configuring it so playback is
+          smooth. Setup takes roughly twenty minutes on a first attempt.
+        </p>
+      </QuickSummary>
+
       <h2 id="no-native">There is no native desktop build</h2>
       <p>
         Worth stating up front, because a large number of pages ranking for
@@ -103,15 +146,93 @@ export default function PcPage() {
         executable, a macOS application, or a web player. Both are Android apps
         and nothing else.
       </p>
-      <Definition term="Android emulator">
-        Software that creates a virtual Android device on your desktop. The APK
-        does not know it is not on a phone. It runs the same code, with the
-        same interface, using your mouse and keyboard in place of touch.
+      <Definition term="StreamFlix for PC">
+        StreamFlix for PC is not a product. It is the Android StreamFlix package
+        running inside an Android runtime on a desktop: an emulator such as
+        BlueStacks or LDPlayer, or Windows Subsystem for Android on Windows 11.
+        The emulator creates a virtual Android device, and the APK does not know
+        it is not on a phone. It runs the same code with the same interface,
+        using a mouse and keyboard in place of touch.
       </Definition>
       <p>
         So &ldquo;StreamFlix for PC&rdquo; always means one thing: run the APK
         inside an emulator. That works, with real caveats worth knowing before
         you spend twenty minutes on setup.
+      </p>
+
+      <h2 id="web">The StreamFlix web app question</h2>
+      <p>
+        Neither StreamFlix app has a web version, and neither project runs a
+        streaming website. There is no browser player to sign into and no
+        online catalogue that belongs to the app.
+      </p>
+      <p>
+        StreamFlix Reborn publishes its source and its releases on GitHub, which
+        is a code host rather than a place to watch anything. StreamFlix 2.0 is
+        distributed through Google Play and mirror sites. Neither of those is a
+        website you stream from, which is why searches for a StreamFlix website
+        for PC return unrelated pages.
+      </p>
+      <DataTable
+        caption="What pages offering a StreamFlix web app or PC download usually are"
+        headers={["What is offered", "What it actually is"]}
+        rows={[
+          [
+            "A StreamFlix web app you watch in a browser",
+            "An unrelated streaming site using the name to attract traffic",
+          ],
+          [
+            "StreamFlix.exe or a Windows setup file",
+            "An installer for something else, commonly bundled with adware",
+          ],
+          [
+            "A StreamFlix PC download that is 76.8 MB",
+            "The StreamFlix 2.0 Android APK relabelled. It still needs an Android runtime",
+          ],
+          [
+            "A macOS .dmg for StreamFlix",
+            "No such build was ever produced. The file is unrelated",
+          ],
+          [
+            "An online player asking you to sign in",
+            "A credential capture page. Neither StreamFlix app has accounts at all",
+          ],
+        ]}
+      />
+
+      <h2 id="which-variant">Which APK to load on a desktop</h2>
+      <p>
+        Load StreamFlix Reborn. It is the lighter package and it tolerates older
+        Android images, which matters because emulators frequently run an
+        Android release several versions behind a current phone.
+      </p>
+      <DataTable
+        caption="StreamFlix Reborn against StreamFlix 2.0 for desktop emulator use"
+        headers={["Field", REBORN.shortName, V2.shortName]}
+        rows={[
+          ["Package name", REBORN.packageName, V2.packageName],
+          ["Current release", `v${REBORN.version}`, `Build ${V2.version}`],
+          ["Download size", REBORN.sizeLabel, V2.sizeLabel],
+          ["Minimum Android", REBORN.minAndroid, V2.minAndroid],
+          [
+            "Works with an older emulator image",
+            "Yes, back to Android 5.0",
+            "No, Android 6.0 is the floor",
+          ],
+          [
+            "Layout on a large monitor",
+            "Adapts, and the TV layout is available",
+            "Phone layout stretched wide",
+          ],
+          ["Advertising", "None in the app's own interface", "Ad-supported"],
+        ]}
+      />
+      <p>
+        StreamFlix 2.0 does run in an emulator, so if you specifically want its
+        offline downloads it is a valid choice. Its files then live inside the
+        emulator&rsquo;s virtual storage rather than on your desktop, which most
+        emulators expose through a shared folder. See{" "}
+        <InternalLink intent="offline" currentPath={R.pc} />.
       </p>
 
       <h2 id="emulators">Emulators compared</h2>
@@ -195,22 +316,76 @@ export default function PcPage() {
         tidiest result. Choose BlueStacks if you want it working in ten minutes.
       </p>
 
-      <h2 id="mac">Running it on a Mac</h2>
-      <QuickSummary
-        bullets={[
-          "Apple silicon (M-series): BlueStacks Air runs Android acceptably. This is the best Mac option.",
-          "Intel Mac: noticeably slower, and support is winding down across emulators.",
-          "There is no macOS build of either StreamFlix app. An emulator is the only route.",
-          "An iPhone or iPad in the same household cannot help here; iOS cannot run an APK at all.",
+      <h2 id="windows-11">Windows 11 specifics</h2>
+      <p>
+        Windows 11 is the only desktop platform with two genuinely different
+        routes, so it is worth separating them before you install anything.
+        Windows 10 and earlier have emulators only.
+      </p>
+      <DataTable
+        caption="Running StreamFlix on Windows 11 compared with Windows 10 and macOS"
+        headers={["Platform", "Available routes", "Practical note"]}
+        rows={[
+          [
+            "Windows 11",
+            "BlueStacks, LDPlayer, Windows Subsystem for Android",
+            "WSA needs developer mode and adb; Hyper-V can conflict with emulators",
+          ],
+          [
+            "Windows 10",
+            "BlueStacks, LDPlayer",
+            "No WSA. Check that Intel VT-x or AMD-V is enabled in the BIOS",
+          ],
+          [
+            "macOS on Apple silicon",
+            "BlueStacks Air",
+            "Genuinely usable. ARM images match the hardware, so no translation layer",
+          ],
+          [
+            "macOS on Intel",
+            "BlueStacks",
+            "Noticeably slower, and emulator support for Intel Macs is winding down",
+          ],
+          [
+            "Chromebook with Android apps",
+            "Native Android container",
+            "Best desktop result of all. Enable unknown sources, then open the APK",
+          ],
         ]}
-      >
-        <p>
-          Apple silicon changed this meaningfully. Android emulation on an M-series
-          Mac is genuinely usable, where on Intel it was a compromise. See{" "}
-          <InternalLink intent="ios" currentPath={R.pc} /> for why the iPhone
-          question has a different and firmer answer.
-        </p>
-      </QuickSummary>
+      />
+      <p>
+        Two Windows 11 details cause most failed attempts. Hyper-V and
+        third-party emulators contend for the same virtualisation layer, so
+        either disable Hyper-V or pick an emulator build that supports it. And
+        Windows Subsystem for Android is no longer being expanded by Microsoft,
+        so treat it as a route that works today rather than one to depend on.
+      </p>
+
+      <h2 id="mac">Running it on a Mac</h2>
+      <p>
+        Apple silicon changed this meaningfully. Android emulation on an
+        M-series Mac is genuinely usable, where on Intel it was a compromise.
+        See <InternalLink intent="ios" currentPath={R.pc} /> for why the iPhone
+        question has a different and firmer answer.
+      </p>
+      <ul>
+        <li>
+          <strong>Apple silicon:</strong> BlueStacks Air runs Android
+          acceptably. This is the best Mac option.
+        </li>
+        <li>
+          <strong>Intel Mac:</strong> noticeably slower, and support is winding
+          down across emulators.
+        </li>
+        <li>
+          <strong>No macOS build</strong> of either StreamFlix app exists, so an
+          emulator is the only route.
+        </li>
+        <li>
+          <strong>An iPhone or iPad cannot help here.</strong> iOS cannot run an
+          APK at all.
+        </li>
+      </ul>
 
       <h2 id="performance">Realistic performance</h2>
       <p>

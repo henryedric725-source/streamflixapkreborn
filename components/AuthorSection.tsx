@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { BadgeCheck } from "lucide-react";
-import { SITE_AUTHOR } from "@/lib/author";
+import { SITE_AUTHOR, authorContextFor } from "@/lib/author";
 import { CONTENT_UPDATED, CONTENT_UPDATED_DISPLAY } from "@/lib/site";
 
 /**
@@ -8,9 +8,20 @@ import { CONTENT_UPDATED, CONTENT_UPDATED_DISPLAY } from "@/lib/site";
  *
  * Beyond a byline, this states *why* the author is a credible source for this
  * specific subject and when the page was last reviewed — the experience and
- * trust half of E-E-A-T, which a name alone does not establish.
+ * trust half of E-E-A-T, which a name alone does not establish. When `path` is
+ * set, a post-relevant experience note is appended under the global bio.
  */
-export function AuthorSection({ reviewedOn }: { reviewedOn?: string }) {
+export function AuthorSection({
+  reviewedOn,
+  path,
+  context,
+}: {
+  reviewedOn?: string;
+  /** Cluster path — resolves a post-relevant bio from lib/author.ts. */
+  path?: string;
+  /** Optional override; defaults to authorContextFor(path). */
+  context?: string;
+}) {
   const reviewed = reviewedOn ?? CONTENT_UPDATED;
   const reviewedDisplay = reviewedOn
     ? new Date(`${reviewedOn}T00:00:00Z`).toLocaleDateString("en-GB", {
@@ -20,6 +31,7 @@ export function AuthorSection({ reviewedOn }: { reviewedOn?: string }) {
         timeZone: "UTC",
       })
     : CONTENT_UPDATED_DISPLAY;
+  const pageContext = context ?? (path ? authorContextFor(path) : undefined);
 
   return (
     <aside
@@ -58,6 +70,13 @@ export function AuthorSection({ reviewedOn }: { reviewedOn?: string }) {
         {SITE_AUTHOR.description}
       </p>
 
+      {pageContext ? (
+        <p className="mt-3 rounded-xl border border-line/80 bg-panel-2/60 px-4 py-3 text-[0.95rem] leading-7 text-zinc-300">
+          <span className="font-medium text-paper">On this page: </span>
+          {pageContext}
+        </p>
+      ) : null}
+
       <ul className="mt-4 space-y-2">
         {SITE_AUTHOR.credentials.map((item) => (
           <li key={item} className="flex gap-2.5 text-sm leading-6 text-zinc-400">
@@ -74,11 +93,10 @@ export function AuthorSection({ reviewedOn }: { reviewedOn?: string }) {
       <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line pt-4 text-sm">
         <a
           href={SITE_AUTHOR.url}
-          rel="author nofollow noopener noreferrer"
-          target="_blank"
+          rel="author"
           className="font-medium text-flame underline decoration-flame/40 underline-offset-2 hover:text-flame-dark hover:decoration-flame-dark"
         >
-          Author profile
+          About the author
         </a>
         <span className="text-zinc-500">
           Page facts last verified{" "}

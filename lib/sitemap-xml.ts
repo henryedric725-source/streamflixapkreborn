@@ -12,7 +12,7 @@ function escapeXml(value: string) {
 }
 
 /** Pages whose facts move with each app release get a tighter crawl signal. */
-const WEEKLY = new Set<string>([R.home, R.oldVersions, R.oldVersions, R.reborn, R.v2]);
+const WEEKLY = new Set<string>([R.home, R.oldVersions, R.reborn, R.v2]);
 
 export function buildSitemapXml() {
   const lastmod = CONTENT_UPDATED;

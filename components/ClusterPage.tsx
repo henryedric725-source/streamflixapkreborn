@@ -10,7 +10,6 @@ import {
 } from "@/components/JsonLd";
 import { DirectAnswer } from "@/components/PageIntro";
 import { RelatedHubs } from "@/components/RelatedHubs";
-import { Sources } from "@/components/Sources";
 import { Toc } from "@/components/Toc";
 import { Takeaways } from "@/components/ContentBlocks";
 import type { FaqItem } from "@/lib/faqs";
@@ -58,6 +57,16 @@ export function ClusterPage({
   leadContent,
   downloadVariant,
   showDownload = true,
+  /** Author box: posts and About by default; never on the download hub. */
+  showAuthor,
+  showRelatedHubs = true,
+  showRelatedArticles = true,
+  showImportantPages = true,
+  showToc = true,
+  showShare = true,
+  showTrustBar = true,
+  fullWidth = false,
+  contentClassName = "prose-hub max-w-none",
   children,
 }: {
   path: string;
@@ -89,9 +98,20 @@ export function ClusterPage({
   leadContent?: ReactNode;
   downloadVariant?: AppVariant;
   showDownload?: boolean;
+  showAuthor?: boolean;
+  showRelatedHubs?: boolean;
+  showRelatedArticles?: boolean;
+  showImportantPages?: boolean;
+  showToc?: boolean;
+  showShare?: boolean;
+  showTrustBar?: boolean;
+  fullWidth?: boolean;
+  contentClassName?: string;
   children: ReactNode;
 }) {
   const crumbs = breadcrumbsFor(path, h1);
+  const authorVisible =
+    showAuthor ?? (isPostPath(path) || path === R.about);
   return (
     <>
       <PageSchema
@@ -122,17 +142,25 @@ export function ClusterPage({
         leadContent={leadContent}
         downloadVariant={downloadVariant}
         showDownload={showDownload}
+        showRelatedArticles={showRelatedArticles}
+        showImportantPages={showImportantPages}
+        showShare={showShare}
+        showTrustBar={showTrustBar}
+        fullWidth={fullWidth}
         intro={<DirectAnswer kicker={kicker} title={h1} answer={answer} />}
       >
-        <Toc items={toc} />
-        <div className="prose-hub max-w-none">{children}</div>
-        <Takeaways items={takeaways} />
-        <FaqList items={faqs} />
-        <Sources path={path} />
-        <AuthorSection reviewedOn={dateModified} />
-        <div className="mt-10">
-          <RelatedHubs current={path} />
-        </div>
+        {showToc ? <Toc items={toc} /> : null}
+        <div className={contentClassName}>{children}</div>
+        {takeaways.length > 0 ? <Takeaways items={takeaways} /> : null}
+        {faqs.length > 0 ? <FaqList items={faqs} /> : null}
+        {authorVisible ? (
+          <AuthorSection reviewedOn={dateModified} path={path} />
+        ) : null}
+        {showRelatedHubs ? (
+          <div className="mt-10">
+            <RelatedHubs current={path} />
+          </div>
+        ) : null}
       </ArticleShell>
     </>
   );

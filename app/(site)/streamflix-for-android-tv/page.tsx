@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { ClusterPage } from "@/components/ClusterPage";
-import { DataTable, QuickSummary } from "@/components/ContentBlocks";
+import {
+  DataTable,
+  Definition,
+  QuickSummary,
+} from "@/components/ContentBlocks";
 import { DeviceMatrix } from "@/components/DeviceMatrix";
 import { FeatureCards, StepCards } from "@/components/HomeSections";
 import { InternalLink } from "@/components/InternalLink";
@@ -22,23 +26,31 @@ export const metadata: Metadata = pageMetadata({
   dateModified: "2026-08-15",
   keywords: [
     "streamflix android tv",
+    "streamflix for android tv",
+    "streamflix apk download for android tv",
+    "downloader code for streamflix android tv",
+    "streamflix android tv app",
+    "best apps like streamflix for android tv",
+    "streamflix alternatives android tv",
     "streamflix google tv",
-    "free movie apps for android tv",
     "streamflix android tv box",
     "sideload apk android tv",
-    "android tv sideload apk",
   ],
 });
 
 const toc = [
+  { href: "#quick-summary", label: "Quick summary" },
   { href: "#which", label: "Which variant to install" },
+  { href: "#download", label: "Where the Android TV APK comes from" },
   { href: "#methods", label: "Three ways to sideload" },
+  { href: "#codes", label: "Downloader codes on Android TV" },
   { href: "#usb", label: "The USB method" },
   { href: "#network", label: "The network method" },
   { href: "#hidden", label: "When Google TV hides the app" },
   { href: "#navigation", label: "D-pad navigation" },
   { href: "#hardware", label: "Hardware and performance" },
   { href: "#problems", label: "Android TV specific problems" },
+  { href: "#alternatives", label: "Apps like StreamFlix for Android TV" },
 ];
 
 const usbHowTo: HowToData = {
@@ -80,7 +92,18 @@ export default function AndroidTvPage() {
       title={TITLE}
       description={DESCRIPTION}
       about={["androidTv", "googleTv"]}
-      mentions={["sideloading", "apk", "chromecast", "android", "streaming"]}
+      mentions={[
+        "sideloading",
+        "apk",
+        "chromecast",
+        "fireTv",
+        "android",
+        "googlePlay",
+        "playProtect",
+        "streaming",
+        "leanback",
+        "downloader",
+      ]}
       dateModified="2026-08-15"
       kicker="Android TV and Google TV"
       h1="StreamFlix for Android TV and Google TV"
@@ -95,8 +118,35 @@ export default function AndroidTvPage() {
         "Google TV deliberately hides sideloaded apps from the main launcher. The app is installed; only the launcher entry is missing.",
         "An Nvidia Shield handles high-bitrate streams without stuttering where 1 GB budget boxes do not.",
         "If a 1.7 build stutters on old hardware, a 1.6 series build is genuinely lighter and often the better fix.",
+        `There is no separate Android TV download. The same ${REBORN.sizeLabel} package, ${REBORN.packageName}, serves phones, boxes and televisions.`,
+        "Downloader codes work the same way here as on Fire TV: they are third-party redirects, not something the StreamFlix project issues.",
+        "Judge any alternative on three things: a real leanback layout, active updates, and whether it needs a virtual mouse app to reach its controls.",
       ]}
     >
+      <QuickSummary
+        bullets={[
+          `Install StreamFlix Reborn v${REBORN.version}, ${REBORN.sizeLabel}, package ${REBORN.packageName}, minimum Android ${REBORN.minAndroid}.`,
+          "One package covers phones, Android TV, Google TV and Fire TV. There is no separate Android TV download to look for.",
+          "Three sideload routes: a USB stick with a file manager, a network sideload helper, or Downloader by URL.",
+          "Google TV omits sideloaded apps from its Apps row. Open it through Settings, Apps, See all apps, or pin it with a shortcut utility.",
+          "No official Downloader code exists for Android TV. Every circulating code is a redirect registered by a third-party site.",
+          "StreamFlix 2.0 has no TV layout at all, so it is the wrong variant on any television regardless of how well the hardware performs.",
+        ]}
+      >
+        <p>
+          StreamFlix for Android TV means sideloading the StreamFlix Reborn APK
+          onto an Android TV or Google TV device, because neither StreamFlix app
+          is published on the Play Store for televisions.
+        </p>
+        <p>
+          Android TV and Google TV are the same operating system with different
+          launchers on top, so the install is identical on a Sony television, an
+          Nvidia Shield, a Chromecast with Google TV and a generic box. The
+          differences appear afterwards, in where each launcher files the
+          finished app.
+        </p>
+      </QuickSummary>
+
       <h2 id="which">Which variant to install</h2>
       <VariantSupportStrip
         rebornSupported
@@ -113,6 +163,58 @@ export default function AndroidTvPage() {
         present a phone layout on a 55-inch screen, with tap targets you cannot
         reach and text you cannot read at viewing distance. Use{" "}
         <InternalLink intent="reborn" currentPath={R.androidTv} /> here.
+      </p>
+      <Definition term="StreamFlix for Android TV">
+        StreamFlix for Android TV is the StreamFlix Reborn package running on
+        Android TV or Google TV hardware, installed by sideloading rather than
+        from the Play Store. It ships a leanback interface: rows that navigate
+        with a D-pad, focus states visible at viewing distance, and every
+        control reachable without a virtual cursor. The same build also runs on
+        Amazon Fire TV, which uses a fork of the same operating system.
+      </Definition>
+
+      <h2 id="download">Where the Android TV APK comes from</h2>
+      <p>
+        There is one file. StreamFlix Reborn publishes a single universal
+        package that detects whether it is running on a television and shows the
+        leanback interface accordingly, so a search for an Android TV specific
+        download returns the same {REBORN.sizeLabel} file under a different
+        heading.
+      </p>
+      <DataTable
+        caption="Distribution points for the StreamFlix Reborn Android TV package"
+        headers={["Source", "What it is", "Check before installing"]}
+        rows={[
+          [
+            "GitHub releases",
+            "The project's own release page, published beside the Apache 2.0 source",
+            "Nothing. Every other copy is measured against this one",
+          ],
+          [
+            "Uptodown",
+            `An acknowledged mirror carrying ${REBORN.packageName}`,
+            `Version string and size against v${REBORN.version} and ${REBORN.sizeLabel}`,
+          ],
+          [
+            "General APK mirrors",
+            "Aggregator sites that re-host the file behind their own download flow",
+            "Whether the advertised version matches the build inside the file",
+          ],
+          [
+            "Tutorial sites behind a Downloader code",
+            "A redirect to that site's own copy or affiliate page",
+            "The domain the code lands on, before anything downloads",
+          ],
+        ]}
+      />
+      <p>
+        Google Play carries StreamFlix 2.0 but not Reborn, which is the source
+        of a common mix-up: people install the Play listing on a television,
+        find a phone layout, and conclude the TV app is poor. It is a different
+        app by a different developer. Verify after installing that Settings,
+        Apps shows <code>{REBORN.packageName}</code>. Play Protect will warn
+        during the sideload, and that warning reflects the install method rather
+        than anything detected in the file.
       </p>
 
       <h2 id="methods">Three ways to sideload</h2>
@@ -142,6 +244,29 @@ export default function AndroidTvPage() {
         out in full on{" "}
         <InternalLink intent="firestickDownloader" currentPath={R.androidTv} />.
         The two Android-TV-specific methods are below.
+      </p>
+
+      <h2 id="codes">Downloader codes on Android TV</h2>
+      <p>
+        No Downloader code is issued for StreamFlix by the project. A code is a
+        short number that a third party registers against an address of their
+        choosing inside the Downloader app, so entering one hands the choice of
+        destination to whoever registered it.
+      </p>
+      <p>
+        Codes work identically on Android TV and on Fire TV, because Downloader
+        is the same app on both. Numbers such as 730116 and 250931 circulate in
+        tutorials and resolve to the sites that published them rather than to
+        the StreamFlix repository. They stop working when a registration lapses,
+        a site restructures, or a file moves, and none of that is visible from
+        the number itself.
+      </p>
+      <p>
+        Entering the full APK address instead costs more typing and removes the
+        uncertainty: you can read the host and the file name before anything
+        downloads. On a box with a USB port, the USB method below skips typing
+        altogether. Fire TV users will find the same mechanism written out on{" "}
+        <InternalLink intent="firestickDownloader" currentPath={R.androidTv} />.
       </p>
 
       <h2 id="usb">The USB method</h2>
@@ -188,19 +313,25 @@ export default function AndroidTvPage() {
         You install successfully, return to the home screen, and the app is
         nowhere. This is expected behaviour on Google TV, not a failed install.
       </p>
-      <QuickSummary
-        bullets={[
-          "Google TV curates its Apps row and deliberately excludes sideloaded apps from it.",
-          "Reach it via Settings, Apps, See all apps, then select it and choose Open.",
-          "A launcher shortcut utility from the Play Store will pin it to the home screen permanently.",
-          "Some Android TV builds do show sideloaded apps in the Apps row. Behaviour differs by manufacturer and OS version.",
-        ]}
-      >
-        <p>
-          The app itself is fully installed and functional. Only the launcher
-          entry is missing, and a shortcut utility is a one-time fix.
-        </p>
-      </QuickSummary>
+      <p>
+        The app itself is fully installed and functional. Only the launcher
+        entry is missing, and a shortcut utility is a one-time fix.
+      </p>
+      <ul>
+        <li>
+          Google TV curates its Apps row and deliberately excludes sideloaded
+          apps from it.
+        </li>
+        <li>Reach it via Settings, Apps, See all apps, then select it and choose Open.</li>
+        <li>
+          A launcher shortcut utility from the Play Store pins it to the home
+          screen permanently.
+        </li>
+        <li>
+          Some Android TV builds do show sideloaded apps in the Apps row.
+          Behaviour differs by manufacturer and OS version.
+        </li>
+      </ul>
 
       <h2 id="navigation">D-pad navigation</h2>
       <FeatureCards
@@ -300,6 +431,52 @@ export default function AndroidTvPage() {
         ]}
       />
       <DeviceMatrix caption="Full device support matrix for both StreamFlix apps" />
+
+      <h2 id="alternatives">Apps like StreamFlix for Android TV</h2>
+      <p>
+        The useful test for an Android TV alternative is not catalogue size. It
+        is whether the app was built for a television at all. Three checks
+        separate a real TV app from a phone app that happens to install: a
+        leanback layout, current updates, and controls a D-pad can reach without
+        a virtual mouse utility.
+      </p>
+      <DataTable
+        caption="Types of StreamFlix alternative on Android TV and what each one trades away"
+        headers={["If you want", "Category to look at", "What you give up"]}
+        rows={[
+          [
+            "The same model with published source",
+            "Open-source aggregators on GitHub",
+            "Very few exist. Most free aggregators are closed source",
+          ],
+          [
+            "A Play Store install with no sideloading",
+            "Licensed free ad-supported TV services",
+            "Catalogue breadth, and you accept advertising breaks",
+          ],
+          [
+            "Live channels rather than a film library",
+            "Dedicated live TV and IPTV players",
+            "Resume position handling and on-demand browsing",
+          ],
+          [
+            "Your own media rather than third-party sources",
+            "A home media server client",
+            "You have to supply the files yourself",
+          ],
+          [
+            "A phone-first app you already use",
+            "Any Android app sideloaded to the box",
+            "Usable navigation. Expect to add a mouse toggle utility",
+          ],
+        ]}
+      />
+      <p>
+        Named comparisons, including which apps in this category have stopped
+        updating, are on{" "}
+        <InternalLink intent="alternatives" currentPath={R.androidTv} /> and{" "}
+        <InternalLink intent="bestTvApks" currentPath={R.androidTv} />.
+      </p>
       <p>
         For Fire TV specifically see{" "}
         <InternalLink intent="firestick" currentPath={R.androidTv} />, and for

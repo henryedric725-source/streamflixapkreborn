@@ -7,7 +7,13 @@ import { R } from "@/lib/routes";
  * a slug change is a one-line edit here.
  */
 
-export type LinkContext = "nav" | "footer" | "body" | "sidebar" | "breadcrumb";
+export type LinkContext =
+  | "nav"
+  | "footer"
+  | "body"
+  | "sidebar"
+  | "breadcrumb"
+  | "generic";
 
 type LinkDef = {
   href: string;
@@ -22,9 +28,10 @@ export const L = {
     labels: {
       nav: "Download",
       footer: "StreamFlix APK download",
-      body: "StreamFlix APK download hub",
+      body: "StreamFlix APK download",
       sidebar: "StreamFlix APK download",
       breadcrumb: "StreamFlix APK",
+      generic: "this page",
     },
   },
 
@@ -34,46 +41,63 @@ export const L = {
     labels: {
       nav: "Reborn",
       footer: "StreamFlix Reborn APK",
-      body: "StreamFlix Reborn, the open-source build",
+      body: "StreamFlix Reborn APK",
       sidebar: "StreamFlix Reborn APK",
       breadcrumb: "StreamFlix Reborn APK",
+      generic: "the Reborn guide",
     },
   },
   rebornProviders: {
     href: `${R.reborn}#providers`,
-    labels: { body: "how Reborn's provider system works" },
+    labels: {
+      body: "StreamFlix Reborn providers",
+      generic: "more detail",
+    },
   },
   v2: {
     href: R.v2,
     labels: {
       nav: "StreamFlix 2.0",
       footer: "StreamFlix 2.0 APK",
-      body: "StreamFlix 2.0, the Play Store build",
+      body: "StreamFlix 2.0 APK",
       sidebar: "StreamFlix 2.0 APK",
       breadcrumb: "StreamFlix 2.0 APK",
+      generic: "the StreamFlix 2.0 guide",
     },
   },
   oldVersions: {
     href: R.oldVersions,
     labels: {
-      footer: "Old versions",
-      body: "StreamFlix APK old versions archive",
+      footer: "StreamFlix old versions",
+      body: "StreamFlix APK old versions",
       sidebar: "Old versions archive",
       breadcrumb: "Old versions",
+      generic: "the version archive",
+    },
+  },
+  oldVersionsDirectory: {
+    href: `${R.oldVersions}#directory`,
+    labels: {
+      body: "the StreamFlix package index",
+      generic: "every catalogued build",
     },
   },
   rollback: {
     href: `${R.oldVersions}#rollback`,
-    labels: { body: "roll back to an earlier build" },
+    labels: {
+      body: "roll back StreamFlix APK",
+      generic: "rollback steps",
+    },
   },
   mod: {
     href: R.mod,
     labels: {
       nav: "Mod APK",
-      footer: "Mod APK",
-      body: "what StreamFlix mod APKs really contain",
+      footer: "StreamFlix mod APK",
+      body: "StreamFlix mod APK",
       sidebar: "StreamFlix mod APK",
       breadcrumb: "Mod APK",
+      generic: "this explanation",
     },
   },
 
@@ -82,73 +106,91 @@ export const L = {
     href: R.install,
     labels: {
       nav: "Install",
-      footer: "Install guide",
+      footer: "How to install StreamFlix APK",
       body: "how to install StreamFlix APK",
       sidebar: "Android install guide",
       breadcrumb: "How to install",
+      generic: "this install guide",
     },
   },
   installUnknownSources: {
     href: `${R.install}#unknown-sources`,
-    labels: { body: "enabling installs from unknown sources" },
+    labels: {
+      body: "unknown sources on Android",
+      generic: "these steps",
+    },
   },
   installConflict: {
     href: `${R.install}#conflict`,
-    labels: { body: "fixing a package conflict" },
+    labels: {
+      body: "fix StreamFlix package conflict",
+      generic: "the conflict fix",
+    },
   },
   installVerify: {
     href: `${R.install}#verify`,
-    labels: { body: "verifying the APK before you open it" },
+    labels: {
+      body: "verify StreamFlix APK",
+      generic: "how to verify",
+    },
   },
   firestick: {
     href: R.firestick,
     labels: {
       nav: "Firestick",
-      footer: "Firestick and Fire TV",
-      body: "installing StreamFlix on Firestick",
+      footer: "StreamFlix for Firestick",
+      body: "StreamFlix on Firestick",
       sidebar: "Firestick and Fire TV",
       breadcrumb: "Firestick",
+      generic: "the Firestick walkthrough",
     },
   },
   firestickDownloader: {
     href: `${R.firestick}#downloader`,
-    labels: { body: "the Downloader app method" },
+    labels: {
+      body: "Downloader app for StreamFlix",
+      generic: "that method",
+    },
   },
   androidTv: {
     href: R.androidTv,
     labels: {
       nav: "Android TV",
-      footer: "Android TV and Google TV",
-      body: "StreamFlix on Android TV and Google TV",
+      footer: "StreamFlix for Android TV",
+      body: "StreamFlix for Android TV",
       sidebar: "Android TV and Google TV",
       breadcrumb: "Android TV",
+      generic: "the Android TV guide",
     },
   },
   pc: {
     href: R.pc,
     labels: {
-      footer: "PC and Mac",
-      body: "running StreamFlix on PC or Mac",
+      footer: "StreamFlix for PC",
+      body: "StreamFlix for PC",
       sidebar: "StreamFlix for PC and Mac",
       breadcrumb: "StreamFlix for PC",
+      generic: "the PC guide",
     },
   },
   ios: {
     href: R.ios,
     labels: {
-      footer: "iPhone and iPad",
-      body: "why there is no StreamFlix for iPhone",
+      footer: "StreamFlix for iPhone",
+      body: "StreamFlix for iPhone",
       sidebar: "iPhone and iPad",
       breadcrumb: "StreamFlix for iOS",
+      generic: "the iOS answer",
     },
   },
   smartTv: {
     href: R.smartTv,
     labels: {
-      footer: "Smart TV",
-      body: "StreamFlix on Samsung, LG and cast-capable TVs",
+      footer: "StreamFlix on Smart TV",
+      body: "StreamFlix on Smart TV",
       sidebar: "Smart TV and casting",
       breadcrumb: "Smart TV",
+      generic: "the Smart TV notes",
     },
   },
 
@@ -157,57 +199,76 @@ export const L = {
     href: R.howToUse,
     labels: {
       footer: "How to use StreamFlix",
-      body: "how to use StreamFlix after install",
+      body: "how to use StreamFlix",
       sidebar: "Using StreamFlix",
       breadcrumb: "How to use",
+      generic: "the setup guide",
     },
   },
   switchServers: {
     href: `${R.howToUse}#servers`,
-    labels: { body: "switching servers when a stream stalls" },
+    labels: {
+      body: "switch StreamFlix servers",
+      generic: "server switching",
+    },
   },
   subtitles: {
     href: `${R.howToUse}#subtitles`,
-    labels: { body: "loading and styling subtitles" },
+    labels: {
+      body: "StreamFlix subtitles",
+      generic: "subtitle settings",
+    },
   },
   offline: {
     href: R.offline,
     labels: {
-      footer: "Offline downloads",
-      body: "downloading movies for offline viewing",
+      footer: "StreamFlix offline downloads",
+      body: "StreamFlix offline downloads",
       sidebar: "Offline downloads",
       breadcrumb: "Offline downloads",
+      generic: "the downloads guide",
     },
   },
   notWorking: {
     href: R.notWorking,
     labels: {
       nav: "Fixes",
-      footer: "Troubleshooting",
-      body: "StreamFlix troubleshooting guide",
+      footer: "StreamFlix not working",
+      body: "StreamFlix not working",
       sidebar: "Fix StreamFlix",
       breadcrumb: "Not working",
+      generic: "this troubleshooting page",
     },
   },
   buffering: {
     href: `${R.notWorking}#buffering`,
-    labels: { body: "fixing buffering and stalled playback" },
+    labels: {
+      body: "fix StreamFlix buffering",
+      generic: "the buffering fix",
+    },
   },
   noSources: {
     href: `${R.notWorking}#no-sources`,
-    labels: { body: "the 'no sources found' fix" },
+    labels: {
+      body: "StreamFlix no sources found",
+      generic: "that fix",
+    },
   },
   playProtect: {
     href: `${R.notWorking}#play-protect`,
-    labels: { body: "getting past the Play Protect warning" },
+    labels: {
+      body: "StreamFlix Play Protect warning",
+      generic: "how to continue",
+    },
   },
   update: {
     href: R.update,
     labels: {
-      footer: "Update guide",
-      body: "updating StreamFlix without losing your data",
+      footer: "Update StreamFlix APK",
+      body: "update StreamFlix APK",
       sidebar: "Update guide",
       breadcrumb: "Update guide",
+      generic: "the update steps",
     },
   },
 
@@ -216,32 +277,38 @@ export const L = {
     href: R.safe,
     labels: {
       nav: "Safety",
-      footer: "Is it safe?",
-      body: "whether StreamFlix APK is safe",
+      footer: "Is StreamFlix safe?",
+      body: "is StreamFlix APK safe",
       sidebar: "Safety and file verification",
       breadcrumb: "Is it safe?",
+      generic: "the safety guide",
     },
   },
   legalCheck: {
     href: R.legal,
     labels: {
-      footer: "Is it legal?",
-      body: "the legality of StreamFlix",
+      footer: "Is StreamFlix legal?",
+      body: "is StreamFlix legal",
       sidebar: "Legality explained",
       breadcrumb: "Is it legal?",
+      generic: "the legality guide",
     },
   },
   dmcaHistory: {
     href: `${R.legal}#dmca`,
-    labels: { body: "the DMCA takedown of the original StreamFlix" },
+    labels: {
+      body: "StreamFlix DMCA takedown",
+      generic: "that history",
+    },
   },
   vpn: {
     href: R.vpn,
     labels: {
-      footer: "VPN guide",
-      body: "whether you need a VPN for StreamFlix",
+      footer: "StreamFlix VPN guide",
+      body: "VPN for StreamFlix",
       sidebar: "VPN guide",
       breadcrumb: "VPN guide",
+      generic: "the VPN notes",
     },
   },
 
@@ -250,28 +317,45 @@ export const L = {
     href: R.alternatives,
     labels: {
       nav: "Alternatives",
-      footer: "Alternatives",
-      body: "StreamFlix alternatives worth installing",
-      sidebar: "StreamFlix alternatives",
+      footer: "StreamFlix alternatives",
+      body: "StreamFlix alternatives",
+      sidebar: "When providers dry up",
       breadcrumb: "Alternatives",
+      generic: "the full comparison",
+    },
+  },
+  alternativesLive: {
+    href: `${R.alternatives}#live-tv`,
+    labels: {
+      body: "live TV apps like HD Streamz",
+      generic: "that live-TV section",
+    },
+  },
+  alternativesAggregators: {
+    href: `${R.alternatives}#aggregators`,
+    labels: {
+      body: "direct StreamFlix aggregator swaps",
+      generic: "the aggregator shortlist",
     },
   },
   bestTvApks: {
     href: R.bestTvApks,
     labels: {
-      footer: "Best streaming APKs for TV",
-      body: "the best streaming APKs for Android TV",
+      footer: "Best streaming APKs for Android TV",
+      body: "best streaming APKs for Android TV",
       sidebar: "Best APKs for Android TV",
       breadcrumb: "Best streaming APKs for TV",
+      generic: "the TV shortlist",
     },
   },
   vsPaid: {
     href: R.vsPaid,
     labels: {
-      footer: "StreamFlix vs paid apps",
-      body: "StreamFlix compared with Netflix and paid services",
+      footer: "StreamFlix vs Netflix",
+      body: "StreamFlix vs Netflix and paid apps",
       sidebar: "Free vs paid streaming",
       breadcrumb: "StreamFlix vs paid apps",
+      generic: "the comparison",
     },
   },
 
@@ -280,19 +364,21 @@ export const L = {
     href: R.blog,
     labels: {
       nav: "Blog",
-      footer: "All articles",
-      body: "the full StreamFlix article index",
+      footer: "StreamFlix blog",
+      body: "StreamFlix blog",
       sidebar: "Browse every article",
-      breadcrumb: "Blog",
+      breadcrumb: "Guides",
+      generic: "all guides",
     },
   },
   about: {
     href: R.about,
     labels: {
-      footer: "About",
-      body: "our editorial and testing policy",
+      footer: "About StreamFlix APK Desk",
+      body: "editorial and testing policy",
       sidebar: "About this site",
       breadcrumb: "About",
+      generic: "our method",
     },
   },
 
@@ -300,12 +386,18 @@ export const L = {
   getApk: {
     href: `${R.home}#get-apk`,
     homeHref: "#get-apk",
-    labels: { body: "the download section on this page" },
+    labels: {
+      body: "download StreamFlix APK",
+      generic: "the download section",
+    },
   },
   compareVariants: {
     href: `${R.home}#compare`,
     homeHref: "#compare",
-    labels: { body: "the side-by-side variant comparison" },
+    labels: {
+      body: "StreamFlix Reborn vs 2.0",
+      generic: "the side-by-side table",
+    },
   },
 } as const satisfies Record<string, LinkDef>;
 

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { ClusterPage } from "@/components/ClusterPage";
-import { DataTable, QuickSummary } from "@/components/ContentBlocks";
+import {
+  DataTable,
+  Definition,
+  QuickSummary,
+} from "@/components/ContentBlocks";
 import { DeviceMatrix } from "@/components/DeviceMatrix";
 import { StepCards } from "@/components/HomeSections";
 import { InternalLink } from "@/components/InternalLink";
@@ -23,17 +27,30 @@ export const metadata: Metadata = pageMetadata({
   dateModified: "2026-08-16",
   keywords: [
     "streamflix firestick",
-    "streamflix fire tv",
-    "install streamflix on firestick",
-    "streamflix downloader code",
-    "sideload firestick apk",
-    "downloader app firestick",
+    "streamflix on firestick",
+    "how to install streamflix on firestick",
+    "how to download streamflix on firestick",
+    "streamflix downloader code firestick",
+    "streamflix firestick code",
+    "downloader code for streamflix",
+    "streamflix reborn downloader code",
+    "codigo downloader streamflix",
+    "streamflix not working on firestick",
+    "streamflix removed from firestick",
+    "streamflix apk firestick",
+    "install streamflix on fire tv stick",
+    "how to get streamflix on firestick",
+    "streamflix amazon fire stick",
+    "streamflix firetv",
   ],
 });
 
 const toc = [
+  { href: "#quick-summary", label: "Quick summary" },
   { href: "#which", label: "Which variant works on Fire TV" },
   { href: "#downloader", label: "The Downloader method" },
+  { href: "#codes", label: "Downloader codes explained" },
+  { href: "#removed", label: "Was StreamFlix removed from Firestick?" },
   { href: "#video", label: "Video walkthrough" },
   { href: "#unknown-sources-fire", label: "Enabling unknown sources on Fire OS" },
   { href: "#find-it", label: "Finding a sideloaded app" },
@@ -41,6 +58,7 @@ const toc = [
   { href: "#hardware", label: "Which Firestick you have matters" },
   { href: "#storage", label: "Managing Fire TV storage" },
   { href: "#problems", label: "Fire TV specific problems" },
+  { href: "#matrix", label: "Fire TV in the wider device picture" },
 ];
 
 const howTo: HowToData = {
@@ -82,7 +100,19 @@ export default function FirestickPage() {
       title={TITLE}
       description={DESCRIPTION}
       about={["fireTv", "sideloading"]}
-      mentions={["android", "apk", "androidTv", "streaming", "vpn"]}
+      mentions={[
+        "android",
+        "apk",
+        "androidTv",
+        "googleTv",
+        "chromecast",
+        "streaming",
+        "playProtect",
+        "vpn",
+        "downloader",
+        "amazonAppstore",
+        "leanback",
+      ]}
       dateModified="2026-08-16"
       kicker="Fire TV install"
       h1="How to Install StreamFlix on Firestick and Fire TV"
@@ -105,8 +135,34 @@ export default function FirestickPage() {
         "Developer Options may be hidden. Reveal it by clicking the device name seven times under Settings, My Fire TV, About.",
         "Delete the downloaded APK after installing. Fire TV Stick storage is tight and the installer serves no further purpose.",
         "Sideloaded apps appear at the end of the Apps row, never on the home screen. Move it forward or you will hunt for it every time.",
+        "No Downloader code is issued by the StreamFlix developer. Every circulating code is a third-party redirect that its owner can repoint or let expire.",
+        "Typing the full APK address into Downloader reaches the same file with one less unknown in the chain, and shows you the host you are downloading from.",
+        "StreamFlix was never in the Amazon Appstore, so it was never removed from Firestick. Old tutorials point at the original app that was taken down in 2024.",
       ]}
     >
+      <QuickSummary
+        bullets={[
+          `Install StreamFlix Reborn v${REBORN.version}, ${REBORN.sizeLabel}, package ${REBORN.packageName}. It needs Android ${REBORN.minAndroid} and Fire OS clears that on every current stick.`,
+          "Route: Amazon Appstore, install Downloader by AFTVnews, then Settings, My Fire TV, Developer Options, Install unknown apps, Downloader on.",
+          "Enter the full APK address in Downloader and press Go. Typical time from a stock Firestick to first playback is about seven minutes.",
+          "No official Downloader code exists. Codes such as 730116 and 250931 are third-party redirects registered by tutorial sites, not by the developer.",
+          "Install Reborn rather than StreamFlix 2.0. Only Reborn ships a leanback interface that a D-pad remote can drive.",
+          "After installing, the app sits at the end of the Apps row. Long-press it and choose Move to bring it forward.",
+        ]}
+      >
+        <p>
+          To install StreamFlix on a Firestick, sideload the StreamFlix Reborn
+          APK with the Downloader app after allowing Downloader to install
+          unknown apps. Neither StreamFlix app is in the Amazon Appstore.
+        </p>
+        <p>
+          Fire OS is a fork of Android, so the same package that runs on an
+          Android TV box runs on a Fire TV Stick, a Fire TV Cube and a Fire TV
+          Edition television. What differs is the install route and where Amazon
+          files the finished app, and both are covered below.
+        </p>
+      </QuickSummary>
+
       <h2 id="which">Which variant works on Fire TV</h2>
       <VariantSupportStrip
         rebornSupported
@@ -126,14 +182,186 @@ export default function FirestickPage() {
         on a Firestick and found it unpleasant, that is why. Install{" "}
         <InternalLink intent="reborn" currentPath={R.firestick} /> instead.
       </p>
+      <Definition term="StreamFlix on Firestick">
+        StreamFlix on Firestick means the StreamFlix Reborn Android package
+        installed onto Amazon Fire TV hardware by sideloading, because Fire OS
+        is built on Android and accepts an APK while the Amazon Appstore carries
+        no StreamFlix listing. The installed app is identical to the Android TV
+        and Google TV build, including the leanback interface, the provider
+        selector and the in-app updater. Amazon files sideloaded apps at the end
+        of the Apps row rather than on the home screen.
+      </Definition>
 
       <h2 id="downloader">The Downloader method</h2>
+      <p>
+        Downloader by AFTVnews is the standard route because Fire OS ships no
+        general-purpose web browser. Downloader fetches a file from an address
+        you type and hands it to the Fire OS installer, which is the whole job
+        in one app. The five steps below take about seven minutes on a stock
+        stick.
+      </p>
       <StepCards
         items={howTo.steps.map((step, index) => ({
           n: String(index + 1).padStart(2, "0"),
           title: step.name,
           body: step.text,
         }))}
+      />
+      <p>
+        Two details decide whether this works first time. The unknown-apps
+        permission has to be granted to <em>Downloader</em> specifically, not to
+        a file manager you happen to have installed, or the Install button stays
+        inert. And the address has to be typed exactly, including the file
+        extension, because Downloader gives a blank page rather than an error
+        when a URL resolves to nothing.
+      </p>
+      <p>
+        Downloader also has a small built-in browser under its Browser tab. If
+        typing a long address with a remote is painful, open the download page
+        there and select the link, which avoids the transcription error that
+        causes most blank pages. Once the file lands, choose Install, then Done,
+        then Delete to reclaim the space.
+      </p>
+      <DataTable
+        caption="Ways to get the StreamFlix APK onto a Fire TV Stick compared"
+        headers={["Method", "What you need", "Trade-off"]}
+        rows={[
+          [
+            "Downloader, full URL",
+            "Downloader plus the direct APK address",
+            "Most transparent. You can see the host the file comes from before it downloads",
+          ],
+          [
+            "Downloader, third-party code",
+            "Downloader plus a number someone published",
+            "Shortest to type, but the destination is controlled by whoever registered the code",
+          ],
+          [
+            "Downloader browser tab",
+            "Downloader plus the download page address",
+            "Avoids typing a long file path, at the cost of navigating a web page with a remote",
+          ],
+          [
+            "ADB over the network",
+            "A computer on the same Wi-Fi and ADB debugging enabled on the stick",
+            "No typing on the television at all, but it is a command line and a one-off setup",
+          ],
+          [
+            "A second file-fetching app",
+            "Any Fire OS app that downloads files, granted install permission",
+            "Works, though most are ad-heavier than Downloader and none are easier",
+          ],
+        ]}
+      />
+
+      <h2 id="codes">Downloader codes explained</h2>
+      <p>
+        There is no StreamFlix Downloader code issued by the developer. A
+        Downloader code is a short number that a third party registers against a
+        web address of their choosing, so a code is only ever a shortcut to
+        somebody else&rsquo;s page.
+      </p>
+      <p>
+        Codes such as 730116 and 250931 circulate widely in Firestick tutorials
+        and on video descriptions. Each one resolves to the tutorial site that
+        registered it, which then links onward to a file. That extra hop is the
+        entire mechanism, and it is also the entire problem: the owner of a code
+        can repoint it at a different address at any time, and you would see no
+        difference on screen.
+      </p>
+      <DataTable
+        caption="How a Downloader code differs from typing the APK address"
+        headers={["", "Third-party code", "Full APK address"]}
+        rows={[
+          [
+            "Who controls the destination",
+            "Whoever registered the code",
+            "The host named in the address you typed",
+          ],
+          [
+            "What you see before downloading",
+            "A number, then whatever page loads",
+            "The domain, the path and the file name",
+          ],
+          [
+            "Typing effort with a remote",
+            "Six digits",
+            "A full URL, longer but unambiguous",
+          ],
+          [
+            "How it breaks",
+            "Silently, when the target moves or the registration lapses",
+            "Visibly, with a 404 or a blank page you can act on",
+          ],
+          [
+            "Version certainty",
+            "None. The linked build may be older than advertised",
+            `Check the version in the app afterwards against v${REBORN.version}`,
+          ],
+        ]}
+      />
+      <p>
+        Codes stop working for ordinary reasons: the registration expires, the
+        publisher restructures their site, the file is moved, or the host blocks
+        Downloader&rsquo;s requests. Because none of that is visible from a
+        six-digit number, a dead code and a repointed code look identical. The
+        same reasoning applies to Spanish-language pages searching for a{" "}
+        <em>c&oacute;digo Downloader</em>: the mechanism is the same, and no
+        regional code is any more official than an English one.
+      </p>
+      <p>
+        Whichever route you take, verify afterwards rather than beforehand. Open
+        Settings, Applications, Manage Installed Applications and confirm the
+        package reads <code>{REBORN.packageName}</code>, then check the version
+        inside the app. That single check is worth more than any assurance a
+        download page offers. See{" "}
+        <InternalLink intent="installVerify" currentPath={R.firestick} />.
+      </p>
+
+      <h2 id="removed">Was StreamFlix removed from Firestick?</h2>
+      <p>
+        Nothing was removed from Fire TV, because nothing was ever listed there.
+        Neither StreamFlix app has appeared in the Amazon Appstore, so there was
+        no listing for Amazon to pull and no update channel to cut off.
+      </p>
+      <p>
+        The belief comes from two real events. The original StreamFlix was taken
+        down after a copyright complaint, which broke the download links inside
+        Firestick tutorials written before the takedown. Separately, individual
+        providers inside the app go dark regularly, which makes a working
+        install look broken from one day to the next. Neither is Amazon removing
+        an app.
+      </p>
+      <DataTable
+        caption="What people mean by StreamFlix being removed from Firestick"
+        headers={["What you saw", "What actually happened", "What to do"]}
+        rows={[
+          [
+            "An old tutorial's link now fails",
+            "That link pointed at the original app, which was taken down",
+            `Install StreamFlix Reborn v${REBORN.version}, the open-source continuation`,
+          ],
+          [
+            "The app icon disappeared",
+            "Sideloaded apps sit at the end of the Apps row, not on the home screen",
+            "Apps row, scroll to the end, then long-press and Move it forward",
+          ],
+          [
+            "It opens but finds nothing",
+            "The selected provider is down, not the app",
+            "Switch provider in settings, then retry the title",
+          ],
+          [
+            "It stopped working after a Fire OS update",
+            "Fire OS resets some permissions after major updates",
+            "Re-check Developer Options, Install unknown apps, Downloader",
+          ],
+          [
+            "A Downloader code returns nothing",
+            "The code's registered target moved or lapsed",
+            "Enter the full APK address instead of the code",
+          ],
+        ]}
       />
 
       <h2 id="video">Video walkthrough</h2>
@@ -278,21 +506,27 @@ export default function FirestickPage() {
         A Fire TV Stick ships with roughly 8 GB, of which about 5 GB is usable.
         Reborn is small, but the surrounding clutter is not.
       </p>
-      <QuickSummary
-        bullets={[
-          "Delete the downloaded APK from Downloader immediately after installing. It is 31 MB doing nothing.",
-          "Clear Downloader's own cache periodically; it accumulates.",
-          "Uninstall preinstalled apps you never open. This frees more than anything else you can do.",
-          "Clear StreamFlix's cache if playback becomes erratic. Cache growth is a common cause on constrained devices.",
-        ]}
-      >
-        <p>
-          Low storage on Fire TV presents as instability rather than an
-          out-of-space error: apps close unexpectedly and playback stutters. If
-          your Firestick has become flaky generally, check storage before
-          blaming any single app.
-        </p>
-      </QuickSummary>
+      <p>
+        Low storage on Fire TV presents as instability rather than an
+        out-of-space error: apps close unexpectedly and playback stutters. If
+        your Firestick has become flaky generally, check storage before blaming
+        any single app.
+      </p>
+      <ul>
+        <li>
+          Delete the downloaded APK inside Downloader immediately after
+          installing. It is {REBORN.sizeLabel} doing nothing.
+        </li>
+        <li>Clear Downloader&rsquo;s own cache periodically, because it accumulates.</li>
+        <li>
+          Uninstall preinstalled apps you never open. This frees more than
+          anything else you can do.
+        </li>
+        <li>
+          Clear StreamFlix&rsquo;s cache if playback becomes erratic. Cache
+          growth is a common cause on constrained devices.
+        </li>
+      </ul>
 
       <h2 id="problems">Fire TV specific problems</h2>
       <DataTable

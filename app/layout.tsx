@@ -109,6 +109,22 @@ export const metadata: Metadata = {
     title: HOME_TITLE,
     description: DEFAULT_DESCRIPTION,
     images: [absoluteUrl("/opengraph-image")],
+    ...(process.env.NEXT_PUBLIC_TWITTER_URL
+      ? {
+          site: process.env.NEXT_PUBLIC_TWITTER_URL.replace(
+            /^https?:\/\/(www\.)?(twitter|x)\.com\//i,
+            "@",
+          ).replace(/\/$/, ""),
+        }
+      : {}),
+    ...(process.env.NEXT_PUBLIC_AUTHOR_TWITTER
+      ? {
+          creator: process.env.NEXT_PUBLIC_AUTHOR_TWITTER.replace(
+            /^https?:\/\/(www\.)?(twitter|x)\.com\//i,
+            "@",
+          ).replace(/\/$/, ""),
+        }
+      : {}),
   },
   appleWebApp: {
     capable: false,
@@ -143,12 +159,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <meta name="baiduspider" content="index, follow" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="StreamFlix APK blog"
-          href="/blog/rss.xml"
-        />
         <link rel="author" href="/humans.txt" />
         <link rel="alternate" type="text/plain" href="/llms.txt" />
       </head>
