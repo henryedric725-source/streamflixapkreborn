@@ -3,15 +3,19 @@ import { join } from "node:path";
 import { STAGED_PACKAGE } from "@/lib/package";
 import { REBORN, V2 } from "@/lib/variants";
 
+/** Local source of truth for binaries (not under public/ — too large for Workers assets). */
+export function releaseDiskPath(fileName: string) {
+  return join(process.cwd(), "storage", "releases", fileName);
+}
+
 function onDisk(fileName: string) {
-  return existsSync(join(process.cwd(), "public", "releases", fileName));
+  return existsSync(releaseDiskPath(fileName));
 }
 
 /**
- * Packages ship with the deploy as static assets. On Cloudflare Workers OpenNext
- * serves them through the ASSETS binding, so Node's `existsSync` reports false
- * even when `/releases/...` returns 200. Treat production as staged once the
- * binaries are committed for publish.
+ * Packages are served from R2 in production (Workers assets cap is 25 MiB).
+ * Locally we check storage/releases. In production builds treat as staged so
+ * buttons keep advertising downloadUrl.
  */
 function available(fileName: string) {
   if (onDisk(fileName)) return true;

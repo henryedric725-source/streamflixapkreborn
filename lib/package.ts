@@ -7,7 +7,7 @@
  */
 
 export const STAGED_PACKAGE = {
-  /** Generic header / mobile-bar filename under `public/releases/`. */
+  /** Generic header / mobile-bar filename under `storage/releases/`. */
   fileName: "StreamFlix APK.apk",
   /** Human label used on generic buttons. */
   label: "StreamFlix APK",

@@ -1,16 +1,32 @@
 # Package staging
 
-APK binaries go here. Filenames must match `lib/package.ts` and
-`lib/variants.ts` byte for byte.
+APK binaries live in **`storage/releases/`** (not `public/`), because Cloudflare
+Workers static assets cannot exceed **25 MiB** and these packages are ~31 MiB.
 
-The same APK is staged under three names so each button saves a matching file:
+Production serves them from the **`streamflix-apk-releases`** R2 bucket via
+`app/releases/[file]/route.ts`. Local `next dev` / `next start` reads the same
+filenames from disk.
+
+Filenames must match `lib/package.ts` and `lib/variants.ts` byte for byte:
 
 - `StreamFlix APK.apk` — header / mobile bar (“Download APK”)
 - `StreamFlix Reborn latest version.apk` — Reborn buttons
 - `StreamFlix 2.0 latest version.apk` — StreamFlix 2.0 buttons
 
-To replace them, drop the new file(s) here and keep those three names in sync.
-Update `lib/package.ts` size/version fields if the binary changes.
+## Upload / deploy
+
+```bash
+npm run upload:releases   # wrangler r2 object put …
+npm run cf:deploy         # upload then wrangler deploy
+```
+
+Cloudflare Workers Builds **deploy command** must be:
+
+```text
+npm run cf:deploy
+```
+
+not plain `npx wrangler deploy`, or R2 will be empty and downloads 404.
 
 ## Behaviour when a file is absent
 
@@ -19,13 +35,3 @@ gracefully rather than serving a 404:
 
 - The download button falls back to the `/#get-apk` section on the hub.
 - `SoftwareApplication` schema omits `downloadUrl` entirely.
-
-In production the helper treats packages as staged, because Cloudflare Workers
-serve them through the ASSETS binding where Node's `existsSync` cannot see them.
-
-## Headers
-
-`next.config.ts` serves everything under `/releases/` with
-`Content-Type: application/octet-stream` and `Content-Disposition: attachment`,
-so links download in one click. The URL basename becomes the saved filename.
-`app/robots.ts` disallows `/releases/` for all crawlers.

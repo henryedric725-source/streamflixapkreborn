@@ -29,7 +29,7 @@ export type AppVariant = {
   openSource: boolean;
   category: string;
   contentRating: string;
-  /** Local filename under `public/releases/`; must match byte-for-byte. */
+  /** Local filename under `storage/releases/`; must match byte-for-byte. */
   fileName: string;
   /** The cluster page that owns this variant's intent. */
   path: string;
