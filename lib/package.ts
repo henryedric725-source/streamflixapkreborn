@@ -5,8 +5,9 @@
  * saves a name that matches its label (Reborn, StreamFlix 2.0, or generic APK).
  * Specs for the two apps still live in `lib/variants.ts`.
  *
- * Production downloads are served from a public R2 base URL (Workers assets are
- * capped at 25 MiB). Locally, `/releases/<file>` reads from storage/releases.
+ * Download buttons always use same-origin `/releases/<file>`. Locally the route
+ * reads `storage/releases/`; in production the Worker streams the object from
+ * the private R2 bucket (Workers static assets cannot exceed 25 MiB).
  */
 
 export const STAGED_PACKAGE = {
@@ -25,19 +26,7 @@ export const STAGED_PACKAGE = {
   contents: ["StreamFlix APK.apk (single APK)"],
 } as const;
 
-/**
- * Public origin for APK objects in production.
- * Override with NEXT_PUBLIC_RELEASES_BASE_URL if you attach a custom domain.
- */
-export const RELEASES_PUBLIC_BASE =
-  process.env.NEXT_PUBLIC_RELEASES_BASE_URL?.replace(/\/$/, "") ||
-  "https://pub-1694258d29c94e3f93443e1725794890.r2.dev";
-
+/** Same-origin path for a staged APK (local disk or private R2). */
 export function stagedPackagePath(fileName: string = STAGED_PACKAGE.fileName) {
-  // Prefer the public R2 URL in production so the Worker never has to stream
-  // 31 MB through itself (and so deploy does not require an R2 binding).
-  if (process.env.NODE_ENV === "production") {
-    return `${RELEASES_PUBLIC_BASE}/${encodeURIComponent(fileName)}`;
-  }
   return `/releases/${encodeURIComponent(fileName)}`;
 }

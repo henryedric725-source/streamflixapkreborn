@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
- * Upload staged APKs to the public R2 bucket used for download buttons.
+ * Upload staged APKs to the private R2 bucket.
  *
- * Workers static assets cannot exceed 25 MiB. Downloads therefore point at the
- * public r2.dev (or custom) base URL — no R2 binding is required on the Worker,
- * so Cloudflare Workers Builds can deploy even when that account has R2 off.
+ * Download buttons use same-origin `/releases/<file>`; the Worker streams
+ * objects from this bucket via the RELEASES binding. Keep r2.dev public access
+ * disabled — public pub-*.r2.dev URLs trigger Cloudflare phishing/malware
+ * interstitials.
  */
 import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";

@@ -1,9 +1,12 @@
 import { createReadStream, existsSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { Readable } from "node:stream";
-import { RELEASES_PUBLIC_BASE, STAGED_PACKAGE } from "@/lib/package";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { STAGED_PACKAGE } from "@/lib/package";
 import { releaseFileNames } from "@/lib/versions";
 import { REBORN, V2 } from "@/lib/variants";
+
+export const dynamic = "force-dynamic";
 
 const ALLOWED = new Set<string>([
   STAGED_PACKAGE.fileName,
@@ -23,9 +26,46 @@ function attachmentHeaders(fileName: string, size?: number): HeadersInit {
   return headers;
 }
 
+async function fromR2(fileName: string): Promise<Response | null> {
+  try {
+    const { env } = await getCloudflareContext({ async: true });
+    const bucket = (env as { RELEASES?: R2Bucket }).RELEASES;
+    if (!bucket) return null;
+    const object = await bucket.get(fileName);
+    if (!object) return null;
+    const headers = attachmentHeaders(fileName, object.size);
+    // Preserve stored metadata when present.
+    if (object.httpMetadata?.contentType) {
+      (headers as Record<string, string>)["Content-Type"] =
+        object.httpMetadata.contentType;
+    }
+    if (object.httpMetadata?.contentDisposition) {
+      (headers as Record<string, string>)["Content-Disposition"] =
+        object.httpMetadata.contentDisposition;
+    }
+    if (object.httpEtag) {
+      (headers as Record<string, string>).ETag = object.httpEtag;
+    }
+    return new Response(object.body, { headers });
+  } catch {
+    // Not running on Cloudflare (local next start / next dev).
+    return null;
+  }
+}
+
+function fromDisk(fileName: string): Response | null {
+  const diskPath = join(process.cwd(), "storage", "releases", fileName);
+  if (!existsSync(diskPath)) return null;
+  const { size } = statSync(diskPath);
+  const stream = Readable.toWeb(createReadStream(diskPath)) as ReadableStream;
+  return new Response(stream, { headers: attachmentHeaders(fileName, size) });
+}
+
 /**
- * Local/dev download path. Production buttons point straight at the public R2
- * base URL (see lib/package.ts) so this Worker does not need an R2 binding.
+ * Same-origin APK download.
+ *
+ * Production: stream from the private R2 binding (no public r2.dev URL).
+ * Local: read from storage/releases on disk.
  */
 export async function GET(
   _request: Request,
@@ -37,19 +77,11 @@ export async function GET(
     return new Response("Not found", { status: 404 });
   }
 
-  // In production, send callers to the public object store.
-  if (process.env.NODE_ENV === "production") {
-    return Response.redirect(
-      `${RELEASES_PUBLIC_BASE}/${encodeURIComponent(fileName)}`,
-      302,
-    );
-  }
+  const fromBucket = await fromR2(fileName);
+  if (fromBucket) return fromBucket;
 
-  const diskPath = join(process.cwd(), "storage", "releases", fileName);
-  if (!existsSync(diskPath)) {
-    return new Response("Not found", { status: 404 });
-  }
-  const { size } = statSync(diskPath);
-  const stream = Readable.toWeb(createReadStream(diskPath)) as ReadableStream;
-  return new Response(stream, { headers: attachmentHeaders(fileName, size) });
+  const local = fromDisk(fileName);
+  if (local) return local;
+
+  return new Response("Not found", { status: 404 });
 }
