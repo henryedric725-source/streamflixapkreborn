@@ -54,12 +54,14 @@ export const E = {
   },
   fireTv: {
     name: "Amazon Fire TV",
-    type: "Product",
+    // Thing, not Product — Product without offers/review/aggregateRating
+    // triggers Google Search Console "Product snippets" errors.
+    type: "Thing",
     sameAs: [wiki("Amazon_Fire_TV"), wikidata("Q16244121")],
   },
   chromecast: {
     name: "Chromecast",
-    type: "Product",
+    type: "Thing",
     sameAs: [wiki("Chromecast"), wikidata("Q4090131")],
   },
   tizen: {

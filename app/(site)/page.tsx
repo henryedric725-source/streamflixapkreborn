@@ -119,7 +119,7 @@ export default function HomePage() {
       title={HOME_TITLE}
       description={DEFAULT_DESCRIPTION}
       about={["apk", "android", "streaming"]}
-      mentions={["sideloading", "androidTv", "fireTv", "googlePlay", "openSource", "playProtect"]}
+      mentions={["sideloading", "androidTv", "googlePlay", "openSource", "playProtect"]}
       dateModified="2026-08-22"
       kicker="Free Android streaming APK"
       h1={HOME_H1}
