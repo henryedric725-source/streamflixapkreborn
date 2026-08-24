@@ -29,7 +29,7 @@ function attachmentHeaders(fileName: string, size?: number): HeadersInit {
 async function fromR2(fileName: string): Promise<Response | null> {
   try {
     const { env } = await getCloudflareContext({ async: true });
-    const bucket = (env as { RELEASES?: R2Bucket }).RELEASES;
+    const bucket = (env as CloudflareEnv).RELEASES;
     if (!bucket) return null;
     const object = await bucket.get(fileName);
     if (!object) return null;
