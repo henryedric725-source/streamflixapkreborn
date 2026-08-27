@@ -43,6 +43,9 @@ yarn-error.log*
 .wrangler
 .dev.vars
 
+# APK binaries — served from private R2 via /releases, never as Workers/Pages assets
+storage/releases/*.apk
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

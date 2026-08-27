@@ -1,16 +1,17 @@
 # Package staging
 
-APK binaries live in **`storage/releases/`** (not `public/`), because Cloudflare
-Workers static assets cannot exceed **25 MiB** and these packages are ~31 MiB.
+APK binaries live in **`storage/releases/`** locally (gitignored) and in the
+private R2 bucket **`streamflix-apk-releases`** in production.
 
-Download buttons always use same-origin `/releases/<file>`:
+Workers static assets cannot exceed **25 MiB**; these packages are ~31 MiB, so
+they must never be committed or uploaded as Pages/Worker assets.
+
+Download buttons use same-origin `/releases/<file>`:
 
 - **Local:** the route reads from `storage/releases/`
-- **Production:** the Worker streams the object from the private R2 bucket
-  `streamflix-apk-releases` (binding `RELEASES`)
+- **Production:** the Worker streams from the private R2 binding `RELEASES`
 
-Do **not** re-enable the public `pub-*.r2.dev` URL — Cloudflare flags those
-hosts for phishing/malware distribution.
+Do **not** enable public `pub-*.r2.dev` access.
 
 Filenames:
 
@@ -21,9 +22,20 @@ Filenames:
 ## Upload
 
 ```bash
+# Place the three .apk files in storage/releases/, then:
 npm run upload:releases
 ```
 
-Deploy with a Wrangler login that has R2 enabled on the same account as this
-Worker (`npm run deploy`). Workers Builds on an account without R2 will fail
-while the `RELEASES` binding is configured.
+## Deploy
+
+Use **Cloudflare Workers** (OpenNext), not Pages:
+
+```bash
+npm run deploy
+```
+
+Workers Builds settings (if connecting Git):
+
+- Build command: `npx opennextjs-cloudflare build`
+- Deploy command: `npx wrangler deploy`
+- R2 binding: `RELEASES` → `streamflix-apk-releases`
