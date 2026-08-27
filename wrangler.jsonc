@@ -29,10 +29,16 @@
     "NEXT_PUBLIC_SITE_URL": "https://streamflixreborn.com",
     "SITEMAP_SECRET": "51ee7ca42bedf8a31c1bccf9478e3172d17122a2848d26a4299c77573274e40f"
   },
+  "workers_dev": true,
+  "preview_urls": true,
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
       "service": "streamflix-apk"
     }
+  ],
+  "routes": [
+    { "pattern": "streamflixreborn.com/*", "zone_name": "streamflixreborn.com" },
+    { "pattern": "www.streamflixreborn.com/*", "zone_name": "streamflixreborn.com" }
   ]
 }
